@@ -1,0 +1,28 @@
+<view wx:if="{{goodsList.length}}" class='ba_f' style='margin-top:{{content.topMargin}}px;margin-bottom:{{content.isBottom}}px;'>
+  <view class='pa_15_30_0'>
+    <view class='fon_26'>GOOD QUALITY</view>
+    <wux-cell padding='0' url='/pages/mall/index' is-last='true' is-link='true' tftsize='34' tclass='wei color_0' title="{{content.infoTitle||'品质好货'}}" extra='更多' />
+  </view>
+  <view class='flex-row flex-wrap pad_20'>
+    <view bindtap='jumps' data-entry='{{content.pictureList[0].entry}}' class='fimg br-r-15'>
+      <image mode='aspectFill' class='image_all' src='{{content.pictureList[0].url}}'></image>
+    </view>
+    <block wx:for="{{goodsList}}" wx:key="id">
+      <view style="width:33.33%;align-items:{{!index?'flex-start':''}}" class="flex-x-center" wx:if="{{index<4}}" bindtap='goodinfo' data-id='{{item.id}}'>
+        <view class='w-251 b-s br-r-15'>
+          <view class="goodsimg ba_e posi-r">
+            <image mode='aspectFill' class='image_all' src='{{item.showImgs}}'></image>
+            <!-- <view class='posi-a ba_f8 color_f pa_5_20 groupnum wei'>{{item.groupNum}}人拼团</view> -->
+          </view>
+          <view class='pa fon_24'>
+            <view class='wei gobyndsingle'>{{item.title}}</view>
+            <view class='color_rb gobyndsingle'>
+              <text class='wei mar_r_10'>￥{{item.currentPrice}}</text>
+              <text class='color_9 t-d-l'>￥{{item.originalPrice}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

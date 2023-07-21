@@ -1,0 +1,72 @@
+<!--dist/public/auxiliary/mall/mall-cell.wxml-->
+<block wx:if='{{type==1}}'>
+  <view bindtap='goodinfo' class='good mar_b30 bras ba_f flex-col b-s'>
+    <image mode='aspectFill' class='goodimg' src='{{content.showImgs}}'></image>
+    <view class='pa goodcon'>
+      <view class='hydlnr_2' style='height:82rpx;'>
+        <block-text wx:if="{{content.power&&content.power.length}}" type='2' color='{{color}}' class-name='pa_5_10 br-r-20 mar_r_10' text='{{content.power[0]}}' />
+        <text>{{content.title}}</text>
+      </view>
+      <view class='mar_t_10 flex-bt' style='height:50rpx;'>
+        <block wx:for="{{content.label}}" wx:key="*this">
+          <block-text wx:if="{{index<2}}" class-name='fon_24 pa_5_15 ba_f5 color_9 gobyndsingle' text='{{item}}' />
+        </block>
+      </view>
+      <view class='mar_t_10 fon_30' style='color:{{color}}'>
+        <text>￥{{content.currentPrice}}</text>
+      </view>
+      <view class='mar_t_10 fon_24 flex-bt'>
+        <text class='color_9 t_through'>￥{{content.originalPrice}}</text>
+        <block-text class-name='pa_5_15 color_9' text='已售{{content.salesNum}}件' />
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:elif='{{type==2}}'>
+  <layout-one bindtap='goodinfo' no-pad='true' is-last='true' body-src='{{content.showImgs}}' body="{{layoutBodyOne}}" class-name='br-r-10 mar_b'>
+    <view slot="body-bd-f" class="flex-x-bt">
+      <view class='hydlnr_2' style='height:82rpx;'>
+        <block-text wx:if="{{content.power&&content.power.length}}" type='2' color='{{color}}' class-name='pa_5_10 br-r-20 mar_r_10' text='{{content.power[0]}}' />
+        <text>{{content.title}}</text>
+      </view>
+    </view>
+    <view slot="body-bd-s" class="flex-x-bt mar_t_10">
+      <view class='flex-bt'>
+        <block wx:for="{{content.label}}" wx:key="*this">
+          <block-text wx:if="{{index<2}}" class-name="fon_24 pa_5_15 ba_f5 color_9 gobyndsingle {{index>0?'mar_l':''}}" text='{{item}}' />
+        </block>
+      </view>
+    </view>
+    <view slot="body-bd-t" class="flex-x-bt fon_24 mar_t_10">
+      <view class=''>
+        <text class='fon_30 mar_r' style='color:{{color}}'>￥{{content.currentPrice}}</text>
+        <text class='color_9 t_through'>￥{{content.originalPrice}}</text>
+      </view>
+      <view class=''>
+        <block-text class-name='pa_5_15 color_9' text='已售{{content.salesNum}}件' />
+      </view>
+    </view>
+  </layout-one>
+</block>
+<block wx:elif='{{type==3}}'>
+  <layout-one bindtap='goodinfo' is-last='true' body-src='{{content.showImgs}}' body="{{layoutBodyOne2}}" class-name='br-r-10 mar_b'>
+    <view slot="body-bd-f" class="flex-x-bt">
+      <view class='hydlnr_2' style='height:82rpx;'>
+        <block-text wx:if="{{content.power&&content.power.length}}" type='2' color='{{color}}' class-name='pa_5_10 br-r-20 mar_r_10' text='{{content.power[0]}}' />
+        <text>{{content.title}}</text>
+      </view>
+    </view>
+    <view slot="body-bd-s" class="flex-x-bt fon_24">
+      <view class='flex-col'>
+        <view>
+          <text class='fon_30 mar_r' style='color:{{color}}'>￥{{content.currentPrice}}</text>
+          <text class='color_9 t_through'>￥{{content.originalPrice}}</text>
+        </view>
+        <view class='mar_t_10 color_9'>销量{{content.salesNum}}</view>
+      </view>
+      <view class='flex-center br-r-c color_f' style='width:70rpx;height:70rpx;background:{{color}}'>
+        <text class='iconfont icon-gouwuche fon_40'></text>
+      </view>
+    </view>
+  </layout-one>
+</block>

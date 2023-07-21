@@ -1,0 +1,4 @@
+@import "order.wxss";
+.mar_l90{
+  margin-left: 90rpx;
+}

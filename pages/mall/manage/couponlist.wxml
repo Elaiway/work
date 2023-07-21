@@ -1,0 +1,36 @@
+<!--pages/mall/order.wxml-->
+<view class="container after-navbar">
+  <view class='fixedtop'>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="padding-top">
+    <view class='pad_20'>
+      <view wx:for="{{postList}}" wx:key="{{item.id}}" class='br-r-30 flex-row mar_b ba_f posi-r'>
+        <view class='flex-col-center color_f' style='width:175rpx;min-height:175rpx;background:#FF3838'>
+          <view wx:if="{{item.type==1}}">￥
+            <text class='fon_46'>{{item.discount}}</text>
+          </view>
+          <view wx:if="{{item.type==2}}">
+            <text class='fon_46'>{{item.discount}}</text>折
+          </view>
+          <view class='mar_t_10 fon_26'>{{item.reach>0?'满'+item.reach+'可用':'无门槛'}}</view>
+        </view>
+        <view class='pad_20 flex-g-1 flex-col flex-x-center'>
+          <view class=''>{{item.name}}</view>
+          <view class='mar_t fon_24 color_9 flex-y-center'>
+            <text class='iconfont icon-tuanbuxingbiao mar_r_10'></text>{{item.introduce}}</view>
+          <view class='mar_t fon_24 color_9'>有效期：{{item.startTime}}-{{item.endTime}}</view>
+        </view>
+        <view class='posi-a flex-col-center r0 hei' style='width:160rpx;'>
+          <view class='text-btnf pa_5_20 br-r-30' style='background:#FF3838' bindtap='clickBtn' data-info='{{item}}'>操作</view>
+        </view>
+      </view>
+    </view>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<!-- action组件 -->
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">{{xzname}}</i-button>
+</i-action-sheet>
+<foot-nav color='{{color}}' page-type='managemallcoupon' />

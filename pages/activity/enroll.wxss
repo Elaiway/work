@@ -1,0 +1,29 @@
+@import "order.wxss";
+.line {
+  height: 2rpx;
+  width: 100%;
+  background: #ddd;
+}
+.cir{
+  width: 54rpx;
+  height: 54rpx;
+  border:1rpx solid #ddd;
+  background: #fff;
+}
+.mar_l130{
+  margin-left: 130rpx;
+}
+.iflex-y-top{
+  align-items: flex-start !important;
+  display: flex;
+}
+.dbor-tb{
+  border-top:1rpx dashed #ddd;
+  border-bottom:1rpx dashed #ddd;
+}
+.tpa-tlf{
+  padding: 0 10rpx 20rpx 10rpx;
+}
+.maxwidth{
+  width: 180rpx;
+}

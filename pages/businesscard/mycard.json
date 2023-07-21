@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "seal": "/dist/public/components/seal/seal"
+  }
+}

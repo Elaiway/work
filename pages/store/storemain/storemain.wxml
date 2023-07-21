@@ -1,0 +1,34 @@
+<at-form>
+<!--pages/store/storemain/storemain.wxml-->
+<include src="/assets/commons/navbar/navbar.wxml" />
+<view class="container after-navbar">
+    <view>
+        <Search id='Search' content="{{Search}}" searchtype='3' color="{{color}}"></Search>
+    </view>
+    <!-- 商圈首页轮播图 -->
+    <view hidden="{{Swiper==null}}">
+        <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+    </view>
+    <view class='mar_T'>
+         <Notice id="Notice" datatype='3' color="{{color}}" content="{{Notice}}" />
+    </view>
+    <block wx:if="{{Typeswiper!=null}}">
+        <type-swiper color="{{color}}" type-obj='{{Typeswiper}}'></type-swiper>
+    </block>
+    <view wx:if="{{Headline!=null}}" class='mar_t'>
+        <Headline class='bor-top' datatype='3,1' pagetype='business' content="{{Headline}}" bind:postInfo="postInfo" />
+    </view>
+    <!-- 中间广告位 -->
+    <view hidden="{{advert==null}}" class='mar_t pa_l ba_f'>
+        <!-- <advert content="{{advert}}" /> -->
+         <swiper-case id='advert' color="{{color}}" content="{{advert}}"></swiper-case>
+    </view>
+    <view class='mar_t mainbk'>
+        <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+</wux-tabs>
+        <store-cell content="{{postList}}" key="{{key}}" bind:storeInfo="getStoreinfo" color="{{color}}"></store-cell>
+        <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+    </view>
+    <footer></footer>
+</view>
+</at-form>

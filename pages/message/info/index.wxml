@@ -1,0 +1,140 @@
+<wux-floating-button wux-class='padding-bottom' color="{{color}}" position="{{ position }}" theme="{{ theme }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
+<view class='container'>
+  <view class='pa_l ba_f'>
+    <view class='pa_t fon_wei fon_36'>{{newsInfo.title}}</view>
+    <!-- 资讯头部信息 -->
+    <view class='flex-row pa_b rel ba_f bor_bottom'>
+      <view class='flex-grow-0 mar_r flex-center-col'>
+        <image class='imgsize100' mode='aspectFill' src="{{newsInfo.customPortrait?url+newsInfo.customPortrait[0].url:'/assets/images/personal/mrtx.png'}}"></image>
+      </view>
+      <view class='flex-grow-1 flex-row'>
+        <view class='flex-grow-1 flex-colbt'>
+          <view class='flex-raw'>
+            <text class='fon_28 color_6'>{{newsInfo.customUser?newsInfo.customUser:'匿名'}}</text>
+            <text class='isTop fon_22 mar_l color_f' wx:if="{{newsInfo.attribute&&newsInfo.attribute!='3'}}">{{newsInfo.attribute=='1'?'置顶':newsInfo.attribute=='2'?'精华':''}}</text>
+            <!-- <text class='isRedbag fon_24 mar_l color_f' wx:if="{{postInfo.isRedBag=='1'}}"></text> -->
+            <image wx:if="{{postInfo.isAuth=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/grrz.png'></image>
+            <image wx:if="{{postInfo.isEnsure=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/bzj.png'></image>
+          </view>
+          <view class='flex-raw mar_t_10 fon_24 color_9'>
+            <i-tag i-class="i-tags" font-size="24" border-color="#fff" bg-color='{{color}}' color='#fff'>
+              {{newsInfo.name}}
+            </i-tag>
+            <text class='mar_l'>{{newsInfo.time}}发布</text>
+          </view>
+        </view>
+        <view class='flex-grow-0 flex-center-col'>
+          <button wx:if="{{postInfo.status!='1'}}" class='fon_28 share color_f' bindtap='share' style='background:{{color}}'>分享</button>
+        </view>
+        <image mode='aspectFill' wx:if="{{postInfo.isEnd=='1'}}" src='{{imgsrc}}/wechatimg/img/isend.png' class='ab postEnd'></image>
+      </view>
+    </view>
+    <block wx:if="{{newsInfo.video}}">
+      <video src="{{newsInfo.video}}" binderror="videoErrorCallback"></video>
+    </block>
+    <view class='fon_32 pa_t color_3 rich'>
+      <r-text wx:if="{{newsInfo}}" content="{{newsInfo.body}}"></r-text>
+    </view>
+    <!-- <view class='info_img'>
+      <image class='info_imgimg' wx:for="{{newsInfo.media}}" mode='widthFix' src='{{url}}{{item.url}}'></image>
+    </view> -->
+    <view class='mar_t pa_t color_9 t_c fon_30'>
+      优质内容 值得打赏
+    </view>
+    <view class='mar_t color_f reward t_c fon_40 fon_wei flex-center' bindtap='reward' style='background:{{color}}'>
+      <view>赏</view>
+    </view>
+    <view class='pa_t'>
+      <view class='flex-row flex-y-center color_9 fon_26'>
+        <view class='flex-grow-1 flex-raw'>
+          <view class='give_thumbsv1 dis_in t_l' bindtap='postPraise'>
+            <text class='middle iconfont icon-dianzan1 fon_50' style="color:{{newsInfo.love==true?'red':'#cdcdcd'}}"></text>
+            <text class='middle color_9'>{{newsInfo.loveNum}}</text>
+          </view>
+          <text class='zxicon iconfont icon-xiaoxi1'  bindtap="openpl"></text>
+          <!-- <text class='middle color_9 fon_26 mar_l'>评论:</text> -->
+          <text class='mar_l_10'>{{postCommend.length||0}}</text>
+          <text class='zxicon iconfont icon-share-fill'></text>
+          <!-- <text class='middle color_9 fon_26 mar_l'>分享:</text> -->
+          <text class='mar_l_10'>{{newsInfo.shareNum}}</text>
+        </view>
+        <view class='flex-grow-0'>
+          <text class='color_9 fon_28 mar_l'>{{newsInfo.browseNum}}次阅读</text>
+        </view>
+      </view>
+      <view class='zanframetop'></view>
+      <view class='zanframebd'>
+        <view class='zanframebdt'>
+          <view class='dis_in'>点赞人数：{{newsInfo.loveNum||0}}人</view>
+          <block wx:for="{{item.dz}}" wx:key="userName">
+            <image lazy-load='true' class='imgsize30' wx:if="{{index<11}}" src='{{item.portrait}}'></image>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 信息评论处 -->
+  <view class='mar_t ba_f pa_l' wx:if="{{postCommend.length>0}}">
+    <submenu content="{{submenu_2}}" />
+    <commend color="{{color}}" comment_close="1" bind:openpl="openpl" bind:comment="comment_info" comment_list="{{comment_list}}" content="{{postCommend}}" />
+  </view>
+  <!-- <view class='ba_f pa_l mar_t'>
+    <submenu content="{{submenu_2}}" />
+    <commend color="{{color}}" bindincrement="incrementTotal" content="{{commend}}" />
+  </view> -->
+  <!-- <view class='mar_t advert'>
+        <image class='advertimg' mode='aspectFill' class='wid' src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539939127802&di=ae852bf881d8a34dbc7214cc127c7cd4&imgtype=0&src=http%3A%2F%2Fi5.3conline.com%2Fimages%2Fpiclib%2F200909%2F13%2Fbatch%2F1%2F40636%2F1252849811998a4b4bsw51g.jpg'></image>
+    </view>
+    <view class='ba_f'>
+        <view class='mar_t pa recommend t_c bor_bottom'>
+            <view class='recommendv1 dis_in'></view>
+            <view class='recommendv2 dis_in'>优质推荐</view>
+            <view class='recommendv3 dis_in'></view>
+        </view>
+        <message-postinfo content="{{content}}" />
+    </view> -->
+</view>
+<!-- <block wx:if="{{foot_menu!=null}}">
+  <footmenu comment_close="1" bind:openpl="openpl" bind:collection="getCollection" content="{{foot_menu}}" />
+</block> -->
+<share bind:poster="poster" closepop='closepop' onshare="{{onshare}}" />
+<i-modal catchtouchmove="true" title="发表评论" visible="{{ commentShow }}" bind:ok="handleopen1" bind:cancel="handleClose1">
+  <view class='t_l commend pa_l'>
+    <textarea wx:if="{{commentShow}}" class='wid_hei' maxlength='140' bindinput='getComment' bindconfirm='fspl' confirm-type='send' placeholder='{{reply_user}}'></textarea>
+  </view>
+</i-modal>
+<!-- <view class='publish_comment ba_f'>
+    <view class='pa_l publish_commentv'>
+        <view class='dis_in publish_commentv1'>
+            <text class='mar_l middle iconfont color_9 icon-xiaoxi fon_50'></text>
+            <input class='dis_in mar_l publish_commentinput' confirm-type="done" adjust-position="true" placeholder='写评论'></input>
+        </view>
+        <text class='mar_l dis_in iconfont color_9 icon-shoucang fon_50' bindtap='collection'></text>
+        <text class='mar_l dis_in iconfont color_9 icon-dianzan fon_50' bindtap='postPraise'></text>
+        <button class='dis_in' open-type='share'>
+            <text class='mar_l dis_in iconfont color_9 icon-fenxiang fon_50'></text>
+        </button>
+    </view>
+</view> -->
+<!-- 导航动画 -->
+<!-- <view class="color_f ksdh {{active?'ksdhin':'ksdhout'}}">
+  <view class='flex-ra' bindtap='ksdhactive'>
+    <view class='flex-ra' style='width:100rpx;'>
+      <text class="iconfont icon-you ksdhjt {{active?'in':''}}"></text>
+      <view class='flex-center-col ksdht'>
+        <view>{{active?'收起':'快速'}}</view>
+        <view>{{active?'导航':'导航'}}</view>
+      </view>
+    </view>
+    <view class='flex-ra' style='width:320rpx;'>
+      <view catchtap='tzurl' id='{{index}}' wx:for="{{dharr}}" class='flex-center-col flex-bt ksdhb'>
+        <text class='iconfont {{item.icon}}'></text>
+        <view>{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+</view> -->
+<!-- <ad unit-id="{{ad}}"></ad> -->
+<view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>

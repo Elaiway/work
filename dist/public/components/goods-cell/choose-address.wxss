@@ -1,0 +1,10 @@
+/* dist/public/components/goods-cell/choose-address.wxss */
+@import "/app.wxss";
+.adbox{
+  bottom: -14rpx;
+  left: 0rpx;
+}
+.adress{
+  width: 100rpx;
+  height: 4rpx;
+}

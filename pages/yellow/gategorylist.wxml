@@ -1,0 +1,10 @@
+<!--pages/yellow/gategorylist.wxml-->
+<view class="page">
+  <top-select trees='{{trees}}' bind:selectchange='selectchange' color="{{color}}" />
+  <view class='padding-top'>
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <record-cell content="{{item}}" color="{{color}}"></record-cell>
+    </block>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

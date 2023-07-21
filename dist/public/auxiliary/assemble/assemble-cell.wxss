@@ -1,0 +1,5 @@
+/* dist/public/auxiliary/privilege/privilege-cell.wxss */
+@import "/app.wxss";
+.cell-top{
+  height: 400rpx;
+}

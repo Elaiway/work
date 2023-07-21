@@ -1,0 +1,32 @@
+.boxbor{
+  border:1rpx solid #F8987C;
+  background: #FFF6EE;
+  margin: 20rpx 20rpx 0 20rpx;
+  border-radius: 10rpx;
+  color: #F67957;
+}
+.fon_110{
+  font-size: 110rpx;
+}
+.pad-top{
+  padding-top:90rpx; 
+}
+
+.mar-lrb{
+  /* margin: 0 20rpx 20rpx 20rpx; */
+  /* border-radius: 10rpx;
+  box-shadow: 0 0 5rpx 5rpx  rgba(151, 151, 151, 0.1 ) */
+}
+.iconw{
+  width: 80rpx;
+  height: 80rpx;
+}
+.i-tags{
+  margin-left: 10rpx;
+}
+.mar-lr{
+  margin: 0 20rpx;
+}
+.padd-tb5{
+  padding:3rpx 0;
+}

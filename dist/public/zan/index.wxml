@@ -1,0 +1,40 @@
+<view  class="zan" wx:for="{{content}}" wx:key="*this" >
+	<view bindtap="message_info" data-postId="{{item.id}}" class="zan-name flex-between-center">
+		<view class="zan-name-left flex-start-center">
+			<image class="img-head" mode="aspectFill" src="{{item.storeLogo}}"></image>
+			<view>
+				<view>
+					{{item.storeName}}</view>
+				<view class="color1">
+					{{item.startTime}}发布
+				</view>
+			</view>
+		</view>
+
+	</view>
+	<view bindtap="message_info" data-postId="{{item.id}}" class="zan-intro">
+		{{item.describe}}
+	</view>
+	<view bindtap="message_info" data-postId="{{item.id}}" class="pic-list">
+		<view   wx:for="{{item.media}}" wx:for-item="i" wx:key="i" class="pic-list-detail">
+			<image style="width:100%;height:100%;border-radius:20rpx" mode="aspectFill" src="{{i.url}}"></image>
+		</view>
+	</view>
+	<view class="zan-number flex-between-center">
+		<text class="dingwei oneline color1">{{item.address}}</text>
+		<view class="flex-start-center" style="color:#666">
+			<view class="flex-start-center" style="margin-right:20rpx">
+				<image style="width:30rpx;height:30rpx;margin-right:10rpx" mode="aspectFill" src="../../../assets/images/zan/redXin.png"></image>
+				<text class="color1" bindtap="toBillboard" data-postId="{{item.id}}">集赞榜</text>
+			</view>
+				<view class="flex-start-center" style="margin-right:20rpx">
+					<image style="width:30rpx;height:30rpx;margin-right:10rpx" mode="aspectFill" src="../../../assets/images/zan/dianzan.png"></image>
+					<text>{{item.likeNum}}</text>
+				</view>
+				<view class="flex-start-center" style="margin-left:20rpx">
+					<image style="width:30rpx;height:30rpx;margin-right:10rpx" mode="aspectFill" src="../../../assets/images/zan/shera.png"></image>
+					<text>{{item.share}}</text>
+				</view>
+		</view>
+	</view>
+</view>

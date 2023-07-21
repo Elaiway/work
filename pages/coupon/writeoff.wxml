@@ -1,0 +1,58 @@
+<view class="container after-navbar">
+  <view class="ba_f">
+    <view class="br-b-e ba_f flex pa">
+      <view class="flex-grow-0">
+        <image class="copimg" src="{{goodsdetail.logo}}" mode='aspectFill'></image>
+      </view>
+      <view class="flex-grow-1 flex-row fon_24 mar_l">
+        <view class='wid flex-colbt'>
+          <view class='flex-row flex-y-bottom'>
+            <view class="fon_28 gobyndsingle">
+              <block-text color='#FF3838' class-name='pa_5_15 br-r-30 mar_r_10 fon_24' text="{{goodsInfo.type==1?'代金券':'' || goodsInfo.type==2?'折扣券':'' || goodsInfo.type==3?'优惠券':'' }}" />{{goodsInfo.title}}</view>
+          </view>
+          <view class="fon_26 color_9 mar_t_5 gobyndsingle">有效期至：{{goodsInfo.endTime}}</view>
+          <view class="flex-bet">
+            <view class="flex flex-g-1 flex-y-center" style="color:{{color}}">
+              <view class='fon_38'>{{goodsInfo.reduce}}元</view>
+              <view class="fon_26 mar_l_10">满{{goodsInfo.condition}}元可用</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="ba_f">
+    <wux-cell isLeft='true' wux-class=''>
+      <view slot='header' class='flex-grow-0 color_3 minwidth'>购买数量：</view>
+      <view slot='bodyer' class='flex-grow-1'>1</view>
+    </wux-cell>
+    <wux-cell isLast='true' wux-class='mar_t_10'>
+      <view slot='header' class='flex-grow-0 color_3 minwidth'>支付金额</view>
+      <view slot='bodyer' class='flex-grow-1' style="color:{{color}}">￥{{goodsInfo.money}}</view>
+    </wux-cell>
+  </view>
+  <wux-cell isLast='true' background='#f5f5f5' tftsize='30' title='购买信息'></wux-cell>
+  <view class="ba_f mar_b">
+    <wux-cell isLast='true' wux-class=''>
+      <view slot='header' class='flex-grow-0 color_3 minwidth'>姓名：</view>
+      <view slot='bodyer' class='flex-grow-1'>{{goodsInfo.userName}}</view>
+    </wux-cell>
+    <wux-cell isLast='true' wux-class='mar_t_10'>
+      <view slot='header' class='flex-grow-0 color_3 minwidth'>电话：</view>
+      <view slot='bodyer' class='flex-grow-1'>{{goodsInfo.userTel}}</view>
+    </wux-cell>
+  </view>
+  <view class="ba_f mar_b50">
+    <wux-cell isLeft='true' wux-class='mar_t_10'>
+      <view slot='header' class='flex-grow-0 color_3 minwidth'>订单编号：</view>
+      <view slot='bodyer' class='flex-grow-1'>{{goodsInfo.outTradeNo}}</view>
+    </wux-cell>
+    <wux-cell isLeft='true' wux-class='mar_t_10'>
+      <view slot='header' class='flex-grow-0 color_3 minwidth'>领取时间：</view>
+      <view slot='bodyer' class='flex-grow-1'>{{goodsInfo.createdAt}}</view>
+    </wux-cell>
+  </view>
+  <view class="pa_tr30">
+    <button style='background:{{color}}' class="weui-btn color_f" catchtap='onverification'>确认核销</button>
+  </view>
+</view>

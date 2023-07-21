@@ -1,0 +1,161 @@
+<view class="container after-navbar">
+  <view wx:if="{{recruitInfo}}" class="ba_f">
+    <view class="fon_34 pa">{{recruitInfo.title}}</view>
+    <view class="bor-top pa_tr30">
+      <view class="flex-row flex-bet">
+        <view class="flex-grow-1">
+          <text style="color:{{color}}">{{recruitInfo.industryName}}-</text>{{recruitInfo.positionName||''}}
+          <text wx:if="{{recruitInfo.workNature=='1'}}">(全职)</text>
+          <text wx:if="{{recruitInfo.workNature=='2'}}">(兼职)</text>
+        </view>
+        <view class="flex-grow-0">
+          <text style="color:{{color}}">{{recruitInfo.salary}}</text>
+          <text wx:if="{{recruitInfo.salary !== '面议'}}">元/月</text>
+        </view>
+      </view>
+      <view class="flex-row flex-bet fon_28 color_9 mar_t">
+        <view class="flex-grow-1">{{recruitInfo.address}}</view>
+        <view class="flex-grow-0" style="color:{{color}}">{{recruitInfo.createdAt}}发布</view>
+      </view>
+      <view class="mar_t">
+        <text wx:for="{{recruitInfo.labelarr}}" class="bgblue tagad fon_22 color_f mar_r_10 {{index=='0'?'bgblue':'' || index=='1'?'bgsku':'' ||index=='2'?'bororange':'' || index=='3'?'borbgblue':''|| index=='4'?'borbgsku':''}}">{{item}}</text>
+      </view>
+    </view>
+    <view class='flex-row flex-bet color_9 fon_28 pa bor-top'>
+      <view class="flex-row flex-y-center">
+        <text class="iconfont icon-xingbie fon_32 mar_r_10"></text>
+        <view class="gobyndsingle">性别：
+          <text wx:if="{{recruitInfo.sex=='0'}}">性别不限</text>
+          <text wx:if="{{recruitInfo.sex=='1'}}">男</text>
+          <text wx:if="{{recruitInfo.sex=='2'}}">女</text>
+        </view>
+      </view>
+      <view class="flex-row flex-y-center">
+        <text class="iconfont icon-gongzuojingyan fon_32 mar_r_10"></text>
+        <view class="gobyndsingle">经验：{{recruitInfo.experience}}</view>
+      </view>
+      <view class="flex-row flex-y-center">
+        <text class="iconfont icon-xueli fon_32 mar_r_10"></text>
+        <view class="gobyndsingle">学历：{{recruitInfo.education}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="ba_f">
+    <wux-cell isLast='true' background='transparent' mode='aspectFill' imgw='100' imgh='100' boradius='50%' thumb="{{recruitInfo.portrait}}" catchtap="clickedShop">
+      <view class='fon_28 color_3' slot="bodyer">
+        <view class="fon_30">{{recruitInfo.userName}}</view>
+        <view class="fon_28 color_9 mar_t_10">已发布{{recruitInfo.count}}条</view>
+      </view>
+      <view slot='footer' class='iconfont icon-you fon_30 color_9'></view>
+    </wux-cell>
+    <view class="flex-row flex-bet bor-top pa" style="color:{{color}}">
+      <view wx:if="{{recruitInfo.storeIsAuth=='1'}}" class="flex-row flex-y-center">
+        <text class="iconfont icon-yanzhengma fon_28 mar_r_10"></text>
+        <view>企业认证</view>
+      </view>
+      <view wx:if="{{recruitInfo.isAuth=='1'}}" class="flex-row flex-y-center">
+        <text class="iconfont icon-zhanghao fon_28 mar_r_10"></text>
+        <view>个人认证</view>
+      </view>
+      <view wx:if="{{recruitInfo.storeIsEnsure=='1'}}" class="flex-row flex-y-center">
+        <text class="iconfont icon-dianzan fon_28 mar_r_10"></text>
+        <view>已交保证金</view>
+      </view>
+    </view>
+  </view>
+  <view class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_30' title="职位描述">
+      <view slot='header' class='iconfont icon-jilu1 fon_32 mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="pa_t color_3 pa_tr30 scrolly">
+      <view>{{recruitInfo.description}}</view>
+    </view>
+  </view>
+  <view class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_30' title="公司印象">
+      <view slot='header' class='iconfont icon-tupian fon_34 mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+
+    <view class="pa_tr30">
+      <!-- <r-text content="{{recruitInfo.details}}"></r-text> -->
+      <view class='pad_20' wx:if='{{recruitInfo.media.length!=0}}'>
+        <image mode='widthFix' class='image_all' wx:for='{{recruitInfo.media}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{item.url}}'></image>
+      </view>
+    </view>
+  </view>
+
+   <view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>  
+  <view class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_30' title="联系方式">
+      <view slot='header' class='iconfont icon-landline mar_r fon_32' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="pa_l">
+      <view class="flex-row bor-btm pa_t flex-y-center">
+        <text class="line iconfont icon-wo fon_40" style="color:{{color}}"></text>
+        <view class="mar_l fon_28">{{recruitInfo.linkman}}</view>
+      </view>
+      <view class="flex-row bor-btm pa_t">
+        <view class="flex-grow-1 flex-row flex-y-center">
+          <text class="line iconfont icon-dianhua fon_40" style="color:{{color}}"></text>
+          <view class="mar_l">
+            <view class="fon_28">{{recruitInfo.linkTel}}</view>
+            <view class="fon_20" style='color:{{color}}'>注：联系我时请说明是在{{system.name}}上看到的</view>
+          </view>
+        </view>
+        <view class="flex-grow-0 flex-y-center">
+          <view class="dial fon_28" style="color:{{color}};border:1rpx solid {{color}}" bindtap='callPhone'>拨打</view>
+        </view>
+      </view>
+      <view class="flex-row pa_t flex-y-center">
+        <text class="line iconfont icon-dizhi1 fon_40" style="color:{{color}}"></text>
+        <view class="mar_l fon_28 gobyndsingle">{{recruitInfo.area}} {{recruitInfo.address}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null && recruitInfo.userId !== userinfo.id}}">
+  <foot-dl bind:footclick='footclick' content="{{foot_menu}}" />
+</block>
+<block wx:else>
+  <view class='bottomfixed'>
+    <button wx:if="{{recruitInfo.status!=='0'}}" disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" bindtap="operation" data-info='{{recruitInfo}}'>操作/编辑</button>
+    <button wx:if="{{recruitInfo.status=='0'}}" disabled='{{true}}' loading='{{loading}}' style='background:#999' class="br-r-0" type="primary">待审核</button>
+  </view>
+</block>
+<!--  action组件 -->
+<i-action-sheet visible="{{ infomationVisible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+</i-action-sheet>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>
+
+<t-modal ismr='true' mdoalclose="mdoalclose" mdoaltoggle='{{mdoaltoggle}}'>
+  <view class='ba_f widthb'>
+    <view class="mtitle flex-center pa">请选择简历</view>
+    <view class="mbody">
+      <radio-group name='mode' class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{jobmyResume}}">
+          <wux-cell isLast='true' background='transparent' mode='aspectFill' imgw='100' imgh='100' boradius='50%' thumb="{{item.logo}}">
+            <view class='fon_28 color_3' slot="bodyer">
+              <view class="fon_32">
+                <view class="flex-row">
+                  <view class="mar_r_10">{{item.name}}</view>
+                  <text style="color:{{color}}" class="mar_l_10">{{item.salary}}</text>元/月
+                </view>
+              </view>
+              <view class="fon_28 mar_t_10 color_9">意向职位：{{item.industryName}}</view>
+            </view>
+            <view class="flex-grow-0" slot="footer">
+              <radio color="{{color}}" value="{{item.id}}" checked="{{item.checked}}" />
+            </view>
+          </wux-cell>
+        </label>
+      </radio-group>
+    </view>
+    <view class="mbottom flex-row bor-top">
+      <view class="flex-grow-1 flex-center pa tcolor" catchtap='chooseResume'>确定</view>
+      <view class="flex-grow-1 flex-center pa" catchtap='closeResume'>取消</view>
+    </view>
+  </view>
+</t-modal>

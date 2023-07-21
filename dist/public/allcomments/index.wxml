@@ -1,0 +1,33 @@
+<view class='pa_l ba_f'>
+  <view class='commend_list pa_t'>
+    <view class='commend_listv1 dis_t'>
+      <image mode='aspectFill' src='{{content.portrait}}' class='user_logo'></image>
+    </view>
+    <view class='commend_listv2 dis_t'>
+      <view class='fon_30 color_0'>
+        <view style='color:#446986'>{{content.userName}}</view>
+        <view class='fon_26 color_9'>{{content.creatTime}}</view>
+      </view>
+      <view class='fon_28 color_6 mar_t'>
+        <rich-text nodes="{{content.body}}"></rich-text>
+      </view>
+    </view>
+  </view>
+  <view class='fon_26 bor_bottom pa_t'>全部回复</view>
+  <view class='commend_list bor_bottom pa_t' wx:for="{{content.reply}}" wx:key="*this">
+    <view class='commend_listv1 dis_t'>
+      <image mode='aspectFill' src='{{item.replyPortrait}}' class='user_logo'></image>
+    </view>
+    <view class='commend_listv2 dis_t'>
+      <view class='fon_30 color_0'>
+        <view style='color:#446986'>{{item.replyUserName}}</view>
+        <view class='fon_26 color_9'>{{item.creatTime}}</view>
+      </view>
+      <view class='fon_28 color_6 mar_t'>
+       {{item.body}}
+        <!-- <text wx:if="{{item.userName!=content.userName}}" style='color:{{content.color}}'>@{{item.replyUserName}}：</text> -->
+        <!-- <text>{{item.body}}</text> -->
+      </view>
+    </view>
+  </view>
+</view>

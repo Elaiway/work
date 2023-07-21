@@ -1,0 +1,4 @@
+/* pages/publishtype/publishtype.wxss */
+page{
+    background: #f8f7fc;
+}

@@ -1,0 +1,97 @@
+@import "/app.wxss";
+
+.container {
+  padding: 100rpx 0;
+}
+
+.img-head {
+  width: 30px;
+  height: 30px;
+  background-color: #eeeeee;
+  border-radius: 50%
+}
+
+.subimit {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+}
+
+.zan {
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+
+.zan-name-left view {
+  font-size: 28rpx;
+  margin-left: 15rpx;
+}
+
+.zan-name-right {
+  border: 1px solid #EE4B47;
+  color: #EE4B47;
+  font-size: 24rpx;
+  padding: 5rpx 15rpx;
+  border-radius: 10rpx;
+}
+
+.zan-intro {
+  margin-top: 10rpx;
+  color: #999;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.pic-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20rpx 0;
+}
+
+.pic-list-detail {
+  width: 32%;
+  height: 240rpx;
+  margin: 0 2% 2% 0;
+  overflow: hidden;
+}
+
+.pic-list-detail:nth-of-type(3n) {
+  margin-right: 0;
+}
+
+.zan-number>view>text {
+  margin-left: 10rpx;
+  color: #999;
+}
+
+.order-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 15rpx 0;
+}
+
+.order-list view:nth-of-type(1) {
+  width: 40%;
+}
+
+.order-list view:nth-of-type(2) {
+  width: 40%;
+}
+
+.order-list view:nth-of-type(3) {
+  width: 20%;
+}
+
+.order-bg {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}

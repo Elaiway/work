@@ -1,0 +1,151 @@
+<!--pages/yellow/sett.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <view>
+      <wux-upload wx:if="{{uploadArr[0].show}}" type='2' color="{{color}}" tipstext='{{uploadArr[0].tips}}' htitle='{{uploadArr[0].title}}' count="{{uploadArr[0].count}}" file-list="{{ uploadArr[0].fileList }}" data-idx="{{0}}" bind:change="uploadChange">
+      </wux-upload>
+      <view wx:for="{{pickerDataArr}}" wx:for-item="pickerItem" class="weui-cells {{index>0?'':'weui-cells_after-title'}}">
+        <view wx:for="{{pickerItem}}" wx:for-item="pickerData" class="weui-cell basepadding">
+          <view class="weui-cell__bd flex-row">
+            <block wx:for="{{pickerData}}">
+              <!-- 输入框 -->
+              <view wx:if="{{item.type=='input'}}" class='flex-1 cellr flex-col-center'>
+                <view class='color_9 fon_26'>{{item.name}}</view>
+                <input name='{{item.field}}' placeholder-class='color_6 fon_30' value="{{params[item.field]}}" class="weui-input fon_30 t_c" placeholder="{{item.placeholder}}" />
+              </view>
+              <!-- 选择器 -->
+              <picker wx:if="{{item.type=='select'}}" class='flex-1 cellr' name='{{item.field}}' mode="{{item.mode||'multiSelector'}}" data-name='{{item.field}}' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData[item.field]}}" range-key="{{item.key||''}}">
+                <view class='flex-col-center'>
+                  <view class='color_9 fon_26'>{{item.name}}</view>
+                  <view class="color_6 fon_30 mar_t_10">{{params[item.field]||'请选择'}}</view>
+                </view>
+              </picker>
+              <!-- 时间选择器 -->
+              <view wx:if="{{item.type=='date'}}" class='flex-1 cellr flex-col-center'>
+                <view class='color_9 fon_26'>{{item.name}}</view>
+                <dd-time-picker arrow='true' style-name='padding: 20rpx 0;' name='{{item.field}}' value='{{params[item.field]}}' bind:change='timePickerChange' data-name='{{item.field}}' />
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="商品信息"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">商品原价</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='price' type='price' placeholder-class='fon_28' value="{{params.price}}" class="weui-input" placeholder="请输入商品原价" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">商品底价</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='floorPrice' type='digit' placeholder-class='fon_28' value="{{params.floorPrice}}" class="weui-input" placeholder="请输入商品底价" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">商品库存</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='stock' type='number' placeholder-class='fon_28' value="{{params.stock}}" class="weui-input" placeholder="请输入商品库存" />
+        </view>
+        <view class="weui-cell__ft">份</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view class="weui-label">未到底价购买</view>
+        </view>
+        <view class="weui-cell__ft">
+          <view class='weui-input'>
+            <switch bindchange="postSwitchChange" name='isFloor' checked="{{params.isFloor==1}}" color='{{color}}' />
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">配送方式</view>
+        </view>
+        <view class="weui-cell__bd">
+          <wux-radio-group typesetting='2' radioColor="{{color}}" radioarr="{{lcradioarr}}" name="delivery" value="{{params.delivery}}" bind:change="lcrdioonChange">
+          </wux-radio-group>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="高级设置"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">减价次数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='reduceNum' type='number' maxlength='2' placeholder-class='fon_28' value="{{params.reduceNum}}" class="weui-input" placeholder="请输入减价次数" />
+        </view>
+        <view class="weui-cell__ft">次</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">减价上限</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='top' type='number' placeholder-class='fon_28' value="{{params.top}}" class="weui-input" placeholder="请输入每次减价上限" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">减价下限</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='down' type='number' placeholder-class='fon_28' value="{{params.down}}" class="weui-input" placeholder="请输入每次减价最小值" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+    </view>
+    <h-title bdname="商品详情"></h-title>
+    <text-area name='body' value='{{params.body}}' bind:textblur='textareachange' showMax='{{false}}' maxlength='500' placeholder="请输入商品详情" extra-class='bor-tb'></text-area>
+    <wux-upload wx:if="{{uploadArr[1].show}}" tipstext='{{uploadArr[1].tips}}' htitle='{{uploadArr[1].title}}' count="{{uploadArr[1].count}}" file-list="{{ uploadArr[1].fileList }}" data-idx="{{1}}" bind:change="uploadChange">
+    </wux-upload>
+    <!-- <h-title bdname="商品标签"></h-title>
+    <dd-label bind:change='labelChange' data-name='label' labels='{{labels}}' labelsDefault="{{labelsDefaultl}}" color="{{color}}" /> -->
+    <view hidden='{{checkboxvalue}}'>
+      <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='用户协议条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    </view>
+    <h-title bdname="商品媒体"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">背景音乐</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='music' value='{{params.music}}' placeholder-class='fon_28' class="weui-input" placeholder="请输入拼团音乐链接" />
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-yinpin fon_44' style='color:{{color}}'></text>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">背景颜色</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='color' placeholder-class='fon_28' value="{{params.color}}" style='color:{{params.color}}' class="weui-input" />
+        </view>
+        <picker mode="multiSelector" data-name='color' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData['color']}}" range-key='name'>
+          <view class="weui-cell__ft weui-cell__ft_in-access">请选择/输入主题颜色</view>
+        </picker>
+      </view>
+    </view>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" formType="submit">{{releaseName||'立即发布'}}</button>
+    </view>
+  </view>
+</form>
+<!-- <show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay> -->

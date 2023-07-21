@@ -1,0 +1,36 @@
+<!--dist/public/components/top-select/index.wxml-->
+<view class="nav">
+  <block wx:for="{{trees}}" wx:key="{{item.title}}">
+    <view class="nav-son {{shownavindex == index? 'active' : ''}}" bindtap="clickNav" data-nav="{{index}}">
+      <view style="color:{{shownavindex == index?color: ''}};" class="content">{{item.title}}</view>
+      <view style="border-bottom: {{shownavindex == index?12: 0}}rpx solid {{shownavindex == index?color: ''}}" class="icon"></view>
+    </view>
+  </block>
+  <!-- <view class="nav-son {{shownavindex == 2? 'active' : ''}}" bindtap="list" data-nav="2">
+      <view style="color:{{shownavindex == 2?color: ''}};" class="content">{{onetype}}</view>
+      <view style="border-bottom: {{shownavindex == 2?12: 0}}rpx solid {{shownavindex == 2?color: ''}}" class="icon"></view>
+    </view>
+    <view class="nav-son {{shownavindex == 3? 'active' : ''}}" bindtap="listpx" data-nav="3">
+      <view style="color:{{shownavindex == 3?color: ''}};" class="content">{{model}}</view>
+      <view style="border-bottom: {{shownavindex == 3?12: 0}}rpx solid {{shownavindex == 3?color: ''}}" class="icon"></view>
+    </view> -->
+</view>
+<!-- <view class="quyu {{openNav ? 'slidown' : 'slidup'}} {{!openNav ? 'disappear':''}}"> -->
+<view class="quyu {{isfull ? 'slidown' : 'slidup'}}">
+  <view class="qy quyu-right">
+    <block wx:for="{{trees[treesInex].items}}" wx:key="{{item.name}}">
+      <view style="color:{{pindex ==index?color: ''}};" class="qy-item {{typeselect1 == index ? 'current' : ''}}" bindtap="typesl" data-pindex='{{index}}' wx:key="unique">
+        {{item.name}}
+      </view>
+    </block>
+  </view>
+  <view wx:if="{{trees[treesInex].items[pindex].son&&trees[treesInex].items[pindex].son.length}}" class="qy quyu-right bor-l">
+    <block wx:for="{{trees[treesInex].items[pindex].son}}" wx:key="{{item.name}}">
+      <view style="color:{{cindex ==index?color: ''}};" class="qy-item {{typeselect2 == index ? 'current2' : ''}}" bindtap="typesr" data-cindex='{{index}}' wx:key="unique">
+        {{item.name}}
+      </view>
+    </block>
+  </view>
+</view>
+
+<view wx:if="{{isfull}}" class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>

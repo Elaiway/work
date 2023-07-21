@@ -1,0 +1,17 @@
+<view class="container after-navbar">
+  <view>
+    <wux-tabs wux-class="marginLr" tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" scroll bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <block wx:for="{{postList}}" wx:key="{{item.id}}">
+    <hous-cell color="{{color}}" hous-type="{{types}}" page-type="releaList" bind:operation='operation' button="czbj" content="{{item}}" />
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='housingdeal' />
+<!-- action组件 -->
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">{{xzname}}</i-button>
+</i-action-sheet>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

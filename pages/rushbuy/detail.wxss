@@ -1,0 +1,15 @@
+
+.whs{
+  height: 102rpx;
+}
+.boxs{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 10rpx;
+}
+.mar_l_8{
+  margin: 0 8rpx;
+}
+.normal{
+  font-weight: normal;
+}

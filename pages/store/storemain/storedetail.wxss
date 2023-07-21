@@ -1,0 +1,17 @@
+/* pages/store/storemain/storedetail.wxss */
+.i-tags{
+  margin: 0 20rpx 20rpx 0;
+}
+.wux-class{
+  color: #4C4C4C;
+} 
+.imgsize{
+    width: 80rpx;
+    height: 80rpx;
+}
+.morePosttext{
+    display: inline-block;
+    padding: 5rpx 15rpx;
+    border-radius: 5rpx;
+    background: #F7F7F7;
+}

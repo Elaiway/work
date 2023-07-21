@@ -1,0 +1,7 @@
+/* pages/personal/wallet/index.wxss */
+.walletBalance{
+    padding: 40rpx 0;
+}
+.putFowardList{
+  padding: 0rpx 30rpx;
+}

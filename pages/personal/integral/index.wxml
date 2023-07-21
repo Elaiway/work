@@ -1,0 +1,44 @@
+<view class='container'>
+  <view class='color_f walletBalance t_c rel' style='background:{{color}};'>
+    <view class='fon_60'>{{userinfo.integral}}</view>
+    <view class='fon_26'>
+      <text class='mar_r'>——</text>
+      <text class='mar_l mar_r'>总积分</text>
+      <text class='mar_l'>——</text>
+    </view>
+    <view class="bgradiu flex-y-center tcolor flex-x-center ab" bindtap='goIntegral'>
+      <text class="iconfont icon-jifen fon_28"></text>
+      <text class="mar_l_10 fon_24">积分商城</text>
+    </view>
+</view>
+<!-- <navigator url='integralmall/index'>积分商城</navigator> -->
+<wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+</wux-tabs>
+  <view class='ba_f mar_t'>
+    <wux-cell-group wx:if="{{key=='0'}}">
+      <block wx:for="{{postList}}" wx:key="*this">
+        <wux-cell tftsize='28' class='wux-class' title="{{item.note}}" label="{{item.date}}">
+          <view slot='footer' class='mar_r'>
+            <view class='fon_40' style="color:{{item.type==1?'#f66925':'#999'}}">
+              <text wx:if="{{item.type==1}}">+</text>
+              <text wx:else>-</text>{{item.integral}}
+            </view>
+          </view>
+        </wux-cell>
+      </block>
+    </wux-cell-group>
+    <wux-cell-group wx:if="{{key=='1'}}">
+      <block wx:for="{{postList}}" wx:key="*this">
+        <wux-cell tftsize='28' class='wux-class' title="{{item.name}}" label='订单号：{{item.outTradeNo}}'>
+          <view slot='footer' class='mar_r'>
+            <view>
+              <view class='fon_40'>-{{item.goodsScore}}</view>
+              <view>{{item.createdAt}}</view>
+            </view>
+          </view>
+        </wux-cell>
+      </block>
+    </wux-cell-group>
+    <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

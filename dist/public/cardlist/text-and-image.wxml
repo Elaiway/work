@@ -1,0 +1,13 @@
+<!--dist/public/cardlist/text-and-image.wxml-->
+<view wx:if='{{content.textImage.length>0}}' class='ba_f' style='margin-top:{{content.topMargin}}px;margin-bottom:{{content.isBottom}}px;'>
+  <wux-cell is-last='true' tftsize='34' tclass='wei color_0' title="{{content.infoTitle||'更多功能'}}" />
+  <view class='pa_l30 flex-bt flex-wrap'>
+    <view bindtap='jumps' data-entry='{{item.entry}}' wx:for='{{content.textImage}}' wx:key='id' class='flex-x-bt br-r-10 pad_20 ba_f5 mar_b' style='width:48%;'>
+      <view class='mar_r'>
+        <view class='wei'>{{item.name}}</view>
+        <view class='fon_24 color_9'>{{item.desc}}</view>
+      </view>
+      <image class='imgsize80' src='{{item.url}}'></image>
+    </view>
+  </view>
+</view>

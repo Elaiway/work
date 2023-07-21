@@ -1,0 +1,21 @@
+<!--dist/public/components/form/dd-radio.wxml-->
+<van-popup show="{{popupshow}}" z-index='1000' position="bottom" bind:close="togglePopup">
+  <view class="flex-x-bt pad_20">
+    <!--<span class="text" @click="pickerShow=!pickerShow">取消</span>-->
+    <view class="flex-g-1 fon_32 t_c">{{title}}</view>
+    <view class="fon_32" style="color:{{color}}" bindtap="confirm">确定</view>
+  </view>
+  <view style='max-height:520rpx;overflow-y: scroll;'>
+    <checkbox-group bindchange="checkboxChange">
+      <view class="weui-cells weui-cells_after-title">
+        <wux-cell wx:for="{{checkboxarr}}" wux-class="wux-radio" thumb="{{ item.thumb }}" title="{{ item.name }}" label="{{ item.label }}">
+          <label slot="footer">
+            <checkbox value="{{ item.id }}" checked="{{ item.checked }}" color="{{ color }}" disabled="{{ item.disabled }}" class="wux-radio__input" />
+            <icon class="weui-icon-checkbox_circle" type="circle" size="24" wx:if="{{ !item.checked }}" />
+            <icon class="weui-icon-checkbox_success" type="success" size="24" color="{{ !item.disabled ? color : '#ebedf0' }}" wx:if="{{ item.checked }}" />
+          </label>
+        </wux-cell>
+      </view>
+    </checkbox-group>
+  </view>
+</van-popup>

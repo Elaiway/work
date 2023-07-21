@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+   "wux-popover": "/dist/wux-weapp/popover/index",
+  "commend": "/dist/public/commend/index",
+    "message-postinfo": "/dist/public/message-postinfo/index",
+    "submenu": "/dist/public/submenu/index",
+    "footmenu": "/dist/public/foot_menu/index",
+    "i-modal": "/dist/iview-weapp/modal/index"
+  }
+}

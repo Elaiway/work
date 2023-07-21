@@ -1,0 +1,13 @@
+<view class="pa ba_f extra-class" bindtap='jump' style='margin-top:{{content.topMargin}}px;'>
+  <view class="notice rel">
+    <image class="notice_icon dis_in mar_r" mode="aspectFill" src="/assets/images/img/headline.gif"></image>
+    <!-- <text class='iconfont color_9 icon-gonggao1 fon_30' style='color:{{color}}'></text> -->
+    <block wx:for="{{content.infoList}}" wx:key="name">
+      <view wx:if="{{item.name}}" class="dis_in fon_30 color_6">
+        <text class="{{index>0?'mar_l':''}}">{{item.name}}：</text>
+        <text style=" color:{{color}}">{{item.value}}</text>
+      </view>
+    </block>
+    <view class="ab ud help fon_30 color_6" catchtap='help' data-src="{{helpsrc}}">帮助</view>
+  </view>
+</view>

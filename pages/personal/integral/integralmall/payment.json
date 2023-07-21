@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "dd-radio": "/dist/public/components/form/dd-radio",
+    "wux-input-number": "/dist/wux-weapp/input-number/index"
+   }
+}

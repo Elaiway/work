@@ -1,0 +1,13 @@
+<view class="container after-navbar">
+  <view class="mar_t">
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <block wx:if="{{oparams.name=='特权领取列表'}}">
+        <wux-cell imgw='100' imgh='100' boradius='50%' thumb='{{item.portrait}}' title='{{item.userName}}' label='{{item.creatTime}}'>
+        </wux-cell>
+      </block>
+    </block>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

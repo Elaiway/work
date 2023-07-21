@@ -1,0 +1,21 @@
+.theight{
+  height: 130rpx;
+}
+.imglogo{
+  width: 240rpx;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.flex-y-top{
+  align-items: flex-start;
+  display: flex;
+}
+.tba_f5{
+  background: #F4F6F9;
+}
+.btn-ckxq,.btn-qhx{
+  border:1rpx solid #ddd;
+  padding: 7rpx 12rpx;
+  border-radius: 10rpx;
+  min-width: 120rpx;
+}

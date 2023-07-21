@@ -1,0 +1,22 @@
+<!--dist/public/components/keyboard/keyboard.wxml-->
+<view>
+    <!--<section class="mask" catchtap="canclePwd" wx:if="{{inputPwd}}"></section>-->
+    <section class="pwd-modal" catchtap="getFocus" >
+        <!-- <p class="close">X</p> -->
+        <!--<p class="title">输入查看密码</p>-->
+        <ul class="ul">
+            <!-- <li class="li"><i class="circle" wx:if="{{password.length >= 1}}">{{numarr[0]}}</i></li>
+            <li class="li"><i class="circle" wx:if="{{password.length >= 2}}">{{numarr[1]}}</i></li>
+            <li class="li"><i class="circle" wx:if="{{password.length >= 3}}">{{numarr[2]}}</i></li>
+            <li class="li"><i class="circle" wx:if="{{password.length >= 4}}">{{numarr[3]}}</i></li>
+            <li class="li"><i class="circle" wx:if="{{password.length >= 5}}">{{numarr[4]}}</i></li>
+            <li class="li"><i class="circle" wx:if="{{password.length >= 6}}">{{numarr[5]}}</i></li>
+            <li class="li"><i class="circle" wx:if="{{password.length >= 7}}">{{numarr[6]}}</i></li>
+            <li class="li"><i class="circle" wx:if="{{password.length >= 8}}">{{numarr[7]}}</i></li> -->
+            <li wx:for="{{numarr}}" class="li {{index==acitveIndex?'active':''}}"><i class="circle">{{item.num}}</i></li>
+        </ul>
+        <input wx:if="{{inp}}" class="input" ref="inputs" focus="{{isFocus}}" type="number" maxlength="8"  bindinput="pwd" value="{{password}}" data-id='input'/>
+    </section>
+
+    <!-- <view class="submit" bindtap="submit">确定</view> -->
+</view>

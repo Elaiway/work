@@ -1,0 +1,29 @@
+<!--pages/mall/category.wxml-->
+<view class='container flex-col' style='height:{{height}}rpx;background:{{color}}'>
+  <wux-search-bar style-name='padding:40rpx 30rpx;background:{{color}}' placeholder='搜索商品' id="searchBar" color="{{color}}" maxlength="8" bind:change="onChange" />
+  <view class='category-main ba_f flex-g-1 flex-row'>
+    <scroll-view class='main-left flex-g-1 flex-col' scroll-y="true" scroll-into-view="{{toType}}">
+      <block wx:for="{{category}}" wx:key="id" wx:for-index="pidx">
+        <view bindtap='selectMenu' id="type{{pidx}}" data-id="{{item.id}}" data-pindex="{{pidx}}" class="left-c {{acindex==pidx?'huise':''}}" style="color:{{acindex==pidx?color:''}}">
+          <view>{{item.name}}</view>
+        </view>
+      </block>
+    </scroll-view>
+    <scroll-view scroll-into-view="{{toSonType}}" scroll-top='{{scrolltop}}' class='main-right flex-g-1 flex-col' scroll-y="true">
+      <block wx:for="{{category}}" wx:key="id" wx:for-index="pidx">
+        <view id="type{{pidx}}" class='flex-col right-c'>
+          <view class='pa_t'>{{item.name}}</view>
+          <view class='flex-raw ba_f br-r-10 pa_b'>
+            <block wx:for="{{category[pidx].son}}" wx:key="*this" wx:for-index="idx">
+              <view bindtap='goson' data-item='{{item}}' class='son-c flex-col-center'>
+                <image class='good-img' src='{{item.icon}}'></image>
+                <view class='mar_t color_6 fon_26'>{{item.name}}</view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<foot-nav wx:if="{{groupConfig.field}}" color='{{color}}' page-type='assemble' />

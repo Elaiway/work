@@ -1,0 +1,12 @@
+<!--pages/mall/order.wxml-->
+<view class='container after-navbar'>
+  <wux-search-bar placeholder='搜索商品' id="searchBar" color="{{color}}" maxlength="8" bind:change="onChange" />
+  <nav-select bind:selectchange="selectchange" color="{{color}}" content="{{nav}}"/>
+  <view wx:if="{{postList.length}}" class='pad_20'>
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <assemble-cell content="{{item}}" color="{{color}}" />
+    </block>
+  </view>
+  <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+</view>
+<foot-nav color='{{color}}' page-type='mall' />

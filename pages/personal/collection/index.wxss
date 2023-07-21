@@ -1,0 +1,26 @@
+/* pages/personal/collection/index.wxss */
+.storeLogoimg{
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 50%;
+}
+.storeLogo{
+    width: 20%;
+}
+.storeInfo{
+    width: 62%;
+}
+.storeCollection{
+    width: 18%;
+    border-radius: 8rpx;
+    color: #FF6B01;
+    border:2rpx solid #FF6B01;
+}
+.storeLabel{
+    color: #9CAFC0;
+}
+.storeLabeltext{
+    padding: 6rpx 10rpx;
+    border:2rpx solid #9CAFC0;
+    border-radius: 5rpx;
+}

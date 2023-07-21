@@ -1,0 +1,32 @@
+<view class="content after-navbar">
+  <block wx:for="{{collList}}" wx:key="">
+    <view class="ba_f color_3 mar_b" bindtap='goDetail' data-id='{{item.activityId}}'>
+      <view class="tba_f5 flex-bet flex-y-top base-pad2">
+        <view class="flex-grow-0 theight">
+          <image class="imglogo" src="{{item.showImgs}}"></image>
+        </view>
+        <view class="flex-grow-1 theight pa_l">
+          <view class="hydlnr_2 fon_28">{{item.name}}</view>
+          <view class="flex-bet fon_24 color_9 mar_t_10">
+            <view><text wx:if="{{item.typeName!==null}}">{{item.typeName}}</text></view>
+            <view class="">金额：
+              <text style="color:{{color}}">￥{{item.currentPrice}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="color_9 fon_24 base-pad2 ">
+        <text class="iconfont icon-rili mar_r_10"></text>
+        <text>{{item.startTime}} ~ {{item.endTime}}</text>
+      </view>
+      <view class="base-pad2 flex-x-bottom bor-top">
+        <view class="btn-ckxq fon_26 t_c" catchtap='cancelcoll' data-id="{{item.activityId}}">取消收藏</view>
+        <view class="btn-qhx fon_26 t_c color_f mar_l" style="background:{{color}};border-color:{{color}}" catchtap='goEnroll' data-collmsg='{{item}}'>去报名</view>
+      </view>
+    </view>
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{collList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='activity' />

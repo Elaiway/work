@@ -1,0 +1,14 @@
+/* dist/public/hotstore/index.wxss */
+@import "/app.wxss";
+.goodsimg{
+  width: 330rpx;
+  height: 170rpx;
+}
+.w-251{
+  width: 330rpx;
+}
+.groupnum{
+  top: 0;
+  left: 0;
+  border-radius: 0 0rpx 20rpx 0;
+}

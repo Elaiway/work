@@ -1,0 +1,3 @@
+<view class='pa fon_30 ba_f'>
+    <rich-text nodes="{{help_info.content}}"></rich-text>
+</view>

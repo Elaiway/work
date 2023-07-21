@@ -1,0 +1,106 @@
+/* dist/public/hotstore/index.wxss */
+@import "/app.wxss";
+.hot-seller-ind {
+    background: white;
+    padding-bottom: 40rpx;
+}
+
+.hot-seller-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32rpx;
+}
+
+.hot-seller-head-l, .hot-seller-head-r {
+    display: flex;
+    align-items: center;
+}
+
+.hot-seller-head-l-txt {
+    padding-left: 16rpx;
+    border-left: 2rpx solid rgb(73, 168, 95);
+    font-size: 30rpx;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+}
+
+.hot-seller-head-r-txt {
+    font-size: 24rpx;
+    color: rgb(166, 166, 166);
+}
+
+/*.hot-seller-cont{
+    display: -webkit-box;
+    overflow-x: -moz-scrollbars-none;
+    -webkit-overflow-scrolling:touch;
+  }*/
+
+.hot-seller-item {
+    width: 240rpx;
+    height: 260rpx;
+    margin-right: 16rpx;
+    font-size: 0;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+
+.hot-seller-img {
+    width: 100%;
+    height: 150rpx;
+}
+
+/*动画*/
+
+.wrap {
+    width: 100%;
+    height: 260rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.list {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+}
+
+.animation {
+    -webkit-animation: slideshow 10s linear infinite;
+}
+
+@keyframes slideshow {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -100%;
+    }
+}
+.storeName{
+    width: 100%;
+    height: 100rpx;
+    line-height: 50rpx;
+    bottom: 0;
+}
+.whfull{
+    width: 100%;
+    height: 100%;
+}
+.storeNamev1{
+    z-index: 10;
+}
+.storeNamev2{
+    z-index: 100;
+}
+.lables{
+  top: -160rpx;
+  left: 0;
+  height: 40rpx;
+  background: #F5431A;
+  padding:1rpx 6rpx;
+}
+.mar_r_5{
+  margin-right: 5rpx;
+}

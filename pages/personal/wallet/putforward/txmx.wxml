@@ -1,0 +1,55 @@
+<view class='container'>
+  <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+  </wux-tabs>
+  <view class='mar_t ba_f'>
+    <view wx:if="{{postList.length>0}}" class='weui-cells weui-cells_after-title'>
+      <block wx:if="{{key=='0'}}">
+        <navigator url='mxdl?id={{item.id}}' class='weui-cell' wx:for="{{postList}}" wx:key="id">
+          <view class='weui-cell__hd mar_r'>
+            <text wx:if="{{item.mode=='1'}}" class='iconfont icon-weixin fon_60' style='color:#26C541'></text>
+            <text wx:if="{{item.mode=='2'}}" class='iconfont icon-zhifubaox fon_60' style='color:#00aaee'></text>
+            <text wx:if="{{item.mode=='3'}}" class='iconfont icon-yinxingqia fon_60' style='color:#F8A911'></text>
+          </view>
+          <view class='weui-cell__bd'>
+            <view class='flex-row color_6 fon_30'>
+              <view class=''>{{item.date}}</view>
+              <view class='mar_l'>{{item.time}}</view>
+            </view>
+            <view class='mar_t_10 color_9 fon_26'>订单号：{{item.orderNum}}</view>
+          </view>
+          <view class='weui-cell__ft fon_32'>
+            <view class='wei' style='color:{{color}}'>{{item.applyMoney}}</view>
+            <view wx:if="{{item.status=='1'}}" class='fon_26 mar_t_10'>审核中</view>
+            <view wx:if="{{item.status=='2'}}" class='fon_26 mar_t_10'>已通过</view>
+            <view wx:if="{{item.status=='3'}}" class='fon_26 mar_t_10'>已拒绝</view>
+          </view>
+        </navigator>
+      </block>
+      <block wx:else>
+        <navigator class='weui-cell' wx:for="{{postList}}" wx:key="id">
+          <!-- <view class='weui-cell__hd mar_r'>
+          <view>
+            <view class='color_6 fon_30'>{{item.date}}</view>
+            <view class='color_9 fon_26 mar_t'>{{item.time}}</view>
+          </view>
+        </view> -->
+          <view class='weui-cell__bd'>
+            <view class='flex-row color_6 fon_30'>
+              <view class=''>{{item.date}}</view>
+              <view class='mar_l'>{{item.time}}</view>
+            </view>
+            <view class='mar_t_10 color_9 fon_26'>订单号：{{item.orderNum}}</view>
+          </view>
+          <view class='weui-cell__ft fon_32'>
+            <view class='wei' wx:if="{{item.item=='2'}}" style='color:red;'> -{{item.money}}</view>
+            <view class='wei' wx:else style='color:{{color}}'> +{{item.money}}</view>
+            <view class='fon_26 mar_t_10'>已到账</view>
+          </view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view class=''>
+    <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

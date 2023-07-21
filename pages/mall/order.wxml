@@ -1,0 +1,14 @@
+<!--pages/mall/order.wxml-->
+<view class="container after-navbar">
+  <view class='fixedtop'>
+    <wux-tabs scroll='true' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="padding-top">
+    <blcok wx:for="{{postList}}" wx:key="{{item.id}}">
+      <order-cell bind:click='orderClick' content="{{item}}" config="{{orderconfig}}" color="{{color}}"></order-cell>
+    </blcok>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>
+<foot-nav color='{{color}}' page-type='mall' />

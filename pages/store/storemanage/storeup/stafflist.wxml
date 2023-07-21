@@ -1,0 +1,38 @@
+<!--pages/mall/order.wxml-->
+<view class="container padding-bottom">
+  <!-- <view class='fixedtop'>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view> -->
+  <h-title bdname='员工管理'></h-title>
+  <view class="padding-top1">
+    <blcok wx:for="{{postList}}" wx:key="{{item.id}}">
+      <view class='ba_f mar_b'>
+        <view class='pad_20'>
+          <view class='flex-raw'>
+            <view class='fon_32 gobyndsingle' style='width:160rpx;'>{{item.remarks||item.userName}}</view>
+            <view class='mar_l color_9'>[员工]</view>
+            <view class='mar_l' style='color:{{color}}'>{{item.hideuserTel}}</view>
+          </view>
+          <view class='flex-y-center mar_t'>
+            <image class='imgsize80' src='{{item.portrait}}'></image>
+            <view class='mar_l'>{{item.userName}}</view>
+          </view>
+          <view class='flex-row mar_t'>
+            <view class='flex-g-0'>核销权限：</view>
+            <view class='mar_l color_9 flex-raw'>
+              <view wx:for="{{item.power}}" class='mar_r mar_b'>{{item}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='flex-row br-t-e'>
+          <view class='flex-1 color_9 basepadding cellr flex-center' bindtap='clickBtn' data-field='del' data-info='{{item}}'>删除</view>
+          <view class='flex-1 basepadding flex-center' bindtap='clickBtn' data-field='edit' data-info='{{item}}' style='color:{{color}}'>修改</view>
+        </view>
+      </view>
+    </blcok>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<view class='foot-button btn-btm'>
+  <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" bindtap='add'>添加员工</button>
+</view>

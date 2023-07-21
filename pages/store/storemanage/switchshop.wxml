@@ -1,0 +1,23 @@
+<view class="container">
+  <view class='dpmain'>
+    <block wx:for='{{dparr}}'>
+      <view class="weui-cell" bindtap='shopClick' data-item='{{item}}' wx:if="{{item.status!='2'}}">
+        <view class="weui-cell__hd wc-imgbox">
+          <image class='wc-hdimg' mode='aspectFill' src="{{item.storeLogo}}"></image>
+        </view>
+        <view class="weui-cell__bd fon_30">
+          <view class='color_3 mar_b10'>{{item.storeName}}</view>
+          <view class='color_6 fon_26'>{{item.enterEndTime}}<span class="color_r mar_l10" wx:if="{{item.expiretime}}">已到期</span></view>
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center">
+          <view style='color:{{color}}'>
+            <text wx:if="{{item.status=='0'}}" class="textbg dsh">待审核</text>
+            <text wx:elif="{{item.status=='1'}}" class="textbg">已通过</text>
+            <text wx:elif="{{item.status=='2'}}" class="textbg yjj">已拒绝</text>
+          </view>
+          <text class="iconfont color_9 icon-you fon_24"></text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,127 @@
+<!--pages/store/storeentry/storeentry.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container'>
+    <h-title bdname="基本信息"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">商家名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='sjmc' value='{{storeInfo.storeName}}' placeholder-class='fon_28' class="weui-input" placeholder="请输入商家名称" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='tel' value='{{storeInfo.linkTel}}' placeholder-class='fon_28' class="weui-input" placeholder="请输入联系电话" />
+        </view>
+        <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">详细地址</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='address' value='{{address}}' placeholder-class='fon_28' class="weui-input" disabled='true' placeholder="请点击定位" />
+        </view>
+        <view bindtap='chooseLocation' class="weui-cell__ft flex-row flex-y-center dwposition">
+          <text class='iconfont color_e icon-dizhi1 fon_40' style='color:{{color}}'></text>
+          <view style='color:{{color}}'>定位</view>
+        </view>
+      </view>
+      <view hidden='{{1==1}}' wx:if="{{sqobjarr[0].length}}" class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">所属商圈</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='sssq' mode="multiSelector" bindchange="bindsqPChange" bindcolumnchange="bindsqCChange" value="{{multiIndex}}" range="{{sqobjarr}}" range-key="{{'name'}}">
+            <view class="weui-select">{{sqobjarr[0][multiIndex[0]].name}}，{{sqobjarr[1][multiIndex[1]].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">所属行业</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='sshy' mode="multiSelector" bindchange="bindhyPChange" bindcolumnchange="bindhyCChange" value="{{hymultiIndex}}" range="{{hyobjarr}}" range-key="{{'name'}}">
+            <view class="weui-select">{{hyobjarr[0][hymultiIndex[0]].name}}，{{hyobjarr[1][hymultiIndex[1]].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">营业时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='stime' mode="time" value="{{starttime}}" start="00:00" bindchange="bindTimesChange">
+            <view class="weui-input t_c">{{starttime}}</view>
+          </picker>
+        </view>
+        <view>——</view>
+        <view class="weui-cell__bd">
+          <picker name='etime' mode="time" value="{{endtime}}" end="23:59" bindchange="bindTimeeChange">
+            <view class="weui-input t_c">{{endtime}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <!-- <image mode='aspectFit' src='/assets/img/pubpost/bq.png'></image> -->
+          <view class="weui-label">商家标签</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='label' value='{{storeInfo.storeLabel}}' placeholder-class='fon_28' class="weui-input" placeholder="空格分隔，最多添加3个标签，如：求购 供应 免费" />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="商家图片"></h-title>
+    <wux-upload tipstext='请上传商家logo或门头图' htitle='商家logo' tiptitle='(320*320)' extra-class='wuxupload' count="1" list-type="picture-card" file-list="{{ storeInfo.storeLogo }}" bind:change="logoonChange">
+      <text>Upload</text>
+    </wux-upload>
+    <wux-upload tipstext='请上传客服微信二维码' htitle='客服微信二维码' tiptitle='(320*320)' extra-class='wuxupload' count="1" list-type="picture-card" file-list="{{ storeInfo.wxImg }}" bind:change="wxmonChange">
+      <text>Upload</text>
+    </wux-upload>
+    <wux-upload tipstext='最多9张照片' htitle='商家相册' tiptitle='(320*320)' extra-class='wuxupload' count="9" list-type="picture-card" file-list="{{ storeInfo.photoList }}" bind:change="xconChange">
+      <text>Upload</text>
+    </wux-upload>
+     <wux-upload tipstext='请上传营业执照' htitle='营业执照' extra-class='wuxupload' count="1" list-type="picture-card" file-list="{{ storeInfo.license }}" bind:change="yyzzonChange">
+      <text>Upload</text>
+    </wux-upload>
+    <h-title bdname="其他信息"></h-title>
+    <text-area name='textarea' value='{{textareavalue}}' bind:textblur='textareachange' maxlength='200' placeholder='请输入商家介绍' extra-class='bor-t'></text-area>
+    <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">视频链接</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name='video' value='{{storeInfo.video}}' placeholder-class='fon_28' class="weui-input" placeholder="请输入视频链接" />
+      </view>
+    </view>
+    </view>
+    <!-- <h-title bdname="邀请码"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">邀请码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='yqm' placeholder-class='fon_28' class="weui-input" placeholder="无邀请码可不填写" />
+        </view>
+      </view>
+    </view> -->
+    <!-- <h-title bdname="请选择入驻方式" color="{{color}}" ftname='版本区别'></h-title>
+    <wux-radio-group name="rzradio" value="{{ rzradiovalue }}" bind:change="rzradioonChange">
+      <wux-radio wx:for="{{rztimearr}}" radioColor="{{color}}" title="{{item.setName}}" value="{{index}}" />
+    </wux-radio-group> -->
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='商家协议条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='foot-button'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">确定</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

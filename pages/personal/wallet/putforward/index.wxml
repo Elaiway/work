@@ -1,0 +1,80 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container mar_b'>
+    <view class='color_f walletBalance' style='background:{{color}};'>
+      <view class='fon_28 pa_l mar_b'>
+        <view class='dis_in wid_50 t_l'>可提现余额￥{{userinfo.balance}}</view>
+        <view class='dis_in wid_50 t_r' bindtap='mingxi'>提现明细</view>
+      </view>
+      <view class='fon_60 pa_l'>
+        <input name="money" maxlength='5' bindinput='moneyinput' placeholder='￥0.00' type='digit' placeholder-style='color:#fff'></input>
+      </view>
+    </view>
+    <radio-group name='mode' class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{items}}">
+        <view wx:if="{{item.show}}" class='pa bor_bottom mar_t ba_f'>
+          <view class='dis_in' style='width:12%;'>
+            <text class='iconfont {{item.icon}} fon_60' style='color:{{item.color}}'></text>
+          </view>
+          <view class='dis_in' style='width:80%;'>
+            <view class='fon_30 color_6'>{{item.mode}}</view>
+            <view class='fon_24 color_9'>{{item.detail}}</view>
+          </view>
+          <view class='dis_in t_r' style='width:8%;'>
+            <radio color="{{color}}" value="{{item.name}}" checked="{{item.checked}}" />
+          </view>
+        </view>
+      </label>
+    </radio-group>
+    <view class='mar_t ba_f pa_l fon_30 color_6'>
+      <view class='pa_t bor_bottom'>
+        <view class='dis_in wid_50'>
+          <text wx:if="{{name=='微信'}}">微信账号</text>
+          <text wx:if="{{name=='支付宝'}}">支付宝账号</text>
+          <text wx:if="{{name=='银行卡'}}">银行卡账号</text>
+        </view>
+        <view class='dis_in wid_50 t_r'>
+          <input wx:if="{{name=='微信'}}" placeholder='请输入微信账号' name="account"></input>
+          <input wx:if="{{name=='支付宝'}}" type='number' placeholder='请输入支付宝账号' name="account"></input>
+          <input wx:if="{{name=='银行卡'}}" type='number' placeholder='请输入银行卡账号' name="account"></input>
+        </view>
+      </view>
+      <view wx:if="{{name=='银行卡'}}" class='pa_t bor_bottom'>
+        <view class='dis_in wid_50'>
+          <text>支行信息</text>
+        </view>
+        <view class='dis_in wid_50 t_r'>
+          <input name='zhxx' placeholder='请输入支行信息'></input>
+        </view>
+      </view>
+      <view class='pa_t bor_bottom'>
+        <view class='dis_in wid_50'>
+          <text>姓名</text>
+        </view>
+        <view class='dis_in wid_50 t_r'>
+          <input name='name' placeholder='请输入收款人姓名'></input>
+        </view>
+      </view>
+      <view class='pa_t bor_bottom'>
+        <view class='dis_in wid_50'>
+          <text>联系方式</text>
+        </view>
+        <view class='dis_in wid_50 t_r'>
+          <input name='tel' type='number' placeholder='请输入真实的联系方式'></input>
+        </view>
+      </view>
+    </view>
+    <agree-box isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='提现需知' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='foot-buttont'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">确认提取
+      </button>
+    </view>
+    <view class='pa_l mar_t color_9 fon_26'>
+      <view>详细说明</view>
+      <view>提现门槛为{{obj.minGetRecharge}}元</view>
+      <view>提现手续费为{{obj.serviceRecharge}}%</view>
+      <view>本次提现将收取手续费为{{fwf}}元</view>
+      <view>本次提现实际到账为{{sjdz}}元</view>
+      <view>提现间隔时间{{obj.rechargeDay}}天</view>
+    </view>
+  </view>
+</form>

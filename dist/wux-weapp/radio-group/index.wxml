@@ -1,0 +1,24 @@
+<!-- <wux-cell-group wux-class="wux-radio-group" title="{{ title }}" label="{{ label }}">
+    <slot></slot>
+</wux-cell-group> -->
+<radio-group bindchange="radioChange">
+  <view wx:if="{{typesetting=='1'}}" class="weui-cells weui-cells_after-title">
+    <wux-cell wx:for="{{radioarr}}" wux-class="wux-radio" thumb="{{ item.thumb }}" title="{{ item.name }}" label="{{ item.label }}">
+      <label slot="footer">
+        <radio value="{{ item.value }}" checked="{{ item.checked }}" color="{{ radioColor }}" disabled="{{ item.disabled }}" class="wux-radio__input" />
+        <icon class="weui-icon-checkbox_circle" type="circle" size="24" wx:if="{{ !item.checked }}" />
+        <icon class="weui-icon-checkbox_success" type="success" size="24" color="{{ !item.disabled ? radioColor : '#ebedf0' }}" wx:if="{{ item.checked }}" />
+      </label>
+    </wux-cell>
+  </view>
+  <view wx:if="{{typesetting=='2'}}" class="flex-row">
+    <label class="weui-cell hxrd flex-grow-1 weui-check__label wux-class" wx:for="{{radioarr}}" wx:key="value">
+      <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" color="{{ radioColor }}" disabled="{{ item.disabled }}" />
+      <view class="weui-cell__bd">{{item.name}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-radio">
+        <icon class="weui-icon-checkbox_circle" type="circle" size="24" wx:if="{{ !item.checked }}" />
+        <icon class="weui-icon-checkbox_success" type="success" size="24" color="{{ !item.disabled ? radioColor : '#ebedf0' }}" wx:if="{{ item.checked }}" />
+      </view>
+    </label>
+  </view>
+</radio-group>

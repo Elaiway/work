@@ -1,0 +1,49 @@
+/* dist/public/textarea.wxss */
+@import "/assets/styles/weui.wxss";
+.weui-cells:before {
+  border-top: none;
+}
+.weui-cells:after {
+  border-bottom: none;
+}
+.weui-uploader__info{
+  text-align: right;
+  font-size: 30rpx;
+}
+.video{
+  width: 100%;
+  height: 100%;
+}
+.weui-uploader__title{
+    color: #666;
+    font-size: 28rpx;
+}
+.wux-upload__select {
+  border: 2rpx solid #d9d9d9;
+  width: 156rpx;
+  height: 156rpx;
+  /* border-radius: 8rpx; */
+  background-color: #fff;
+  -webkit-transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.wux-upload__button {
+  color: #B2B2B2;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  vertical-align: middle;
+  padding: 8rpx;
+  box-sizing: border-box;
+}

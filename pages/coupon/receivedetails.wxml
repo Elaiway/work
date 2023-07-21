@@ -1,0 +1,117 @@
+<view class="container after-navbar">
+  <view class="ba_f mar-trbl rel color_3">
+    <view class="t_c basepadding">
+      <view class='fon_28 mar_b30'>{{goodsInfo.title}}</view>
+      <view class="fon_46 mar_b30" style="color:{{color}}">
+        <text wx:if="{{goodsInfo.type==1}}">{{goodsInfo.reduce}}元代金券</text>
+        <text wx:elif="{{goodsInfo.type==2}}">{{goodsInfo.discount}}折折扣券</text>
+        <text wx:elif="{{goodsInfo.type==3}}">{{goodsInfo.reduce}}元优惠券</text>
+      </view>
+      <view class="flex-center">
+        <view class="code">
+          <image class="codeimg" mode='aspectFill' src="data:image/png;base64,{{hxm}}"></image>
+        </view>
+      </view>
+    </view>
+    <view class="basepadding color_9 fon_24">
+      <view class="infolist flex flex-y-center">
+        <text class="iconfont icon-dian2 mar_r"></text>
+        <text>使用条件：消费满<text style="color:{{color}}">{{goodsInfo.condition}}</text>元可用</text>
+      </view>
+      <view class="infolist flex flex-y-center">
+        <text class="iconfont icon-dian2 mar_r"></text>
+        <text> 有效期至：{{goodsInfo.endTime}}</text>
+      </view>
+    </view>
+    <view class="flex flex-wrap pa_l30 pa_b">
+      <view class='flex fon_26 color_9 flex-y-center mar_r60' wx:for="{{goodsInfo.service}}" wx:key="">
+        <text class="iconfont icon-gouxuan fon_28 mar_r_10"></text>
+        <view>{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 使用流程 -->
+  <view class="ba_f mar-lrt">
+    <wux-cell isLast='true' wux-class='flex-y-center' title="使用流程">
+      <view slot='header' class='iconfont icon-tubiaozhizuo-1 mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="padd-tblr">
+      <view class="rel flex-y-center">
+        <view class="line ab"></view>
+        <view class="circular flex-bet wid color_f fon_36">
+          <view class="cir imgshape1 rel flex-center" style="background:{{color}}">
+            <text class="iconfont icon-wodeyouhuijuan fon_40"></text>
+          </view>
+          <view class="cir imgshape1 rel flex-center" style="background:{{color}}">
+            <text class="iconfont icon-llingquxianjinquan fon_40"></text>
+          </view>
+          <view class="cir imgshape1 rel flex-center" style="background:{{color}}">
+            <text class="iconfont icon-saoma fon_40"></text>
+          </view>
+        </view>
+      </view>
+      <view class="flex-bet mar_t fon_28">
+        <view style="color:{{color}}">参与领取</view>
+        <view style="color:{{color}}">领取成功</view>
+        <view style="color:{{color}}">到店核销</view>
+      </view>
+    </view>
+  </view>
+  <!-- 适用商家 -->
+  <view class="ba_f mar-lrt">
+    <wux-cell isLast='true' title="适用商家">
+      <view slot='header' class='iconfont icon-tubiaozhizuo-1 mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <wux-cell isLeft='true'>
+      <view class='fon_30 color_3' slot="bodyer">
+        <view class="flex-y-center">
+          <image mode="aspectFill" class="sjlogo mar_r imgshape1" src="{{goodsInfo.storeLogo}}"></image>
+          <view>{{goodsInfo.storeName}}</view>
+        </view>
+        <view class="fon_26 color_9 mar_t">营业时间：{{goodsInfo.businessStartTime}}-{{goodsInfo.businessEndTime}}</view>
+      </view>
+      <view slot='footer' class='iconfont icon-dianhuahover fon_36' style="color:{{color}}" catchtap='onlinkTel'></view>
+    </wux-cell>
+    <wux-cell isLast='true' wux-class='fon_26' tstyle="color:#333;" tftsize='26' title="{{goodsInfo.address}}">
+      <view slot='footer' class='iconfont icon-qunfengfabushangxian fon_36 mar_l' style="color:#2D95FF" catchtap='chooseLocation'></view>
+    </wux-cell>
+  </view>
+  <!-- 购买信息 -->
+  <view class="ba_f mar-lrt">
+    <wux-cell isLast='true' title="购买信息">
+      <view slot='header' class='iconfont icon-tubiaozhizuo-1 mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <wux-cell isLeft='true' tstyle="color:#666;" tftsize='28' title="购买用户">
+      <view slot='footer' class="flex">
+        <image mode="aspectFill" class="sjlogo mar_r imgshape1" src="{{goodsInfo.portrait}}"></image>
+        <view class='fon_28 color_9'>{{goodsInfo.userName}}</view>
+     </view>
+    </wux-cell>
+    <wux-cell isLeft='true' tstyle="color:#666;" tftsize='28' title="手机号">
+      <view slot='footer' class='fon_28 color_9'>{{goodsInfo.userTel}}</view>
+    </wux-cell>
+    <wux-cell isLeft='true' tstyle="color:#666;" tftsize='28' title="订单编号">
+      <view slot='footer' class='fon_28 color_9'>{{goodsInfo.outTradeNo}}</view>
+    </wux-cell>
+    <wux-cell isLeft='true' tstyle="color:#666;" tftsize='28' title="下单时间">
+      <view slot='footer' class='fon_28 color_9'>{{goodsInfo.createdAt}}</view>
+    </wux-cell>
+    <wux-cell isLeft='true' tstyle="color:#666;" tftsize='28' title="订单金额">
+      <view slot='footer' class='fon_28 color_9' style="color:{{color}}">{{goodsInfo.money}}元</view>
+    </wux-cell>
+  </view>
+  <!-- 优惠详情 -->
+  <view class="ba_f mar-lrt">
+     <wux-cell isLast='true' title="优惠详情">
+      <view slot='header' class='iconfont icon-tubiaozhizuo-1 mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+     <view class='ba_f basepadding'>
+      <view class='ba_f color_6'>
+        <rich-text nodes="{{goodsInfo.body}}"></rich-text>
+        <view class='mar_t' wx:if='{{goodsInfo.media.length!=0}}'>
+          <image mode='widthFix' class='image_all' wx:for='{{goodsInfo.media}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{url}}{{item.url}}'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

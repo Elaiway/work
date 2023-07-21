@@ -1,0 +1,20 @@
+/* dist/public/typeswiper/index.wxss */
+@import "/app.wxss";
+.swiper-v{
+  width:100%;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.type-swiper{
+  background: #fff;
+}
+.swiper-imgvimg{
+  margin-top: 20rpx;
+  width: 75rpx;
+  height: 75rpx;
+}
+.swiper-tv{
+  font-size: 28rpx;
+  width: 100%;
+  text-align: center;
+}

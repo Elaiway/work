@@ -1,0 +1,9 @@
+/* dist/public/hotstore/index.wxss */
+@import "/app.wxss";
+.goodsimg{
+  width: 251rpx;
+  height: 249rpx;
+}
+.w-251{
+  width: 251rpx;
+}

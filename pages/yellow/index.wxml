@@ -1,0 +1,34 @@
+<!--pages/yellow/index.wxml-->
+
+<view class='container after-navbar'>
+  <!-- 搜索框 -->
+  <view>
+    <search id='Search' class="postion" content="{{Search}}" searchtype='4' color="{{color}}"></search>
+  </view>
+  <!-- 信息首页轮播图 -->
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <!-- 信息首页统计 -->
+  <view class='bor_bottom'>
+    <notice id="notice" datatype='4' color="{{color}}" content="{{notice}}" />
+  </view>
+  <!-- 信息一级分类 -->
+  <view wx:if="{{Typeswiper!=null}}" class="">
+    <type-swiper color="{{color}}" type-obj='{{Typeswiper}}'></type-swiper>
+  </view>
+  <!-- 头条 -->
+  <view class='mar_t' wx:if="{{Headline!=null}}" class='mar_t'>
+    <headline class='bor-top' datatype='5,0' pagetype='yellow' content="{{Headline}}" />
+  </view>
+  <!-- 信息信息 -->
+  <view class='mar_t mainbk'>
+    <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <record-cell content="{{item}}" bind:storeInfo="getStoreinfo" color="{{color}}"></record-cell>
+    </block>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if="{{yellowConfig}}" color='{{color}}' page-type='yellow' />
+<navigator url='release' wx:if="{{yellowConfig.join=='open'}}" class='posi-f release imgsize100 flex-center color_f fon_50' style='background:{{color}}'>+</navigator>

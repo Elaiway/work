@@ -1,0 +1,18 @@
+<!--dist/public/auxiliary/integral/integral-good.wxml-->
+<view class="commodity mar_t wid flex-raw flex-bt">
+  <view  wx:for="{{content}}" wx:key="" data-idd="{{item.id}}" bindtap="clickDetail" class="modle ba_f gobyndsingle mar_b rich-text">
+    <image mode='aspectFill' class="photo" src="{{item.logo}}"></image>
+    <view class="bar fon_28 pa_l mar_t_10 gobyndsingle">{{item.name}}</view>
+    <view class="fon_24 color_9 pa_l mar_t_10 gobyndsingle">已有{{item.exchangeNum}}人兑换成功</view>
+    <view class="flex-center flex-bt pa_l mar_t">
+      <view class="integr t_c color_rb">
+        <text class="fon_24">积分</text>
+        <text class="fon_28">{{item.score}}+</text>
+      </view>
+      <view class="price t_c color_f">
+        <text class="fon_24">￥</text>
+        <text class="fon_28">{{item.money}}</text>
+      </view>
+    </view>
+  </view>
+</view>

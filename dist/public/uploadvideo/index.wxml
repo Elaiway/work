@@ -1,0 +1,26 @@
+<!--dist/public/textarea.wxml-->
+<view class="extra-class weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+        <view class="weui-uploader__hd">
+          <view class="weui-uploader__title">上传视频</view>
+          <view class="weui-uploader__info">{{tipstext}}</view>
+        </view>
+        <view class="weui-uploader__bd">
+          <view wx:if="{{src!=''}}" class="weui-uploader__input-box" id="uploaderFiles">
+            <video class='video' src='{{src}}'></video>
+          </view>
+          <view wx:else class="weui-uploader__input-box">
+            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          </view>
+          <view wx:if="{{src!=''}}" class="wux-upload__select" bindtap="chooseImage">
+            <view class="wux-upload__button">
+              重新上传
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

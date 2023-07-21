@@ -1,0 +1,19 @@
+/* dist/public/textarea.wxss */
+@import "/app.wxss";
+
+.form_button {
+  border: none;
+  text-align: inherit;
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+  background: transparent;
+  color: inherit;
+  border-radius: 0;
+  font-size: inherit;
+  display: inline;
+}
+
+.form_button::after {
+  border: none;
+}

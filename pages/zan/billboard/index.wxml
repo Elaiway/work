@@ -1,0 +1,20 @@
+<view class="title">
+	<image mode="widthFix" class="bg" src="../../../assets/images/zan/zan-bg.png"></image>
+	<view class="contain">
+		<view class="zan" wx:for='{{list}}' wx:key='item'>
+			<view class="zan-name">
+				<view class="zan-name-left">
+					<image class="img-head" mode="aspectFill" src="{{item.portrait}}"></image>
+					<view>{{item.userName}}</view>
+				</view>
+				<view class="flex-start">
+					<view class="zan-name-right" style="margin-right:15rpx">已集赞</view>
+					<view class="zan-name-right">{{item.count}}</view>
+				</view>
+			</view>
+		</view>
+		<load-more bg-color="transparent" nodata="{{list.length==0}}" mygd="{{isget}}" />
+		<view class="intro">按集赞数量排行，同数量的按时间排行</view>
+	</view>
+
+</view>

@@ -1,0 +1,25 @@
+/* pages/yellow/classify.wxss */
+.module{
+  border-top: 1rpx solid #E5E5E5;
+  border-bottom:1rpx solid #f0f0f0;
+  margin-bottom: 20rpx;
+}
+.m-title{
+  padding: 20rpx 30rpx;
+  border-bottom:1rpx solid #f0f0f0;
+}
+.icon-w{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+.crosswise{
+  width: 25%;
+}
+.border{
+  padding: 25rpx 20rpx;
+}
+.bor_rb{
+  border-right: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}

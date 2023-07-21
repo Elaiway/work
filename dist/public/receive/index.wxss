@@ -1,0 +1,83 @@
+/* dist/public/redbag/index.wxss */
+.sele_fixed{
+    top: 0;
+}
+.receive {
+    width: 640rpx;
+    height: 744rpx;
+    /* transform: scale(1.1,1.1) */
+}
+
+.receiveFail, .receiveFailImg {
+    width: 553rpx;
+    height: 744rpx;
+}
+
+.receiveSuccess, .receiveSuccessImg {
+    width: 643rpx;
+    height: 744rpx;
+}
+
+.collar {
+    width: 640rpx;
+    height: 744rpx;
+}
+
+.closeCollar {
+    right: 83rpx;
+    top: 26rpx;
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.receiveButton {
+    width: 252rpx;
+    height: 76rpx;
+    bottom: 74rpx;
+}
+
+.receiveMoney {
+    color: #ec4d35;
+    top: 150rpx;
+    width: 70%;
+}
+
+.receiveUser {
+    width: 100%;
+    color: #d53a34;
+    top: 410rpx;
+    font-weight: 400;
+    font-family: microsoft yahei;
+}
+
+.receiveExplain {
+    width: 70%;
+    color: #ffea97;
+    top: 480rpx;
+    font-family: microsoft yahei;
+}
+
+.failTips {
+    top: 460rpx;
+    width: 100%;
+}
+
+.seeMore {
+    top: 630rpx;
+    width: 100%;
+}
+
+.seeMoreimg {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.receiveSuccessPrice {
+    top: 52rpx;
+    width: 100%;
+}
+
+.receiveSuccessWhere {
+    top: 562rpx;
+    width: 100%;
+}

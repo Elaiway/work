@@ -1,0 +1,52 @@
+<view class='sele_fixed' hidden="{{receiveShow}}">
+    <view class='sele_fixedv1 ab udlr' bindtap="closeReceive"></view>
+    <block wx:if="{{content.receive=='0'}}">
+        <view class='sele_fixedv2 ab receive udlr'>
+            <image mode='aspectFill' class='collar' src='{{imgsrc}}/wechatimg/receive/collar.png'></image>
+            <image mode='aspectFill'  bindtap="closeReceive" class='closeCollar ab' src='{{imgsrc}}/wechatimg/receive/close.png'></image>
+            <image mode='aspectFill' catchtap='receiveEnvelopes' class='receiveButton ab lr' src='{{imgsrc}}/wechatimg/receive/button.png'></image>
+            <view class='receiveMoney lr ab t_c fon_wei'>
+                <text class='mar_l_10 middle fon_56'>{{content.hbMoney}}</text>
+                <text class='middle fon_44'>元</text>
+            </view>
+            <view class='receiveUser ab t_c fon_26'>
+                <text class='dis_in gobyndsingle' style='max-width:150rpx;'>{{content.hbUser}}</text>
+                <text class='dis_in'>埋了一个redpaper</text>
+            </view>
+            <view class='receiveExplain ab lr t_c fon_28'>
+                领取的redpaper将存入您的{{content.name}}钱包可前往查看
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{content.receive=='1'}}">
+        <view class='sele_fixedv2 ab receiveSuccess udlr'>
+            <image mode='aspectFill' class='receiveSuccessImg' src='{{imgsrc}}/wechatimg/receive/receiveSuccess.png'></image>
+            <view class='t_c receiveSuccessPrice ab'>
+                <view class='fon_36 color_f'>恭喜瓜分到</view>
+                <view class='fon_50' style='color:#FFE762'>{{content.hbMoney}}元</view>
+            </view>
+            <view class='t_c fon_30 color_f ab receiveSuccessWhere'>
+                redpaper已自动存入到您的钱包中
+            </view>
+            <view class='ab fon_28 t_c seeMore' catchtap='lookMore'>
+                <image mode='aspectFill' class='middle seeMoreimg' src='{{imgsrc}}/wechatimg/receive/gold.png'></image>
+                <text class='middle mar_l' style='color:#FFE762'>去看看大家的手气</text>
+                <text class='iconfont middle color_9 icon-you fon_24 mar_l' style='color:#FFE762'></text>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{content.receive=='2'}}">
+        <view class='sele_fixedv2 ab receiveFail udlr'>
+            <image mode='aspectFill' class='receiveFailImg' src='{{imgsrc}}/wechatimg/receive/receiveFail.png'></image>
+            <view class='fon_40 color_f t_c ab failTips'>
+                <view>您来晚了</view>
+                <view>redpaper已经被抢光了</view>
+            </view>
+            <view class='ab fon_28 t_c seeMore' catchtap='lookMore'>
+                <image mode='aspectFill' class='middle seeMoreimg' src='{{imgsrc}}/wechatimg//receive/gold.png'></image>
+                <text class='middle mar_l' style='color:#FFE762'>去看看大家的手气</text>
+                <text class='iconfont middle color_9 icon-you fon_24 mar_l' style='color:#FFE762'></text>
+            </view>
+        </view>
+    </block>
+</view>

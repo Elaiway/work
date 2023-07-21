@@ -1,0 +1,54 @@
+<view class="container after-navbar pad-top">
+  <top-select trees='{{trees}}' bind:selectchange='selectchange' color="{{color}}" />
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <view class='' wx:if="{{Headline}}">
+    <headline content="{{Headline}}" pagetype='superCard' datatype='12,0' />
+  </view>
+  <view class="boxbor flex" wx:if="{{mycardList.length<=0}}" catchtap='oncreatcard'>
+    <view class="flex-grow-0">
+      <text class="iconfont icon-Creditcards fon_110"></text>
+    </view>
+    <view class="flex-grow-1 flex-colbt">
+      <view class="fon_36 flex-x-center mar_t30">您还没有自己的名片</view>
+      <view class="fon_24 flex-x-bottom mar_b30 mar_r30">立即拥有>>></view>
+    </view>
+  </view>
+  <view class='mar_t' wx:for="{{postList}}" wx:key="" >
+    <view class="box-shadow ba_f mar-lrb basepadding flex-row color_3" bindtap="cardInfo" data-id="{{item.id}}">
+      <view class="flex-grow-0 ">
+        <image class="iconw mar_t br-r-c" mode='aspectFill' src="{{item.logo}}"></image>
+      </view>
+      <view class='flex-grow-1 mar-lr'>
+        <view class="fon_30">
+          <text>{{item.name}}</text>
+          <block wx:if="{{item.isTop=='1'}}">
+            <i-tag i-class="i-tags" font-size="22" bgColor="#FF8800" border-color="#FF8800" color="#fff">置顶</i-tag>
+          </block>
+        </view>
+        <view class="fon_24 color_9 flex-row padd-tb5">
+          <view>{{item.position}}</view>
+          <view class="mar_l30">{{item.department}}</view>
+        </view>
+        <view class="fon_24 color_9 padd-tb5">{{item.company}}</view>
+        <view class="fon_24 color_9 flex-row padd-tb5">
+          <view class="mar_r">
+            <text style="color:{{color}}">{{item.followNum}}</text>关注</view>
+          <view class="mar_r">
+            <text style="color:{{color}}">{{item.loveNum}}</text>点赞</view>
+          <view>
+            <text style="color:{{color}}">{{item.viewNum}}</text>人气</view>
+        </view>
+      </view>
+      <view class='flex-grow-0 flex-y-bt'>
+        <view class="iconfont icon-comments fon_44" style="color:{{color}}"></view>
+        <view class="iconfont icon-dianhua3 fon_50 " style="color:{{color}}" catchtap='callup' data-msg='{{item}}'></view>
+      </view>
+    </view>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if="{{businesscard}}" color='{{color}}' page-type='businesscard' />

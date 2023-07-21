@@ -1,0 +1,280 @@
+<!-- padding-top:1rpx 解决上边距导致背景色的问题-->
+<view class="container after-navbar" style='background:{{bargainInfo.bg}};padding-top:1rpx'>
+  <!-- <view class="">
+    <image src="{{goodsInfo.logo}}" mode="aspectFill" class="bgimg"></image>
+  </view> -->
+  <view class='rel'>
+    <!-- 发起人头像 -->
+    <view wx:if="{{bargainInfo.state != 1}}" class='flex-center headimg'>
+      <image class='img' src='{{bargainInfo.portrait}}'></image>
+    </view>
+    <view class="ba_f mar-trbl {{bargainInfo.state != 1?'mar-t100':''}}">
+      <!-- 发起人昵称 -->
+      <view wx:if="{{bargainInfo.state != 1}}" class='t_c fqname wei'>{{bargainInfo.userName}}
+        <text class='color_9'>(发起人)</text>
+      </view>
+      <!-- 未完成 -->
+      <block wx:if="{{bargainInfo.state != 4}}">
+        <layout-one bindtap='goodinfo' data-id="{{item.id}}" is-last='{{index==lbList.length-1}}' after-right='true' body-src='{{url}}{{detailInfo.logo[0].url}}' body="{{layoutBodyOne}}" footer='{{footer}}' class-name='pad_30'>
+          <view slot="body-bd-f" class="flex-x-bt">
+            <view class='hydlnr_2 wei'>
+              <text>{{detailInfo.title}}</text>
+            </view>
+          </view>
+          <view slot="body-bd-s" class="wei color_rb">底价:￥{{bargainInfo.floorPrice}}</view>
+          <view slot="body-bd-t" class="fon_24 color_9 mar_t_10 t-d-l">原价￥{{bargainInfo.price}}</view>
+          <view slot='footer' class='flex-x-bt color_9 mar_t30 fon_24'>
+            <view>浏览
+              <text class='color_rb mar_r'>{{bargainInfo.viewNum}}</text>分享
+              <text class='color_rb mar_r'>{{bargainInfo.shareNum}}</text>发起
+              <text class='color_rb mar_r'>{{bargainInfo.joinNum}}</text>
+            </view>
+            <view>仅剩
+              <text class='color_rb'>{{bargainInfo.stock}}</text>份</view>
+          </view>
+        </layout-one>
+      </block>
+      <!-- 已完成 -->
+      <block wx:else>
+        <view class='pad_30'>
+          <view class='flex-col-center'>
+            <view class='flex-row flex-ad wid color_9'>
+              <view class='flex-col-center'>
+                <view>原价</view>
+                <view>￥{{bargainInfo.price}}</view>
+              </view>
+              <view class='flex-col-center'>
+                <view>底价</view>
+                <view class='color_rb'>￥{{bargainInfo.floorPrice}}</view>
+              </view>
+              <view class='flex-col-center'>
+                <view>购买价</view>
+                <view class='color_rb'>￥{{orderInfo.money}}</view>
+              </view>
+            </view>
+            <!-- 自提显示核销码 -->
+            <image wx:if="{{orderInfo.delivery == 2}}" class='mar' style='width:480rpx;height:480rpx;' src="data:image/png;base64,{{hxm}}"></image>
+            <view class='color_6 pa'>消费截止：{{bargainInfo.endTime}}</view>
+          </view>
+          <view slot='footer' class='flex-x-bt color_9 mar_t30 fon_24'>
+            <view>浏览
+              <text class='color_rb mar_r'>{{bargainInfo.viewNum}}</text>分享
+              <text class='color_rb mar_r'>{{bargainInfo.shareNum}}</text>发起
+              <text class='color_rb mar_r'>{{bargainInfo.joinNum}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{bargainInfo.state != 4}}">
+        <!-- 距结束时间 -->
+        <view wx:if='{{bargainInfo.state == 2}}' class="basepadding flex-center">
+          <text class='wei fon_28 mar_r'>距结束还剩</text>
+          <text class="pa_10_15 color_f ba_3 br-r-10">{{expireTime[0]}}</text>：
+          <text class="pa_10_15 color_f ba_3 br-r-10">{{expireTime[1]}}</text>：
+          <text class="pa_10_15 color_f ba_3 br-r-10">{{expireTime[2]}}</text>：
+          <text class="pa_10_15 color_f ba_3 br-r-10">{{expireTime[3]}}</text>
+        </view>
+        <block wx:if='{{bargainInfo.state >= 2}}'>
+          <!-- 进度条 -->
+          <view class='rel mar br-r-30'>
+            <view class='jdtbj'></view>
+            <view class='br-r-30 ab l0 t0 ba-lg-f8ef' style='width:{{bargainInfo.progress}}%;height: 35rpx;'></view>
+            <view class='ab l0 t0 wid flex-center color_f' style='height: 35rpx;'>{{bargainInfo.progress}}%</view>
+          </view>
+          <view class='pa_l30 mar_b flex-x-bt wei'>
+            <view class='color_rb'>原价{{bargainInfo.price}}元</view>
+            <view class='color_9'>还剩{{syMoney}}元</view>
+          </view>
+        </block>
+        <!-- 发起砍价 -->
+        <view wx:if='{{bargainInfo.state == 1}}' class='ba_f pad_5030'>
+          <button disabled='{{loading}}' class='foot-btn ba-lg-fdf7 b-s-F9B2B5' bindtap="startBargain">发起砍价</button>
+        </view>
+        <!-- 直接购买 喊人帮砍 -->
+        <view wx:elif='{{bargainInfo.state == 2 && orderInfo.userId == userInfo.id}}' class='ba_f pad_5030 flex-x-bt fon_30 rel'>
+          <block wx:if="{{bargainInfo.isFloor}}">
+            <button disabled='{{loading}}' style='width:45%;' class='foot-btn ba-lg-fdf7 b-s-F9B2B5' bindtap="xjgm">现价购买</button>
+            <view class='ab' style='left: 200rpx;top: -15rpx;'>
+              <view class='pa_5_20 fon_26 color_f nowprice'>现价:{{orderInfo.money}}</view>
+            </view>
+          </block>
+          <button style='width:45%;' open-type='share' class='foot-btn ba-lg-f4f0 b-s-FBCB05' bindtap="share">喊人帮砍</button>
+        </view>
+        <!-- 帮好友砍一刀 发起我的砍价 -->
+        <view wx:elif='{{orderInfo.userId != userInfo.id}}' class='ba_f pad_5030 flex-x-bt fon_30'>
+          <button disabled='{{loading}}' style='width:45%;' class='foot-btn ba-lg-fdf7 b-s-F9B2B5' bindtap="bhykyd">帮好友砍一刀</button>
+          <button disabled='{{loading}}' style='width:45%;' class='foot-btn ba-lg-f4f0 b-s-FBCB05' bindtap="startBargain">发起我的砍价</button>
+        </view>
+        <!-- 立即购买 -->
+        <view wx:if='{{bargainInfo.state == 3}}' class='ba_f pad_5030'>
+          <button class='foot-btn ba-lg-fdf7 b-s-F9B2B5' bindtap="xjgm">立即购买</button>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 订单详情 -->
+  <view wx:if="{{bargainInfo.state == 4}}" class="mar-tlr ba_f">
+    <view class='titbg fon_32 wei pad_20'>订单详情</view>
+    <view class="pad_20">
+      <wux-cell is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="联系人">
+        <view slot='footer' class="flex-y-center">
+          <view class='color_9'>{{params.receivedName}}</view>
+        </view>
+      </wux-cell>
+      <wux-cell is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="手机号">
+        <view slot='footer'>{{params.receivedTel}}</view>
+      </wux-cell>
+      <wux-cell is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="订单编号">
+        <view slot='footer'>{{orderInfo.outTradeNo}}</view>
+      </wux-cell>
+      <wux-cell is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="购买数量">
+        <view slot='footer'>1</view>
+      </wux-cell>
+      <wux-cell is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="下单时间">
+        <view slot='footer'>{{orderInfo.createdAt}}</view>
+      </wux-cell>
+      <wux-cell is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="订单金额">
+        <view slot='footer' class='color_rb'>{{orderInfo.money}}元</view>
+      </wux-cell>
+      <wux-cell is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="配送方式">
+        <view slot='footer'>{{orderInfo.delivery==1?'快递配送':'到店自取'}}</view>
+      </wux-cell>
+      <wux-cell wx:if='{{orderInfo.delivery==1}}' is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="收货地址">
+        <view slot='footer'>{{params.receivedAddress}}</view>
+      </wux-cell>
+      <wux-cell wx:if='{{orderInfo.delivery==2}}' is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="自提地址">
+        <view slot='footer'>{{orderDetail.address}}</view>
+      </wux-cell>
+      <wux-cell wx:if='{{orderInfo.delivery==1&&orderInfo.logisticsName}}' is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="快递名称">
+        <view slot='footer'>{{orderInfo.logisticsName}}</view>
+      </wux-cell>
+      <wux-cell wx:if='{{orderInfo.delivery==1&&orderInfo.logisticsCode}}' is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="快递单号">
+        <view slot='footer'>{{orderInfo.logisticsCode}}</view>
+      </wux-cell>
+      <wux-cell is-last='true' is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' tclass='' title="订单状态">
+        <view slot='footer'>{{orderInfo.state=='3'?'待发货':orderInfo.state=='4'?'待收货':'已完成'}}</view>
+      </wux-cell>
+    </view>
+  </view>
+  <!-- 砍价帮帮团 -->
+  <view wx:if="{{detailInfo.bargainList.length}}" class="mar-tlr ba_f">
+    <view class='titbg fon_32 wei pad_20'>砍价帮帮团</view>
+    <view class="pad_20">
+      <wux-cell wx:for="{{detailInfo.bargainList}}" is-last="{{index==detailInfo.bargainList.length-1}}" is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' imgw='80' imgh='80' boradius='50%' thumb="{{item.portrait||'/assets/images/personal/mrtx.png'}}" mode="aspectFill"
+        tclass='fon_24 wei color_3' title="{{item.userName||'神秘人'}}" lftsize='22' label='{{item.createdAt}}'>
+        <view slot='footer' class="flex-y-center">
+          <image class='kjjb' mode="aspectFill" src='/assets/images/bargain/kjjb.png'></image>
+          <view class='color_rb'>已砍{{item.money}}元</view>
+        </view>
+      </wux-cell>
+      <!-- <view class='flex-center fon_26 color_9 pad_20'>查看更多></view> -->
+    </view>
+  </view>
+  <!-- 砍价进行时 -->
+  <view wx:elif="{{detailInfo.orderList.length}}" class="mar-tlr ba_f">
+    <view class='titbg fon_32 wei pad_20'>砍价进行时</view>
+    <view class="pad_20">
+      <wux-cell wx:for="{{detailInfo.orderList}}" is-last="{{index==detailInfo.orderList.length-1}}" is-left='true' wux-class='pa_t' padding='20rpx 0rpx;' imgw='80' imgh='80' boradius='50%' thumb="{{item.portrait||'/assets/images/personal/mrtx.png'}}" mode="aspectFill"
+        tclass='fon_24 wei color_3' title="{{item.userName||'神秘人'}}" lftsize='22' label='{{item.createdAt}} 发起砍价'>
+        <view slot='footer' class="flex-y-center">
+          <image class='kjjb' mode="aspectFill" src='/assets/images/bargain/kjjb.png'></image>
+          <view class='color_rb'>砍至{{item.money}}元</view>
+        </view>
+      </wux-cell>
+      <!-- <view class='flex-center fon_26 color_9 pad_20'>查看更多></view> -->
+    </view>
+  </view>
+  <view class="mar-tlr ba_f">
+    <!-- <view class='titbg fon_32 wei pad_20'>适用商家</view> -->
+    <view class='titbg fon_32 wei pad_20'>商家信息</view>
+    <view class="pa">
+      <view class='ba_f pa10' bindtap='goStoreDetail'>
+        <view class='flex-row'>
+          <image class='flex-g-0 br-r-30' style='width:160rpx;height:160rpx;' src='{{url}}{{detailInfo.storeLogo}}'></image>
+          <view class='flex-g-1 flex-col flex-bt mar_l'>
+            <view class='gobyndsingle fon_32 wei'>{{detailInfo.storeName}}</view>
+            <view class='flex-x-bt'>
+              <text>{{detailInfo.fans || 0}}粉丝</text>
+              <text>{{detailInfo.goodsNUm || 0}}商品</text>
+              <text class='iconfont icon-iconfront-'></text>
+            </view>
+            <wux-rater slot="footer" default-value="{{ 5 }}" font-size="{{ 18 }}" disabled />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mar-tlr ba_f">
+    <view class='titbg fon_32 wei pad_20'>详情内容</view>
+    <view class="pa">
+      <view class='ba_f pa10'>
+        <view class='ba_f color_6'>
+          <rich-text nodes="{{bargainInfo.body}}"></rich-text>
+          <view class='mar_t' wx:if='{{bargainInfo.imgs.length!=0}}'>
+            <image mode='widthFix' class='image_all' wx:for='{{bargainInfo.imgs}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{url}}{{item.url}}'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <show-pay wx:if='{{userInfo}}' bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>
+</view>
+<!-- 立即购买 -->
+<van-popup show="{{popupshow}}" z-index='1000' position="bottom" custom-style="overflow: initial;background: #f4f4f4;border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;" bind:close="togglePopup">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class='ba_f5 br-r-tlr30'>
+      <block>
+        <view class='ba_f pa_l30 mar_b'>
+          <layout-one is-last='true' no-pad='true' body-src='{{url}}{{detailInfo.logo[0].url}}' body="{{layoutBody}}" class-name="pa_t30">
+            <view slot="body-bd-s" class="flex-row fon_24">
+              <view class='flex-col'>
+                <view>
+                  <text class='fon_34 mar_r' style='color:{{color}}'>￥{{orderInfo.money}}</text>
+                  <text class='color_9 t_through'>￥{{bargainInfo.price}}</text>
+                </view>
+              </view>
+            </view>
+            <view slot="body-bd-t">{{bargainInfo.title}}</view>
+          </layout-one>
+        </view>
+        <view style='max-height:600rpx;overflow-x:hidden;overflow-y:scroll;'>
+          <view class="weui-cells weui-cells_after-title">
+            <view hidden="{{orderInfo.delivery!='1'}}">
+              <choose-address bind:getaddress="getaddress" />
+            </view>
+            <view hidden="{{orderInfo.delivery!='2'}}">
+              <choose-ztd wx:if="{{bargainInfo.storeId}}" bind:getaddress="getztd" store-id="{{bargainInfo.storeId}}" />
+            </view>
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <view class="weui-label">购买数量</view>
+              </view>
+              <view class="weui-cell__bd flex-x-end">
+                <wux-input-number bind:change="onChange" value="{{num}}" color="stable" min="1" max="1" disabled="{{false}}" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">备注信息</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name='note' placeholder-class='fon_28' value="{{params.title}}" class="weui-input" placeholder="请输入备注信息" />
+              </view>
+            </view>
+            <view style='color:{{color}}' class="weui-cell flex-x-end fon_32">
+              共1份 合计{{orderInfo.money}}元
+            </view>
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                注：购买后，请在{{bargainInfo.useTime}}前找商家消费
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class='foot-buttont'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">确定</button>
+    </view>
+  </form>
+</van-popup>

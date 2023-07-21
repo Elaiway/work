@@ -1,0 +1,9 @@
+<view class="container">
+  <top-select trees='{{trees}}' bind:selectchange='selectchange' color="{{color}}" />
+  <view class="pa_l mar_tb_10 padding-top">
+    <job-hunt job-type="{{type}}" page-type='list' content="{{jobList}}" color="{{color}}" />
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{jobList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

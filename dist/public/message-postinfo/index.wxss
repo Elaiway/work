@@ -1,0 +1,35 @@
+/* dist/public/message-postinfo/index.wxss */
+@import "/app.wxss";
+.scimg{
+  width:220rpx;
+height:160rpx;
+margin:0 auto;
+border-radius:6px;
+
+}
+.scimg-box{
+  width:33.3%;
+box-sizing:border-box;
+}
+.message_video{
+  width: 100%;
+  height: 400rpx;
+}
+.message_vimg{
+  width: 100%;
+  height: 100%;
+}
+.message_other{
+  padding-bottom: 20rpx;
+}
+.message_oimg{
+  width: 30rpx;
+  height: 30rpx;
+  background: red;
+  margin-right:6rpx;
+}
+.setTop{
+    padding: 5rpx 10rpx;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
+}

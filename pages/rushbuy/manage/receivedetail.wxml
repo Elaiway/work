@@ -1,0 +1,87 @@
+<view class="container">
+<wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+    <view class="pa_20">
+    <blcok wx:for="{{postList}}" wx:key="{{item.id}}">
+      <layout-one data-id='{{item.orderId}}' is-last="true" after-left="true" no-pad='true' body-src='{{item.portrait}}' body="{{layoutBodyOne}}" class-name='mar_b'>
+        <view slot="body-bd-f" class="flex-x-bt">
+          <view class='fon_32'>{{item.receivedName}}</view>
+          <view class='fon_26' style='color:{{color}}'>{{item.tips}}</view>
+        </view>
+        <view slot="body-bd-s" class="flex-x-bt mar_t_10">
+          <view class='flex-g-1 fon_26 color_9'>
+            <view class='flex-row'>
+              <view class='weui-label fon_26 color_9'>联系人姓名：</view>
+              <view>{{item.receivedName}}</view>
+            </view>
+            <view class='flex-row'>
+              <view class='weui-label fon_26 color_9'>联系人电话：</view>
+              <view>{{item.receivedTel}}</view>
+            </view>
+            <view class='flex-row'>
+              <view class='weui-label fon_26 color_9'>购买数量：</view>
+              <view style='color:{{color}}'>{{item.orderNum}}</view>
+              <view class='fon_26 color_9 mar_l50'>支付金额：</view>
+              <view style='color:{{color}}'>{{item.totalMoney > 0 ? item.totalMoney+ '元' : '免费'}}</view>
+            </view>
+            <view class='flex-row'>
+              <view class='weui-label fon_26 color_9'>订单编号：</view>
+              <view>{{item.outTradeNo}}</view>
+            </view>
+            <view class='flex-row'>
+              <view class='weui-label fon_26 color_9'>下单时间：</view>
+              <view>{{item.createdAt}}</view>
+            </view>
+            <view class='flex-row'>
+              <view class='weui-label fon_26 color_9'>配送方式：</view>
+              <view>{{item.delivery == 1 ? '快递配送' : '门店自取'}}</view>
+            </view>
+            <view wx:if="{{item.note}}" class='flex-row'>
+              <view class='weui-label fon_26 color_9'>订单备注：</view>
+              <view class=''>{{item.note}}</view>
+            </view>
+             <view wx:if="{{item.delivery == 1}}" class='flex-row'>
+              <view class='weui-label fon_26 color_9'>收货地址：</view>
+              <view class=''>{{item.receivedAddress}}</view>
+            </view>
+          </view>
+          <view class='flex-g-0 flex-center'>
+            <text class='iconfont icon-dianhua3 fon_60'  bindtap='onlinkTel' data-tel="{{item.receivedTel}}" style='color:{{color}}'></text>
+          </view>
+        </view>
+        <view slot="body-bd-t" class='flex-x-end'>
+            <view wx:if="{{item.state==2 && item.delivery == 1}}" class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-id='{{item.orderId}}' data-field='qrsh'>确认收货</view>
+          <view wx:if="{{item.state==1 && item.delivery == 1}}" class='text-btn mar_l30' bindtap='clickBtn' data-id='{{item.orderId}}' data-field='txdh'>填写单号</view>
+        </view>
+      </layout-one>
+    </blcok>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<t-modal ismr='true' width='80' mdoalclose="mdoalclose" mdoaltoggle='{{mdoaltoggle}}'>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='ba_f'>
+    <view class='ba_f9 basepadding t_c'>物流信息填写</view>
+    <view class='ba_f'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">快递公司</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input placeholder-class='fon_28' name='logisticsName' class="weui-input" placeholder="请输入快递公司" />
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">快递单号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input placeholder-class='fon_28' name='logisticsCode' class="weui-input" placeholder="请输入快递单号" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <button disabled='{{loading}}' loading='{{loading}}' class='submit-btn bor-a0 fon_32 color_f t_c' style='background:{{color}}' form-type="submit">提 交</button>
+  </view>
+</form>
+</t-modal>

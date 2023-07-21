@@ -1,0 +1,32 @@
+/* pages/personal/storemanage/index.wxss */
+.dpmain{
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+}
+.weui-cell{background: #fff;border-radius: 10rpx;padding: 40rpx 40rpx;margin-bottom: 30rpx;}
+.weui-cell::before{
+  border: none;
+}
+.wc-imgbox{
+  width: 100rpx;height: 100rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.wc-hdimg{
+  width: 100%;height: 100%;
+  margin-right: 0;
+}
+.mar_b10{
+  margin-bottom: 10rpx;
+}
+.textbg{
+  border-radius: 10rpx;
+  background: #FFBF9F;
+  padding: 8rpx 15rpx;
+  margin-right: 10rpx;
+}
+.dsh{
+   background: #eee;
+   color: #999;
+}

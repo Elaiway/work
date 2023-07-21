@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+      "i-action-sheet": "/dist/iview-weapp/action-sheet/index",
+      "i-button": "/dist/iview-weapp/button/index",
+      "show-pay": "/dist/public/showpay/index"
+    } 
+  }

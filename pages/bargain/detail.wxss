@@ -1,0 +1,80 @@
+page {
+}
+
+.bgimg {
+  width: 750rpx;
+  height: 460rpx;
+}
+
+.headimg {
+  top: -60rpx;
+  position: absolute;
+  width: 100%;
+}
+
+.headimg .img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 2rpx solid #fff;
+}
+
+.fqname {
+  padding: 80rpx 0 20rpx;
+}
+
+.mar-trbl {
+  margin: 50rpx 30rpx 0 30rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+
+.mar-t100 {
+  margin-top: 100rpx;
+}
+
+.mar-tlr {
+  margin: 20rpx 30rpx 0 30rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+
+.titbg {
+  background: #f3f7fa;
+}
+
+.kjjb {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 10rpx;
+}
+
+.pad_5030 {
+  padding: 50rpx 30rpx;
+}
+
+.pa_10_15 {
+  padding: 2rpx 10rpx;
+}
+
+.jdtbj {
+  background: #f4eee2;
+  height: 35rpx;
+}
+
+.nowprice {
+  background: #fdd732;
+  position: relative;
+  border-radius: 30rpx;
+}
+
+.nowprice::after {
+  position: absolute;
+  left: 15rpx;
+  bottom: -18rpx;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10rpx solid transparent;
+  border-top-color: #fdd732;
+}

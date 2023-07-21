@@ -1,0 +1,92 @@
+@import "/app.wxss";
+.wux-cell {
+  /* padding: 20rpx 30rpx; */
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  /* background: #fff; */
+}
+.wux-cell:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+  color: #EEEEEE;
+  /* -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5); */
+  left: 30rpx;
+}
+.wux-cell--last:after {
+  display: none;
+}
+.wux-cell--left:after {
+  left: 0rpx;
+}
+.wux-cell--hover {
+  background-color: #ECECEC;
+}
+.wux-cell__thumb {
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 30rpx;
+}
+.wux-cell__bd {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  min-width:160rpx;
+}
+.wux-cell__text {
+  text-align: left;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 28rpx;
+}
+.wux-cell__desc {
+  text-align: left;
+  line-height: 1.2;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.wux-cell__ft {
+  text-align: right;
+  font-size: 28rpx;
+}
+.wux-cell--access .wux-cell__ft {
+  padding-right: 26rpx;
+  position: relative;
+}
+.wux-cell--access .wux-cell__ft:after {
+  content: " ";
+  display: inline-block;
+  height: 16rpx;
+  width: 16rpx;
+  border-width: 3.5rpx 3.5rpx 0 0;
+  border-color: #999999;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+          transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -4rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -8rpx;
+  right: 4rpx;
+}
+.align-start{
+  align-items: flex-start
+}

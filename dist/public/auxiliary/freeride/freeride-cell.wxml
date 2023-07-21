@@ -1,0 +1,110 @@
+<!--dist/public/auxiliary/freeride/freeride-good.wxml-->
+<!--<<最新发布开始-->
+<block wx:if="{{type=='1'}}">
+  <view wx:for="{{content}}" wx:key="" class="ba_f boradiu fon_30 mar_t {{item.isGo=='1'?'gray':'' }}" data-tid="{{item.id}}" bindtap='goDetail'>
+    <view class="flex-row flex-bt pa">
+      <view class="flex-grow-1 flex-row">
+        <text class='iconfont icon-yingyeshijian fon_30 color_9 mar_r_10'></text>
+        <view class="color_6">出发时间：{{item.rideTime}}<text wx:if="{{item.type=='2'}}">（每天）</text></view>
+      </view>
+      <view class="flex-grow-0 flex-row">
+        <view wx:if="{{item.type=='2'}}" class="bgRed color_f padd mar_l_10">长期</view>
+        <view wx:if="{{item.name!==null}}" class="color_f padd mar_l_10 {{item.name=='人找车'?'bgSku':'' || item.name=='车找人'?'bgOrange':'' || item.name=='货找车'?'bgYellow':'' || item.name=='车找货'?'bgBlue':''}}">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='bor-top pa rel'>
+      <view class="flex-row flex-y-center">
+        <view class="circular color_f fon_26 t_c mar_r_10 bgSku">起</view>
+        <view class="gobyndsingle">{{item.startPlace}}</view>
+      </view>
+      <view class="line flex-y-center color_e mar_l_10">||</view>
+      <view class="flex-row flex-y-center">
+        <view class="circular color_f fon_26 t_c mar_r_10 bgRed">终</view>
+        <view class="gobyndsingle">{{item.endPlace}}</view>
+      </view>
+      <view class="flex-row flex-bt pa_t">
+        <view wx:if="{{item.name==null}}" class="flex-row flex-y-center">
+          <text class='iconfont icon-wo fon_30 color_9 mar_r_10'></text>
+          <view class="color_9 fon_28">乘车人数：
+            <text class="color_rb">{{item.num}}人</text>
+          </view>
+        </view>
+        <view wx:if="{{item.name=='人找车'}}" class="flex-row flex-y-center">
+          <text class='iconfont icon-wo fon_30 color_9 mar_r_10'></text>
+          <view class="color_9 fon_28">乘车人数：
+            <text class="color_rb">{{item.num}}人</text>
+          </view>
+        </view>
+        <view wx:if="{{item.name=='车找人'}}" class="flex-row flex-y-center">
+          <text class='iconfont icon-wo fon_30 color_9 mar_r_10'></text>
+          <view class="color_9 fon_28">剩余座位：
+            <text class="color_rb">{{item.num}}个</text>
+          </view>
+        </view>
+        <view wx:if="{{item.name=='货找车'}}" class="flex-row flex-y-center">
+          <text class='iconfont icon-jubao fon_30 color_9 mar_r_10'></text>
+          <view class="color_9 fon_28">货物信息：
+            <text class="color_rb">{{item.weight}}吨</text>
+          </view>
+        </view>
+        <view wx:if="{{item.name=='车找货'}}" class="flex-row flex-y-center">
+          <text class='iconfont icon-jubao fon_30 color_9 mar_r_10'></text>
+          <view class="color_9 fon_28">车辆信息：
+            <text class="color_rb">{{item.weight}}辆</text>
+          </view>
+        </view>
+        <view class="color_9">{{item.createdAt}}发布</view>
+      </view>
+      <view>
+        <block wx:for="{{item.data}}" wx:for-item="dataMsg" wx:for-index="msgindex" wx:key="">
+          <i-tag i-class="i-tags" i-class="borderRight" font-size="24" border-color="{{msgindex=='0'?'#FF6F20':''||msgindex=='1'?'#7594B6':''||msgindex=='2'?'#FF3838':''}}" color="{{msgindex=='0'?'#FF6F20':''||msgindex=='1'?'#7594B6':''||msgindex=='2'?'#FF3838':''}}">{{dataMsg}}</i-tag>
+        </block>
+      </view>
+      <seal wx:if="{{item.isTop == '1'}}" zhiding="{{true}}" right="30" top="10" />
+    </view>
+    <view class='bor-top pa fon_26 colorOreng'>备注：{{item.other}}</view>
+  </view>
+</block>
+<!--最新发布结束>>-->
+
+<!--<<收藏/发布开始-->
+<block wx:elif="{{type=='2'}}">
+  <view wx:for="{{content}}" wx:key="" data-tid="{{item.id}}" bindtap='goDetail' class="ba_f boradiu fon_30 mar_t {{item.isGo=='1'?'gray':'' }}">
+    <view class="flex-row flex-bt pa">
+      <view class="flex-grow-1 flex-row">
+        <text class='iconfont icon-yingyeshijian fon_30 color_9 mar_r_10'></text>
+        <view class="color_6">出发时间：{{item.rideTime}}<text wx:if="{{item.type=='2'}}">（每天）</text></view>
+      </view>
+      <view class="flex-grow-0 flex-row">
+        <view wx:if="{{item.type=='2'}}" class="bgRed color_f padd mar_l_10">长期</view>
+        <view wx:if="{{item.name!==null}}" class="color_f padd mar_l_10 {{item.name=='人找车'?'bgSku':'' || item.name=='车找人'?'bgOrange':'' || item.name=='货找车'?'bgYellow':'' || item.name=='车找货'?'bgBlue':''}}">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='bor-top pa_tr30 flex-row flex-y-center rel'>
+      <view class="flex-grow-1">
+        <view class="flex-row flex-y-center">
+          <view class="circular color_f fon_26 t_c mar_r_10 bgSku">起</view>
+          <view class="gobyndsingle">{{item.startPlace}}</view>
+        </view>
+        <view class="line flex-y-center color_e mar_l_10">||</view>
+        <view class="flex-row flex-y-center">
+          <view class="circular color_f fon_26 t_c mar_r_10 bgRed">终</view>
+          <view class="gobyndsingle">{{item.endPlace}}</view>
+        </view>
+      </view>
+      <view class="flex-grow-0">
+        <view wx:if="{{!item.status}}" class="operBtn fon_26" catchtap='onCancelColl' data-cid="{{item.id}}">取消收藏</view>
+        <view wx:if="{{item.status==1 || item.status==2}}" class="operBtn fon_26" catchtap='goEdit' data-msg="{{item}}">操作/编辑</view>
+      </view>
+      <block wx:if="{{!item.status}}" >
+        <seal wx:if="{{item.isGo == '1' && item.isTop == '2'}}" fache="{{true}}" right="140" top="10" />
+        <!-- <seal wx:if="{{item.isTop == '1'}}" zhiding="{{true}}" right="140" top="10" /> -->
+      </block>
+      <seal wx:if="{{item.display == '2' && item.status !== '0'}}" xiajia="{{true}}" right="140" top="10" />
+      <seal wx:if="{{item.status == '2'}}" jujue="{{true}}" right="140" top="10" />
+      <seal wx:if="{{item.status == '0'}}" daishenhe="{{true}}" right="140" top="10" />
+      <seal wx:if="{{item.isTop == '1' && item.status !== '0'}}" zhiding="{{true}}" right="140" top="10" />
+    </view>
+  </view>
+</block>
+<!--收藏/发布结束>>-->

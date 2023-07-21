@@ -1,0 +1,71 @@
+<!--pages/personal/testcenter/testpersonal.wxml-->
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <view class="container padding-bottom">
+    <swiper-case content="{{Swiper}}"></swiper-case>
+    <view class='mar_t'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view style='width:500rpx;' class="weui-label color_9">企业/个体工商户认证</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input disabled='true' placeholder-class='fon_28' class="weui-input color_6" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">主体名称</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='name' placeholder-class='fon_28' class="weui-input color_6" placeholder="请输入企业/个体工商户认证" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">主体类型</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name='themeType' bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+              <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">执照注册号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='code' value='{{userinfo.userTel}}' placeholder-class='fon_28' class="weui-input color_6" placeholder="请输入营业执照注册号" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">联系电话</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='tel' value='{{userinfo.userTel}}' placeholder-class='fon_28' class="weui-input color_6" placeholder="请输入联系电话" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='mar_t'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_9">材料证明</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input disabled='true' placeholder-class='fon_28' class="weui-input color_6" />
+          </view>
+        </view>
+      </view>
+      <wux-upload tipstext='营业执照的照片、编号、文字需清晰可见' htitle='营业执照' tiptitle='' extra-class='bor-btm' count="3" list-type="picture-card" file-list="{{ logofile }}" bind:change="zmsfzonChange">
+      </wux-upload>
+    </view>
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='认证协议' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">提交
+      </button>
+    </view>
+  </view>
+</form>

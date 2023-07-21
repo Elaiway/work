@@ -1,0 +1,37 @@
+<scroll-view wx:if="{{ scroll }}" scroll-x="true" class="wux-class wux-tabs wux-tabs--scroll" scroll-into-view='{{toType}}'>
+  <block  wx:if='{{!type}}'>
+  <view id='type{{index}}' wx:for="{{tabs}}" wx:key="name" style="color:{{ current==item.id ? color : '' }}" class="wux-tabs__tab {{ scroll ? 'wux-tabs__tab--scroll' : '' }} {{ current==item.id ? 'wux-tabs__tab--current' : '' }} {{ item.disabled ? 'wux-tabs__tab--disabled' : '' }}"
+    bindtap="onTap" data-id='{{item.id}}' data-index='{{index}}'>
+    <view class='tabv'>
+      <text wx:if="{{ item.name }}">{{ item.name }}</text>
+      <block wx:else>
+        <slot></slot>
+      </block>
+      <view class="wux-tabs__tab-bar" style="background:{{color}}" wx:if="{{ current==item.id }}"></view>
+    </view>
+  </view>
+  </block>
+  <block wx:elif="{{type==1}}">
+  <view id='type{{index}}' wx:for="{{tabs}}" wx:key="name" class="wux-tabs__tab {{ scroll ? 'wux-tabs__tab--scroll' : '' }} {{ current==item.id ? '' : '' }} {{ item.disabled ? 'wux-tabs__tab--disabled' : '' }}"
+    bindtap="onTap" data-id='{{item.id}}' data-index='{{index}}'>
+    <view class='tabv'>
+      <text class="pa_10_20 {{ current==item.id ? 'wux-tabs__tab--current1' : '' }}" wx:if="{{ item.name }}">{{ item.name }}</text>
+      <block wx:else>
+        <slot></slot>
+      </block>
+    </view>
+  </view>
+  </block>
+</scroll-view>
+<view wx:else class="wux-class wux-tabs">
+  <view wx:for="{{tabs}}" wx:key="name" style="color:{{ current==item.id ? color : '' }}" class="wux-tabs__tab {{ scroll ? 'wux-tabs__tab--scroll' : '' }} {{ current==item.id ? 'wux-tabs__tab--current' : '' }} {{ item.disabled ? 'wux-tabs__tab--disabled' : '' }}"
+    bindtap="onTap" data-id='{{item.id}}'>
+    <view class='tabv'>
+      <text wx:if="{{ item.name }}">{{ item.name }}</text>
+      <block wx:else>
+        <slot></slot>
+      </block>
+      <view class="wux-tabs__tab-bar" style="background:{{color}}" wx:if="{{ current==item.id }}"></view>
+    </view>
+  </view>
+</view>

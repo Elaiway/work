@@ -1,0 +1,12 @@
+/* dist/public/textarea.wxss */
+@import "/app.wxss";
+.weui-footer{
+  padding: 30rpx 20rpx 20rpx;
+}
+.footimg{
+  width: 50rpx;
+  height: 50rpx;
+}
+.weui-footer_fixed-bottom{
+    margin-bottom: 120rpx;
+}

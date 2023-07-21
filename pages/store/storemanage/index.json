@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "wux-cell-group": "/dist/wux-weapp/cell-group/index",
+    "wux-cell": "/dist/wux-weapp/cell/index",
+    "wux-grids": "/dist/wux-weapp/grids/index",
+    "wux-grid": "/dist/wux-weapp/grid/index",
+    "i-action-sheet": "/dist/iview-weapp/action-sheet/index",
+    "i-button": "/dist/iview-weapp/button/index",
+    "show-pay": "/dist/public/showpay/index"
+  }
+}

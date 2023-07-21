@@ -1,0 +1,25 @@
+<view class='ba_f basepadding extra-class' style='margin-top:{{content.topMargin}}px;' wx:if="{{content.announceList.length>0}}">
+  <view class="flex-row flex-y-center" style='border-radius:{{content.brs}};padding:{{content.pad}}'>
+    <view wx:if="{{content.leftvalue}}" class="flex-grow-0 headline_left wei fon_32" style="color:{{content.color}};">{{content.leftvalue}}</view>
+    <image wx:elif="{{content.icon[0].url}}"mode='aspectFill' class='headlineimg' src='{{content.icon[0].url}}'></image>
+    <view wx:else class="flex-grow-0 headline_left wei {{content.notice.fontWeight=='bold'?'fon_wei':''}} fon_32" style="color:{{content.notice.color}};">{{content.notice.title}}</view>
+    <view class="flex-grow-1 headline_right box-sha pa_10_20 br-r-10">
+      <swiper class="headline_swiper" circular="true" vertical="true" autoplay="true" interval="2000">
+        <block wx:for="{{content.announceList}}" wx:for-index="idx" wx:key="*this">
+          <swiper-item class='flex-col flex-x-center'>
+            <block wx:if="{{pagetype==''||pagetype=='post'||pagetype=='business'}}">
+              <view bindtap="postInfo" data-id="{{item.id}}" data-title="{{item.title}}" data-info="{{item.content}}" class='wei wid rich gobyndsingle' nodes="{{item.title}}">{{item.title}}</view>
+              <rich-text bindtap="postInfo" data-id="{{item.id}}" data-title="{{item.title}}" data-info="{{item.content}}" wx:if="{{item.content}}" class='wid mar_t_5 color_9 fon_24 rich gobyndsingle' nodes="{{item.content}}"></rich-text>
+            </block>
+            <!-- 2条信息滚动 -->
+            <block wx:else>
+              <view bindtap="postInfo" data-id="{{item.id}}" data-title="{{item.title}}" data-info="{{item.content}}" class='wid  fon_24 rich rich gobyndsingle' nodes="{{item.title}}">{{item.title}}</view>
+              <rich-text bindtap="postInfo" data-id="{{content.announceList[idx+1].id}}" data-title="{{content.announceList[idx+1].title}}" data-info="{{content.announceList[idx+1].content}}" class='wid mar_t_5 fon_24 rich gobyndsingle' nodes="{{content.announceList[idx+1].title}}"></rich-text>
+            </block>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view wx:if="{{content.isButton==true}}" bindtap='button_jump' data-src='{{content.right_src}}' class="flex-grow-0 right-button color_f fon_30 br-r-10" style="background:{{content.color}};">{{content.right_button}}</view>
+  </view>
+</view>

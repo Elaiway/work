@@ -1,0 +1,16 @@
+/* pages/personal/integral/index.wxss */
+.walletBalance{
+    padding: 40rpx 0;
+}
+.bgradiu{
+  background: #000;
+  width: 170rpx;
+  height: 55rpx;
+  border-radius: 30rpx 0 0 30rpx;
+  opacity: 0.5;
+  top:33%;
+  right: 0;
+}
+.tcolor{
+  color:#FCDC17;
+}

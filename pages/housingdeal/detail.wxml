@@ -1,0 +1,161 @@
+<view class="container after-navbar">
+  <view wx:if="{{detailPage.identifying!=='4'}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <view class="pa bor-btm ba_f">
+    <view class="fon_32">{{detailPage.title}}</view>
+    <view class="flex-bet pa_t">
+      <view class="flex fon_26">
+        <i-tag i-class="i-tags" i-class="borderRight" font-size="24" bgColor="{{detailPage.identifying=='6'?'#22D4D4':''||detailPage.identifying=='5'?'#0AB9F5':''||detailPage.identifying=='4'?'#F5431A':''||detailPage.identifying=='3'?'#22D4D4':''}}" border-color="{{detailPage.identifying=='6'?'#22D4D4':''||detailPage.identifying=='5'?'#0AB9F5':''||detailPage.identifying=='4'?'#F5431A':''||detailPage.identifying=='3'?'#22D4D4':''}}"
+          color="#fff">{{detailPage.name}}</i-tag>
+        <block wx:if="{{detailPage.identifying!=='6'}}">
+          <i-tag i-class="i-tags" i-class="borderRight" font-size="24" bgColor="#FF9212" border-color="#FF9212" color="#fff">{{detailPage.rentType}}</i-tag>
+        </block>
+      </view>
+      <view class="color_9">{{detailPage.createdAt}}发布</view>
+    </view>
+  </view>
+
+  <view wx:if="{{detailPage.identifying=='6'}}" class="flex-bet ba_f pa_tr30 bor-btm wid">
+    <view class="flex-col-center flex-grow-1 bor_r wids">
+      <view class="fon_26 color_9">价格</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.rent}}<text>万起</text></view>
+    </view>
+    <view class="flex-col-center flex-grow-1 bor_r wids">
+      <view class="fon_26 color_9">户型</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.apartment}}卫</view>
+    </view>
+    <view class="flex-col-center flex-grow-1 wids">
+      <view class="fon_26 color_9">面积</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.measure}}㎡</view>
+    </view>
+  </view>
+  <view wx:if="{{detailPage.identifying=='5'}}" class="flex-bet ba_f pa_tr30 bor-btm wid">
+    <view class="flex-col-center flex-grow-1 bor_r wids">
+      <view class="fon_26 color_9">价格</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.rent=='0'?'面议':detailPage.rent}}</view>
+    </view>
+    <view class="flex-col-center flex-grow-1 bor_r wids">
+      <view class="fon_26 color_9">开盘时间</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.openTime}}</view>
+    </view>
+    <view class="flex-col-center flex-grow-1 wids">
+      <view class="fon_26 color_9">状态</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.rentType}}</view>
+    </view>
+  </view>
+  <view wx:if="{{detailPage.identifying=='4'}}" class="flex-bet ba_f pa_tr30 bor-btm wid">
+    <view class="flex-col-center flex-grow-1 bor_r wids">
+      <view class="fon_26 color_9">价格</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.rent}}元/月</view>
+    </view>
+    <view class="flex-col-center flex-grow-1 bor_r wids">
+      <view class="fon_26 color_9">押金</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.deposit}}</view>
+    </view>
+    <view class="flex-col-center flex-grow-1 wids">
+      <view class="fon_26 color_9">地区</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.area}}</view>
+    </view>
+  </view>
+  <view wx:if="{{detailPage.identifying=='3'}}" class="flex-bet ba_f pa_tr30 bor-btm wid">
+    <view class="flex-col-center flex-grow-1 bor_r wids">
+      <view class="fon_26 color_9">价格</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.rent}}元/月</view>
+    </view>
+    <view class="flex-col-center flex-grow-1 bor_r wids">
+      <view class="fon_26 color_9">户型</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.apartment}}卫</view>
+    </view>
+    <view class="flex-col-center flex-grow-1 wids">
+      <view class="fon_26 color_9">押金</view>
+      <view class="font_30" style="color:{{color}}">{{detailPage.deposit}}</view>
+    </view>
+  </view>
+  <!-- 特色标签 -->
+  <view class="ba_f pa_tr30">
+    <block wx:for="{{detailPage.label}}">
+      <i-tag i-class="borderRight" font-size="24" border-color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}" color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}">{{item}}</i-tag>
+    </block>
+  </view>
+  <view wx:if="{{detailPage.address!==''}}" bindtap="opaddress"  class="flex-bet ba_f pa mar_t">
+    <view class="flex-grow-1">
+      <view class="fon_30">{{detailPage.communityName}}</view>
+      <view class="fon_26 color_9">{{detailPage.address}}</view>
+    </view>
+    <view class="flex-grow-0">
+      <text class="iconfont icon-location fon_36 mar_r_10 color_9"></text>
+    </view>
+  </view>
+  <view wx:if="{{detailPage.identifying!=='4'}}" class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_34' title="房源信息">
+      <view slot='header' class='iconfont icon-jilu1 mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="pa wid flex-raw fon_26">
+      <view class='flex widt pa_b'>
+        <view class="color_9">装修：</view>
+        <view>{{detailPage.renovation}}</view>
+      </view>
+      <view class='flex widt pa_b'>
+        <view class="color_9">地区：</view>
+        <view>{{detailPage.area}}</view>
+      </view>
+      <view wx:if="{{detailPage.measure}}" class='flex widt pa_b'>
+        <view class="color_9">面积：</view>
+        <view>{{detailPage.measure}}㎡</view>
+      </view>
+      <view  wx:if="{{detailPage.rentType}}" class='flex widt pa_b'>
+        <view class="color_9">类型：</view>
+        <view>{{detailPage.rentType}}</view>
+      </view>
+      <view  wx:if="{{detailPage.orientation}}" class='flex widt pa_b'>
+        <view class="color_9">朝向：</view>
+        <view>{{detailPage.orientation}}</view>
+      </view>
+      <view wx:if="{{detailPage.floor}}" class='flex widt pa_b'>
+        <view class="color_9">楼层：</view>
+        <view>{{detailPage.floor}}</view>
+      </view>
+      <view wx:if="{{detailPage.developer}}" class='flex widt pa_b'>
+        <view class="color_9">开发商：</view>
+        <view>{{detailPage.developer}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 房屋配置 -->
+  <view class="ba_f" wx:if="{{detailPage.identifying=='4' || detailPage.identifying=='3'}}">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_34' title="房屋配置">
+      <view slot='header' class='iconfont icon-jilu1 mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="pa_tr30">
+      <block wx:for="{{detailPage.data}}">
+        <i-tag i-class="borderRight" font-size="24" border-color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}" color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}">{{item}}</i-tag>
+      </block>
+    </view>
+  </view>
+    <view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>
+  <view wx:if="{{detailPage.identifying!=='4'}}" class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_34' title="房源描述">
+      <view slot='header' class='iconfont icon-jilu1 mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="pa_tr30">
+      <view class="color_9">{{detailPage.body}}</view>
+      <view wx:if="{{detailPage.body==''}}" class="color_9">暂无描述</view>
+    </view>
+  </view>
+  <view wx:if="{{detailPage.identifying=='4'}}" class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_34' title="要求描述">
+      <view slot='header' class='iconfont icon-jilu1 mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="pa_tr30">
+      <view class="color_9">{{detailPage.body}}</view>
+      <view wx:if="{{detailPage.body==''}}" class="color_9">暂无描述</view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl bind:footclick='footclick' content="{{foot_menu}}" />
+</block>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

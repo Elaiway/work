@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "Search": "/dist/public/search/index",
+    "swiper-case": "/dist/public/swiper/index",
+    "wux-tabs": "/dist/wux-weapp/tabs/index",
+    "i-notice-bar": "/dist/iview-weapp/notice-bar/index",
+    "wux-cell-group": "/dist/wux-weapp/cell-group/index",
+    "wux-cell": "/dist/wux-weapp/cell/index",
+    "Postinfo": "/dist/public/postinfo/index",
+    "i-tag": "/dist/iview-weapp/tag/index",
+    "commend": "/dist/public/commend/index",
+    "footmenu": "/dist/public/foot_menu/index",
+    "share": "/dist/public/share/index",
+    "ewmgz": "/dist/public/ewmgz/index"
+  }
+}

@@ -1,0 +1,40 @@
+<view class="container after-navbar">
+  <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  <view class="mar_t">
+    <view wx:for="{{postList}}" wx:key="" class="mar_b30 ba_f flex pa">
+      <view class="flex-grow-0">
+        <image class="copimg" mode='aspectFill' src="{{item.logo}}"></image>
+      </view>
+      <view class="flex-grow-1 flex-row fon_24 mar_l">
+        <view class='wid'>
+          <view class='flex-row flex-y-bottom'>
+            <view class="fon_28 gobyndsingle">
+              <block-text color='#FF3838' class-name='pa_5_15 br-r-30 mar_r_10 fon_24' text="{{item.type==1?'代金券':item.type==2?'折扣券': item.type==3?'优惠券':'' }}" />{{item.title}}</view>
+          </view>
+          <view class="fon_26 color_9 mar_t_5 gobyndsingle">有效期至：{{item.endTime}}</view>
+          <view class="fon_26 color_9 mar_t_5 gobyndsingle">购买数量：1 </view>
+          <view class="fon_26 color_9 mar_t_5 gobyndsingle">支付金额：{{item.money}}</view>
+          <view class="flex-bet">
+            <view class="flex flex-g-1 flex-y-center" style="color:{{color}}">
+              <view class='fon_38'>
+                <text wx:if="{{item.type==1}}">{{item.reduce}}元</text>
+                <text wx:elif="{{item.type==2}}">{{item.discount}}折</text>
+                <text wx:elif="{{item.type==3}}">{{item.reduce}}元</text>
+              </view>
+              <view class="fon_26 mar_l_10">满{{item.condition}}元可用</view>
+            </view>
+            <view class="flex-g-0 mar_r">
+              <view wx:if="{{item.state=='1'}}" class="ybtn color_f" style="background-color:{{color}}" catchtap='writeoff' data-info='{{item}}'>未核销</view>
+              <view wx:elif="{{item.state=='2'}}" class="ybtn color_f" style="background-color:#999">已使用</view>
+              <view wx:elif="{{item.state=='3'}}" class="ybtn color_f" style="background-color:#999">已结束</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='coupon' />

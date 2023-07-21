@@ -1,0 +1,19 @@
+/* dist/public/foot_menu/foot-dl.wxss */
+@import "/app.wxss";
+.footer_menu{
+  position: fixed;
+  width: 100%;
+  height: 110rpx;
+  background: #fff;
+  bottom: 0;
+  z-index: 999;
+}
+.footer_menuv{
+  flex: 1;
+  justify-content: space-around;
+  text-align: center;
+}
+.footer_menuimg{
+  font-size: 45rpx;
+  /* background: red; */
+}

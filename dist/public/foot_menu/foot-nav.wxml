@@ -1,0 +1,38 @@
+<!--dist/public/auxiliary/foot-nav.wxml-->
+<block wx:if="{{_navbar&&_navbar.navs&&_navbar.navs.length>0}}">
+  <view class="navbar flex-row" style="background-image: url({{_navbar.background_image}});border:1rpx solid {{_navbar.border_color}}">
+    <block wx:for="{{_navbar.navs}}" wx:key="*this" wx:for-item="item" wx:for-index="index">
+      <navigator hover-class="none" wx:if="{{item.item=='1'||item.item==null}}" class="navbargator flex-grow-1 flex-y-center" openType="{{item.openType==1?'navigate':'redirect'}}" url="{{item.link}}">
+        <view class='navbar-view flex-center-col'>
+          <text hidden="{{_navbar.bottomTabStyle=='2'}}" class="iconfont {{item.icon}} footicon" style="color: {{item.active?_navbar.color:_navbar.colorOff}};"></text>
+          <view hidden="{{_navbar.bottomTabStyle=='1'}}" class="navbar-text" style="color: {{item.active?_navbar.color:_navbar.colorOff}};">{{item.legend}}
+          </view>
+        </view>
+      </navigator>
+      <view bindtap='clickNav' data-idx='{{index}}' wx:if="{{item.item=='2'}}" class="navbargator flex-grow-1 flex-y-center">
+        <view class='navbar-view flex-center-col'>
+          <text hidden="{{_navbar.bottomTabStyle=='2'}}" class="iconfont {{item.icon}} footicon" style="color: {{item.active?_navbar.color:_navbar.colorOff}};"></text>
+          <view hidden="{{_navbar.bottomTabStyle=='1'}}" class="navbar-text" style="color: {{item.active?_navbar.color:_navbar.colorOff}};">{{item.legend}}
+          </view>
+        </view>
+      </view>
+      <!-- <navigator class='navbargator' wx:if="{{item.item=='2'}}" class="flex-grow-1 flex-y-center" openType="navigate" url="/zh_cjdianc/pages/extra/weburl?url={{item.src2}}">
+        <view class='navbar-view'>
+          <image class="navbar-icon" src="{{item.active?item.icon.active:item.icon.normal}}"></image>
+          <view class="navbar-text" style="color: {{item.active?_navbar.color:_navbar.colorOff}};">{{item.legend}} \n
+          </view>
+        </view>
+      </navigator>
+      <navigator class='navbargator' wx:if="{{item.item=='3'}}" target="miniProgram" open-type="navigate" app-id="{{item.appid}}" path="" extra-data="" version="release" class="flex-grow-1 flex-y-center">
+        <view class='navbar-view'>
+          <image class="navbar-icon" src="{{item.active?item.icon.active:item.icon.normal}}"></image>
+          <view class="navbar-text" style="color: {{item.active?_navbar.color:_navbar.colorOff}};">{{item.legend}} \n
+          </view>
+        </view>
+      </navigator> -->
+    </block>
+  </view>
+</block>
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">请选择发布类型</i-button>
+</i-action-sheet>

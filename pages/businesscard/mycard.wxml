@@ -1,0 +1,104 @@
+<view class="container after-navbar">
+  <block wx:for="{{mycardList}}" wx:key="">
+    <view wx:if="{{mycardList.length>0}}">
+      <view bindtap="goDl" data-id="{{item.id}}" class="nameBox color_3 rel">
+        <view class='img-con'>
+          <image class='bg-img' src='/assets/images/yellow/sbg.png'></image>
+          <view class='main-box'>
+            <wux-cell background='transparent' mode='aspectFill' imgw='100' imgh='100' boradius='50%' thumb="{{item.logo}}">
+              <view class='fon_26 color_6' slot="bodyer">
+                <view class='flex-ra'>
+                  <view class='fon_32 color_3 mar_b_10'>{{item.name}}</view>
+                </view>
+                <view class="flex-bet">
+                  <view class="hydlnr_2 fon_24 color_9 flex-grow-0 wids50">{{item.department}}·{{item.position}}</view>
+                  <view class="hydlnr_2 fon_28 flex-grow-1 flex-x-bottom mar_l wids50" style="color:{{color}}">{{item.company}}</view>
+                </view>
+              </view>
+            </wux-cell>
+            <wux-cell background='transparent' isLast='true'>
+              <view class='fon_28 color_6' slot="bodyer">
+                <view class='flex-y-center'>
+                  <text class='iconfont icon-landline fon_36'></text>
+                  <text class='mar_l'>{{item.tel}}</text>
+                </view>
+                <view class='flex-y-center'>
+                  <text class='iconfont icon-icon- fon_36'></text>
+                  <text class='mar_l hydlnr_2 address'>{{item.address}}</text>
+                </view>
+                <view class='flex-y-center mar_t_10 minheight'>
+                  <text class='hydlnr_2 abody'>{{item.body}}</text>
+                </view>
+                <view class='flex-bet fon_24 color_9 mar_t gobyndsingle gdrz'>
+                  <view>关注：{{item.followNum}}</view>
+                  <view>点赞：{{item.loveNum}}</view>
+                  <view>人气：{{item.viewNum}}</view>
+                  <view>转发：{{item.shareNum}}</view>
+                </view>
+              </view>
+            </wux-cell>
+          </view>
+        </view>
+        <seal wx:if="{{item.isTop=='1' && item.display!=='2' && item.status!='0' && item.status!='2'}}" zhiding="{{true}}" right="150" top="30" />
+        <seal wx:if="{{item.status=='2'}}" jujue="{{true}}" right="150" top="30" />
+        <seal wx:if="{{item.display=='2' && item.status!=='2'&& item.status!=='0'}}" xiajia="{{true}}" right="150" top="30" />
+        <seal wx:if="{{item.status=='0' && item.status!=='2'}}" daishenhe="{{true}}" right="150" top="30" />
+      </view>
+      <wux-cell background='transparent' isLast='true' wux-class='mar_t_10'>
+        <view class='fon_26 flex-center flex-around' slot="bodyer">
+          <view class='flex-center-col fon_28 color_6'>
+            <view class='iconfont icon-xuqi fon_50' style="color:#FF1E1E" catchtap='onrenewal' data-xuqi='{{item}}'></view>
+            <view>续期</view>
+          </view>
+          <view class='flex-center-col' catchtap='editcard' data-id='{{item.id}}'>
+            <view class='iconfont icon-bianjianxia fon_50' style="color:#5DB271"></view>
+            <view>编辑</view>
+          </view>
+          <view wx:if="{{!isios}}" class='flex-center-col'>
+            <view class='iconfont icon-zhiding fon_50' style="color:#5DB271" catchtap='onTop' data-info='{{item}}'></view>
+            <view>置顶</view>
+          </view>
+        </view>
+      </wux-cell>
+    </view>
+  </block>
+  <view class="nameBox2">
+    <view class='img-con2'>
+      <image class='bg-img2' src='/assets/images/yellow/bbg.png'></image>
+      <view class="main-box fon_28 flex-col-center" style="margin-top:-50rpx;">
+        <block wx:if="{{mycardList.length>0}}">
+          <view class="bor-c1 btns" wx:if="{{mycardList.length<9}}" catchtap='oncreatcard'>继续创建名片</view>
+          <view class="color_9 mar_t">最多可拥有9张名片</view>
+        </block>
+        <block wx:else="{{mycardList.length<=0}}">
+          <view class="color_9">还没自己的名片</view>
+          <view class="bor-c1 btns mar_t" catchtap='oncreatcard'>点击拥有名片</view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="mar_t">
+    <wux-cell background='transparent' isLast='true' wux-class='mar_t_10'>
+      <view class='fon_26 flex-center flex-around color_3' slot="bodyer">
+        <view class='flex-center-col fon_28' catchtap='onrelease'>
+          <view class='iconfont icon-fabu fon_50' style="color:#5DB271"></view>
+          <view>发布动态</view>
+        </view>
+        <view class='flex-center-col' catchtap='onshop'>
+          <view class='iconfont icon-shouye fon_50' style="color:#FF5D0D"></view>
+          <view>我的店铺</view>
+        </view>
+        <view class='flex-center-col' catchtap='onranking'>
+          <view class='iconfont icon-yingyeshijian fon_50' style="color:#FF1E1E"></view>
+          <view>名片排行</view>
+        </view>
+      </view>
+    </wux-cell>
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='businesscard' />
+<!-- action组件 -->
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">{{xzname}}</i-button>
+</i-action-sheet>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

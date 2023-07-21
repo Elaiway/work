@@ -1,0 +1,48 @@
+<view class="address-list color_6 fon_28">
+  <view style="margin-bottom: 32rpx">
+    <block wx:if="{{address_list.length==0}}">
+      <load-more nodata="{{address_list==0}}" mygd='{{mygd}}' />
+    </block>
+    <block wx:else>
+      <view class="radio-group">
+        <view wx:for="{{address_list}}" wx:for-item="item" wx:for-index="index" bindtap="radioChange" data-id='{{item.id}}'>
+          <view class="address-item" data-index="{{index}}">
+            <view class="userinfo flex-row">
+              <view class="flex-grow-1">联系人：{{item.linkName}}</view>
+              <view class="flex-grow-0">{{item.linkTel}}</view>
+              <view style="color:{{color}};border-color:{{color}}" wx:if="{{item.label=='1'}}" class="flex-grow-0 label">家</view>
+              <view style="color:{{color}};border-color:{{color}}" wx:if="{{item.label=='2'}}" class="flex-grow-0 label">公司</view>
+              <view style="color:{{color}};border-color:{{color}}" wx:if="{{item.label=='3'}}" class="flex-grow-0 label">学校</view>
+            </view>
+            <view class="address-detail">地址：{{item.address}}</view>
+          </view>
+          <view class="weui-panel__ft">
+            <view class="weui-cell weui-cell_access">
+              <label class="weui-cell__bd flex-y-center">
+                <radio value="{{item.id}}" color='{{color}}' checked="{{item.isDefault=='1'?true:false}}" />
+                <text wx:if="{{item.isDefault=='2'}}" style='color:#999'>设为默认</text>
+                <text wx:if="{{item.isDefault=='1'}}" style='color:{{color}}'>已设为默认</text>
+              </label>
+              <view class="weui-cell__ft" catchtap="bianji" data-bjid="{{item.id}}">
+                <image class='wc-ftimg' mode='aspectFit' src="{{imgsrc}}/wechatimg/form/edit.png"></image>
+                <view class='jz'>编辑</view>
+              </view>
+              <view class="weui-cell__ft" catchtap="shanchu" data-scid="{{item.id}}">
+                <image class='wc-ftimg' mode='aspectFit' src="{{imgsrc}}/wechatimg/form/delete.png"></image>
+                <view class='jz'>删除</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="flex-row tjdz">
+  <view class="flex-grow-1 pa_l">
+    <navigator class="btn btn-red" style='background:{{color}}' url="bjdz">新增地址</navigator>
+  </view>
+  <!-- <view class="flex-grow-1 pa_l">
+    <button bindtap="getWechatAddress" class="btn btn-green">微信添加</button>
+  </view> -->
+</view>

@@ -1,0 +1,19 @@
+<!--pages/personal/testcenter/index.wxml-->
+<view class="container">
+  <swiper-case id='Swiper' content="{{Swiper}}"></swiper-case>
+  <view class='rzmain'>
+  <block wx:for='{{rzarr}}'>
+    <view wx:if="{{item.show}}" class="weui-cell" bindtap='tzxq' data-index='{{index}}'>
+      <view class="weui-cell__hd">
+        <image class='wc-hdimg' mode='aspectFit' src="{{item.src}}"></image>
+      </view>
+      <view class="weui-cell__bd fon_32 fon_wei">{{item.name}}</view>
+      <view class="weui-cell__ft flex-row flex-y-center">
+        <view style='color:{{color}}'>{{item.typename}}</view>
+        <image class='wc-ftimg' wx:if="{{item.type=='1'}}" mode='aspectFit' src="{{imgsrc}}/wechatimg/testcenter/testt.png"></image>
+        <image class='wc-ftimg' wx:if="{{item.type=='2'}}" mode='aspectFit' src="{{imgsrc}}/wechatimg/testcenter/testx.png"></image>
+      </view>
+    </view>
+  </block> 
+  </view>
+</view>

@@ -1,0 +1,15 @@
+.copimg {
+  min-width: 174rpx;
+  width: 174rpx;
+  height: 174rpx;
+  overflow: hidden;
+}
+.mar_t_5{
+  margin-top: 5rpx;
+}
+.btn-lqxq,.btn-qhx{
+  border:1rpx solid #ddd;
+  padding: 7rpx 12rpx;
+  border-radius: 10rpx;
+  min-width: 140rpx;
+}

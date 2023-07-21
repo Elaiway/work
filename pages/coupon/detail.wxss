@@ -1,0 +1,65 @@
+page{
+  background: #DDE4EA !important;
+}
+.bgimg{
+  width: 750rpx;
+  height: 460rpx;
+}
+.mar-trbl{
+  margin: -100rpx 30rpx 0 30rpx;
+  border-radius:30rpx; 
+}
+.mar-tlr{
+  margin:20rpx 30rpx 0 30rpx;
+}
+.pades{
+  padding:11px 8px !important;
+}
+.mar_b60{
+  margin: 0 60rpx;
+}
+.imgheight{
+  height: 137rpx;
+}
+.wleft{
+  width: 120rpx;
+}
+.wright{
+  width: 100rpx;
+}
+.bgy{
+  background-color:#FFE100;
+}
+.mar_r50{
+  margin-right: 50rpx;
+}
+.titbg{
+  background:#F3F7FA;
+}
+.normal{
+  font-weight: normal;
+}
+.bg-whidth{
+  width: 115rpx;
+  height: 68rpx;
+  border-radius: 35rpx;
+}
+.bg-img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.nameBox{
+  height: 138rpx;
+}
+.img-con{
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.main-box{
+   position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}

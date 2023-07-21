@@ -1,0 +1,26 @@
+/* pages/personal/integral/index.wxss */
+.walletBalance {
+  padding: 40rpx 0;
+}
+.qdtab-v {
+  padding: 20rpx 100rpx 0;
+}
+.qdtab {
+  padding: 5rpx 20rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid #fff;
+}
+.wuxcell {
+  width: 85vw;
+}
+.rankcellhd {
+  width: 15vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.rankcelljp{
+  width: 60rpx;height: 60rpx;
+}

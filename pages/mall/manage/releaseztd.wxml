@@ -1,0 +1,42 @@
+<!--pages/mall/manage/releaseztd.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+<view class='container'>
+  <view class="weui-cells">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">联系人</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name='linkName' placeholder-class='fon_28' value="{{params.linkName}}" class="weui-input" placeholder="请输入联系人" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">电话号码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name='linkTel' placeholder-class='fon_28' value="{{params.linkTel}}" class="weui-input" placeholder="请输入电话号码" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">选择位置</view>
+      </view>
+      <view bindtap='chooseLocation' class="weui-cell__bd weui-select">
+        <input name='address' value='{{params.address}}' placeholder-class='fon_28' class="weui-input" disabled='true' placeholder="请选择" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">详细地址</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input name='detailedAddress' value='{{params.detailedAddress}}' placeholder-class='fon_28' class="weui-input" placeholder="请输入详细地址" />
+      </view>
+    </view>
+  </view>
+  <view class='foot-buttont mar_t'>
+    <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">添加自提地点</button>
+  </view>
+</view>
+</form>

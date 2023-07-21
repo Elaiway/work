@@ -1,0 +1,14 @@
+.container{
+  padding: 0 10rpx;
+}
+.scimg-box {
+  width: 33.3%;
+  margin-top: 30rpx;
+  box-sizing: border-box;
+}
+.scimg {
+  width: 220rpx;
+  height: 220rpx;
+  margin: 0 auto;
+  border-radius: 6px;
+}

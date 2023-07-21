@@ -1,0 +1,54 @@
+<view class="container after-navbar">
+  <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+    <view class="pa_20">
+    <blcok wx:for="{{postList}}" wx:key="{{item.id}}">
+      <layout-one bindtap='goDetail' data-id='{{item.id}}' is-last="true" after-left="true" no-pad='true' header='{{header}}' footer='{{footer}}' body-src='{{item.showImgs}}' body="{{layoutBodyOne}}" class-name='mar_b'>
+        <view slot='header-bd' class='wid flex-x-bt'>
+          <view class='flex-y-center'>
+            <text class='color_9 fon_24'>{{item.createdAt}} 发布</text>
+          </view>
+          <view style='color:{{color}}'>
+            <text wx:if="{{params.type=='1'}}">{{statusArray[1]}}</text>
+            <text wx:elif="{{params.type=='2'}}">{{statusArray[2]}}</text>
+            <text wx:elif="{{params.type=='3'}}">{{statusArray[3]}}</text>
+            <text wx:else>{{item.tips}}</text>
+          </view>
+        </view>
+        <view slot="body-bd-f" class="flex-x-bt">
+          <view class='hydlnr_2'>
+            <text>{{item.title}}</text>
+          </view>
+        </view>
+        <view slot="body-bd-s" class="flex-x-bt mar_t_10">
+          <view class='flex-y-center'>
+            <text class='fon_32 wei mar_r_10' style='color:{{color}}'>￥{{item.rushPrice}}</text>
+            <text class='fon_24 color_9 t-d-l'>￥{{item.originalPrice}}</text>
+          </view>
+        </view>
+         <view slot="body-bd-t" class="flex-x-bt mar_t_10">
+          <view class='flex-row'>
+            <text class='iconfont icon-shalou mar_r_10' style='color:{{color}}'></text>
+            <text class='fon_24 color_9'>结束时间：<text style='color:{{color}}'>{{item.endTime}}</text></text>
+          </view>
+        </view>
+        <!-- <view slot="body-ft" class='flex-col-end'>
+          <view class='fon_30'>￥{{item.money}}</view>
+          <view class='fon_24 color_9 mar_t_10'>X{{item.num}}</view>
+        </view> -->
+        <view slot='footer-bd' class='wid flex-x-bt'>
+          <view class='color_9 fon_24'>已抢 {{item.salesNum||0}} 份</view>
+          <view class='flex-y-center'>
+            <view class='text-btnf mar_l30' style='background:{{color}}' catchtap='clickBtn' data-id='{{item.id}}' data-field='detail'>抢购详情</view>
+            <view class='text-btn mar_l30' catchtap='clickBtn' data-id='{{item.id}}' data-field='edit'>操作/编辑</view>
+          </view>
+        </view>
+      </layout-one>
+    </blcok>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+  <!-- action组件 -->
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">{{xzname}}</i-button>
+</i-action-sheet>
+</view>
+<foot-nav color='{{color}}' page-type='managerushbuy' />

@@ -1,0 +1,23 @@
+<view class="proList">
+	<scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
+		<view wx:for="{{typelist}}" class='basepadding br-b-e'>
+			<view class='flex-row flex-y-center'>
+				<view class='flex-g-1 flex-y-center'>
+					<view class='mar_r'>{{item.userName}}</view>
+					<wux-rater slot="footer" default-value="{{ item.star }}" font-size="{{ 15 }}" disabled />
+				</view>
+				<view class='flex-g-0 fon_24 color_9'>{{item.createdAt}}</view>
+			</view>
+			<view class='mar_t'>{{item.body}}</view>
+			<view class='flex-raw mar_t'>
+				<view wx:for="{{item.img}}" wx:for-item="imgitem" bindtap='previewImage2' data-url='{{imgitem.url}}' data-urls='{{item.img}}' class='comment'>
+					<image mode='aspectFill' class='image_all br-r-10' src='{{imgitem.url}}'></image>
+				</view>
+			</view>
+		</view>
+		<view style="text-align: center;margin: 10px;">
+			<view wx:if="{{loading}}">加载中...</view>
+			<view wx:elif="{{!loading}}">没有更多了</view>
+		</view>
+	</scroll-view>
+</view>

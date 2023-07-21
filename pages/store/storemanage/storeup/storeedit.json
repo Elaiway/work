@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "text-area": "/dist/public/textarea/index",
+    "wux-upload": "/dist/wux-weapp/upload/index",
+    "ts-info": "/dist/public/tsinfo/index",
+    "agree-box": "/dist/public/agreebox/index",
+    "h-title": "/dist/public/h-title/index",
+    "wux-radio-group": "/dist/wux-weapp/radio-group/index",
+    "upload-video": "/dist/public/uploadvideo/index",
+    "Swiper": "/dist/public/swiper/index",
+    "wux-popup": "/dist/wux-weapp/popup/index",
+    "show-pay": "/dist/public/showpay/index"
+  }
+}

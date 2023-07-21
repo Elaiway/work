@@ -1,0 +1,12 @@
+<view wx:if="{{storelist.length}}" class='ba_f' style='margin-top:{{content.topMargin}}'>
+  <view class='pa_15_30_0'>
+    <view class='fon_26'>POPULAR BUSINESS</view>
+    <wux-cell padding='0' url='/pages/store/storemain/storemain' is-last='true' is-link='true' tftsize='34' tclass='wei color_0' title="{{content.infoTitle||'商家推荐'}}" extra='更多' />
+  </view>
+  <view class='flex-row o-x-s pa_t30'>
+    <view wx:for="{{storelist}}" wx:key="id" bindtap='storeinfo' data-id='{{item.id}}' class='flex-g-0 w-210 mar_l pad_30 br-r-10 b-s'>
+      <image class='hot-seller-img br-r-20' src='{{item.storeLogo[0].url}}'></image>
+      <view class='mar_t wei gobyndsingle'>{{item.storeName}}</view>
+    </view>
+  </view>
+</view>

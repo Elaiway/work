@@ -1,0 +1,39 @@
+/* dist/iview-weapp/modal/modal.wxss */
+@import "/app.wxss";
+.i-modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.i-modal-mask-show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.i-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* width: 85%; */
+  z-index: 1000;
+  overflow: hidden;
+  border-radius: 20rpx;
+  transition: all 0.2s;
+  transform: translate3d(-50%, -50%, 0) scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.i-modal-show {
+  visibility: visible;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+  opacity: 1;
+}

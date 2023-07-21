@@ -1,0 +1,48 @@
+<!--dist/public/foot_menu/foot-dl.wxml-->
+<view wx:if='{{type==1}}' class='footer_menu flex-row'>
+  <view class='flex-grow-1 flex-row'>
+    <block wx:for="{{content.menu}}" wx:key="name">
+      <view style="color:{{item.active?content.color:''}}" class='fon_28 color_6 footer_menuv flex-center-col' wx:if="{{!item.hide}}" wx:key="*this" bindtap='onTap' data-item='{{item}}'>
+        <text class='footer_menuimg iconfont {{item.icon}}'></text>
+        <!-- <image class='footer_menuimg' mode='aspectFit' src='{{item.img}}'></image> -->
+        <view class='fon_26'>{{item.name}}</view>
+      </view>
+    </block>
+  </view>
+  <view class='flex-grow-0 flex-center-col color_f' bindtap='onTap' data-item='{{content.main}}' style='background:{{content.color}};width:{{width}}%' wx:if="{{content.right}}">
+    <view class='fon_30'>{{content.main.name}}</view>
+    <view class='fon_28'>{{content.main.cName}}</view>
+  </view>
+</view>
+<view wx:elif="{{type==2}}" class='footer_menu flex-row' style='height:{{content.height}}rpx'>
+  <view class='flex-grow-1 flex-row'>
+    <block wx:for="{{content.menu}}" wx:key="name">
+      <view style="color:{{item.active?content.color:''}}" class="{{content.border?'cellr':''}} fon_28 color_6 flex-1 {{content.direction}}" wx:if="{{!item.hide}}" wx:key="*this" bindtap='onTap' data-item='{{item}}'>
+        <text class='iconfont {{item.icon}}'></text>
+        <!-- <image class='footer_menuimg' mode='aspectFit' src='{{item.img}}'></image> -->
+        <view class='fon_26 {{content.nameClass}}'>{{item.name}}</view>
+      </view>
+    </block>
+  </view>
+  <block wx:if='{{!content.style}}'>
+    <view class='flex-grow-0 flex-center-col color_f' bindtap='onTap' data-item='{{content.mainTwo}}' style='background:{{content.color}};width:{{content.mainTwo.width}}%;opacity: {{content.mainTwo.opacity}};' wx:if="{{content.mainTwo}}">
+      <view class='fon_30'>{{content.mainTwo.name}}</view>
+      <view class='fon_28'>{{content.mainTwo.cName}}</view>
+    </view>
+    <view class='flex-grow-0 flex-center-col color_f' bindtap='onTap' data-item='{{content.main}}' style='background:{{content.color}};width:{{width}}%' wx:if="{{content.right}}">
+      <view class='fon_30'>{{content.main.name}}</view>
+      <view class='fon_28'>{{content.main.cName}}</view>
+    </view>
+  </block>
+  <block wx:elif='{{content.style==2}}'>
+    <view class='flex-x-bt pad_20' style='width:{{width}}%'>
+      <view bindtap='onTap' data-item='{{content.mainTwo}}' class='jbyjbtn pa_15_30 ba-lg-f7f1'>{{content.mainTwo.name}}</view>
+      <view bindtap='onTap' data-item='{{content.main}}' class='jbyjbtn pa_15_30 ba-lg-f8f8'>{{content.main.name}}</view>
+    </view>
+  </block>
+  <block wx:elif='{{content.style==3}}'>
+    <view class='flex-x-bt pad_20' style='width:{{width}}%'>
+      <view bindtap='onTap' data-item='{{content.main}}' class="jbyjbtn pa_18_90 ba-lg-ff1e fon_30">{{content.main.name}}</view>
+    </view>
+  </block>
+</view>

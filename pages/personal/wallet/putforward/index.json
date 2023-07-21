@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "agree-box": "/dist/public/agreebox/index"
+    }
+}

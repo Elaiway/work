@@ -1,0 +1,21 @@
+<view class='container'>
+  <view class='ba_f'>
+    <wux-cell-group>
+      <block wx:for="{{postList}}" wx:key="*this">
+        <wux-cell tftsize='26' lftsize='26' class='wux-class' tclass="color_3 mar_b_10" title="{{item.creatTime}}" label="订单号：{{item.orderNum}}">
+          <view slot='header' class='flex-y-center'>
+            <text class="iconfont mar_r fon_44 {{item.mode==1?'icon-weixin':item.mode==2?'icon-zhifubaox':item.mode==3?'icon-yinxingqia':''}}" style="color:{{item.mode==1?'#04D102':item.mode==2?'#009FE8':item.mode==3?'#F8A911':''}}"></text>
+          </view>
+          <view slot='footer' class='mar_r'>
+            <view class='fon_32'>
+              <view class="mar_b_10" style="color:{{color}}">￥{{item.applyMoney}}</view>
+              <view class="color_9 fon_26">{{item.status==1?'审核中':item.status==2?'已通过':item.status==3?'已拒绝':''}}
+              </view>
+            </view>
+          </view>
+        </wux-cell>
+      </block>
+    </wux-cell-group>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

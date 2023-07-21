@@ -1,0 +1,13 @@
+<view class='hot-seller-ind'>
+    <view class='wrap'>
+        <view class="list {{content.pictureWithTextList.length>3?'animation':''}}">
+            <view class="hot-seller-item rel" wx:for="{{content.pictureWithTextList}}" wx:key="*this" bindtap='storeinfo' data-entry="{{item.entry}}">
+                <image class='hot-seller-img' src="{{item.url}}"></image>
+                <view class='ab storeName'>
+                    <view class='whfull ab storeNamev1'></view>
+                    <view class='whfull ab storeNamev2 color_f fon_26 t_c gobyndsingle'>{{item.text}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

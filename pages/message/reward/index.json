@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "show-pay": "/dist/public/showpay/index"
+    }
+}

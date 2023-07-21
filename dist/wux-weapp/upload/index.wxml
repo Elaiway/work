@@ -1,0 +1,75 @@
+<view wx:if="{{type=='1'}}" class="extra-class weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+        <view wx:if="{{htitle!=''||tipstext!=''}}" class="weui-uploader__hd">
+          <view class="weui-uploader__title">{{htitle}}
+            <text class='tiptitle'>{{tiptitle}}</text>
+          </view>
+          <view class="weui-uploader__info">{{tipstext}}</view>
+        </view>
+        <view class="wux-upload {{ listType ? 'wux-upload--' + listType : '' }} {{ disabled ? 'wux-upload--disabled' : '' }}">
+          <view class="wux-upload__files">
+            <block wx:if="{{ listType === 'picture-card' && showUploadList && fileList }}">
+              <block wx:for="{{ fileList }}" wx:for-item="file" wx:key="uid">
+                <view class="wux-upload__file {{ file.status ? 'wux-upload__file--' + file.status : '' }}" data-file="{{ file }}" data-index="{{ index }}" bindtap="onPreview">
+                  <image mode='aspectFill' class="wux-upload__thumb" src="{{ file.url }}" />
+                  <view class="wux-upload__remove" data-file="{{ file }}" data-index="{{ index }}" catchtap="onRemove" wx:if="{{ showRemoveIcon }}"></view>
+                </view>
+              </block>
+            </block>
+            <!-- <view class="wux-upload__select" bindtap="onSelect">
+              <view class="wux-upload__button">
+                <slot></slot>
+              </view>
+            </view> -->
+            <view class="weui-uploader__input-box" wx:if="{{fileList.length<count}}">
+              <view class="weui-uploader__input" bindtap="onSelect"></view>
+            </view>
+          </view>
+        </view>
+        <!-- <view class="weui-uploader__info">{{fileList.length}}/{{count}}</view> -->
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{type=='2'}}" class="extra-class weui-cells weui-cells_after-title">
+  <view class='head-upload-bg' style='background:{{color}}'></view>
+  <view class='head-upload-bd'>
+    <!-- 单图 -->
+    <block wx:if="{{count==1}}">
+      <!-- 选了图片 -->
+      <view wx:if="{{fileList.length<count}}" bindtap="onSelect" class='head-upload-bdtop flex-center'>
+        <text class='iconfont icon-ai-camera fon_60' style='color:{{color}}'></text>
+      </view>
+      <block wx:else>
+        <view class='head-upload-bdtop' wx:for="{{ fileList }}" wx:for-item="file" wx:key="uid">
+          <view class="image_all rel" data-file="{{ file }}" data-index="{{ index }}" bindtap="onPreview">
+            <image mode='aspectFill' class="image_all" src="{{ file.url }}" />
+            <view class="wux-upload__remove" data-file="{{ file }}" data-index="{{ index }}" catchtap="onRemove" wx:if="{{ showRemoveIcon }}"></view>
+          </view>
+        </view>
+      </block>
+    </block>
+    <!-- 多图选择图片 -->
+    <view wx:else bindtap="onSelect" class='head-upload-bdtop flex-center'>
+      <text class='iconfont icon-ai-camera fon_60' style='color:{{color}}'></text>
+    </view>
+    <view class="weui-uploader__info">{{tipstext}}</view>
+  </view>
+  <!-- 多图 -->
+  <block wx:if="{{count>1}}">
+    <view class="wux-upload {{ listType ? 'wux-upload--' + listType : '' }} {{ disabled ? 'wux-upload--disabled' : '' }} basepadding">
+      <view class="wux-upload__files">
+        <block wx:if="{{ listType === 'picture-card' && showUploadList && fileList }}">
+          <block wx:for="{{ fileList }}" wx:for-item="file" wx:key="uid">
+            <view class="wux-upload__file {{ file.status ? 'wux-upload__file--' + file.status : '' }}" data-file="{{ file }}" data-index="{{ index }}" bindtap="onPreview">
+              <image mode='aspectFill' class="wux-upload__thumb" src="{{ file.url }}" />
+              <view class="wux-upload__remove" data-file="{{ file }}" data-index="{{ index }}" catchtap="onRemove" wx:if="{{ showRemoveIcon }}"></view>
+            </view>
+          </block>
+        </block>
+      </view>
+    </view>
+  </block>
+</view>

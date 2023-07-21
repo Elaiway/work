@@ -1,0 +1,145 @@
+/* pages/index/infomation/index.wxss */
+/* @import "/pages/wxParse/wxParse.wxss"; */
+
+.postLogo {
+    width: 100rpx;
+    height: 100rpx;
+    /* background: orange; */
+    border-radius: 50%;
+}
+.icon-you {
+    right: 0;
+    height: 26rpx;
+}
+.classification {
+    padding: 5rpx 20rpx;
+    border-radius: 4rpx;
+}
+.infoImgs {
+    overflow: hidden;
+    display: flex;
+    display: -webkit-flex;
+    /* justify-content: space-between; */
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.infoImgsimg {
+    width: 100%;
+    /* margin: 0 auto 20rpx; */
+}
+
+.classification_label {
+    padding: 0rpx 10rpx;
+    border-radius: 6rpx;
+    margin-right: 20rpx;
+}
+
+.give_thumbsv1 {
+    width: 30%;
+}
+
+.give_thumbsv2 {
+    width: 70%;
+}
+
+.thumbs_numimg {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    /* background: red; */
+    margin-left: 10rpx;
+}
+
+.publisher {
+    padding: 20rpx 0;
+}
+
+.border_top {
+    border-top: 2rpx solid #f9f9f9;
+}
+
+.publisher_icon {
+    display: block;
+    /* margin: 0 auto 0; */
+}
+
+.publisherv1 {
+    width: 12%;
+    height: 70rpx;
+    border-right: 2rpx solid #f9f9f9;
+}
+
+.publisherv2 {
+    width: 88%;
+    /* height: 70rpx; *//* line-height: 70rpx; */
+}
+
+.reportv1 {
+    width: 90%;
+}
+
+.reporttext {
+    top: 25%;
+    right: 20rpx;
+}
+
+.advertising {
+    width: 100%;
+}
+
+.advertisingimg {
+    width: 100%;
+    height: 300rpx;
+}
+
+.container {
+    width: 100%;
+    padding-bottom: 140rpx;
+    overflow-x: hidden;
+}
+
+.spread {
+    width: 100%;
+    height: 130rpx;
+    position: fixed;
+    bottom: 0;
+}
+
+.spread button {
+    width: 90%;
+    height: 90rpx;
+    line-height: 90rpx;
+    margin-top: 20rpx;
+}
+
+video {
+    width: 100%;
+    height: 300rpx;
+}
+
+.postEnd {
+    width: 150rpx;
+    height: 120rpx;
+    right: 151rpx;
+    top: 37rpx;
+}
+
+.commend {
+    width: 100%;
+    height: 260rpx;
+}
+
+.redEnvelopes{
+    width: 224rpx;
+    height: 224rpx;
+    /* background: orange; */
+    position: fixed;
+    z-index: 5000;
+    right: 20rpx;
+    bottom: 200rpx;
+}
+.redEnvelopesimg{
+    width: 100%;
+    height: 100%;
+}

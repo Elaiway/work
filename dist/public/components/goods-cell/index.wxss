@@ -1,0 +1,16 @@
+/* dist/public/components/goods-cell/index.wxss */
+@import "/app.wxss";
+.bgr{
+  background: #FFF0F1;
+}
+.jycg{
+  /* top: 260rpx; */
+  width: 170rpx;
+  height: 150rpx;
+  right: 50rpx;
+  top: 60rpx;
+  z-index: 999;
+}
+.org{
+  color:#FF4E00
+}

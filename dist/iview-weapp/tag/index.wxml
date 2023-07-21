@@ -1,0 +1,5 @@
+<view 
+    class="i-class i-tag" style='border-color:{{borderColor}};color:{{color}};background:{{bgColor}};font-size:{{fontSize}}rpx;' 
+    bindtap="tapTag">
+    <slot></slot>
+</view>

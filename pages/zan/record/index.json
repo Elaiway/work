@@ -1,0 +1,7 @@
+{
+  
+  "usingComponents": {
+    "load-more": "/dist/public/storecell/loading"
+  },
+  "navigationBarTitleText": "活动记录"
+}

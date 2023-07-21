@@ -1,0 +1,14 @@
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <view class='container padding-bottom'>
+    <view class='flex-row flex-wrap'>
+      <block wx:for="{{photoList}}">
+        <view class='flex-center scimg-box'>
+          <image mode='aspectFill' class='scimg' bindtap='previewImage' id="{{item.url}}" src="{{item.url}}"></image>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='foot-button btn-btm'>
+    <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">我知道了</button>
+  </view>
+</form>

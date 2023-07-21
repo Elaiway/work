@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "swiper-case": "/dist/public/swiper/index",
+    "i-modal": "/dist/iview-weapp/modal/index",
+    "agree-box": "/dist/public/agreebox/index",
+    "i-action-sheet": "/dist/iview-weapp/action-sheet/index",
+    "i-button": "/dist/iview-weapp/button/index",
+    "show-pay": "/dist/public/showpay/index",
+    "van-popup":"/dist/vant-w/popup/index",
+    "wux-cell": "/dist/wux-weapp/cell/index"
+  }
+}

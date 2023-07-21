@@ -1,0 +1,8 @@
+/* dist/public/components/form/dd-radio.wxss */
+@import "/app.wxss";
+.weui-label{
+  min-width: 200rpx;
+}
+.hxrd{
+  padding: 15rpx 0rpx 15rpx 40rpx; 
+}

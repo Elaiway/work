@@ -1,0 +1,7 @@
+/* dist/public/textarea.wxss */
+@import "/assets/styles/weui.wxss";
+.weui-cell{
+  font-size: 28rpx;
+  color: #999;
+  background: none;
+}

@@ -1,0 +1,33 @@
+<view class='fon_28 color_9'>
+  <view class='ba_f pa_l bor-btm flex-row flex-y-center' style='height:8vh;'>
+    <text class='middle iconfont icon-dingwei1 fon_40' style='color:{{color}}'></text>
+    <text class='middle color_6'>当前站点：{{city}}</text>
+  </view>
+  <view class='flex-row'>
+    <scroll-view class='flex-grow-0 sv-left flex-col color_6' style='height:92vh;' scroll-y scroll-into-view="{{toType}}">
+      <block wx:for="{{openl}}" wx:key="id">
+        <view id="type{{index}}" data-index="{{index}}" class="menu-item {{catalogSelect==index?'ba_f':''}}" bindtap="selectMenu" style="color:{{catalogSelect==index?color:''}}">
+          <view class='menu-itemv t_c'>{{item.name}}</view>
+          <view class='menu-itemb' style="background:{{color}}" wx:if="{{index==catalogSelect}}"></view>
+        </view>
+      </block>
+    </scroll-view>
+    <scroll-view class='flex-grow-1 sv-right ba_f' scroll-y="true" style="height:92vh;" scroll-into-view="{{toView}}" bindscroll="{{scroll}}">
+      <block wx:for="{{openr}}" wx:key="id" wx:for-index="pindex" wx:for-item="pitem">
+        <view id="order{{pindex}}" class='sv-rightv'>
+          <view class='sv-rightvh'>{{pitem.name}}</view>
+          <view class='sv-rightvb' wx:for="{{pitem.son}}" wx:key="id" wx:for-index="psindex" wx:for-item="psitem">
+            <view class='pa_t'>
+              <view class='dis_in wid_50'>{{psitem.name}}</view>
+            </view>
+            <view class='hot_city'>
+              <block wx:for="{{psitem.son}}" wx:key="id" wx:for-item="pssitem">
+                <view class='citys color_3 t_c ba_f' data-psname="{{psitem.name}}" data-psid="{{psitem.id}}" data-pssname="{{pssitem.name}}" data-pssid="{{pssitem.id}}" bindtap='citys'>{{pssitem.name}}</view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

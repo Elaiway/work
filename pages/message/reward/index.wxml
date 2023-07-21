@@ -1,0 +1,13 @@
+<view class='reward'>
+    <view class='users pa_t mar_t'>
+        <image mode='aspectFill' class='mar_t usersimg' src='{{userinfo.portrait}}'></image>
+        <view class='t_c fon_34 pa_t mar_t'>{{userinfo.userName}}</view>
+        <view class='t_c fon_28 color_9'>优质内容 值得打赏</view>
+    </view>
+    <block>
+        <view class="reward_money dis_in" style="color:{{index==ac_index?color:'#333'}};border:2rpx solid {{index==ac_index?color:'#e5e5e5'}}" wx:for="{{price}}" wx:key="*this" bindtap='reward' data-index="{{index}}" data-price='{{item}}'>{{item}}元</view>
+    </block>
+    <button style='background:{{color}}' bindtap='giveMoney' class='rewardbtn color_f fon_34'>打赏</button>
+    <view class='color_9 fon_28 t_c mar_t pa_t'>打赏是表示鼓励而对内容的无偿赠与</view>
+</view>
+<show-pay closepop='closepop' bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

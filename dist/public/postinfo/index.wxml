@@ -1,0 +1,133 @@
+<block wx:for="{{content}}" wx:key="index">
+<view class='container flex ba_f pa bor_bottom' wx:if="{{index<max_length}}" bindtap='infomation' data-id='{{item.postId}}'>
+    <view class='flex-grow-0 users'>
+        <image class='usersimg' src="{{(item.customPortrait!='[]'&&item.customPortrait)||item.portrait||'/assets/images/personal/mrtx.png'}}"></image>
+        <block wx:if="{{show_operation==1&&isLogin==1&&!black&&userinfo.id==item.userId&&(item.status=='1'||item.status==null)}}">
+            <view wx:if="{{phoneStatus}}">
+                <view wx:if="{{istop && !isios}}" class='setTop dis_in mar_t t_l fon_26 color_6' catchtap='isTop' data-id='{{item.postId}}'>
+                <text>置顶</text>
+            </view>
+            </view>
+            <view class='setTop mar_t dis_in t_l fon_26 mar_t color_6' catchtap='refresh' data-id='{{item}}'>
+                <text>刷新</text>
+            </view>
+            <view class='setTop mar_t t_l dis_in fon_26 mar_t color_6' catchtap='moreoption' data-item='{{item}}' data-id='{{item.postId}}'>
+                <text>更多</text>
+            </view>
+        </block>
+    </view>
+    <view class='flex-grow-1 postInfo rel'>
+        <view class='wid rel flex-row'>
+            <view class='flex-grow-1 flex-row flex-y-center flex-wrap'>
+            <view class='fon_28 dis_in postTitle gobyndsingle color_6'>{{item.customUser||item.userName||'神秘人'}}</view>
+            <text class='mar_l fon_24 istop' wx:if="{{item.isTop=='1'}}">置顶</text>
+            <image wx:if="{{item.isAuth=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/grrz.png'></image>
+            <image wx:if="{{item.isEnsure=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/bzj.png'></image>
+            <!-- <text class='mar_l fon_24 isred' style='background:#EA4909' wx:if="{{item.isRedBag=='1'}}"></text>
+            <image wx:if="{{item.isRedBag=='1'}}" class='bagimg ab ud' mode='aspectFill' src='{{imgsrc}}/wechatimg/receive/postbag.gif'></image> -->
+            </view>
+            <view class='flex-grow-0'>
+              <view class='make_phonetext fon_24' style='color:{{color}}'>{{item.typeName}}</view>
+            </view>
+        </view>
+        <view class='postLabel fon_24 mar_t_10'>
+            <text class='postLabeltext' wx:for="{{item.tag}}" wx:key="index" style='border:2rpx solid {{item.color}};color:{{item.color}}'>{{item.name}}</text>
+        </view>
+        <view class='fon_30 mar_t_10'>
+            <!-- <text style='color:{{color}}'>#{{item.typeName}}</text> -->
+            <rich-text class="{{item.showft!=index?'hydlnr':''}}" nodes="{{item.body}}"></rich-text>
+            <!-- <text class="{{item.showft!=index?'hydlnr':''}}">{{item.body}}</text> -->
+        </view>
+        <view wx:if="{{item.showft!=index}}" data-index='{{index}}' catchtap='fulltext' class='t_l fon_30 mar_t_10' style='color:{{color}}'>全文</view>
+        <block wx:if="{{item.showft==index}}">
+        <view class='fon_30 mar_t_10'><text style='color:{{color}}'>区域：</text>{{item.cityName||'全国'}} {{item.zoneName||''}}</view>
+        <view class='mar_t_10'><text style='color:{{color}}'>联系人：</text>{{item.linkMan||item.customUser}}</view>
+        <view class='flex-row mar_t_10'>
+        <view class='make_phone' style='background:{{color}}' data-tel="{{item.linkTel}}">
+            <text class='middle iconfont color_f icon-dianhua fon_26'></text>
+            <text class='mar_l color_f post-info-phone-tet fon_26'>拨打电话</text>
+        </view>
+        </view>
+        </block>
+        <view class='postImg mar_t'>
+            <block wx:for="{{item.media}}" wx:key="index" wx:for-item="mediaitem">
+                <block wx:if="{{mediaitem.type=='img'&&mediaitem.url!=imgurl}}">
+                    <image lazy-load='true' class="{{index>0?'mar_img':''}} postImgimg" catchtap="previewImage" data-postid="{{item.postId}}" data-url="{{mediaitem.url}}" wx:if="{{index<3}}" src='{{mediaitem.url}}'></image>
+                </block>
+                <!-- 视频封面 -->
+                <block wx:if="{{mediaitem.type=='video'&&mediaitem.preview}}">
+                    <view class="postImgimg">
+                      <image lazy-load='true' class="image_all" data-postid="{{item.postId}}" data-url="{{mediaitem.url}}" src='{{mediaitem.preview}}'></image>
+                      <image class='posterimg ab udlr' src='/assets/images/img/poster.png'></image>
+                    </view>
+                </block>
+            </block>
+        </view>
+        <!-- <view class='fon_26 color_9' wx:if="{{show_operation==1}}">
+            <text style='color:{{color}}'>{{item.distance}}</text>
+        </view> -->
+        <view class='color_9 statistics rel'>
+            <view class='dis_in statistics_l'>
+                <text class='middle fon_24'>{{item.browse}}浏览</text>，
+                <!-- <text class='middle fon_26 mar_l'>{{item.love}}人点赞</text> -->
+                <!-- <text class='middle fon_26 ' wx:if="{{item.comment!=null}}">{{item.comment.length}}人评论</text>， -->
+                <text class='middle fon_24 '>{{item.share}}分享</text>，
+                <text class='middle fon_24 '>{{item.creatTime}}发布</text>
+                <text class='middle fon_24 ' wx:if="{{item.distance!=''&&show_distance=='1'}}">，~{{item.distance}}</text>
+            </view>
+            <!-- 左右滑动动画 -->
+            <view class='dis_in t_r rel statistics_zan' wx:if="{{show_zan=='1'}}">
+                <text class='middle iconfont color_f icon-dia fon_30' style='color:#9FD9F4' catchtap='slide' data-index="{{index}}" data-id="{{item.postId}}"></text>
+                <view class="ab navigation {{sele_id==item.postId?'animation':'animation1'}} color_f">
+                    <view class='ab wlth navigationv1'></view>
+                    <view class='ab wlth navigationv2 t_l'>
+                        <text class='iconfont icon-dianzan1 fon_40 middle' catchtap='zan' data-id='{{item.postId}}' data-index="{{index}}"></text>
+                        <text class='fon_26 middle' catchtap='zan' data-id="{{item.postId}}" data-index="{{index}}">赞</text>
+                        <text class='mar_l iconfont icon-dia fon_22 middle'></text>
+                        <text class='fon_26 middle' catchtap='comment' data-id='{{item.postId}}'>评论</text>
+                        <!-- <text class='mar_l iconfont icon-xiaoxi2 fon_40 middle'></text>
+                        <text class='fon_26 middle'>私信</text> -->
+                    </view>
+                </view>
+            </view>
+            <view class='dis_in t_c ab fon_28 storeCollection' wx:if="{{show_zan=='0'&&show_collection=='1'}}" catchtap='cancel_collection' data-id="{{item.postId}}" data-index="{{index}}">
+                取消收藏
+            </view>
+            <view class='dis_in t_c ab fon_24 storeCollection' style='color:#e5e5e5;border:2rpx solid #e5e5e5;' wx:if="{{show_zan=='0'&&show_states=='1'&&item.status=='0'}}">
+                <text>待审核</text>
+            </view>
+            <view class='dis_in t_c ab fon_24 storeCollection' wx:if="{{show_zan=='0'&&show_states=='1'&&item.status=='1'}}">
+                <text>审核通过</text>
+            </view>
+        </view>
+        <view wx:if="{{show_commend==1}}">
+            <view class='triangle_border_up' wx:if="{{item.comment.length>0||item.dz.length>0}}"></view>
+            <view class='wid pa_l' style='background:#F7F7F7;border-radius:8rpx;'>
+                <view class='fon_26 pa_t_10 color_9 gobyndsingle fabulous bor_bottom' wx:if="{{item.dz.length>0}}">
+                    <text class='dis_in'>赞：{{item.dz.length||0}}人</text>
+                    <block wx:for="{{item.dz}}" wx:key="index">
+                    <image lazy-load='true' class='dis_in fabulousimg' wx:if="{{index<11}}" src='{{item.portrait}}'></image>
+                    </block>
+                </view>
+                <view>
+                    <view class='pa_t_10' wx:if="{{item.comment.length>0}}">
+                        <block wx:for="{{item.comment}}" wx:key="index">
+                        <view class='fon_26 gobyndsingle' wx:if="{{index<3}}">
+                            <text style='color:#446986'>{{item.userName||item.customUser}}：</text>
+                            <rich-text class='dis_in color_6' nodes="{{item.body}}"></rich-text>
+                        </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='ab lr postEnd' wx:if="{{item.isEnd=='1'}}">
+            <image class='postEndimg' mode='aspectFill' src='{{imgsrc}}/wechatimg/img/isend.png'></image>
+        </view>
+    </view>
+</view>
+</block>
+<i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem1">
+    <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+</i-action-sheet>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

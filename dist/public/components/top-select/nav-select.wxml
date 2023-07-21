@@ -1,0 +1,12 @@
+<!--dist/public/components/top-select/nav-select.wxml-->
+<view class='flex-row pa_t ba_f br-t-e'>
+  <block wx:for="{{content}}" wx:key='name'>
+    <view bindtap='select' data-index='{{index}}' class='flex-center flex-1 cellr'>
+      <text style="color:{{active==index?color:''}}">{{item.name}}</text>
+      <text style="color:{{active==index?color:''}}" wx:if="{{item.icon}}" class='iconfont {{item.icon}} mar_l_10'></text>
+      <image mode='aspectFit' wx:if="{{item.img}}" src='{{item.img}}' class="mar_l_10 {{imgtoggle?'sortimg':'sortimg1'}}"></image>
+    </view>
+  </block>
+</view>
+<van-popup show="{{popupshow}}" position="top" custom-class="top" bind:close="togglePopup">
+</van-popup>

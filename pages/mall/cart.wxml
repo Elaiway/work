@@ -1,0 +1,14 @@
+<!--pages/mall/cart.wxml-->
+<view class='container after-navbar'>
+  <view class='carttop flex-bt' style='background:{{color}};'>
+    <view>共{{totalNum}}件宝贝</view>
+    <view bindtap='clearAll' wx:if="{{carList.length}}">清空</view>
+  </view>
+  <view class="cartmain {{carList.length?'pa_l30':''}}">
+    <block wx:for="{{carList}}" wx:for-item="carItem" wx:key='storeId'>
+      <goods-card bind:deletecart='deletecart' bind:numchange='numchange' content="{{carItem}}" config="{{goodscardconfig}}"/>
+    </block>
+  </view>
+  <load-more bg-color="transparent" nodata="{{carList.length==0}}" mygd='{{true}}' />
+</view>
+<foot-nav color='{{color}}' page-type='mall' />

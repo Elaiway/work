@@ -1,0 +1,79 @@
+/* dist/public/auxiliary/jobhunt/job-hunt.wxss */
+@import "/app.wxss";
+.bardius{
+  border-radius: 10rpx;
+}
+.tagad{
+  border-radius: 10rpx;
+  padding:10rpx;
+}
+.bgblue{
+  background: #618AFF;
+}
+.bgsku{
+  background: #20D4D0;
+}
+.bgorange{
+  background:#FFB131;
+}
+.bororange{
+  border:1rpx solid #FF7123;
+  background: #fff;
+  color: #FF7123;
+}
+.borbgblue{
+  border:1rpx solid #7594B6;
+  background: #fff;
+  color: #7594B6;
+}
+.cred{
+  color:#FF3838;
+}
+.patb{
+  padding: 20rpx 20rpx 30rpx 20rpx;
+}
+.i-tags{
+  margin-right: 10rpx;
+}
+.apply{
+  background: linear-gradient(to right,#FF3838,#FF5D05);
+  padding:5rpx 20rpx;
+  min-width: 110rpx;
+  border-radius: 40rpx;
+}
+.mar_r_5{
+  margin-right: 5rpx;
+}
+.pad_10{
+  padding: 10rpx 0;
+}
+.qxsc{
+  background: #fff;
+  color:#FF3838;
+  border:1rpx solid #FF3838;
+}
+.btn{
+  padding: 5rpx 15rpx;
+  border-radius: 10rpx;
+}
+.bgl{
+  background: #618AFF;
+}
+.bgr{
+  background: #FF3838;
+}
+.orange{
+  color:#FFB131;
+}
+.relt{
+  position: relative;
+}
+.hiddenellip{
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-top: 4rpx;
+  padding-bottom: 8rpx;
+  margin-right: 10rpx;
+}

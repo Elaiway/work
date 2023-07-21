@@ -1,0 +1,9 @@
+.container{
+  height: 100%;
+}
+.borr{
+  border-right: 1rpx solid #eee;
+}
+.mar_tbt{
+  margin: 10rpx 0;
+}

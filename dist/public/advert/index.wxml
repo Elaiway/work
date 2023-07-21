@@ -1,0 +1,7 @@
+<swiper class="swiper" autoplay="true" interval="3000" duration="500" circular="true" >
+    <block wx:for="{{content}}" wx:key="url">
+        <swiper-item>
+            <image catchtap='jump' data-type="{{item.type}}" data-src="{{item.route}}" style="width:100%;height:100%" src="{{item.url}}" class="slide-image" />
+        </swiper-item>
+    </block>
+</swiper>

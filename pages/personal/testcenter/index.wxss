@@ -1,0 +1,15 @@
+/* pages/personal/testcenter/index.wxss */
+.rzmain{
+  margin-top: -70rpx;
+  padding: 0 30rpx;
+}
+.weui-cell{background: #fff;border-radius: 10rpx;padding: 50rpx 40rpx;margin-bottom: 30rpx;}
+.weui-cell::before{
+  border: none;
+}
+.wc-hdimg{
+  width: 80rpx;height: 80rpx; 
+}
+.wc-ftimg{
+  width: 30rpx;height: 30rpx;margin-left: 20rpx;
+}

@@ -1,0 +1,8 @@
+/* dist/public/components/form/dd-label.wxss */
+@import "/app.wxss";
+.text-btn{
+  color: #999;
+  border: 1rpx solid #bbb;
+  margin: 0 20rpx 20rpx 0;
+  padding:8rpx 20rpx;
+}

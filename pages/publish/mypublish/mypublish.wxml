@@ -1,0 +1,11 @@
+<!--pages/store/storemain/storedetail.wxml-->
+<view class="container">
+  <view class='fixedtop'>
+    <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+</wux-tabs>
+  </view>
+   <view class='postList'>
+   <Postinfo show_states="1" istop="{{postConfig.top!='close'}}" show_distance="0" show_commend="0" show_collection="0" show_operation="1" show_zan="0" color="{{color}}" id="Postinfo" isTop="{{isTop}}" bind:newData='refreshtzData' bind:slide="slide" content="{{postList}}" />
+   <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}'/>
+   </view>
+</view>

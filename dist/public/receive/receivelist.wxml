@@ -1,0 +1,15 @@
+<!--dist/public/receive/receivelist.wxml-->
+<view class='extra-class mar_t'>
+  <wux-cell ftcolor='#999' url="{{content.url}}" isLast='true' is-link thumb="{{imgsrc}}/wechatimg/receive/redbag.png" extra="查看大家的手气">
+    <view slot='bodyer' class='flex-row flex-y-center color_3'>
+      <view class='color_rb fon_32 wei'>￥{{content.money}}</view>
+      <view class='fon_24 mar_l'>已抢
+        <text class='color_rb'>{{content.num}}</text>/{{content.redNum}}份</view>
+    </view>
+  </wux-cell>
+  <wux-cell-group>
+    <block wx:for='{{content.list}}'>
+      <wux-cell wx:if="{{index<4}}" ftcolor='#FF0000' boradius='50%' thumb="{{item.portrait}}" title="{{item.userName}}" extra="￥{{item.money}}"></wux-cell>
+    </block>
+  </wux-cell-group>
+</view>

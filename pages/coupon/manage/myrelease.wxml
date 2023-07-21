@@ -1,0 +1,42 @@
+<view class="container after-navbar">
+  <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  <view class="ba_f mar_t" wx:for="{{postList}}" wx:key="{{item.id}}" bindtap="clickdetail" data-id='{{item.id}}'>
+    <view class="pad_20 br-b-e flex-bet fon_26">
+      <view class="flex-grow-1 color_9">{{item.createdAt}} 发布</view>
+      <view class="flex-grow-0" style="color:{{color}}">{{item.tips}}</view>
+    </view>
+    <view class="br-b-e ba_f flex pa">
+      <view class="flex-grow-0">
+        <image class="copimg" mode='aspectFill' src="{{item.logo}}"></image>
+      </view>
+      <view class="flex-grow-1 flex-row fon_24 mar_l">
+        <view class='wid'>
+          <view class='flex-row flex-y-bottom'>
+            <view class="fon_28 gobyndsingle">
+              <!-- <block-text color='{{color}}' class-name='pa_5_15 br-r-30 mar_r_10 fon_24' text='优惠券' /> -->
+              {{item.title}}</view>
+          </view>
+          <view class="flex-bet">
+            <view class="flex flex-g-1 flex-y-center">
+              <view class='fon_38' style="color:{{color}}">￥{{item.money}}元</view>
+              <view class="fon_26 mar_l_10 color_9">满{{item.condition}}元可用</view>
+            </view>
+          </view>
+           <view class="fon_26 color_9 mar_t_5 gobyndsingle">
+            <text class="iconfont icon-yingyeshijian fon_28 mar_r_10"></text>
+            结束时间：<text style="color:{{color}}">{{item.endTime}}</text></view>
+        </view>
+      </view>
+    </view>
+    <view class="pad_20 flex-bet fon_26">
+      <view class="flex-grow-1 color_9">已领取<text style="color:{{color}}">{{item.receiveNum}}</text>份</view>
+      <view class="btn-qhx t_c color_f" style="background:{{color}};border-color:{{color}}" catchtap='clickBtn' data-id='{{item.id}}' data-field='detail'>领取详情</view>
+      <view class="flex-grow-0 btn-lqxq t_c mar_l" catchtap='clickBtn' data-info='{{item}}' data-field='edit'>操作编辑</view>
+    </view>
+  </view>
+   <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  <!-- action组件 -->
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">{{xzname}}</i-button>
+</i-action-sheet>
+</view>

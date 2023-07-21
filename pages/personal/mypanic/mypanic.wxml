@@ -1,0 +1,10 @@
+<!--pages/personal/mypanic/mypanic.wxml-->
+<view class="container">
+  <view class='fixedtop bor_bottom'>
+    <wux-tabs scroll='{{tabs.length>4}}' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+</wux-tabs>
+  </view>
+   <view class='postList'>
+   <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}'/>
+   </view>
+</view>

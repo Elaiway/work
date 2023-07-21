@@ -1,0 +1,97 @@
+<!--pages/yellow/sett.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container'>
+    <swiper-case wx:if="{{Swiper}}" content="{{Swiper}}"></swiper-case>
+    <h-title bdname="基本信息"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6">商家名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='name' placeholder-class='fon_28' value="{{params.name}}" class="weui-input color_6" placeholder="请输入商家名称" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{isShowQuyu=='1'}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6">所属区域</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='sssq' mode="multiSelector" bindcolumnchange="bindsqCChange" value="{{sqIndex}}" range="{{sqMarr}}" range-key="{{'name'}}">
+            <view class="weui-select color_6 fon_28">{{sqMarr[0][sqIndex[0]].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6 fon_28">所属行业</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='sshy' mode="multiSelector" bindcolumnchange="bindhyCChange" value="{{hyIndex}}" range="{{hyMarr}}" range-key="{{'name'}}">
+            <view class="weui-select color_6 fon_28">{{hyMarr[0][hyIndex[0]].name}}，{{hyMarr[1][hyIndex[1]].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <!-- <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6 fon_28">现在时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <dd-time-picker name='time' value='{{params.time}}' bind:change='timePickerChange'/>
+        </view>
+      </view> -->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='tel' value='{{params.tel}}' type='number' placeholder-class='fon_28' class="weui-input color_6" placeholder="请输入联系电话" />
+        </view>
+        <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6">详细地址</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='address' value='{{params.address}}' placeholder-class='fon_28' class="weui-input color_6 fon_28" placeholder="请点击定位" />
+        </view>
+        <view bindtap='chooseLocation' class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-dizhi1 fon_40' style='color:{{color}}'></text>
+          <view style='color:{{color}}' class='mar_l'>定位</view>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="商家图片"></h-title>
+    <block wx:for="{{uploadArr}}">
+      <wux-upload wx:if="{{item.show}}" tipstext='{{item.tips}}' htitle='{{item.title}}' extra-class='wuxupload' count="{{item.count}}" list-type="picture-card" file-list="{{ item.fileList }}" data-idx="{{index}}" bind:change="uploadChange">
+      </wux-upload>
+    </block>
+    <block wx:if="{{yellowConfig.introduce=='open'}}">
+      <h-title bdname="其他信息"></h-title>
+      <text-area name='introduce' value='{{params.introduce}}' bind:textblur='textareachange' maxlength='200' placeholder='请输入商家介绍' extra-class='bor-tb'></text-area>
+    </block>
+    <block wx:if="{{!isEdit}}">
+      <h-title bdname="发布类型"></h-title>
+      <view class="weui-cells weui-cells_after-title">
+        <view wx:if="{{yellowConfig.openCountry=='open'}}" class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">发布城市</view>
+          </view>
+          <view class="weui-cell__bd">
+            <wux-radio-group typesetting='2' radioColor="{{color}}" radioarr="{{lcradioarr}}" name="lcradio" value="{{ lcradiovalue }}" bind:change="lcrdioonChange">
+            </wux-radio-group>
+          </view>
+        </view>
+      </view>
+      <h-title bdname="请选择套餐" color="{{color}}" ftname='版本区别'></h-title>
+      <wux-radio-group radioColor="{{color}}" radioarr="{{rztimearr}}" name="rzradio" value="{{ rzradiovalue }}" bind:change="rzradioonChange">
+      </wux-radio-group>
+    </block>
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='入驻协议条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='foot-button'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">确定{{rztimearr[rzradiovalue].money>0&&!isEdit?'支付￥'+rztimearr[rzradiovalue].money:''}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

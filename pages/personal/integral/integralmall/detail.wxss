@@ -1,0 +1,24 @@
+/* pages/personal/integral/integralmall/detail.wxss */
+
+.i-tags {
+  min-width: 180rpx;
+}
+.rindex {
+  width: 90rpx;
+  height: 90rpx;
+  line-height: 30rpx;
+  top: 35%;
+  right: 30rpx;
+  opacity: 0.7;
+  z-index: 1;
+  border-radius: 50%;
+}
+.rindextxt {
+  width: 70rpx;
+  height: 70rpx;
+  line-height: 32rpx;
+}
+.swiper{
+  height: 550rpx;
+  width: 100%;
+}

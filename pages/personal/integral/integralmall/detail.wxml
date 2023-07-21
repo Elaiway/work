@@ -1,0 +1,89 @@
+<!--pages/personal/integral/integralmall/detail.wxml-->
+<view class="container after-navbar">
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' content="{{Swiper}}"></swiper-case>
+  </view>
+  <view class='rindex ab fon_24 t_c flex-x-center ba_0 flex-y-center' bindtap='goIndex'>
+    <text class='rindextxt color_f'>返回\n首页</text>
+  </view>
+  <view class='ba_f pad_20 fon_26 color_9'>
+    <view class='flex-row'>
+      <view style='color:{{color}}' class='flex-grow-1 fon_34 color_3'>￥{{goodInfo.money}}+{{goodInfo.score}}积分</view>
+      <view class='flex-grow-0'>已有{{goodInfo.exchangeNum}}人兑换成功</view>
+    </view>
+    <view class='t_through'>原价:{{goodInfo.originalPrice}}元</view>
+    <view class='mar_t flex-row'>
+      <view class='flex-grow-1 fon_30 color_3'>{{goodInfo.name}}</view>
+      <!-- <view class='flex-grow-0 flex-col flex-x-center mar_l'>
+        <text class='iconfont icon-fenxiang fon_40' style='color:{{color}}'></text>
+        <view class='fon_24'>分享</view>
+      </view> -->
+    </view>
+  </view>
+  <!-- <view class='ba_f pad_20 mar_t flex-row flex-y-center'>
+    <i-tag i-class="i-tags" font-size="28" border-color="#FF3A56" bg-color='#fff' color='#FF3A56'>
+      积分优惠购
+    </i-tag>
+    <view class='flex-grow-1 mar_l'>使用{{item.score}}积分可享受优惠100元</view>
+  </view> -->
+  <!-- 商家信息 -->
+  <!-- <view class='ba_f pad_20 mar_t bor-btm flex-center'>
+    <text class='iconfont icon-gonggao fon_40' style='color:{{color}}'></text>
+    <view class='color_3 mar_l'>商家信息</view>
+  </view>
+  <view class='ba_f pad_20 color_6 fon_28'>
+    <view class=''>商家名称：商家名称</view>
+    <view class='mar_t'>营业时间：10:00-21:00</view>
+    <view class='flex-center mar_t'>
+      <view class='flex-grow-1'>商家电话：11111111111</view>
+      <view style='background:{{color}}' class='flex-grow-0 attention mar_l'>拨打</view>
+    </view>
+    <view class='flex-center mar_t'>
+      <view class='flex-grow-1'>武汉市洪山区街道口阜华大厦2802</view>
+      <view style='background:{{color}}' class='flex-grow-0 attention mar_l'>导航</view>
+    </view>
+  </view> -->
+  <!-- 商品须知 -->
+  <!-- <view class='ba_f pad_20 mar_t bor-btm flex-center'>
+    <text class='iconfont icon-mingpian fon_40' style='color:{{color}}'></text>
+    <view class='color_3 mar_l'>商品须知</view>
+  </view>
+  <view class='ba_f pad_20 color_6 fon_28'>
+    <view class='flex-center mar_t'>
+      <view class='yuan flex-grow-0'></view>
+      <view class='flex-grow-1'>使用222积分可抵扣100元</view>
+    </view>
+    <view class='flex-center mar_t'>
+      <view class='yuan flex-grow-0'></view>
+      <view class='flex-grow-1'>该优惠不可与其他优惠同享</view>
+    </view>
+  </view>
+  <view class='mar_t'>
+    <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+    </wux-tabs>
+  </view> -->
+  <!-- 商品详情 -->
+  <view class='ba_f pad_20 mar_t bor-btm flex-center'>
+    <text class='iconfont icon-mingpian fon_40' style='color:{{color}}'></text>
+    <view class='color_3 mar_l'>商品详情</view>
+  </view>
+
+  <view class='shopInfo pa_t'>
+    <r-text content="{{goodInfo.body}}"></r-text>
+  </view>
+  <!-- 推荐商品 -->
+  <view class='ba_f pad_20 mar_t bor-btm flex-center'>
+    <text class='iconfont icon-fenlei fon_40' style='color:{{color}}'></text>
+    <view class='color_3 mar_l'>推荐商品</view>
+  </view>
+  <view class="proList">
+    <integral-good content="{{recommend}}" />
+  </view>
+</view>
+<!-- <view class='mar_t'>
+  <load-more bg-color="transparent" nodata="{{recommend.length==0&&isget}}" mygd='{{mygd}}' />
+</view> -->
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl bind:footclick='footclick' width='68' content="{{foot_menu}}" />
+</block>
+<share closepop='closepop' onshare="{{onshare}}" />

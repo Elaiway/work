@@ -1,0 +1,90 @@
+<!--pages/vip/giftdetails.wxml-->
+<view class="container padding-bottom">
+  <layout-one bindtap='goodinfo' data-id="{{detailInfo.id}}" is-last='true' after-right='true' body-src='{{url}}{{detailInfo.logo}}' body="{{layoutBodyOne}}" class-name=''>
+    <view slot="body-bd-f" class="flex-x-bt">
+      <view class='hydlnr_2'>
+        <text>{{detailInfo.storeName}}</text>
+      </view>
+    </view>
+    <view style='color:{{color}}' slot="body-bd-s" class="mar_t_10">
+      <text class="iconfont icon-huo mar_r_10"></text>{{detailInfo.view}}</view>
+    <view slot="body-bd-t" class="flex-x-bt fon_24 color_9 mar_t_10">营业时间:{{detailInfo.businessStartTime}}-{{detailInfo.businessEndTime}}</view>
+    <view slot="body-ft" class="flex-col flex-x-end hei">
+      <view class="flex-col t_c br-r-10" style='border:1rpx solid {{color}};'>
+        <text style='width: 150rpx;background:{{color}}' class="color_f pa10">剩余礼包</text>
+        <text class="pa_15_20 fon_30" style='color:{{color}}'>{{detailInfo.num}}份</text>
+      </view>
+    </view>
+  </layout-one>
+  <view class='pad_20 ba_f'>{{detailInfo.title}}</view>
+  <!-- 会员卡提示 -->
+  <navigator wx:if="{{system.openVip && !userinfo.isVip}}" url='/pages/vip/index' class="ba_f9 basepadding flex-x-bt">
+    <view class="flex-y-center">
+      <view class="pa_5_10 color_f mar_r br-r-10" style='background:{{color}}'>
+        <text class="iconfont icon-tianchongxing- mar_r_10"></text>
+        <text class="fon_24">超级会员卡</text>
+      </view>
+      <view>还不是会员?</view>
+    </view>
+    <view style='color:{{color}}'>
+      <text>立即开通</text>
+      <text class="ljkt-jt" style='border-color:{{color}}'></text>
+    </view>
+  </navigator>
+  <!-- 商家信息 -->
+  <view class='ba_f mar_t'>
+    <view class='flex-x-center pad_20 br-b-e'>
+      <text style='color:{{color}}' class='iconfont icon-shangdian fon_36 mar_r_10'></text>
+      <text class='fon_30'>商家信息</text>
+    </view>
+    <wux-cell isLast='true' tftsize='28' bind:click='maketTel'>
+      <view slot='bodyer'>
+        <view class='flex-y-center'>
+          <text slot='bodyer' class='iconfont icon-dingwei fon_36 mar_r_10' style='color:{{color}}'></text>
+          <text>{{detailInfo.storeName}}</text>
+        </view>
+      </view>
+      <text slot='footer' class='iconfont icon-dianhuahover fon_46 color_rb'></text>
+    </wux-cell>
+    <wux-cell isLast='true' tftsize='28' bind:click='openAddress' title="{{detailInfo.address}}">
+      <text slot='footer' class='iconfont icon-qunfengfabushangxian fon_46' style='color:{{color}}'></text>
+    </wux-cell>
+  </view>
+  <!-- 商家信息 -->
+  <view class='ba_f mar_t'>
+    <view class='flex-x-center pad_20 br-b-e'>
+      <text style='color:{{color}}' class='iconfont icon-gonggao fon_36 mar_r_10'></text>
+      <text class='fon_30'>商品须知</text>
+    </view>
+    <wux-cell isLast='true'>
+      <view slot='bodyer' class='flex-row color_6'>
+        <view class='weui-label'>可领取用户</view>
+        <view>{{detailInfo.vipTypeName}}可领取此礼包</view>
+      </view>
+    </wux-cell>
+    <wux-cell isLast='true'>
+      <view slot='bodyer' class='flex-row color_6'>
+        <view class='weui-label'>结束时间</view>
+        <view>{{detailInfo.endTime}}</view>
+      </view>
+    </wux-cell>
+  </view>
+  <!-- 优惠说明 -->
+  <view class='ba_f mar_t color_6'>
+    <view class='flex-x-center pad_20 br-b-e'>
+      <text style='color:{{color}}' class='iconfont icon-yufukuanyufukuanjil fon_36 mar_r_10'></text>
+      <text class='fon_30'>优惠说明</text>
+    </view>
+    <r-text content="{{detailInfo.body}}"></r-text>
+    <!-- <view class='mar_t' wx:if='{{detailInfo.detailImgs.length!=0}}'>
+        <image mode='widthFix' class='image_all' wx:for='{{goodsInfo.detailImgs}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{url}}{{item.url}}'></image>
+      </view> -->
+  </view>
+</view>
+<t-modal ismr='true' width='70' mdoalclose="mdoalclose" mdoaltoggle='{{qrcodetoggle}}'>
+  <view class='flex-center basepadding ba_f' style='height:70vw'>
+    <image style="width: 80%;height: 80%;" src="data:image/png;base64,{{hxm}}"></image>
+  </view>
+  <button class='submit-btn bor-a0 fon_30 color_f t_c' style='background:{{color}}' bindtap='qrcodeclose'>确 定</button>
+</t-modal>
+<foot-dl bind:footclick='footclick' content="{{foot_menu}}" />

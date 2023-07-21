@@ -1,0 +1,3 @@
+.marginLr{
+  padding: 0 25rpx !important;
+}

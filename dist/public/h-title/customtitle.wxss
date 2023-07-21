@@ -1,0 +1,8 @@
+/* dist/public/textarea.wxss */
+@import "/app.wxss";
+.pa_t{
+  padding: 15rpx 0;
+}
+.wz {
+    margin: 0 30rpx;
+}

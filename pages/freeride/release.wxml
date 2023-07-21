@@ -1,0 +1,49 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="container ba_f">
+    <view class="cartype flex-bet fon_30 pa">
+      <view>乘车类型：</view>
+      <view class='typebtn flex flex-y-center fon_26 bor-c rich-text br-r-30 color_9'>
+        <view wx:for="{{cartype}}" wx:key="" bindtap='oncartype' data-index="{{index}}" class="typetext pa_l flex-y-center flex-1 br-r-30" style="background:{{index==current ? color : ''}};color:{{index==current?'#fff':''}}">{{item.name}}</view>
+      </view>
+    </view>
+    <view class='main-box ba_f rel color_3 fon_30'>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{fieldArr}}" wx:key="">
+          <view class="weui-cell {{item.type=='textarea'?'':'weui-cell_input'}}" hidden='{{item.hidden}}'>
+            <view class="weui-cell__hd">
+              <text wx:if="{{item.hdt}}" class="circular color_f fon_28 t_c mar_r {{item.className}}">{{item.hdt}}</text>
+              <text wx:else class='iconfont fon_30 color_9 mar_r {{item.className}}'></text>
+              <view class="weui-label color_6">{{item.hdn}}：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input wx:if="{{item.type=='input'}}" name='{{item.name}}' placeholder-class='fon_28' value="{{params[item.value]}}" class="weui-input color_6" placeholder="{{item.placeholder}}" />
+              <dd-time-picker wx:if="{{item.type=='date'}}" name='{{item.name}}' value='{{params[item.value]}}' bind:change='timePickerChange' data-field='{{item.value}}' />
+              <picker wx:if="{{item.type=='time'}}" mode="time" name='{{item.name}}' value="{{params[item.value]}}" start="00:01" end="23:59" bindchange="bindTimeChange">
+                <view class="weui-select color_6 fon_28">
+                  {{params[item.value]}}
+                </view>
+              </picker>
+            </view>
+            <wux-radio-group wx:if="{{item.type=='radio'}}" typesetting='2' radioColor="{{color}}" radioarr="{{lcradioarr}}" name="lcradio" value="{{ lcradiovalue }}" bind:change="lcrdioonChange">
+            </wux-radio-group>
+          </view>
+          <text-area wx:if="{{item.type=='textarea'}}" name='{{item.name}}' value='{{params[item.value]}}' bind:textblur='textareachange' maxlength='200' placeholder='{{item.placeholder}}'></text-area>
+        </block>
+      </view>
+    </view>
+    <view class="pa_l" wx:if="{{tags.length}}">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class='iconfont icon-biaoqian2 fon_30 color_9 mar_r'></text>
+          <view class="weui-label color_6">选择标签：</view>
+        </view>
+      </view>
+      <dd-label bind:change='labelChange' labels='{{tags}}' labelsDefault="{{labelsDefault}}" color="{{color}}"/>
+    </view>
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='顺风车发布协议' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='foot-button'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">{{releaset>0&&!isEdit?'需支付￥'+releaset+'元':'确认发布'}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

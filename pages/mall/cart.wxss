@@ -1,0 +1,9 @@
+/* pages/mall/cart.wxss */
+.carttop{
+  height: 200rpx;
+  padding: 50rpx 30rpx;
+  color: #fff;
+}
+.cartmain{
+  margin-top: -70rpx;
+}

@@ -1,0 +1,45 @@
+<view class='container'>
+  <view class='color_f walletBalance t_c' style='background:{{color}};'>
+    <view class='fon_60'>￥{{balancemony.totalMoney}}</view>
+    <view class='fon_28'>总收入</view>
+    <view class="flex-x-center mar_t50">
+      <view class="flex-1">
+        <view class='fon_30'>￥{{balancemony.surplusCost}}</view>
+        <view class='fon_24'>可提现</view>
+      </view>
+      <view class="flex-1">
+        <view class='fon_30'>￥{{balancemony.totalCost}}</view>
+        <view class='fon_24'>累计提现</view>
+      </view>
+    </view>
+  </view>
+  <view class='color_6 ba_f fon_30 mar_t30'>
+    <navigator url='/pages/store/storemanage/storebalance/storecash' class='dis_in pa_t t_c wid_50 bor_right'>
+      <view>
+        <text class='middle iconfont color_9 icon-tixian fon_44' style='color:{{color}}'></text>
+        <text class='middle mar_l'>我要提现</text>
+      </view>
+    </navigator>
+    <navigator url='/pages/store/storemanage/storebalance/storecashlist' class='dis_in pa_t t_c wid_50'>
+      <view>
+        <text class='middle iconfont color_9 icon-jilu1 fon_38' style='color:{{color}}'></text>
+        <text class='mar_l middle'>提现明细</text>
+      </view>
+    </navigator>
+  </view>
+  <view class='mar_t30 ba_f'>
+    <view class="blbanner br-b-e">
+      <view class="fon_28 color_9">收入项目</view>
+    </view>
+     <view class='mar_l mar_r pa_tb10 flex-row br-b-e' wx:for="{{projectArr}}" wx:key="" bindtap='proRecord' data-item="{{item.item}}">
+      <view class='flex-grow-1 dis_in flex-y-center'>
+        <text class='middle iconfont color_9 fon_38 mar_lr10 icon_color {{item.icon}}'></text>
+        <text class='fon_26 color_6'>{{item.title}}</text>
+      </view>
+      <view class='flex-grow-0 t_r flex-y-center'>
+        <text class='fon_26 color_9 mar_r_10'>总收入：{{item.money}}</text>
+        <text class='iconfont color_9 icon-you fon_26'></text>
+      </view>
+    </view>
+  </view>
+</view>

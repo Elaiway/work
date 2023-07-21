@@ -1,0 +1,33 @@
+<view class='pa_l ba_f'>
+  <view class="commend_list pa_t {{index>0?'bor_bottom':''}}" wx:if="{{index<comment_list}}" wx:for="{{content}}" wx:key="*this">
+    <view class='commend_listv1 dis_t'>
+      <image mode='aspectFill' src="{{item.portrait||'http://attachments.gfan.com/forum/attachments2/201406/24/2100449vczscccxwj9caz4.jpg'}}" class='user_logo'></image>
+    </view>
+    <view class='commend_listv2 dis_t'>
+      <view class='fon_30 color_0'>
+        <view style='color:#446986'>{{item.userName||'神秘人'}}</view>
+        <view class='fon_26 color_9'>{{item.tTime}}</view>
+      </view>
+      <view class='fon_28 color_0 mar_t'>
+        <rich-text nodes="{{item.body}}" class='hydlnrs'></rich-text>
+      </view>
+      <view class='reply fon_28 mar_t hydlnr_6' bindtap='open_reply' data-id="{{item.commentId}}">
+      <block wx:for="{{item.reply}}" wx:for-item="replys" wx:key="*this">
+        <view class='hydlnrs' wx:if="{{index<2}}">
+          <text style='color:#446986'>{{replys.replyUserName}}</text>
+          <text>回复</text>
+          <text style='color:#446986'>{{item.userName}}</text>
+          <text>：</text>
+          <text class='color_6'>{{replys.body}}</text>
+        </view>
+        </block>
+      </view>
+    </view>
+    <view class='pa_t'>
+      <view class='dis_in color_9 fon_26 wid_50' bindtap='open_reply' data-id="{{item.commentId}}">查看全部{{item.reply.length}}条回复</view>
+      <view class='dis_in color_9 fon_26 wid_50 t_r' bindtap='publish' data-name="{{item.userName}}" data-id="{{item.commentId}}" data-userid='{{item.userId}}'>
+        <text class='middle iconfont color_9 icon-xiaoxi1 fon_40'  wx:if="{{comment_close=='1'}}"></text>
+      </view>
+    </view>
+  </view>
+</view>

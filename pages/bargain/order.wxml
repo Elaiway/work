@@ -1,0 +1,37 @@
+<!--pages/mall/order.wxml-->
+<view class="container after-navbar">
+  <view class='fixedtop'>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="padding-top">
+    <blcok wx:for="{{postList}}" wx:key="{{item.id}}">
+      <layout-one bindtap='goDetail' data-id='{{item.bargainId}}' is-last="true" after-left="true" no-pad='true' footer='{{footer}}' body-src='{{url}}{{item.logo}}' body="{{layoutBodyOne}}" class-name='mar_b'>
+        <view slot="body-bd-f" class="flex-x-bt">
+          <view class='hydlnr_2'>
+            <text>{{item.title}}</text>
+          </view>
+        </view>
+        <view slot="body-bd-s" class="flex-x-bt mar_t_10 color_9">有效期至：{{item.endTime}}</view>
+        <view slot="body-bd-t" class="flex-x-bt mar_t_10">
+          <view class='flex-y-center'>
+            <text class='mar_r_10' style='color:{{color}}'>现价:￥{{item.money}}</text>
+            <text class='fon_24 color_9 t-d-l'>原价:￥{{item.price}}</text>
+          </view>
+        </view>
+        <view slot='footer-bd' class='wid flex-x-end'>
+          <view class='flex-y-center'>
+            <view wx:if="{{item.state == 1}}" class='text-btnf mar_l30' style='background:{{color}}' catchtap='clickBtn' data-info='{{item}}' data-field='jxkj'>继续砍价</view>
+            <view wx:if="{{item.state == 2  || (item.state <3 &&item.isFloor==1)}}" class='text-btnf mar_l30' style='background:{{color}}' catchtap='clickBtn' data-info='{{item}}' data-field='ljgm'>立即购买</view>
+            <view wx:if="{{item.state == 3 && item.delivery == 2}}" class='text-btnf mar_l30' style='background:{{color}}' catchtap='clickBtn' data-info='{{item}}' data-field='detail'>去核销</view>
+            <view wx:if="{{item.state == 4 && item.delivery == 1}}" class='text-btnf mar_l30' style='background:{{color}}' catchtap='clickBtn' data-info='{{item}}' data-field='qrsh'>确认收货</view>
+            <view wx:if="{{item.state == 5}}" class='text-btnf mar_l30 ba_9'>已使用</view>
+            <view wx:if="{{item.state == 6}}" class='text-btnf mar_l30 ba_9'>已过期</view>
+          </view>
+        </view>
+      </layout-one>
+    </blcok>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<!-- <show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay> -->
+<foot-nav color='{{color}}' page-type='bargain' />

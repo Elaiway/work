@@ -1,0 +1,34 @@
+<view class="container">
+  <view class='mar_t' wx:for="{{enrollList}}" wx:key="">
+    <view class="box-shadow ba_f mar-lrb basepadding flex-row color_3">
+      <view class="flex-grow-0 ">
+        <image class="iconw mar_t br-r-c" mode='aspectFill' src="{{item.portrait}}"></image>
+      </view>
+      <view class='flex-grow-1 mar-lr'>
+        <view class="fon_30">
+          <text>{{item.userName}}</text>
+        </view>
+        <view wx:if="{{item.enroll}}">
+        <block  wx:for="{{item.enroll}}" wx:for-item="enroll" wx:key="">
+          <view class="fon_24 color_9 padd-tb5">
+            <view>联系人<text>{{enroll.name}}</text>：<text>{{enroll.value}}</text></view>
+          </view>
+         </block>
+         </view>
+        <view class="fon_24 color_9 flex-row padd-tb5">
+          <view>报名人数：
+            <text style="color:{{color}}">{{item.num}}</text>人</view>
+          <view class="mar_l">支付金额：￥
+            <text style="color:{{color}}">{{item.money}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='flex-grow-0 flex-y-bt'>
+        <view class="iconfont icon-comments fon_44" style="color:{{color}}"></view>
+      </view> -->
+    </view>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

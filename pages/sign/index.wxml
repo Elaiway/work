@@ -1,0 +1,109 @@
+<!-- <at-form> -->
+<view class='container padding-bottom'>
+  <view class='qdhead'>
+    <image class='image_all' src='{{imgsrc}}/wechatimg/sign/bgimg.png'></image>
+    <view class="weui-cell qdcell">
+      <view class="weui-cell__hd mar_r">
+        <image class='tximg' style='width: 80rpx ;height: 80rpx;' src="{{userinfo.portrait}}"></image>
+      </view>
+      <view class="weui-cell__bd flex-col color_d">
+        <view>已连续签到
+          <text class='color_o fon_36 wei'>{{totalSignDay}}</text>天</view>
+        <view class='fon_26 color_c'>签满7天有机会获得
+          <text class='color_o'>额外礼包</text>
+        </view>
+      </view>
+      <view bindtap='tzphb' class="weui-cell__ft flex-center fon_28 phb" style='background:#4B4855'>
+        <image mode='aspectFit' class='imgsize30' src='{{imgsrc}}/wechatimg/sign/hg.png'></image>
+        <view class='mar_l_10 color_y'>排行榜</view>
+      </view>
+    </view>
+    <navigator url='/pages/extra/agreement?xyname=签到规则' class="weui-cell qdgz">
+      <view class="weui-cell__bd"></view>
+      <view class="weui-cell__ft weui-cell__ft_in-access fon_26 color_c">签到规则</view>
+    </navigator>
+  </view>
+  <view class='qdbd'>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image class='imgsize30' style='margin-right: 10rpx;' src="{{imgsrc}}/wechatimg/sign/jl.png"></image>
+      </view>
+      <view class="weui-cell__bd color_6 fon_32 wei">签到领奖励</view>
+      <!-- <view class="weui-cell__ft fon_26 color_3 flex-center">
+          <view>签到提醒</view>
+          <switch checked='true' class='mar_l_10' color='#ED7C54'></switch>
+        </view> -->
+    </view>
+    <view class='qdbdmain flex-row flex-wrap'>
+      <block wx:for="{{weeklist}}">
+        <view class='flex-center qd-box'>
+          <view class='qd-view flex-col flex-y-center fon_28'>
+            <view>{{item.name}}</view>
+            <view wx:if='{{item.istoday}}' class='qdtoday'>今天</view>
+            <view wx:if='{{item.istoday}}' class='qdtodayafter'></view>
+            <image mode='aspectFit' class='jfimg' src="{{imgsrc}}/wechatimg/sign/jb.png"></image>
+            <view class='color_o fon_28'>{{item.integral}}积分</view>
+            <view class="qdbq fon_26 {{item.type==1?'yiqiandao':''}}" style="background:{{item.type==4?'#d5d5d5':''}}" data-id="{{index}}" data-type='{{item.type}}' bindtap='onSign'>{{item.btnName}}</view>
+            <!-- <view wx:if='{{item.type==2}}' class='qdbq fon_26'>补签</view>
+              <view wx:if='{{item.type==3}}' class='qdbq fon_26'>签到</view>
+              <view wx:if='{{item.type==4}}' class='qddqd fon_26'>待签到</view>
+              <view wx:if='{{item.type==1||item.type==2}}' class='qdnone fon_26'>待签到</view> -->
+            <image wx:if='{{item.type==1}}' mode='aspectFit' class='qdztimg' src="{{imgsrc}}/wechatimg/sign/yqd.png"></image>
+            <image wx:if='{{item.type==2}}' mode='aspectFit' class='qdztimg' src="{{imgsrc}}/wechatimg/sign/wqd.png"></image>
+          </view>
+        </view>
+      </block>
+      <view class='flex-center qd-box'>
+        <view style='color:#E74635' class='qd-view flex-col flex-y-center fon_28 fullseven'>
+          <image mode='aspectFit' class='fullsevenimg' src="{{imgsrc}}/wechatimg/sign/fullseven.png"></image>
+          <view class='color_r wei'>签满7天</view>
+          <view class='color_r wei'>有惊喜</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='mar_t ba_f pa_l'>
+    <submenu content="{{submenu_0}}" />
+    <view class='flex-row flex-wrap'>
+      <block wx:for="{{qdflarr}}">
+        <view class='flex-center fl-box'>
+          <view class='flex-col flex-y-center fon_28'>
+            <image mode='aspectFit' class='flimg' src="{{item.img}}"></image>
+            <view class='color_6'>{{item.name}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='mar_t ba_f pa_l'>
+    <submenu content="{{submenu_1}}" />
+    <!-- <Swiper class='swiper' id='Swiper' bind:jump="jump" content="{{Swiper.config}}"></Swiper> -->
+    <view hidden="{{Swiper==null}}" class='rel'>
+        <swiper-case id='swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+      <view bindtap="goTasks" class="zhezhao ba_e ab"></view>
+    </view>
+  </view>
+</view>
+<!-- 签到提示框 -->
+<t-modal ismr='true' mdoalclose="mdoalclose" mdoaltoggle='{{mdoaltoggle}}'>
+  <view class='flex-center-col wid'>
+    <view class="flex-center-col {{acindex=='3'?'signmodal1':'signmodal'}} color_3">
+      <block wx:if="{{acindex=='1'}}">
+        <view class='fon_34'>确认补签吗？</view>
+        <view class='fon_28 mar_t'>
+          <text class='color_rb'>{{repairNum}}</text>积分/张 </view>
+        <image mode='aspectFit' class='bqkimg' src='{{imgsrc}}/wechatimg/sign/signbq.png'></image>
+        <view bindtap='qrgm' class='mar_t signbtn'>确认补签</view>
+      </block>
+      <block wx:if="{{acindex=='3'}}">
+        <image mode='aspectFit' class='qdcgimg' src='{{imgsrc}}/wechatimg/sign/qdcg.png'></image>
+        <view class='qdcg'>签到成功</view>
+        <view class='fon_28 mar_t'>恭喜你获得
+          <text class='color_rb'>{{monday}}</text>积分</view>
+        <view bindtap='mdoalclose' class='mar_t signbtn'>确 定</view>
+      </block>
+    </view>
+    <image bindtap='mdoalclose' mode='aspectFit' class='ximg' src='{{imgsrc}}/wechatimg/sign/ximg.png'></image>
+  </view>
+</t-modal>
+<!-- </at-form> -->

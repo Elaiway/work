@@ -1,0 +1,116 @@
+<!--dist/public/auxiliary/freeride/freeride-detail.wxml-->
+<view class="container">
+  <!--<<详情开始-->
+  <view wx:if="{{content}}" class='main-box ba_f rel color_3 fon_30'>
+    <wux-cell isLast='true' background='transparent' mode='aspectFill' imgw='100' imgh='100' boradius='50%' thumb="{{content.portrait}}">
+      <view class='fon_26 color_6' slot="bodyer">
+        <view class='flex-ra'>
+          <view class='fon_30 color_3 mar_b_10'>{{content.linkMan}}</view>
+        </view>
+        <view class="flex-row flex-bt">
+          <view class="flex-grow-1 flex-row">
+            <view wx:if="{{content.type=='2'}}" class="bgRed color_f padd mar_r_10">长期</view>
+            <view class="color_f padd flex-y-center {{content.name=='人找车'?'bgSku':'' || content.name=='车找人'?'bgOrange':'' || content.name=='货找车'?'bgYellow':'' || content.name=='车找货'?'bgBlue':''}}">{{content.name}}</view>
+          </view>
+          <view class="flex-grow-0 color_9 fon_28">{{content.createdAt}} 发布</view>
+        </view>
+      </view>
+    </wux-cell>
+    <view class="pad_20">
+      <block wx:for="{{content.data}}" wx:for-item="dataMsg" wx:for-index="msgindex">
+        <i-tag i-class="i-tags" i-class="borderRight" font-size="24" border-color="{{msgindex=='0'?'#FF6F20':''||msgindex=='1'?'#7594B6':''||msgindex=='2'?'#FF3838':''}}" color="{{msgindex=='0'?'#FF6F20':''||msgindex=='1'?'#7594B6':''||msgindex=='2'?'#FF3838':''}}">{{dataMsg}}</i-tag>
+      </block>
+    </view>
+    <seal wx:if="{{content.isGo == '1' && content.isTop == '2'}}" fache="{{true}}" right="50" top="10" />
+    <seal wx:if="{{content.isTop == '1'}}" zhiding="{{true}}" right="50" top="10" />
+    <view class='bor-top pa_l30'>
+      <view class="flex-row flex-y-center bor-btm pa_t">
+        <view>
+          <text class="circular color_f fon_26 t_c mar_r bgSku">起</text>
+        </view>
+        <view>{{content.startPlace}}</view>
+      </view>
+      <view class="flex-row flex-y-center bor-btm pa_t">
+        <view>
+          <text class="circular color_f fon_26 t_c mar_r bgRed">终</text>
+        </view>
+        <view>{{content.endPlace}}</view>
+      </view>
+      <view wx:if="{{content.name=='车找人' || content.name=='车找货'}}" class="flex-row flex-y-center bor-btm pa_t">
+        <view>
+          <text class="circular color_f fon_26 t_c mar_r bgYellow">经</text>
+        </view>
+        <view>{{content.wayAddress}}</view>
+      </view>
+      <view wx:if="{{content.name==null}}" class="flex-row flex-y-center bor-btm pa_t">
+        <text class='iconfont icon-wo fon_30 color_9 mar_r'></text>
+        <view>乘车人数：{{content.num}}人</view>
+      </view>
+      <view wx:if="{{content.name=='人找车'}}" class="flex-row flex-y-center bor-btm pa_t">
+        <text class='iconfont icon-wo fon_30 color_9 mar_r'></text>
+        <view>乘车人数：{{content.num}}人</view>
+      </view>
+      <view wx:if="{{content.name=='车找人'}}" class="flex-row flex-y-center bor-btm pa_t">
+        <text class='iconfont icon-wo fon_30 color_9 mar_r'></text>
+        <view>剩余座位：{{content.num}}个</view>
+      </view>
+      <view wx:if="{{content.name=='货找车'}}" class="flex-row flex-y-center bor-btm pa_t">
+        <text class='iconfont icon-jubao fon_30 color_9 mar_r'></text>
+        <view>货物信息：{{content.weight}}吨</view>
+      </view>
+      <view wx:if="{{content.name=='车找货'}}" class="flex-row flex-y-center bor-btm pa_t">
+        <text class='iconfont icon-jubao fon_30 color_9 mar_r'></text>
+        <view>车辆信息：{{content.weight}}辆</view>
+      </view>
+
+      <view class="flex-row flex-y-center bor-btm pa_t">
+        <text class='iconfont icon-yingyeshijian fon_30 color_9 mar_r'></text>
+        <view>出发时间：{{content.rideTime}}
+          <text wx:if="{{content.type=='2'}}">（每天）</text>
+        </view>
+      </view>
+      <block wx:if="{{content.type=='2'}}">
+        <view class="flex-row flex-y-center bor-btm pa_t">
+          <text class='iconfont icon-yingyeshijian fon_30 color_9 mar_r'></text>
+          <view>开始时间：{{content.startTime}}</view>
+        </view>
+        <view class="flex-row flex-y-center bor-btm pa_t">
+          <text class='iconfont icon-yingyeshijian fon_30 color_9 mar_r'></text>
+          <view>结束时间：{{content.endTime}}</view>
+        </view>
+      </block>
+      <view class="flex-row flex-y-top pa_t">
+        <text class='iconfont icon-bianjianxia fon_30 color_9 mar_r'></text>
+        <view>备注：{{content.other}}</view>
+      </view>
+    </view>
+  </view>
+  <!--详情结束>>-->
+  <!--浏览/收藏/分享-->
+  <wux-cell isLast='true' wux-class='mar_t_10'>
+    <view class='fon_26 color_3 flex-center flex-around' slot="bodyer">
+      <view class='flex-center-col'>
+        <view class='fon_32'>{{content.viewNum}}</view>
+        <view>
+          <text class='iconfont icon-huo fon_32 color_rb'></text>
+          <text class='mar_l_10'>浏览</text>
+        </view>
+      </view>
+      <view class='flex-center-col'>
+        <view class='fon_32'>{{content.followNum}}</view>
+        <view>
+          <text class='iconfont icon-shoucang1 fon_30'></text>
+          <text class='mar_l_10'>收藏</text>
+        </view>
+      </view>
+      <view class='flex-center-col'>
+        <view class='fon_32'>{{content.shareNum}}</view>
+        <view>
+          <text class='iconfont icon-fenxiang1 fon_30'></text>
+          <text class='mar_l_10'>分享</text>
+        </view>
+      </view>
+    </view>
+  </wux-cell>
+  <!--浏览/收藏/分享-->
+</view>

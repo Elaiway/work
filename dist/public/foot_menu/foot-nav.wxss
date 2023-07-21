@@ -1,0 +1,8 @@
+/* dist/public/auxiliary/foot-nav.wxss */
+@import "/app.wxss";
+.footicon{
+  font-size: 40rpx;
+  text-align: center;
+  width: 50rpx;
+  height: 50rpx;
+}

@@ -1,0 +1,21 @@
+/* pages/personal/testcenter/index.wxss */
+page{
+  background:#DB423A;
+}
+.rzmain{
+  position: absolute;top: 0;
+  width: 100%;
+  margin-top: 50rpx;
+  padding: 0 30rpx;
+}
+.weui-cell{background: #fff;border-radius: 10rpx;padding: 30rpx;margin-bottom: 20rpx;}
+.weui-cell::before{
+  border: none;
+}
+.wc-hdimg{
+  width: 100rpx;height: 100rpx;border-radius: 50%; 
+}
+.wc-ftimg{
+  width: 30rpx;height: 30rpx;margin-left: 20rpx;
+}
+.hdimg{width: 120rpx;height: 120rpx;border-radius: 50%;}

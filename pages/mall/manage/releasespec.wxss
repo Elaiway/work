@@ -1,0 +1,129 @@
+/* pages/yellow/sett.wxss */
+
+.spec-main {
+  background: #fff;
+}
+
+.spec-name-con {
+  padding: 20rpx 30rpx;
+}
+
+.weui-cell_input {
+  padding: 10rpx 0;
+}
+
+.spec-add-spec {
+  font-size: 26rpx;
+  background: #eee;
+  color: #fff;
+  width: 130rpx;
+  height: 50rpx;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.delete-icon {
+  background: #e60000;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 5rpx;
+  color: #fff;
+}
+
+.delete-icon .iconfont {
+  margin-top: 5rpx;
+}
+
+.spec-name-label {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.spec-name-label-main {
+  position: relative;
+  z-index: 0;
+  margin: 20rpx 30rpx 10rpx 10rpx;
+}
+
+.label {
+  width: 175rpx;
+  border: 1rpx solid #eee;
+  padding: 5rpx 20rpx;
+  border-radius: 10rpx;
+}
+
+.add-label {
+  width: 80rpx;
+  border: 1rpx solid #ddd;
+  color: #999;
+}
+
+.close-icon {
+  z-index: 1;
+  position: absolute;
+  right: -18rpx;
+  top: -22rpx;
+  padding: 0 0 0rpx 0rpx;
+}
+
+.add-spec-btn {
+  margin: 10rpx 0;
+  padding: 10rpx 30rpx;
+  border: 1rpx solid #f5f5f5;
+  border-radius: 10rpx;
+  background: #f5f5f5;
+}
+
+.add-tips {
+  font-size: 26rpx;
+  color: #999;
+  padding: 10rpx 0;
+  text-align: center;
+}
+
+.spec-group {
+  background: #fff;
+}
+
+.spec-group-con {
+  padding: 30rpx 30rpx;
+  border-top: 1rpx solid #f5f5f5;
+}
+
+.spec-group-con-title {
+  color: #999;
+}
+
+.spec-group-con-body {
+  margin-top: 30rpx;
+}
+
+.body-con {
+  flex: 1;
+  height: 60rpx;
+  display: flex;
+  border-radius: 20rpx;
+}
+
+.input {
+  width: 70%;
+  height: 100%;
+  border: none;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  background: #f5f5f5;
+}
+
+.body-r {
+  flex: 1;
+  border: 1rpx solid #f5f5f5;
+  color: #eee;
+  background: #fff;
+}
+
+.refresh {
+  padding: 10rpx 20rpx;
+  background: #eee;
+  border-radius: 10rpx;
+  color: #fff;
+}

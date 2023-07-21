@@ -1,0 +1,10 @@
+<view class="container after-navbar">
+  <block wx:for="{{collList}}" wx:key="">
+    <hous-cell wx:if="{{item.identifying=='6' || item.identifying=='5'|| item.identifying=='3'}}" color="{{color}}" hous-type="1" page-type="collList" button="qxsc" content="{{item}}"  bind:cancelcoll='cancelcoll' />
+    <hous-cell wx:if="{{item.identifying=='4'}}" color="{{color}}" hous-type="2" page-type="collList" button="qxsc" content="{{item}}"  bind:cancelcoll='cancelcoll' />
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{collList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='housingdeal' />

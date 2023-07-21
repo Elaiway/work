@@ -1,0 +1,60 @@
+<!--dist/public/components/goods-cell/choose-address.wxml-->
+<block wx:if="{{!renderInfo}}">
+  <view wx:if="{{selectedztd}}" class="flex-y-center bor-top ba_f pad_20 rel" bindtap='togglePopup'>
+    <!-- <view class="flex-grow-0 iconfont icon-icon- fon_34 site"></view> -->
+    <view class="flex-grow-1">
+      <view class="flex-row flex-bet fon_32">
+        <view class="letter">联系人：{{selectedztd.linkName}}</view>
+        <view class="fon_30">{{selectedztd.linkTel}}</view>
+      </view>
+      <view class="flex-grow-1 flex-row fon_26 mar_t_10">
+        <view class="flex-grow-0">自提地址：</view>
+        <view class="flex-grow-1">{{selectedztd.address+selectedztd.detailedAddress}}</view>
+        <view class="flex-grow-0 iconfont icon-you fon_26 more"></view>
+      </view>
+      <view class="adbox ab gobyndsingle">
+        <image wx:for="123456789" class='adress' mode='aspectFit' src='/assets/images/integral/address.png'></image>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="flex-y-center bor-top ba_f pad_20 rel" bindtap='togglePopup'>
+    <view class="flex-grow-1">
+      <view class="flex-grow-1 flex-row fon_26">
+        <view class="flex-grow-1">
+          <view class='fon_32'>请选择</view>
+          <view class='color_9 mar_t_10'>自提点详细地址</view>
+        </view>
+        <view class="flex-grow-0 iconfont icon-you fon_26 more"></view>
+      </view>
+    </view>
+    <view class="adbox ab gobyndsingle">
+      <image wx:for="123456789" class='adress' mode='aspectFit' src='/assets/images/integral/address.png'></image>
+    </view>
+  </view>
+</block>
+<!-- 渲染用 -->
+<block wx:else>
+  <view class="flex-y-center bor-top ba_f pad_20 rel">
+    <!-- <view class="flex-grow-0 iconfont icon-icon- fon_34 site"></view> -->
+    <view class="flex-grow-1">
+      <view class="flex-row flex-bet fon_32">
+        <view class="letter">联系人：{{renderInfo.linkName}}</view>
+        <view class="fon_30">{{renderInfo.linkTel}}</view>
+      </view>
+      <view class="flex-grow-1 flex-row fon_26 mar_t_10">
+        <view class="flex-grow-0">自提地址：</view>
+        <view class="flex-grow-1">{{renderInfo.address+renderInfo.detailedAddress}}</view>
+      </view>
+      <view class="adbox ab gobyndsingle">
+        <image wx:for="123456789" class='adress' mode='aspectFit' src='/assets/images/integral/address.png'></image>
+      </view>
+    </view>
+  </view>
+</block>
+<van-popup show="{{popupshow}}" z-index='2000' position="bottom" bind:close="togglePopup">
+  <view class='t_c pad_20 fon_32'>选取自取点</view>
+  <wux-cell-group>
+    <wux-cell bindtap="clickZtd" data-idx="{{index}}" wx:for="{{ztd}}" no-center="true" tstyle="color:#333" tftsize='30' lftsize='26' title="{{item.detailedAddress}}" label="{{item.address}}" extra='{{item.linkTel}}'>
+    </wux-cell>
+  </wux-cell-group>
+</van-popup>

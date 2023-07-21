@@ -1,0 +1,11 @@
+<!--pages/detail/listdetail.wxml-->
+<view class="container after-navbar">
+  <!-- <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs> -->
+  <view class="call">
+    <blcok wx:for="{{postList}}" wx:key="{{item.id}}">
+      <record-cell content="{{item}}" key="{{key}}" color="{{color}}"></record-cell>
+    </blcok>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='yellow'/>

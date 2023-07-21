@@ -1,0 +1,38 @@
+<!--pages/mall/manage/sett.wxml-->
+<view class='container after-navbar'>
+  <h-title bdname="商城配送方式"></h-title>
+  <view class="weui-cells weui-cells_after-title">
+    <view wx:for="{{deliverMode}}" class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{item.title}}</view>
+      </view>
+      <view class="weui-cell__ft">
+        <view class='weui-input'>
+          <switch bindchange="switchChange" data-idx='{{index}}' checked="{{item.value}}" color='{{color}}' />
+        </view>
+      </view>
+    </view>
+  </view>
+  <h-title bdname="商家自提点设置"></h-title>
+  <view style="margin-bottom: 140rpx;">
+    <block wx:for='{{dataList}}'>
+      <layout-one is-last="true" body="{{layoutBodyOne}}" class-name='mar_b'>
+        <view slot="body-bd-f" class="flex-row">
+          <text class='fon_32 mar_r'>{{item.linkName}}</text>
+          <text style='color:{{color}}'>{{item.linkTel}}</text>
+        </view>
+        <view slot="body-bd-s" class="mar_t_10 color_9">
+          {{item.address}}{{item.detailedAddress}}
+        </view>
+        <view slot='body-ft' class='hei flex-y-bt color_6'>
+          <view bindtap='release' data-id='{{item.id}}' class='iconfont icon-xiugaiziliao fon_34'></view>
+          <view bindtap='deleteInfo' data-id='{{item.id}}' class='iconfont icon-shanchu fon_34 mar_t'></view>
+        </view>
+      </layout-one>
+    </block>
+  </view>
+  <view class='foot-buttont posi-f wid' style='bottom:120rpx;'>
+    <button style='background:{{color}}' class="weui-btn" type="primary" bindtap='release'>添加自提地点</button>
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='managemall' />

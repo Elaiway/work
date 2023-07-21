@@ -1,0 +1,12 @@
+/* dist/public/weather/index.wxss */
+.weather_img{
+  width: 15%;
+  height: 100rpx;
+}
+.weatherv2{
+  width: 50%;
+}
+.weatherv3{
+  width: 30%;
+  text-align: right;
+}

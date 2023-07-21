@@ -1,0 +1,26 @@
+/* dist/public/auxiliary/integral/integral-good.wxss */
+@import "/app.wxss";
+.commodity{
+  padding: 0 30rpx;
+}
+.modle{
+  width: 48%;
+  height: 554rpx;
+  border-radius: 10rpx;
+}
+.integr,.price{
+   width: 49%;
+   padding:5rpx 0;
+}
+.integr{
+  background: #FFE8E5;
+  border-radius: 40rpx 0 0 40rpx;
+}
+.price{
+  background: #FF635D;
+  border-radius: 0rpx 40rpx 40rpx 0rpx;
+}
+.photo{
+  height: 333rpx;
+  width: 100%;
+}

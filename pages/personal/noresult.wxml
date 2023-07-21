@@ -1,0 +1,5 @@
+
+<view class='no_result t_c'>
+    <image class='no_resultimg' mode='aspectFit' src='/assets/images/img/noresult.png'></image>
+    <view class='pa_t t_c fon_26 color_9'>暂无数据</view>
+</view>

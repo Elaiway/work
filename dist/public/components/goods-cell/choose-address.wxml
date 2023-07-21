@@ -1,0 +1,52 @@
+<!--dist/public/components/goods-cell/choose-address.wxml-->
+<block wx:if="{{!renderInfo}}">
+  <view wx:if="{{addInfo}}" class="flex-y-center bor-top ba_f pad_20 rel" bindtap='tzdzlb'>
+    <view class="flex-grow-0 iconfont icon-icon- fon_34 site"></view>
+    <view class="flex-grow-1 mar_l">
+      <view class="flex-row flex-bet fon_32">
+        <view class="letter">收货人：{{addInfo.linkName}}</view>
+        <view class="fon_30">{{addInfo.linkTel}}</view>
+      </view>
+      <view class="flex-grow-1 flex-row fon_26 mar_t_10">
+        <view class="flex-grow-0">收货地址：</view>
+        <view class="flex-grow-1">{{addInfo.address+addInfo.detailedAddress}}</view>
+        <view class="flex-grow-0 iconfont icon-you fon_26 more"></view>
+      </view>
+      <view class="adbox ab gobyndsingle">
+        <image wx:for="123456789" class='adress' mode='aspectFit' src='/assets/images/integral/address.png'></image>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="flex-y-center bor-top ba_f pad_20 rel" bindtap='tzdzlb'>
+    <view class="flex-grow-0 iconfont icon-icon- fon_34 site"></view>
+    <view class="flex-grow-1 mar_l">
+      <view class="flex-grow-1 flex-row fon_26">
+        <view class="flex-grow-1">请选择收货地址</view>
+        <view class="flex-grow-0 iconfont icon-you fon_26 more"></view>
+      </view>
+    </view>
+    <view class="adbox ab gobyndsingle">
+      <image wx:for="123456789" class='adress' mode='aspectFit' src='/assets/images/integral/address.png'></image>
+    </view>
+  </view>
+</block>
+<!-- 渲染用 -->
+<block wx:else>
+  <view class="flex-y-center bor-top ba_f pad_20 rel">
+    <view class="flex-grow-0 iconfont icon-icon- fon_34 site"></view>
+    <view class="flex-grow-1 mar_l">
+      <view class="flex-row flex-bet fon_32">
+        <view class="letter">收货人：{{renderInfo.linkName}}</view>
+        <view class="fon_30">{{renderInfo.linkTel}}</view>
+      </view>
+      <view class="flex-grow-1 flex-row fon_26 mar_t_10">
+        <view class="flex-grow-0">收货地址：</view>
+        <view class="flex-grow-1">{{renderInfo.address+renderInfo.detailedAddress}}</view>
+        <!-- <view class="flex-grow-0 iconfont icon-you fon_26 more"></view> -->
+      </view>
+      <view class="adbox ab gobyndsingle">
+        <image wx:for="123456789" class='adress' mode='aspectFit' src='/assets/images/integral/address.png'></image>
+      </view>
+    </view>
+  </view>
+</block>

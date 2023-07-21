@@ -1,0 +1,7 @@
+/* pages/personal/testcenter/testpersonal.wxss */
+.bottomfixed{
+  z-index: 9999;
+}
+.weui-btn{
+  border-radius: 0;
+}

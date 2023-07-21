@@ -1,0 +1,16 @@
+/* dist/public/auxiliary/mall/mall-cell.wxss */
+@import "/app.wxss";
+
+.good {
+  width: 335rpx;
+  height: 610rpx;
+}
+
+.goodimg {
+  width: 335rpx;
+  height: 335rpx;
+}
+
+.goodcon {
+  height: 275rpx;
+}

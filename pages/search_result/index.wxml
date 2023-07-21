@@ -1,0 +1,44 @@
+<block wx:if="{{type==1}}">
+  <view class="mar_t" wx:if="{{list.length>0}}">
+    <Postinfo show_commend="1" show_collection="0" show_operation="0" show_zan="0" color="{{color}}" content="{{list}}" />
+  </view>
+</block>
+<block wx:if="{{type==2}}">
+  <view wx:if="{{list.length>0}}">
+    <message-postinfo content="{{list}}" />
+  </view>
+</block>
+<block wx:if="{{type==3}}">
+  <store-cell content="{{list}}" bind:storeInfo="getStoreinfo" color="{{color}}"></store-cell>
+</block>
+<!-- type==4黄页搜索 -->
+<block wx:if="{{type==4}}">
+  <block wx:for="{{list}}" wx:key="{{item.id}}">
+    <record-cell content="{{item}}" bind:storeInfo="getStoreinfo" color="{{color}}"></record-cell>
+  </block>
+</block>
+<!-- type==5求职招聘 -->
+<block wx:if="{{type==5}}">
+    <job-hunt job-type="{{1}}" page-type='list' content="{{list}}" bind:storeInfo="getStoreinfo" color="{{color}}"></job-hunt>
+</block>
+<!-- type==6限时抢购 -->
+<block wx:if="{{type==6}}">
+  <block wx:for="{{list}}" wx:key="{{item.id}}">
+     <rushbuy-cell content="{{item}}" time="{{endTime}}" color="{{color}}" bind:storeInfo="getStoreinfo" />
+   </block>
+</block>
+<!-- type==7多商户商城 -->
+<block wx:if="{{type==7}}">
+<view class='flex-bt flex-wrap pad_20'>
+    <block wx:for="{{list}}" wx:key="{{item.id}}">
+      <mall-cell content="{{item}}" color="{{color}}" />
+    </block>
+</view>
+</block>
+<!-- type==8拼团 -->
+<block wx:if="{{type==8}}">
+    <block wx:for="{{list}}" wx:key="{{item.id}}">
+      <assemble-cell content="{{item}}" color="{{color}}" />
+    </block>
+</block>
+<load-more nodata="{{list.length==0&&isget}}" mygd='{{mygd}}' />

@@ -1,0 +1,137 @@
+<view class="container after-navbar">
+  <view class="">
+    <image src="{{goodsInfo.logo}}" mode="aspectFill" class="bgimg"></image>
+  </view>
+  <view class="info ba_f mar-trbl rel color_3">
+    <view class="t_l basepadding">
+      <view class='fon_32 wei mar_b30 t_c'>{{goodsInfo.title}}</view>
+      <view class="nameBox rel mar_b60">
+        <view class="img-con">
+          <image class='bg-img' src='/assets/images/coupon/coupin-bg.png'></image>
+          <view wx:if="{{goodsInfo.receive ==3}}" class="imgheight flex-bet color_f main-box" bindtap="getcoupons" data-info="{{goodsInfo}}">
+            <view class="flex-grow-1 t_c wleft">
+              <view class="fon_44 wei gobyndsingle">
+                <text wx:if="{{goodsInfo.type==1}}">￥{{goodsInfo.reduce}}元代金券</text>
+                <text wx:elif="{{goodsInfo.type==2}}">￥{{goodsInfo.discount}}折扣券</text>
+                <text wx:elif="{{goodsInfo.type==3}}">￥{{goodsInfo.reduce}}元优惠券</text>
+              </view>
+              <view class="fon_20 gobyndsingle">使用期限：{{goodsInfo.endTime}}截止</view>
+            </view>
+            <view class="flex-grow-0 wright fon_28 wei t_c mar_r_10">
+              <view>立即</view>
+              <view>领取</view>
+            </view>
+          </view>
+          <view wx:elif="{{goodsInfo.receive ==2}}" class="imgheight flex-bet color_f main-box flex-center">
+            <text class="fon_44 wei">每人限领次数超限</text>
+          </view>
+          <view wx:elif="{{goodsInfo.receive ==1}}" class="imgheight flex-bet color_f main-box flex-center">
+            <text class="fon_44 wei">已领完</text>
+          </view>
+        </view>
+      </view>
+      <view class="color_f fon_30 flex-center mar_t30">
+        <view class="fon_30 wei" style="color:#f00">￥{{goodsInfo.money}}</view>
+        <block-text wx:if="{{system.openVip&&goodsInfo.vipMoney>0}}" type='2' color='#ffee00' class-name='pa_8_20 br-r-10 mar_l color_3 fon_20 wei bgy' text='会员价￥{{goodsInfo.vipMoney}}' />
+      </view>
+      <view class="fon_26 mar_b30 t_c mar_t" style="color:#f00">
+        <text class="iconfont icon-huo fon_28 mar_r_10"></text>已领取{{goodsInfo.receiveNum}}份
+      </view>
+      <view class="flex flex-wrap pa_l30 mar_b">
+        <view class='flex fon_26 color_9 flex-y-center mar_r50' wx:for="{{goodsInfo.service}}" wx:key="">
+          <text class="iconfont icon-gouxuan fon_28 mar_r_10" style="color:#f00"></text>
+          <view>{{goodsInfo.service[index]}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mar-tlr ba_f br-r-30">
+
+          <view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>
+    <view class='titbg fon_32 wei pad_20'>温馨提示</view>
+    <view class="pa">
+      <wux-cell isLeft='true' wux-class='flex-y-center fon_24 wei color_3 pades' title='使用条件'>
+        <view slot='footer' class="flex-y-center normal" style="color:#f00">消费满{{goodsInfo.condition}}元可用</view>
+      </wux-cell>
+      <wux-cell isLeft='true' wux-class='flex-y-center fon_24 wei color_3 pades' title='有效期'>
+        <view slot='footer' class="flex-y-center normal">到
+          <text class="mar_l_10 mar_r_10" style="color:#f00">{{goodsInfo.endTime}}</text> 截止</view>
+      </wux-cell>
+      <wux-cell isLast='true' wux-class='flex-y-center fon_24 wei color_3 pades' title='每人限领'>
+        <view slot='footer' class="flex-y-center normal">每个用户限领{{goodsInfo.max}}张</view>
+      </wux-cell>
+    </view>
+  </view>
+  <view class="mar-tlr ba_f br-r-30">
+    <view class='titbg fon_32 wei pad_20'>使用流程</view>
+    <view class="pa">
+      <view class="flex-bet ba_f pa10 t_c">
+        <view class="flex-1">
+          <view class="flex-center-col">
+            <view class="bg-whidth ba_e flex-center">
+              <text class='iconfont icon-wodeyouhuijuan fon_40 color_6'></text>
+            </view>
+            <view class="fon_24 color_9 mar_t_10">参与领取</view>
+          </view>
+        </view>
+        <view>
+          <text class='iconfont icon-you-copy fon_34 color_d'></text>
+        </view>
+        <view class="flex-1">
+          <view class="flex-center-col">
+            <view class="bg-whidth ba_e flex-center">
+              <text class='iconfont icon-trues fon_40 color_6'></text>
+            </view>
+            <view class="fon_24 color_9 mar_t_10">领取成功</view>
+          </view>
+        </view>
+        <view>
+          <text class='iconfont icon-you-copy fon_34 color_d'></text>
+        </view>
+        <view class="flex-1">
+          <view class="flex-center-col">
+            <view class="bg-whidth ba_e flex-center">
+              <text class='iconfont icon-saoma fon_40 color_6'></text>
+            </view>
+            <view class="fon_24 color_9 mar_t_10">到店核销</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mar-tlr ba_f br-r-30">
+    <view class='titbg fon_32 wei pad_20'>适用商家</view>
+    <view class="pa">
+      <view class='ba_f pa10' bindtap='goStoreDetail'>
+        <view class='flex-row'>
+          <image class='flex-g-0 br-r-30' style='width:160rpx;height:160rpx;' src='{{goodsInfo.storeLogo}}'></image>
+          <view class='flex-g-1 flex-col flex-bt mar_l'>
+            <view class='gobyndsingle fon_32 wei'>{{goodsInfo.storeName}}</view>
+            <view class='flex-x-bt'>
+              <text>{{userStoreId.followNum || 0}}粉丝</text>
+              <text>{{userStoreId.goodsNum || 0}}商品</text>
+              <text class='iconfont icon-iconfront-'></text>
+            </view>
+            <wux-rater slot="footer" default-value="{{ 5 }}" font-size="{{ 18 }}" disabled />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mar-tlr ba_f br-r-30">
+    <view class='titbg fon_32 wei pad_20'>详情内容</view>
+    <view class="pa">
+      <view class='ba_f pa10'>
+        <view class='ba_f color_6'>
+          <rich-text nodes="{{goodsInfo.body}}"></rich-text>
+          <view class='mar_t' wx:if='{{goodsInfo.media.length!=0}}'>
+            <image mode='widthFix' class='image_all' wx:for='{{goodsInfo.media}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{url}}{{item.url}}'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>
+</view>

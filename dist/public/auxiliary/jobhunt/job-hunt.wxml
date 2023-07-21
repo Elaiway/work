@@ -1,0 +1,124 @@
+<!--dist/public/auxiliary/jobhunt/job-hunt.wxml-->
+<view class="content">
+  <block wx:if="{{jobType=='1'}}">
+    <view wx:for="{{content}}" bindtap="recruitInfo" data-rid='{{item.id}}' class="ba_f color_3 bardius mar_t relt">
+      <view class="flex-row flex-bet pa">
+        <view wx:if="{{pageType!=='myjob'}}" class="gobyndsingle fon_34 flex-grow-1">{{item.title}}</view>
+        <view wx:if="{{pageType=='myjob'}}" class="gobyndsingle fon_34 flex-grow-1">{{item.title}}</view>
+        <view class="fon_32 flex-grow-0">
+          <text style="color:{{color}}">{{item.salary}}</text>
+          <text wx:if="{{item.salary !== '面议'}}">/月</text>
+        </view>
+      </view>
+      <view wx:if="{{pageType=='myjob'}}" class="flex-row flex-bet fon_28 color_9 pa">
+        <view wx:if="{{item.area}}" class="flex-row flex-y-center flex-grow-1">
+          <text class="iconfont icon-dizhi3 mar_r_5 fon_28"></text>
+          <view class="">{{item.area}}</view>
+        </view>
+        <view class="flex-grow-0 fon_28 color_9">{{item.createdAt}}</view>
+      </view>
+      <view wx:if="{{pageType!=='myjob'}}" class="bor-top pa_tr30">
+        <view class="flex-row flex-bet">
+          <view class="flex-grow-1 hiddenellip">
+            <text wx:for="{{item.labelarr}}" class="bgblue tagad fon_22 color_f mar_r_10 {{index=='0'?'bgblue':'' || index=='1'?'bgsku':'' ||index=='2'?'bororange':'' || index=='3'?'borbgblue':''}}">{{item}}</text>
+          </view>
+          <view class="flex-grow-0">
+            <view wx:if="{{pageType=='list'}}" class="apply fon_28 color_f flex-center">申请</view>
+            <view wx:if="{{pageType=='collection'}}" class="apply fon_28 color_f flex-center qxsc" catchtap='jobcancelColl' data-cid='{{item.id}}'>取消收藏</view>
+          </view>
+        </view>
+        <view wx:if="{{pageType=='list'}}" class="flex-row flex-bet mar_t fon_28 color_9">
+          <view wx:if="{{item.area}}" class="flex-row flex-y-center">
+            <text class="iconfont icon-dingwei mar_r_5 fon_32"></text>
+            <view class="gobyndsingle">{{item.area}}</view>
+          </view>
+          <view class="flex-row flex-y-center">
+            <text class="iconfont icon-gongzuojingyan mar_r_5 fon_32"></text>
+            <view class="gobyndsingle">{{item.experience}}</view>
+          </view>
+          <view class="flex-row flex-y-center">
+            <text class="iconfont icon-xueli mar_r_5 fon_32"></text>
+            <view class="gobyndsingle">{{item.education}}</view>
+          </view>
+        </view>
+      </view>
+      <seal wx:if="{{pageType!=='collection' && item.isTop=='1' && item.status !== '0' && item.status !== '2'}}" zhiding="{{true}}" right="130" top="20" />
+      <seal wx:if="{{pageType=='myjob' && item.status == '0'}}" daishenhe="{{true}}" right="140" top="10" />
+      <seal wx:if="{{pageType=='myjob' && item.status == '2'}}" jujue="{{true}}" right="140" top="10" />
+      <view wx:if="{{pageType=='list'}}" class="flex-row flex-bet bor-top pa_tr30">
+        <view class='flex-grow-1 flex-row flex-y-center'>
+          <text class="iconfont icon-location mar_r_10 fon_44 orange"></text>
+          <view class="fon_28 gobyndsingle">{{item.address}}</view>
+        </view>
+        <view class="flex-grow-0 fon_28 color_9">{{item.createdAt}}</view>
+      </view>
+      <view wx:if="{{pageType=='myjob'}}" class="flex-row flex-bet bor-top pa fon_28 color_f">
+        <view class="btn" style="background:{{color}}" catchtap='getresume' data-eid='{{item.id}}'>收到的简历</view>
+        <view wx:if="{{item.status !== '0'}}" class="btn" style="background:{{color}}" catchtap='operation' data-info='{{item}}'>操作/编辑</view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{jobType=='2'}}">
+    <view wx:for="{{content}}" bindtap='jobInfo' data-jid='{{item.id}}' class="ba_f bardius mar_t rel">
+      <wux-cell isLast='true' background='transparent' mode='aspectFill' imgw='100' imgh='100' boradius='50%' thumb="{{item.logo}}">
+        <view class='fon_28 color_6' slot="bodyer">
+          <view class="flex-row flex-bet fon_32">
+            <view class="flex-grow-1 flex-row">
+              <view class="mar_r_10">{{item.name}}</view>
+            </view>
+            <view class="flex-grow-0">
+              <text style="color:{{color}}">{{item.salary}}</text>
+              <text wx:if="{{item.salary !== '面议'}}">/月</text>
+            </view>
+          </view>
+          <view wx:if="{{pageType!=='myjob'}}" class='flex-row flex-bet color_9 mar_t_10 fon_28'>
+            <view class="flex-row flex-y-center">
+              <text class="iconfont icon-xingbie fon_32 mar_r_5"></text>
+              <view wx:if="{{item.sex=='1'}}">男</view>
+              <view wx:if="{{item.sex=='2'}}">女</view>
+            </view>
+            <view class="flex-row flex-y-center">
+              <text class="iconfont icon-shengri fon_32 mar_r_5"></text>
+              <view class="">{{item.age}}岁</view>
+            </view>
+            <view class="flex-row flex-y-center">
+              <text class="iconfont icon-gongzuojingyan fon_32 mar_r_5"></text>
+              <view class="">{{item.experience}}</view>
+            </view>
+            <view class="flex-row flex-y-center">
+              <text class="iconfont icon-xueli fon_32 mar_r_5"></text>
+              <view class="">{{item.education}}</view>
+            </view>
+          </view>
+          <view wx:if="{{pageType=='myjob'}}">
+            <view class='fon_28 color_9'>意向职位：{{item.industryName}}</view>
+          </view>
+        </view>
+      </wux-cell>
+      <view wx:if="{{pageType!=='myjob'}}" class="flex-row flex-bet patb">
+        <view class="flex-grow-1 hiddenellip">
+          <text wx:for="{{item.labelarr}}" class="bgblue tagad fon_22 color_f mar_r_10 {{index=='0'?'bgorange':'' || index=='1'?'bgsku':'' ||index=='2'?'bororange':'' || index=='3'?'borbgblue':''}}">{{item}}</text>
+        </view>
+        <view class="flex-grow-0">
+          <view wx:if="{{pageType=='list'}}" class="apply fon_28 color_f flex-center">联系</view>
+          <view wx:if="{{pageType=='collection'}}" class="apply fon_28 color_f flex-center qxsc" catchtap='jobcancelColl' data-cid='{{item.id}}'>取消收藏</view>
+        </view>
+      </view>
+      <view wx:if="{{pageType=='list'}}" class="flex-row flex-bet bor-top pa_tr30">
+        <view class='flex-grow-1 flex-row gobyndsingle fon_28 color_9'>意向职位：{{item.positionName}}</view>
+        <view class="flex-grow-0 fon_28 color_9">{{item.createdAt}}</view>
+      </view>
+      <view wx:if="{{pageType=='myjob'}}" class="flex-row flex-bet bor-top pa">
+        <view class="flex-grow-1 flex-row flex-y-center">
+          <text class="iconfont icon-dingwei mar_r_5 fon_28"></text>
+          <view class="color_9 gobyndsingle">{{item.area}}</view>
+        </view>
+        <view class="flex-grow-0 fon_28 color_f btn" style="background:{{color}}" catchtap='operation' data-info='{{item}}'>操作/编辑</view>
+        <!-- <view wx:if="{{button=='lookdl'}}" class="flex-grow-0 fon_28 color_f btn" style="background:{{color}}">查看详情</view> -->
+      </view>
+      <seal wx:if="{{pageType!=='collection' && item.isTop=='1' && item.status !== '0' && item.status !== '2'}}" zhiding="{{true}}" right="130" top="20" />
+      <seal wx:if="{{pageType=='myjob' && item.status == '0'}}" daishenhe="{{true}}" right="140" top="10" />
+      <seal wx:if="{{pageType=='myjob' && item.status == '2'}}" jujue="{{true}}" right="140" top="10" />
+    </view>
+  </block>
+</view>

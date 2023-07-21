@@ -1,0 +1,55 @@
+<!--pages/mall/order.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <!-- <dd-radio title='请选择配送方式' bind:change="lcrdioonChange" name='psradio' value="{{params.delivery}}" radioarr="{{lcradioarr}}" /> -->
+    <view hidden="{{params.delivery!='1'}}">
+      <choose-address bind:getaddress="getaddress" />
+    </view>
+    <view hidden="{{params.delivery!='2'}}">
+      <choose-ztd wx:if="{{goodsInfo}}" bind:getaddress="getztd" store-id="{{goodsInfo.storeId}}" />
+    </view>
+    <view class="cartmain basepadding">
+      <layout-one no-pad="true" is-last="true" after-left="true" body-src='{{url}}{{goodsInfo.showImgs[0].url}}' body="{{layoutBodyOne}}" class-name='br-r-20'>
+        <view bindtap='storeInfo' slot='header' class='flex-y-center br-b-e pa_15_30'>
+          <text class='iconfont icon-shangjia fon_44'></text>
+          <text class='color_3 mar_l'>{{goodsInfo.storeName}}</text>
+          <text class='iconfont icon-you-copy color_9 fon_24 mar_l_10'></text>
+        </view>
+        <view slot="body-bd-f" class="flex-x-bt">
+          <view class='hydlnr_2'>
+            <text>{{goodsInfo.title}}</text>
+          </view>
+        </view>
+        <view slot="body-bd-s" class="flex-x-bt mar_t_10">
+          <view class='flex-raw'>
+            <block wx:for="{{goodsInfo.label}}">
+              <block-text wx:if="{{index<2}}" display='block' class-name="fon_24 pa_5_15 ba_f5 color_9 mar_r" text='{{item}}' />
+            </block>
+          </view>
+        </view>
+        <view slot="body-bd-t" class="flex-x-bt mar_t_10 color_9">
+          <view>
+            <text class='fon_30 color_rb'>￥{{params.goodsMoney}}</text>
+            <text class='fon_24 t-d-l mar_l'>￥{{goodsInfo.originalPrice}}</text>
+          </view>
+          <view>已拼1件</view>
+        </view>
+      </layout-one>
+    </view>
+    <wux-cell isLast='true' wux-class='pa_b0' title="购买数量" hover-class="none">
+      <wux-input-number wx:if='{{goodsInfo.limitNum}}' bind:change="onChange" value="1" color="stable" min="1" max="{{goodsInfo.limitNum}}" slot="footer" />
+    </wux-cell>
+    <wux-cell-group title="备注">
+      <text-area name='textarea' value='{{params.note}}' bind:textblur='textareachange' height='4.5' maxlength='100' placeholder='请输入备注'></text-area>
+    </wux-cell-group>
+    <view class="footpay">
+      <view class="footpay-l t_r">实付:
+        <text class="color_rb fon_30">￥{{params.totalMoney}}</text>
+        <text class='mar_l fon_24 color_9'>({{freightTips}})</text>
+      </view>
+      <button form-type="submit" class="footpay-r" style='background:{{color}}'>立即支付</button>
+    </view>
+  </view>
+</form>
+
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

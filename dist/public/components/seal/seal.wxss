@@ -1,0 +1,8 @@
+/* dist/public/components/seal/seal.wxss */
+.imgWidth{
+  width: 168rpx;
+  height: 136rpx;
+}
+.location{
+  position: absolute;
+}

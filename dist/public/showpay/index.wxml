@@ -1,0 +1,44 @@
+<!-- <wux-popup class='extra-class' position="bottom" class-names="slideInUp" visible="{{ visible }}" bind:close="closepop">
+  <wux-radio-group wux-class="wux-radio-group" name="paytyperdio" value="{{ paytypevlue }}" bind:change="typeradioChange">
+    <wux-radio thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="微信支付" value="1" />
+    <wux-radio thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="余额支付" label="{{yuetips}}" value="2" />
+  </wux-radio-group>
+</wux-popup> -->
+<wux-popup class='extra-class' position="bottom" class-names="slideInUp" visible="{{ visible }}" bind:close="{{closepop}}">
+  <view wx:if="{{iosCanUse&&payConfig.balancePay != 'yes'}}">
+    <view class='ordernum'>由于相关规范，iOS支付功能暂不可用</view>
+    <view class='paybtn'>
+      <button style='background:{{mrcolor}}' class="weui-btn" type="primary" bindtap='know'>我知道了</button>
+    </view>
+  </view>
+  <form wx:else bindsubmit="formSubmit" bindreset="formReset">
+    <!-- <view class='ordernum'>请选择支付方式{{payobj.params.postId}}</view> -->
+    <view class='ordernum'>请选择支付方式</view>
+    <view class='ordermoney'>￥{{payobj.params.money}}</view>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group name='radiogroup' bindchange="radioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="weui-cell__hd">
+            <image class='wc-hdimg' mode='aspectFit' src='{{item.img}}'></image>
+          </view>
+          <view class="weui-cell__bd">
+            <view>{{item.name}}</view>
+            <view class='yezf' wx:if="{{item.value=='ye'}}">
+              可用余额
+              <text style='color:{{color}}'>￥{{userinfo.balance||0.00}}</text>
+              <!-- <text catchtap='cz' class='cz' style='background:{{mrcolor}}'>充值</text> -->
+            </view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="24" wx:if="{{!item.checked}}"></icon>
+            <icon class="weui-icon-checkbox_success" color="{{mrcolor}}" type="success" size="24" wx:if="{{item.checked}}"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view class='paybtn'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{mrcolor}}' class="weui-btn" type="primary" formType="submit">立即支付</button>
+    </view>
+  </form>
+</wux-popup>

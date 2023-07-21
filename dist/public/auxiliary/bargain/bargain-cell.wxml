@@ -1,0 +1,23 @@
+<!--dist/public/auxiliary/privilege/privilege-cell.wxml-->
+<view bindtap='goodinfo' class='basepadding ba_f mar_b'>
+  <view class='cell-top posi-r br-r-30'>
+    <image mode='aspectFill' class='image_all' src='{{content.logo}}'></image>
+    <!-- <view class='posi-a t0 l0 wei color_f b-t-l30 b-b-r30 ba-lg-f4ee pa_5_20'>{{content.groupNum}}人拼</view> -->
+  </view>
+  <view class='wei fon_36 pad_20'>{{content.title}}</view>
+  <view class='flex-x-bt'>
+    <view>
+      <view>
+        <text class='wei fon_36 mar_r_10 color_r'>￥{{content.floorPrice}}</text>
+        <text class='color_9 t-d-l'>￥{{content.price}}</text>
+      </view>
+      <view class='mar_t_10 flex-bt'>
+        <view class='fon_24 color_9'>已有
+          <text class='color_r'>￥{{content.receiveNum||0}}</text>人参与砍价</view>
+      </view>
+    </view>
+    <view class="text-btnf pa_10_25 br-r-30" style="background:#FF3838;border-color:#FF3838;">
+      <text class='iconfont icon-huo mar_r_10'></text><text>去砍价</text>
+    </view>
+  </view>
+</view>

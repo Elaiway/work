@@ -1,0 +1,10 @@
+<!--dist/public/components/form/dd-radio.wxml-->
+<view class="weui-cell weui-cell_input ba_f">
+  <view class="weui-cell__hd">
+    <view class="weui-label color_6">{{title}}</view>
+  </view>
+  <view class="mar_l">
+    <wux-radio-group wux-class='hxrd' typesetting='2' radioColor="{{color}}" radioarr="{{radioarr}}" bind:change="radiochange">
+    </wux-radio-group>
+  </view>
+</view>

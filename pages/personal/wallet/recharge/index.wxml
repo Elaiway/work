@@ -1,0 +1,25 @@
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <view class='container'>
+    <view class='color_f walletBalance t_c' style='background:{{color}};'>
+      <view class='fon_60'>￥{{userinfo.balance}}</view>
+      <view class='fon_28'>当前余额</view>
+    </view>
+    <view class='pa_l mar_t ba_f'>
+      <view class='pa_t fon_30 color_6'>选择充值金额</view>
+      <view class='recharge'>
+        <view style="border-color:{{ac_index==index?color:''}}" class="dis_in pa_t t_c rechargeMoney {{ac_index==index?'seleBorder':'noBorder'}}" wx:for="{{moneyarr}}" wx:key="*this" bindtap='seleRecharge' data-index="{{index}}">
+          <view class='fon_32 color_6'>￥{{item.money}}</view>
+          <view class='color_9 fon_24' wx:if="{{item.give>0}}">赠送￥{{item.give}}积分</view>
+        </view>
+        <view style="border-color:{{ac_index==-1?color:''}}" class="flex-center pa_t t_c rechargeMoney {{ac_index==-1?'seleBorder':'noBorder'}}" bindtap='custom'>
+          <input name='qtje' type='digit' maxlength='5' class='middle' placeholder='其他金额'></input>
+        </view>
+      </view>
+    </view>
+    <agree-box isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='充值需知' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='foot-buttont'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">确认充值
+      </button>
+    </view>
+  </view>
+</form>

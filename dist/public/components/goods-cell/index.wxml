@@ -1,0 +1,60 @@
+<!--dist/public/components/goods-cell/index.wxml-->
+<view class="bras fon_28" style='background:{{content.background}}' bindtap='clickOrder'>
+  <view wx:if="{{content.header}}" class='flex-bet pad_20'>
+    <view class="flex-y-center">
+      <image class='mar_r' style='width:60rpx;height:60rpx;' src="{{content.logo}}"></image>
+      <view>{{content.name}}</view>
+    </view>
+    <view>{{content.msg}}</view>
+  </view>
+  <view class="flex-row {{content.body.pad||'pad_20'}} rel">
+    <!-- 已完成印章 -->
+    <image wx:if="{{goodsInfo.status==3}}" style='top:{{content.top}}rpx' class='ab jycg' mode='aspectFit' src='/assets/images/integral/jycg.png'></image>
+    <!-- 已完成印章 -->
+    <view class="flex-grow-0 flex-y-center">
+      <image style='width:{{content.body.width}}rpx;height:{{content.body.height}}rpx;' src="{{goodsInfo.logo}}"></image>
+    </view>
+    <view class="flex-grow-1 mar_l">
+      <view class="fon_26 hydlnr_2">{{goodsInfo.name}}</view>
+      <view class="flex-row flex-bet fon_24 color_9 mar_t_10">
+        <view wx:if="{{content.body.spec}}">{{content.body.spec}}1</view>
+        <view wx:if="{{content.body.secright}}" class="fon_28 color_3">￥{{goodsInfo.originalPrice}}</view>
+      </view>
+      <view wx:if="{{content.body.third}}" class="flex-row flex-bet fon_26 mar_t_10">
+        <view>
+          <text class="color_rb fon_30">￥{{goodsInfo.money}}</text> +
+          <text class="color_rb fon_30">{{goodsInfo.score}}</text>积分</view>
+        <view>x{{content.body.num}}</view>
+      </view>
+    </view>
+    <view wx:if="{{content.body.right}}" class="flex-grow-0 mar_l">
+      <view>x{{goodsInfo.discount}}</view>
+      <view class="t_r">x{{goodsInfo.num}}</view>
+    </view>
+  </view>
+  <view class='flex-bet bgr basepadding' wx:if="{{content.instruction}}">
+    <view class="flex-grow-0">积分抵扣：</view>
+    <view class="mar_l flex-grow-1 color_9">已使用
+      <text class="color_rb">{{goodsInfo.score}}</text>积分享受
+      <text class="color_rb">{{goodsInfo.discount}}</text>元优惠</view>
+  </view>
+  <view wx:if="{{content.number}}" class="{{content.numberl?'flex-bet':'flex-x-bottom'}} pad_20 {{content.numberl?'bor-btm':''}}">
+    <view wx:if="{{content.numberl}}" class="color_9 {{goodsInfo.status==3?'org':''}}">{{goodsInfo.status==3?'已兑换':'未兑换'}}</view>
+    <view>
+      <text class='color_9 fon_26 mar_r'>共1件商品</text>
+      <text class='fon_30'>合计 ￥{{goodsInfo.money}}</text>
+      <text class='fon_24'>（免运费）</text>
+    </view>
+  </view>
+  <view wx:if="{{content.footer}}" class='flex-x-bottom pad_20 bor_top '>
+    <block wx:if="{{pageType=='integral'}}">
+      <view class='flex-row'>
+        <view class='text-btn mar_l'>查看详情</view>
+        <view wx:if="{{goodsInfo.status==2}}" class='text-btnf mar_l' catchtap='goodBtn' data-text='确认收货' style='background:{{color}}'>确认收货</view>
+        <view wx:if="{{goodsInfo.status==3}}" class='text-btnf mar_l' style='background:{{color}}' catchtap='goodBtn' data-text='继续兑换'>继续兑换</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!-- <image  wx:if="{{content.jycg}}" style='top:{{content.top}}rpx' class='ab jycg' mode='aspectFit' src='/assets/images/integral/jycg.png'></image> -->

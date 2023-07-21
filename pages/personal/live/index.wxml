@@ -1,0 +1,35 @@
+<!-- <wux-accordion-group title="" label="" accordion default-current="">
+  <wux-accordion wx:for="{{help_core}}" wx:key="*this" title="{{item.question}}">{{item.answer}}</wux-accordion>
+</wux-accordion-group> -->
+<view class='container ba_f'>
+  <!-- <block wx:for="{{help_core}}">
+    <view class='pa bor_bottom question' bindtap='question' data-index='{{index}}'>
+      <view class='questionv1 color_6 fon_30 dis_in'>{{item.title}}</view>
+      <view class='questionv2 color_6 fon_30 dis_in t_r'>
+          <text class='iconfont color_e icon-you fon_24'></text>
+      </view>
+    </view>
+  </block> -->
+  <view class="commodity mar_t wid flex-raw flex-bt">
+  <block wx:for="{{itemList}}" wx:key="*this">
+    <view class="modle gobyndsingle mar_b rich-text posi-r imgshape3" bindtap='goDl' data-id="{{item.roomid}}" >
+      <image mode='aspectFill' class="photo" src="{{item.cover_img}}"></image>
+      <view class='posi-a t0 l0 color_f state ba-gray pa_15_20 fon_24'>
+        <span class="whiteDot"></span>{{item.live_statust}}</view>
+      <view class="play posi-a flex-center">
+        <text class="iconfont icon-icon_play fon_46 color_f mar_t_10"></text>
+      </view>
+      <view class="bar fon_28 pa_l mar_t_10 gobyndsingle">{{item.name}}</view>
+      <view class="fon_24 color_9 pa_l gobyndsingle flex-row flex-y-center">
+        <view class="flex-grow-0 imglogo mar_r_10 mar_t_10">
+          <image src="{{item.share_img}}" class="logoimg"></image>
+        </view>
+        <view class="flex-grow-1 gobyndsingle">{{item.anchor_name}}</view>
+      </view>
+    </view>
+  </block>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{itemList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

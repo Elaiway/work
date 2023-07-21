@@ -1,0 +1,26 @@
+<view class='mar_t pa_l ba_f' >
+  <view wx:for="{{content}}" wx:key="*this" data-id="{{item.id}}" bindtap="message_info">
+    <view class='title fon_32 pa_t fon_wei'>
+      {{item.title}}
+    </view>
+    <view class='flex-row mar_b'>
+      <view class='flex-center scimg-box' wx:for="{{item.media}}" wx:key="*this">
+        <image class='scimg' mode='aspectFill' src='{{item.url}}'></image>
+      </view>
+    </view>
+    <!-- <view class='message_video dis_in' wx:else>
+      <image mode='aspectFill' src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539939127802&di=fc238d93b931859d43052fd00500b8d7&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-12-05%2F5a264d0232bbf.jpg'></image>
+    </view> -->
+    <view class='message_other bor_bottom'>
+      <view class='fon_22 color_9 dis_in t_l'>
+        <text class='setTop fon_22' style='color:#FF4E4E;border:2rpx solid #FF4E4E' wx:if="{{item.attribute=='1'}}">置顶</text>
+        <text class='setTop fon_22' style='color:#809BFF;border:2rpx solid #809BFF' wx:if="{{item.attribute=='2'}}">精华</text>
+        <text class='middle'> {{item.browseNum}}浏览</text>
+        <text class='mar_l'>{{item.createdAt}}</text>
+      </view>
+      <!-- <view class='fon_22 color_9 dis_in t_r'>
+        {{item.created_at}}
+      </view> -->
+    </view>
+  </view>
+</view>

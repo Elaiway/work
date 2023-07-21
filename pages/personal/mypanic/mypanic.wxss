@@ -1,0 +1,4 @@
+/* pages/personal/mypanic/mypanic.wxss */
+.postList{
+  padding-top: 105rpx;
+}

@@ -1,0 +1,122 @@
+<include src="/assets/commons/navbar/navbar.wxml" />
+<at-form>
+<view class="container after-navbar">
+  <view class='user_head rel' style="background:{{color}};padding-bottom: {{system.openVip?'60':'0'}}rpx;margin-bottom: {{system.openVip?'80':'0'}}rpx;">
+    <view class='usermain flex-row'>
+      <view class='flex-grow-0 user_logo'>
+        <image class='image_all' mode='aspectFill' src="{{userinfo.portrait}}" wx:if="{{isLogin==1}}"></image>
+        <open-data wx:else type="userAvatarUrl"></open-data>
+      </view>
+      <view wx:if="{{isLogin!=null}}" class='flex-grow-1 flex-col flex-x-center mar_l'>
+        <view class='flex-row flex-y-center flex-wrap' style='width:70%;'>
+          <block wx:if="{{isLogin==1&&userinfo}}">
+            <!-- <image wx:if="{{userinfo.isAuth=='1'}}" class='labelimg mar_l_10 mar_r_10' src='{{imgsrc}}/wechatimg/img/grrz.png'></image>
+            <image wx:if="{{userinfo.isEnsure=='1'}}" class='labelimg mar_r' src='{{imgsrc}}/wechatimg/img/bzj.png'></image>  -->
+            <view class='color_f fon_wei fon_32'>{{userinfo.userName}}</view>
+            <view class='fon_26 color_f mar_l_10'>UID:{{userinfo.id}}</view>
+          </block>
+          <open-data wx:else class='color_f fon_wei fon_32' type="userNickName"></open-data>
+        </view>
+        <!-- 手机号 -->
+        <view wx:if="{{isLogin==1&&userinfo}}" class='rel join mar_t_10'>
+          <view class='ab joinv2 color_f fon_26'>
+            <image class='joinimg dis_in' mode='aspectFill' src='/assets/images/personal/phone.png'></image>
+            <text class='dis_in mar_l_10'>{{userinfos.userTel}}</text>
+          </view>
+        </view>
+        <view bindtap='tzdl' wx:if="{{isLogin==0}}" class='rel color_f fon_26 mar_t'>
+          尚未关联手机号，点击绑定
+        </view>
+        <!-- <view class='rel join mar_t'>
+                    <view class='ab joinv1'></view>
+                    <view class='ab joinv2 color_f fon_26'>
+                        <image class='joinimg dis_in mar_l' mode='aspectFill' src='/assets/images/personal/jm.png'></image>
+                        <text class='dis_in mar_l'>加盟合伙人</text>
+                        <text class='dis_in iconfont color_f mar_l icon-you fon_24'></text>
+                    </view>
+                </view> -->
+      </view>
+    </view>
+    <view class='user_basic pa'>
+      <view class='color_f fon_26 t_c' wx:for="{{my_info}}" wx:key="name" bindtap='personal_jump' data-src="{{item.src}}" data-name="{{item.name}}">
+        <view>{{item.num}}</view>
+        <view>{{item.name}}</view>
+      </view>
+    </view>
+    <!-- vip -->
+    <navigator url='/pages/vip/index' wx:if="{{system.openVip}}" class='open_vip fon_26 ab lr'>
+      <view class='wid_hei rel'>
+        <image class='open_vipimg' mode='aspectFill' src='/assets/images/personal/vip-back.png'></image>
+        <view class='ab ud wid_hei flex-x-bt'>
+          <view class='flex-1 flex-x-center'>
+            <view class=''>
+              <view>开通{{vipConfig&&vipConfig.field||'会员卡'}}，享海量特权</view>
+              <view>更多优惠等你发现</view>
+            </view>
+          </view>
+          <view class='ljkt'>{{userinfo.isVip?userinfo.vipTypeName:'立即开通'}}</view>
+        </view>
+      </view>
+    </navigator>
+    <!-- 签到 -->
+    <view class='set_up ab'>
+      <image wx:if="{{signconfig.signSwitch == 'open'}}" class='set_upimg' mode='aspectFit' src='/assets/images/personal/qiandao.png' bindtap='sign'></image>
+      <image class='set_upimg' mode='aspectFit' src='/assets/images/personal/shezhi.png' bindtap='modify'></image>
+    </view>
+  </view>
+  <view class='submenu mar_t pa_l' wx:if="{{isShop=='1'}}">
+    <view class='submenuv ba_f pa_l'>
+      <submenu content="{{submenu_0}}" />
+      <view class='user_basic info_0'>
+        <view class='info_0v color_0 fon_26 t_c user_basic_padding' wx:for="{{store_order}}" wx:key="name" bindtap='personal_jump' data-src="{{item.src}}" data-name="{{item.name}}">
+          <view>
+            <image class='submenu_icon' mode='aspectFit' src='{{item.img}}'></image>
+          </view>
+          <view class='color_6'>{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='submenu mar_t pa_l' wx:if="{{menu_1!=null}}">
+    <view class='submenuv ba_f pa_l'>
+      <submenu content="{{submenu_1}}" />
+      <view class='user_basic_info info_1'>
+        <view class='info_1v color_0 fon_26 t_c user_basic_padding' wx:if="{{item.isShow==true}}" wx:for="{{menu_1}}" wx:key="name" bindtap='personal_jump' data-src="{{item.src}}" data-name="{{item.name}}">
+          <view>
+            <image class='submenu_icon' mode='aspectFit' src='{{item.img}}'></image>
+          </view>
+          <view class='color_6'>{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='submenu mar_t pa_l' wx:if="{{menu_2!=null}}">
+    <view class='submenuv ba_f pa_l'>
+      <submenu content="{{submenu_2}}" />
+      <view class='user_basic_info info_1'>
+        <view class='info_1v color_0 fon_26 t_c user_basic_padding' wx:if="{{item.isShow==true}}" wx:for="{{menu_2}}" wx:key="name" bindtap='personal_jump' data-src="{{item.src}}">
+          <view>
+            <image class='submenu_icon' mode='aspectFit' src='{{item.img}}'></image>
+          </view>
+          <view class='color_6'>{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='submenu mar_t pa_l' wx:if="{{isstore || isstoretwo}}">
+    <view class='submenuv ba_f pa_l'>
+      <block wx:if="{{isstore}}"><submenu content="{{submenu_3}}" /></block>
+      <block wx:if="{{isstoretwo}}"><submenu content="{{submenu_32}}" /></block>
+    </view>
+  </view>
+  <view class='submenu mar_t pa_l mar_b'>
+    <view class='submenuv ba_f pa_l'>
+      <submenu content="{{submenu_4}}" />
+      <submenu content="{{submenu_5}}" />
+    </view>
+  </view>
+  <footer></footer>
+</view>
+</at-form>

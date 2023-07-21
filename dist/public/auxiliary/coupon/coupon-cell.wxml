@@ -1,0 +1,42 @@
+<!--dist/public/auxiliary/coupon/coupon-cell.wxml-->
+<view class="content">
+  <!-- type=1--代金券   type=2--折扣券     type=3--优惠券 -->
+  <view class="mar-lrb ba_f flex" style='min-height:250rpx;' bindtap='goodinfo'>
+    <view class="flex-grow-1 flex-row pa">
+      <view class='fon_24 flex-colbt'>
+        <view class='flex-y-center'>
+          <view class='wei fon_32 hydlnr_2'>
+            <text class="fon_22 wei color_f b-t-l30 b-b-r30 pa_10_20 mar_r {{content.type=='1'?'ba-lg-f1f8':'' || content.type=='2'?'ba-lg-3f6f':'' || content.type=='3'?'ba-lg-f4ee':'' }}">
+              <text wx:if="{{content.type=='1'}}">代金券</text>
+            <text wx:elif="{{content.type=='2'}}">折扣券</text>
+            <text wx:elif="{{content.type=='3'}}">优惠券</text>
+            </text>
+            <text>{{content.title}}</text>
+          </view>
+        </view>
+        <view class='mar_t'>
+          <view wx:if="{{content.money>0}}">
+            <text class='wei fon_36' style="color:{{content.type=='1'?'#F7B821':'' || content.type=='2'?'#3699FF':'' || content.type=='3'?'#FF3838':'' }}">￥{{content.money}}</text>
+            <block wx:if="{{content.vipMoney>0}}">
+              <block-text type='2' color='#ffee00' class-name='pa_8_20 br-r-10 mar_l color_3 fon_20 wei' text='会员价￥{{content.vipMoney}}' /></block>
+          </view>
+          <view wx:else class="fon_32 wei mar_tb_14" style="color:{{content.type=='1'?'#F7B821':'' || content.type=='2'?'#3699FF':'' || content.type=='3'?'#FF3838':'' }}">免费领取</view>
+        </view>
+        <view class="color_9 fon_24">已领{{content.receiveNum}}份</view>
+      </view>
+    </view>
+    <view class="flex-grow-0 rel coup t_c color_f" style="background:{{content.type=='1'?'#F7B821':'' || content.type=='2'?'#3699FF':'' || content.type=='3'?'#FF3838':'' }};min-width:240rpx;max-width:30%;">
+      <view class="tmar">
+        <view class='fon_40 wei'>
+          <text wx:if="{{content.type==1}}">￥{{content.money}}</text>
+          <text wx:elif="{{content.type==2}}">￥{{content.discount}}折</text>
+          <text wx:elif="{{content.type==3}}">￥{{content.money}}</text>
+        </view>
+        <view class='fon_20'>满{{content.condition}}元可使用</view>
+      </view>
+      <view class="pa_10 flex-x-center">
+        <view class="fon_28 wei mbtn ba_f" style="color:{{content.type=='1'?'#F7B821':'' || content.type=='2'?'#3699FF':'' || content.type=='3'?'#FF3838':'' }};border-color:{{content.type=='1'?'#DD8410':'' || content.type=='2'?'#0D68C5':'' || content.type=='3'?'#e10c0c':'' }}">立即领取</view>
+      </view>
+    </view>
+  </view>
+</view>

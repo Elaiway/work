@@ -1,0 +1,10 @@
+/* pages/personal/setup/index.wxss */
+.containerv{
+  padding: 20rpx;
+}
+.containerv1{
+  width: 30%;
+}
+.containerv2{
+  width: 70%;
+}

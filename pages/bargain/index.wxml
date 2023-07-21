@@ -1,0 +1,47 @@
+<!--pages/mall/index.wxml-->
+<view class='container after-navbar'>
+  <!-- 轮播图 -->
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <view class='mall-main1'>
+    <view class='mall-category1'>
+      <!-- 分类 -->
+      <view wx:if="{{Typeswiper!=null}}" class="">
+        <type-swiper bind:change='typeSwiperChange' style-name="border:none" color="{{color}}" type-obj='{{Typeswiper}}'></type-swiper>
+      </view>
+      <!-- 头条 -->
+      <!-- <view class='' wx:if="{{Headline!=null}}">
+        <headline extra-class='nopadding' class='bor-top' datatype='6,0' content="{{Headline}}" />
+      </view> -->
+    </view>
+    <!-- <swiper-case extra-class='mar_t' id='SwiperTwo' color="{{color}}" content="{{SwiperTwo}}"></swiper-case> -->
+  </view>
+  <!-- 店铺推荐 -->
+  <!-- <view class='ba_f' wx:if="{{storeList.length}}">
+    <view class='mall-title'>店铺推荐</view>
+    <scroll-view scroll-x='true' class='mall-tj'>
+      <block wx:for="{{storeList}}" wx:key="{{item.id}}">
+        <view class='mall-tjcellv' bindtap='storeInfo' data-id='{{item.id}}'>
+          <view class='mall-tjcell'>
+            <image mode='aspectFill' class='img' src='{{item.storeLogo}}'></image>
+            <view class='wid t_c fon_26 mar_tb_20 gobyndsingle'>{{item.storeName}}</view>
+            <block-text color='{{color}}' class-name='pa_5_15' text='进店逛逛' />
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view> -->
+  <!-- 信息信息 -->
+  <view class='mainbk'>
+    <!-- <view class='mall-title'>猜你喜欢</view> -->
+    <wux-tabs wux-class='mar_t' tabs="{{ tabs }}" color='#000' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+    <view wx:if="{{postList.length}}" class=''>
+      <block wx:for="{{postList}}" wx:key="{{item.id}}">
+        <bargain-cell content="{{item}}" color="{{color}}" />
+      </block>
+    </view>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if='{{bargainConfig.field}}' color='{{color}}' page-type='bargain' />

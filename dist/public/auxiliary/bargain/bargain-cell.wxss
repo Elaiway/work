@@ -1,0 +1,8 @@
+/* dist/public/auxiliary/privilege/privilege-cell.wxss */
+@import "/app.wxss";
+.cell-top{
+  height: 400rpx;
+}
+.pa_10_25{
+  padding: 6rpx 20rpx;
+}

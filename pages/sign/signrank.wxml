@@ -1,0 +1,49 @@
+<view class='container'>
+  <view class='color_f walletBalance t_c' style='background:{{color}};'>
+    <view class='fon_60'>{{userinfo.integral}}</view>
+    <view class='fon_26'>
+      <text class='mar_r'>——</text>
+      <text class='mar_l mar_r'>总积分</text>
+      <text class='mar_l'>——</text>
+    </view>
+    <view class='flex-center flex-around qdtab-v mar_t fon_28'>
+      <view bindtap='interval' data-type='0' class='qdtab'>积分明细</view>
+      <view bindtap='interval' data-type='1' class='qdtab'>兑换记录</view>
+    </view>
+  </view>
+  <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+  </wux-tabs>
+  <view class='ba_f flex-row flex-y-center bor-btm'>
+    <view wx:if="{{key=='0'}}" class='rankcellhd flex-center'>
+      <image wx:if="{{myRank<=3 && myRank!=0}}" mode='aspectFit' class='rankcelljp' src='{{imgsrc}}/wechatimg/sign/rank{{myRank-1}}.png'></image>
+      <view wx:if="{{myRank>3}}">{{myRank}}</view>
+      <view wx:if="{{myRank==0}}" class="fon_28 color_3">未上榜</view>
+    </view>
+     <view wx:if="{{key=='1'}}" class='rankcellhd flex-center'>
+      <image mode='aspectFit' class='rankcelljp' src='{{imgsrc}}/wechatimg/sign/rank{{myRankAll-1}}.png'></image>
+    </view>
+    <wux-cell imgw='70' imgh='70' boradius='50%' wux-class='wuxcell' isLast thumb="{{userinfo.portrait}}" title="{{userinfo.userName}}" extra="{{userinfo.integral}}"></wux-cell>
+    <!-- <wux-cell wx:if="{{key=='1'}}" imgw='70' imgh='70' boradius='50%' wux-class='wuxcell' isLast thumb="{{userinfo.portrait}}" title="{{userinfo.userName}}">
+      <view slot="footer" class='fon_28'>累计
+        <text class='fon_36' style='color:{{color}}'>{{count}}</text>天</view>
+    </wux-cell> -->
+  </view>
+  <view class='ba_f mar_t'>
+    <block wx:for="{{signRank}}" wx:key="*this">
+      <view class='flex-row flex-y-center bor-btm'>
+        <view wx:if='{{index>2}}' class='rankcellhd flex-center'>{{index+1}}</view>
+        <view wx:else class='rankcellhd flex-center'>
+          <image mode='aspectFit' class='rankcelljp' src='{{imgsrc}}/wechatimg/sign/rank{{index}}.png'></image>
+        </view>
+        <wux-cell wx:if="{{key=='0'}}" imgw='70' imgh='70' boradius='50%' wux-class='wuxcell' isLast thumb="{{item.portrait}}" title="{{item.userName}}"></wux-cell>
+        
+        <wux-cell wx:if="{{key=='1'}}" imgw='70' imgh='70' boradius='50%' wux-class='wuxcell' isLast thumb="{{item.portrait}}" title="{{item.userName}}">
+        <!-- {{('item.userName' ='null') ? '用户名称':'item.userName'}} -->
+          <view slot="footer" class='fon_28'>累计
+            <text class='fon_36' style='color:{{color}}'>{{item.count}}</text>天</view>
+        </wux-cell>
+      </view>
+    </block>
+    <!-- <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' /> -->
+  </view>
+</view>

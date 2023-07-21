@@ -1,0 +1,11 @@
+/* pages/store/storeentry/storeentry.wxss */
+.dwposition{
+  border-left: 1rpx solid #eee;
+  padding-left: 30rpx;
+}
+.dwposition view{
+  margin-left: 10rpx;
+}
+.wuxupload{
+  border-bottom: 1rpx solid #EEEEEE;
+}

@@ -1,0 +1,30 @@
+<view class="container after-navbar">
+ <view>
+    <search id='Search' class="postion" content="{{Search}}" searchtype='5' color="{{color}}"></search>
+  </view>
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <view class='bor_bottom'>
+    <notice id="notice" datatype='6' color="{{color}}" content="{{notice}}" />
+  </view>
+  <view class='' wx:if="{{Headline!=null}}">
+    <headline datatype='8,0' pagetype='job' content="{{Headline}}" />
+  </view>
+  <view class="nav pad_20 flex-bet ba_f bor-top fon_30">
+    <view wx:for="{{jobCategory}}" class="color_f btnat flex-center {{item.identifying=='2'?'bgsku':'bgorange'}}" data-msg="{{item}}" bindtap='gategorylist'>
+      <image class='navlogo' mode='aspectFit' src="{{item.identifying=='2'?'/assets/images/job/hunt.png':'/assets/images/job/job.png'}}"></image>
+      <view class="mar_l_10">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="mar_t">
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="pa_l30 mar_tb_10">
+    <job-hunt job-type="{{jobtype}}" page-type='list' content="{{jobList}}" color="{{color}}" />
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{jobList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if="{{jobCategory}}" color='{{color}}' page-type='jobhunt' />

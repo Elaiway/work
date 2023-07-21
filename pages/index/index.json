@@ -1,0 +1,24 @@
+{
+  "usingComponents": {
+    "Search": "/dist/public/search/index",
+    "swiper-case": "/dist/public/swiper/index",
+    "advert": "/dist/public/advert/index",
+    "Notice": "/dist/public/notice/index",
+    "Headline": "/dist/public/headline/index",
+    "hotstore-index": "/dist/public/hotstore/index",
+    "hotstore-store": "/dist/public/hotstore/store",
+    "Picmagic": "/dist/public/picmagic/index",
+    "type-swiper": "/dist/public/typeswiper/index",
+    "wux-tabs": "/dist/wux-weapp/tabs/index",
+    "custom-title": "/dist/public/h-title/customtitle",
+    "white-space": "/dist/public/h-title/whitespace",
+    "segment-line": "/dist/public/h-title/segmentline",
+    "r-text": "/dist/public/h-title/richtext",
+    "Postinfo": "/dist/public/postinfo/index",
+    "submenu":"/dist/public/submenu/index",
+    "store-cell": "/dist/public/storecell/index",
+    "message-postinfo": "/dist/public/message-postinfo/index",
+    "load-more": "/dist/public/storecell/loading",
+    "zan-active":"/dist/public/zan/index"
+  }
+}

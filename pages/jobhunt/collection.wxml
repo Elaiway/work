@@ -1,0 +1,12 @@
+<view class="container after-navbar">
+  <view>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="pa_l mar_tb_10">
+    <job-hunt job-type="{{types}}" page-type="collection" content="{{jobCollection}}" color="{{color}}" bind:cancelcoll='cancelcoll' />
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{jobCollection.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='jobhunt' />

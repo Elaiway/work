@@ -1,0 +1,8 @@
+<!--pages/mall/refundorder.wxml-->
+<view class='basepadding'>
+  <goods-card content="{{orderInfo}}" config="{{goodscardconfig}}" />
+</view>
+<text-area name='textarea' value='' bind:textblur='textareachange' height='5.5' show-max='{{false}}' placeholder='请输入退款理由'></text-area>
+<view class='basepadding'>
+  <view class='foot-btn' disabled='{{loading}}' loading='{{loading}}' bindtap="confirm" style='background:{{color}}'>提交</view>
+</view>

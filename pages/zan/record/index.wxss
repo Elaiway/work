@@ -1,0 +1,18 @@
+@import "/app.wxss";
+.main{
+  padding: 0 20rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.detail{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.marginleft{
+  margin-left: 20rpx;
+}
+/* .three{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */

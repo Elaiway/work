@@ -1,0 +1,8 @@
+<!--dist/public/textarea.wxml-->
+<view class="weui-footer flex-center-col {{bottom=='1'?'weui-footer_fixed-bottom':''}}">
+  <view class="flex-center">
+    <image class='footimg' src='{{system.logo}}'></image>
+    <view wx:if="{{system.support}}" class="mar_l">{{system.support}}</view>
+  </view>
+  <view class="mar_t_10 fon_26">{{system.copyright}}</view>
+</view>

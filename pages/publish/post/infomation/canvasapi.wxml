@@ -1,0 +1,5 @@
+<canvas class="canvas" style="height:{{height}}px" canvas-id="secondCanvas"></canvas>
+<view class='poster' wx:if="{{poster!=null}}">
+    <image class='posterimg' mode='widthFix' src='{{poster}}'></image>
+</view>
+<button catchtap='saveImg' wx:if="{{poster!=null}}" class='color_f' style='background:{{color}}'>保存图片到相册</button>

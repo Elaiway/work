@@ -1,0 +1,13 @@
+<!-- <wux-accordion-group title="" label="" accordion default-current="">
+  <wux-accordion wx:for="{{help_core}}" wx:key="*this" title="{{item.question}}">{{item.answer}}</wux-accordion>
+</wux-accordion-group> -->
+<view class='container ba_f'>
+  <block wx:for="{{help_core}}">
+    <view class='pa bor_bottom question' bindtap='question' data-index='{{index}}'>
+      <view class='questionv1 color_6 fon_30 dis_in'>{{item.title}}</view>
+      <view class='questionv2 color_6 fon_30 dis_in t_r'>
+          <text class='iconfont color_e icon-you fon_24'></text>
+      </view>
+    </view>
+  </block>
+</view>

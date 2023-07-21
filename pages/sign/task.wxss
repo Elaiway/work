@@ -1,0 +1,58 @@
+/* pages/sign/task.wxss */
+.main{
+ margin-top: -10rpx;
+}
+.banner{
+  width: 750rpx;
+  height: 400rpx;
+}
+.img{
+  width: 80rpx;
+  height: 80rpx;
+}
+.pa_lr{
+  padding: 0 40rpx;
+}
+.total{
+  height: 90rpx;
+  margin: 0 auto;
+  width: 95%;
+  margin-top: -100rpx;
+}
+.bgop{
+  opacity: 0.5;
+  height: 90rpx;
+  left:0;
+}
+.border-lr{
+  border-radius: 20rpx 20rpx 0 0;
+}
+.colorOr{
+  color: #F4810E;
+}
+.btnGo,.btnStock{
+  padding:8rpx 20rpx;
+  border-radius: 40rpx; 
+  background: linear-gradient(to right, #F7A914 , #FC5005);
+  box-shadow:3rpx 3rpx 3rpx #FCD7D8;
+  min-width: 140rpx;
+}
+.btnStock{
+  color: #999;
+  background: #ddd;
+  box-shadow: 0rpx 0rpx 0rpx;
+}
+.signin{
+  width: 130rpx;
+  height: 46rpx;
+  top:38rpx;
+  right: 30rpx; 
+}
+.bg-img{
+  width: 130rpx;
+  height: 46rpx;
+}
+.txt{
+  top:5rpx;
+  right:15rpx;
+}

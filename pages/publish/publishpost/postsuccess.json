@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+  "wux-tabs": "/dist/wux-weapp/tabs/index",
+  "text-area": "/dist/public/textarea/index",
+  "wux-upload": "/dist/wux-weapp/upload/index",
+  "ts-info": "/dist/public/tsinfo/index",
+  "i-action-sheet": "/dist/iview-weapp/action-sheet/index",
+  "i-button": "/dist/iview-weapp/button/index",
+  "agree-box": "/dist/public/agreebox/index",
+  "h-title": "/dist/public/h-title/index",
+  "wux-radio-group": "/dist/wux-weapp/radio-group/index",
+  "upload-video": "/dist/public/uploadvideo/index",
+  "show-pay": "/dist/public/showpay/index",
+  "wux-popup": "/dist/wux-weapp/popup/index"
+  }
+}

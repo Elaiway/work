@@ -1,0 +1,63 @@
+<!--pages/mall/order.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <dd-radio title='请选择配送方式' bind:change="lcrdioonChange" name='psradio' value="{{params.delivery}}" radioarr="{{lcradioarr}}" />
+    <view hidden="{{params.delivery!='1'}}">
+      <choose-address bind:getaddress="getaddress" />
+    </view>
+    <view hidden="{{params.delivery!='2'}}">
+      <choose-ztd wx:if="{{carList}}" bind:getaddress="getztd" store-id="{{carList[0].storeId}}" />
+    </view>
+    <view class="cartmain basepadding" style='padding-bottom:0rpx;'>
+      <block wx:for="{{carList}}" wx:for-item="carItem" wx:key='storeId'>
+        <goods-card content="{{carItem}}" config="{{goodscardconfig}}" />
+      </block>
+    </view>
+    <wux-cell bind:click='togglePopup' title='优惠券' is-last='true' is-link='true' extra="{{xzcoupon?'-￥'+discountMoney:myAllCoupon.length+'张'}}" />
+    <wux-cell-group title="备注">
+      <!-- <text-area name='textarea' value='{{params.note}}' bind:textblur='textareachange' height='4.5' maxlength='100' placeholder='请输入备注'></text-area> -->
+       <input class="shinput t_l fon_24 color_3" type="text" placeholder="请输入备注" value="{{params.note}}" style="height:100rpx;margin:0 30rpx;" bindinput="textareachange"/>
+    </wux-cell-group>
+    <view class="footpay">
+      <view class="footpay-l t_r">（含运费:
+        <text class="color_rb fon_28">{{params.freight}}</text>） 实付:
+        <text class="color_rb fon_28">￥{{params.totalMoney}}</text>
+      </view>
+      <button form-type="submit" class="footpay-r" style='background:{{color}}'>立即下单</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>
+<!-- 弹窗 -->
+<van-popup show="{{popupshow}}" z-index='1000' position="bottom" custom-style="overflow: initial;background: #f4f4f4;border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;" bind:close="togglePopup">
+  <view class='ba_f pa_l30 br-r-tlr30'>
+    <view class='t_c pad_20 fon_32'>优惠券</view>
+    <view class='' style='max-height:600rpx;overflow-y:scroll'>
+      <view wx:for="{{myAllCoupon}}" wx:key="{{item.id}}" class='bor-e br-r-30 flex-row mar_b ba_f posi-r'>
+        <view class='flex-col-center color_f' style='width:175rpx;min-height:175rpx;background:#FF3838'>
+          <view wx:if="{{item.type==1}}">￥
+            <text class='fon_46'>{{item.discount}}</text>
+          </view>
+          <view wx:if="{{item.type==2}}">
+            <text class='fon_46'>{{item.discount}}</text>折
+          </view>
+          <view class='mar_t_10 fon_26'>{{item.reach>0?'满'+item.reach+'可用':'无门槛'}}</view>
+        </view>
+        <view class='pad_20 flex-g-1 flex-col flex-x-center'>
+          <view class=''>{{item.name}}</view>
+          <view class='mar_t fon_24 color_9 flex-y-center'>
+            <text class='iconfont icon-tuanbuxingbiao mar_r_10'></text>{{item.introduce}}</view>
+          <view class='mar_t fon_24 color_9'>有效期：{{item.startTime}}至{{item.endTime}}</view>
+        </view>
+        <view class='posi-a flex-col-center r0 hei' style='width:160rpx;'>
+          <view wx:if="{{item.condition==1}}" class='text-btnf pa_5_20 br-r-30' style='background:#FF3838' bindtap='ljsy' data-info='{{item}}'>立即使用</view>
+          <view wx:elif="{{item.condition==2}}" class='text-btnf pa_5_20 br-r-30' style='background:#d5d5d5'>条件不足</view>
+          <icon wx:else  class="weui-icon-checkbox_success" type="success" size="24" color="#FF3838" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='ba_f pad_20'>
+    <view class='foot-btn' bindtap="confirm" style='background:{{color}}'>{{showType==3?buyType==2?'加入购物车':'立即购买':'完成'}}</view>
+  </view>
+</van-popup>

@@ -1,0 +1,19 @@
+/* pages/personal/setup/index.wxss */
+.containerv{
+  height: 90rpx;
+  padding: 0 20rpx;
+  line-height: 90rpx;
+}
+.containerv1{
+  width:18%;
+}
+.containerv2{
+  width: 52%;
+}
+.containerv3{
+  width: 30%;
+  box-sizing: border-box;
+}
+.code{
+  color: rgb(255 , 99, 22),
+}

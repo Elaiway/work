@@ -1,0 +1,69 @@
+/* dist/public/auxiliary/freeride/freeride-good.wxss */
+@import "/app.wxss";
+.boradiu{
+  border-radius: 10rpx;
+}
+.bgSku{
+  background-color:#17D2BB;
+}
+.bgOrange{
+  background-color:#FD6C4E;
+}
+.bgYellow{
+  background-color:#FFB829;
+}
+.bgBlue{
+  background-color:#369CDE;
+}
+.bgRed{
+  background-color: #FF3838;
+}
+.padd{
+  padding:0 10rpx;
+  border-radius: 10rpx;
+}
+.circular{
+  border-radius: 50%;
+  width: 38rpx;
+  height: 38rpx;
+}
+/* .star{
+  background:#12C8D3;
+}
+.end{
+  background:#FF3838;
+} */
+.line{
+  height: 15rpx;
+  width: 34rpx;
+  margin-left: 10rpx;
+}
+/* .label{
+  border: 1px solid #FF6F20;
+  color: #FF6F20;
+  padding: 2rpx 10rpx;
+  border-radius: 10rpx;
+  display: inline-block;
+} */
+/* .i-tags{
+  margin-right: 15rpx !important;
+} */
+.borderRight{
+  margin-right: 15rpx;
+  border-color:#17D2BB;
+  color:#17D2BB;
+}
+.colorOreng{
+  color:#FF6F20;
+}
+.operBtn{
+  border:1rpx solid #FF3838;
+  border-radius: 40rpx;
+  color:#FF3838;
+  padding:5rpx 25rpx;
+}
+.gray{
+ /* filter: grayscale(1); */
+ -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%);
+}

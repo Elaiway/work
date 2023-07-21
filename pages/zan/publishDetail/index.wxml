@@ -1,0 +1,69 @@
+<view class="container">
+	<button class="subimit" type="warn" bindtap="toPublish">发布活动</button>
+	<view class='fixedtop'>
+		<wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+		</wux-tabs>
+	</view>
+	<view wx-if="{{key==0 || key==1 || key==2}}">
+		<view wx:if="{{item.state-key==1}}" wx:for="{{list}}" wx:key="{{item}}" class="zan">
+			<view bindtap="toDetal" data-postid="{{item.id}}" class="zan-name flex-between-center">
+				<view class="zan-name-left flex-start-center">
+					<image class="img-head" mode="aspectFill" src="{{imgHead}}"></image>
+					<view>
+						<view>{{name}}</view>
+						<view class="color1">{{item.startTime}}发布</view>
+					</view>
+				</view>
+				<view wx:if="{{item.state==1}}" class="zan-name-right">待审核</view>
+				<view wx:if="{{item.state==2}}" class="zan-name-right">已通过</view>
+				<view wx:if="{{item.state==3}}" class="zan-name-right">已拒绝</view>
+			</view>
+			<view bindtap="toDetal" data-postid="{{item.id}}" class="zan-intro">
+				{{item.describe}}
+			</view>
+			<view bindtap="toDetal" data-postid="{{item.id}}" class="pic-list">
+				<view wx:for="{{item.media}}" wx:for-item="i" wx:key="i" class="pic-list-detail">
+					<image style="width:100%;height:100%" mode="aspectFill" src="{{i.url}}"></image>
+				</view>
+			</view>
+			<view class="zan-number">
+				<view class="flex-between-center" style="color:#666">
+					<view class="flex-start-center">
+						<view class="flex-start-center" style="margin-right:20rpx">
+							<image style="width:30rpx;height:30rpx;margin-right:10rpx" mode="aspectFill" src="../../../assets/images/zan/redxin.png"></image>
+							<text bindtap="toBillboard" data-id="{{item.id}}">集赞榜</text>
+						</view>
+						<view class="flex-start-center">
+							<image style="width:30rpx;height:30rpx;margin-right:10rpx" mode="aspectFill" src="../../../assets/images/zan/dianzan.png"></image>
+							<text>{{item.num}}</text>
+						</view>
+					</view>
+					<view wx-if="{{key==2}}" bindtap="toChange" data-postid="{{item.id}}">
+						修改
+					</view>
+				</view>
+			</view>
+
+		</view>
+		<view class='mar_t'>
+			<load-more bg-color="transparent" nodata="{{list.length==0}}" mygd="{{isget}}" />
+		</view>
+	</view>
+	<view wx-if="{{key==3}}">
+		<view>
+		<view class="order-list color1">
+			<view>订单号</view>
+			<view>兑换时间</view>
+			<view>状态</view>
+		</view>
+		<view wx:for="{{recordList}}" wx:key="{{item}}" class="order-list order-bg">
+			<view>{{item.createdAt}}</view>
+			<view>{{item.hxTime}}</view>
+			<view>{{item.state==1?'已核销':'未核销'}}</view>
+		</view>
+
+	</view>
+	<load-more bg-color="transparent" nodata="{{recordList.length==0}}" mygd="{{isget}}" />
+	</view>
+
+</view>

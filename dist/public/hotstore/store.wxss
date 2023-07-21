@@ -1,0 +1,9 @@
+/* dist/public/hotstore/index.wxss */
+@import "/app.wxss";
+.hot-seller-img{
+  width: 150rpx;
+  height: 150rpx;
+}
+.w-210{
+  width: 210rpx;
+}

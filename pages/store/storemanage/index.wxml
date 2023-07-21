@@ -1,0 +1,53 @@
+<view class='container'>
+  <view class='storeHead rel' style='background:{{color}}'>
+    <view class="flex-center color_f fon_26"><text catchtap='switchshop'>切换店铺</text></view>
+    <view class='storeInfo flex-row'>
+      <image mode='aspectFill' class='flex-g-0 storeLogo' src='{{shopDetail.storeLogo}}'></image>
+      <view class='flex-g-1 flex-col flex-x-center color_f mar_l'>
+        <view class='fon_34'>{{shopDetail.storeName}}</view>
+        <view class='fon_22 mar_t_10'>到期时间:{{shopDetail.enterEndTime}}</view>
+      </view>
+    </view>
+    <view class='ab ud userStore flex-center color_f' catchtap='storeInfo'>
+      <text class='fon_26 mar_l'>查看商家</text>
+      <text class='mar_l_10 iconfont icon-you fon_24'></text>
+    </view>
+  </view>
+  <view style='background:{{color}};padding-top:0;' class='basepadding flex-x-bt color_f'>
+    <view class='flex-y-center'>
+      <text class='iconfont icon-yanjing fon_20 mar_r_10'></text>
+      <text>浏览：{{shopDetail.viewNum||0}}</text>
+    </view>
+    <view class='flex-y-center'>
+      <text class='iconfont icon-fensi mar_r_10'></text>
+      <text>粉丝：{{shopDetail.followNum||0}}</text>
+    </view>
+  </view>
+  <view class='storeData ba_f' style="margin-top:{{announceList!=null?80:20}}rpx">
+    <wux-cell is-last="true" title="商家数据" tftsize='32' tstyle='color:#000'></wux-cell>
+    <wux-grids col="3">
+      <block wx:for="{{sjsjData}}" wx:key="name">
+        <wux-grid wx:if="{{item.show}}" bind:click="sjsjclick" data-item="{{item}}" data-items="{{shopDetail.enterEndTime}}" width='33.33%'>
+          <view class='color_6 mar_b' slot="header">{{item.title}}</view>
+          <view style='color:{{item.color}}' slot='bodyer'>{{item.text}}</view>
+        </wux-grid>
+      </block>
+    </wux-grids>
+  </view>
+  <block wx:for="{{storeManagement}}" wx:for-item="pItem" wx:key="title">
+    <view wx:if="{{pItem.show}}" class='storeManage ba_f mar_t'>
+      <wux-cell is-last="true" title="{{pItem.text}}" tftsize='32' tstyle='color:#000'></wux-cell>
+      <wux-grids col="4">
+        <block wx:for="{{pItem.arr}}">
+          <wux-grid width='25%' bind:click="sjglclick" data-item="{{item}}" data-items="{{shopDetail.enterEndTime}}" label="{{item.title}}">
+            <view slot="header" class='iconfont {{item.icon}} fon_50' style='color:{{item.color}}'></view>
+          </wux-grid>
+        </block>
+      </wux-grids>
+    </view>
+  </block>
+</view>
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button fontsize='35' slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+</i-action-sheet>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

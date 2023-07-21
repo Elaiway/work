@@ -1,0 +1,13 @@
+<!--pages/personal/integral/integralmall/myorder.wxml-->
+<view class="container">
+  <!-- <search id='Search' class="postion" content="{{Search}}" searchtype='4' color="{{color}}"></search> -->
+  <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  <block wx:for="{{myRecord}}">
+    <view class="mar_t">
+    <goods-cell content="{{content}}" goods-info="{{item}}" color="{{color}}" page-type='integral' bindmyevent="orderDetail" />
+    </view>
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{itemList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

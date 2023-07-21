@@ -1,0 +1,20 @@
+<!--dist/public/textarea.wxml-->
+<view class="page__bd" style="background:{{bgColor}}">
+  <block wx:if='{{nodata}}'>
+    <view class="no-data-tip">
+      <image class='no-data-tipimg' mode='aspectFit' src='/assets/images/img/noresult.png'></image>
+      <view>暂无相关内容~</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="weui-loadmore" hidden='{{mygd}}'>
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips" style='margin:0;'>正在加载</view>
+    </view>
+    <view class="weui-loadmore" wx:if="{{mygd}}">
+      <view class='hx'></view>
+      <view class="weui-loadmore__tips">加载完毕</view>
+      <view class='hx'></view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,5 @@
+/* dist/public/auxiliary/mall/good-card.wxss */
+@import "/app.wxss";
+.br-r-0 {
+  border-radius: 0px;
+}

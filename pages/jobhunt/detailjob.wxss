@@ -1,0 +1,72 @@
+.tagad{
+  border-radius: 10rpx;
+  padding:10rpx;
+  /* height: 45rpx; */
+}
+.i-tags{
+  margin-right: 10rpx;
+}
+.bgblue{
+  background: #618AFF;
+}
+.bgsku{
+  background: #20D4D0;
+}
+.bgorange{
+  background:#FFB131;
+}
+.bororange{
+  border:1rpx solid #FF7123;
+  background: #fff;
+  color: #FF7123;
+}
+.borbgblue{
+  border:1rpx solid #7594B6;
+  background: #fff;
+  color: #7594B6;
+}
+.borbgsku{
+  border:1rpx solid #618AFF;
+  background: #fff;
+  color: #618AFF;
+}
+.borgreen{
+  border:1rpx solid #4DC27E;
+  background: #fff;
+  color: #4DC27E;
+}
+.circle{
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 30rpx;
+  height: 30rpx;
+  border-color:#FFD7D7;
+  background: #FFD7D7;
+}
+.innerc{
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 15rpx;
+  height: 15rpx;
+  border-color:#FF3838;
+  background: #FF3838;
+}
+.grayline{
+  width: 2rpx;
+  height: 73%;
+  background:#ddd;
+  left: 15rpx;
+}
+/* .ba_f .grayline:last-child{
+ height: 70%
+} */
+/* .ba_f .grayline:nth-last-child(2) {
+  height: 70%;
+} */
+.addjy,.addgz{
+  border-radius: 50rpx;
+  width: 300rpx;
+  height: 90rpx;
+ /* padding: 25rpx 30rpx;  */
+}
+

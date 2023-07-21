@@ -1,0 +1,67 @@
+<form bindsubmit="formSubmit" bindreset="formReset" wx:if="{{empower==false}}">
+  <view class='conteiner ba_f mar_t'>
+    <!-- <view class='login_head fon_40 t_c color_0'>
+            手机号登录
+        </view> -->
+    <view class='pa'>
+      <view class="weui-cell" style="padding:10rpx 0">
+        <view class="weui-cell__bd fon_30 mar_l">国家/地区</view>
+        <view class="weui-cell__ft flex-y-center" bindtap="codeOpen">
+          <view>{{areaName}}{{areaCode}}</view>
+          <text class='iconfont icon-you-copy fon_24 mar_l_10 mar_t_10'></text>
+        </view>
+      </view>
+      <view class='wid bor_bottom rel binding'>
+        <!-- <text class='mar_l dis_in iconfont color_9 icon-zhanghao fon_50'></text> -->
+        <view class="flex-y-center">
+          <input name="tel" class='binding-input dis_in mar_l fon_30' bindinput='getTel' placeholder-style='color:#bbbbbb;' placeholder='请输入手机号码' type='number'></input>
+        </view>
+      </view>
+      <block>
+        <view class='wid bor_bottom binding rel'>
+          <!-- <text class='mar_l dis_in iconfont color_9 icon-yanzhengma fon_50'></text> -->
+          <input name="code" class='binding-input dis_in mar_l fon_30' placeholder-style='color:#bbbbbb;' placeholder='请输入验证码' type='number'></input>
+          <block>
+            <text class='ab ud code fon_30' style='color:#999' wx:if="{{send==true}}">{{getmsg}}</text>
+            <text class='ab ud fon_30 color_f codeBorder' style='background:{{color}}' bindtap='sendmsg' wx:if="{{send==false}}">{{getmsg}}</text>
+          </block>
+        </view>
+      </block>
+      <view>
+        <agree-box isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='用户登录协议' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+      </view>
+      <button formType="submit" style='background:{{color}}' class='color_f mar_t'>登录</button>
+    </view>
+  </view>
+  <view class='pa_l bindWechat mar_t'>
+    <button class='mar_t ba_f fon_30' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style='color:{{color}}'>
+      <image class='dis_in wxbimg' mode='aspectFill' src='/assets/images/img/wechat.png'></image>
+      微信登录</button>
+  </view>
+</form>
+<block wx:if="{{empower==true}}">
+  <view class="sq_screen" bindtap='yczz'></view>
+  <view class="sq_box">
+    <view class="sq_title">需要您的授权</view>
+    <view class="sq_title1">为了提供更好的服务</view>
+    <view class="sq_title1">请在稍后的提示框中点击“允许”</view>
+    <image class='sq_boximg' src='/assets/images/img/sqimg.png'></image>
+    <block wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" style='background:{{color}}' class="btn_ok">我知道了</button>
+    </block>
+    <!-- <button open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo' style='background:{{color}}' class="btn_ok" bindtap="yczz">我知道了</button> -->
+  </view>
+</block>
+<van-popup show="{{popupshow}}" z-index='1000' position="bottom">
+  <view style="height:100vh" class="flex-col">
+    <view class="flex-g-1 o-y-s">
+      <view bindtap="selectCode" data-c="{{item.county}}" data-p="{{item.phoneCo}}" wx:for="{{cdata}}" wx:key="{{index}}" class="flex-y-center base-pad2" style="color:{{item.phoneCo==areaCode?color:''}}">
+        <view>{{item.county}}</view>
+        <view>{{item.phoneCo}}</view>
+      </view>
+    </view>
+    <view class='flex-g-0 foot-button'>
+      <button style='background:{{color}}' class="weui-btn color_f" bindtap="qdcode">确定</button>
+    </view>
+  </view>
+</van-popup>

@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "swiper-case": "/dist/public/swiper/index",
+        "type-swiper": "/dist/public/typeswiper/index",
+        "load-more": "/dist/public/storecell/loading",
+        "integral-good": "/dist/public/auxiliary/integral/integral-good",
+        "footmenu": "/dist/public/foot_menu/index"
+    }
+}

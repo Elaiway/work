@@ -1,0 +1,127 @@
+<view class="container after-navbar padd-top">
+  <header-dl bind:bdclick='bdclick' color="{{color}}" content='{{header}}' />
+  <!-- 活动 -->
+  <view id="activitydl" class="swiper">
+    <!-- <image class="image_all" src="{{detailPage.showImgs}}" mode='aspectFill'></image> -->
+    <view hidden="{{Swiper==null}}">
+      <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+    </view>
+  </view>
+  <view class="base-pad2 bor-btm ba_f">
+    <view class="flex-bet">
+      <view>
+        <text class="fon_40 mar_r" style="color:{{color}}">￥{{detailPage.currentPrice}}</text>
+        <text class="fon_24 color_9">￥{{detailPage.originalPrice}}</text>
+      </view>
+      <view class="fon_28" catchtap='collection'>
+        <block wx:if="{{detailPage.follow==true}}">
+          <text class="iconfont icon-shoucang1 mar_r_10" style="color:{{color}}"></text>
+          <text style="color:{{color}}">收藏</text>
+        </block>
+        <block wx:if="{{detailPage.follow==false}}">
+          <text class="iconfont icon-shoucang1 mar_r_10"></text>
+          <text>收藏</text>
+        </block>
+      </view>
+    </view>
+    <view class="fon_28">{{detailPage.name}}</view>
+  </view>
+  <view class="flex-bet ba_f base-pad2 fon_24 color_9">
+    <view wx:if="{{detailPage.typeName!==null}}">{{detailPage.typeName}}</view>
+    <view class="">已有
+      <text style="color:{{color}}">{{detailPage.residue}}</text>人参与活动 剩余
+      <text style="color:{{color}}">{{detailPage.num-detailPage.residue}}</text>个名额</view>
+  </view>
+  <view class="mar_t_10 ba_f base-pad2">
+    <view class="flex-bet color_9 fon_24">
+      <view class="flex-grow-0">
+        <text class="iconfont icon-huo mar_r fon_30"></text>
+      </view>
+      <view class="flex-grow-1">浏览人数：
+        <text>{{detailPage.browse}}</text>
+      </view>
+    </view>
+    <view class="flex-bet color_9 fon_24 mar_t_10">
+      <view class="flex-grow-0">
+        <text class="iconfont icon-yingyeshijian mar_r fon_28"></text>
+      </view>
+      <view class="flex-grow-1">报名时间：
+        <text>{{detailPage.enrollStartTime}}</text> -
+        <text>{{detailPage.enrollEndTime1}}</text>
+      </view>
+    </view>
+    <view class="flex-bet color_9 fon_24 mar_t_10">
+      <view class="flex-grow-0">
+        <text class="iconfont icon-yingyeshijian mar_r fon_28"></text>
+      </view>
+      <view class="flex-grow-1">活动时间：
+        <text>{{detailPage.startTime}}</text> -
+        <text>{{detailPage.endTime}}</text>
+      </view>
+    </view>
+    <view class="flex-bet color_9 fon_24 mar_t_10">
+      <view class="flex-grow-0">
+        <text class="iconfont icon-dizhi3 mar_r fon_30"></text>
+      </view>
+      <view class="flex-grow-1">活动地址：
+        <text>{{detailPage.address}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="color_6 ba_f pad_20 mar_t_10 flex-bet">
+    <view class="flex-y-center fon_28 flex-grow-0">
+      <text class='iconfont icon-jilu1 mar_r fon_36' style='color:{{color}}'></text>报名情况</view>
+    <view class="flex-y-center flex-grow-1 mar-left ohidden">
+      <view wx:for="{{detailPage.enroll}}" wx:key="" class="fle">
+        <image class="portrait imgshape1" src="{{item.portrait}}"></image>
+      </view>
+    </view>
+  </view>
+  <wux-cell isLast='true' wux-class='mar_t_10 flex-y-center' title='主办方' catchtap="clickedShop">
+    <view slot='header' class='iconfont fon_40 icon-shangjia mar_r' style='color:{{color}}'></view>
+    <view slot='footer' class="flex-y-center">
+      <image class="storeLogo imgshape1 mar_r_10" mode='aspectFill' src="{{detailPage.storeLogo}}"></image>
+      <text class="fon_26">{{detailPage.storeName}}</text>
+      <text class='iconfont fon_26 icon-you-copy'></text>
+    </view>
+  </wux-cell>
+  <view class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t_10 flex-y-center' title='活动须知'>
+      <view slot='header' class='iconfont fon_40 icon-gonggao mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="base-pad2">
+      <rich-text class="fon_26 color_6" nodes="{{detailPage.notice}}"></rich-text>
+    </view>
+  </view>
+  <!-- 活动详情 -->
+  <view id="activitydl" class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t_10' title='活动详情'></wux-cell>
+    <view class="fon_28 color_6 pa_t">
+      <!-- <block wx:if="{{detailPage.video!=null || detailPage.video!=''}}">
+        <video src="{{detailPage.video}}" binderror="videoErrorCallback"></video>
+      </block> -->
+      <view class="pa fon_26 color_6">{{detailPage.detail}}</view>
+      <image wx:for="{{detailPage.detailImgs}}" wx:key="" class="wimgs flex-col" mode='widthFix' src="{{item.url}}"></image>
+    </view>
+  </view>
+  <!-- 活动评价 -->
+  <view id="activitydl" class="ba_f bor-btm flowhiden">
+    <wux-cell isLeft='true' wux-class='mar_t_10' title='活动评价'></wux-cell>
+    <view wx:for="{{detailPage.comment}}" wx:key="" class="flex-bet flex-y-top base-pad2">
+      <view class="flex-grow-0">
+        <image class="imgicon mar_r" src="{{item.portrait}}"></image>
+      </view>
+      <view class="flex-grow-1 color_3">
+        <view class="fon_30">{{item.userName}}</view>
+        <view class="fon_24 color_9">{{item.creatTime}}</view>
+        <view class="fon_26">{{item.body}}</view>
+      </view>
+    </view>
+    <view wx:if="{{detailPage.comment==''}}">
+        <view class="color_9 fon_26 t_c pa_tr30">暂无数据</view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl bind:footclick='footclick' content="{{foot_menu}}" />
+</block>

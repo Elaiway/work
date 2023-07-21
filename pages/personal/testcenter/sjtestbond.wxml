@@ -1,0 +1,37 @@
+<!--pages/personal/testcenter/testpersonal.wxml-->
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <view class="container padding-bottom">
+    <swiper-case id='Swiper' content="{{Swiper}}"></swiper-case>
+    <view class='mar_t'>
+      <wux-cell wux-class='' background='#F1FFFC' isLast>
+        <view slot="bodyer" class='flex-row fon_30'>
+          <view wx:if="{{myEnsure}}" style='color:#269981'>￥{{myEnsure.money}}</view>
+          <view wx:else style='color:#269981'>￥0.00</view>
+        </view>
+        <view slot="footer" bindtap='collection_store' class='flex-center fon_28'>
+          <view wx:if="{{myEnsure}}" style='color:#F77E35'>已缴纳保证金</view>
+          <view wx:else class='color_9'>未缴纳诚信金</view>
+        </view>
+      </wux-cell>
+      <view class='ba_f'>
+      <r-text content="{{identSet.bondComment}}"></r-text>
+      </view>
+      <agree-box isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='保证金协议' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+      <view class='bottomfixed'>
+        <button wx:if="{{!myEnsure}}" disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">立即缴纳
+        </button>
+        <button bindtap='modalOpen' wx:if="{{myEnsure.status=='1'||myEnsure.status=='4'}}" disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary">退还保证金
+        </button>
+        <button wx:if="{{myEnsure.status=='2'}}" style='background:{{color}}' class="weui-btn" type="primary">保证金退还中
+        </button>
+      </view>
+    </view>
+  </view>
+</form>
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button fontsize='35' slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+</i-action-sheet>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>
+<i-modal title="是否确认退还保证金？" okcolor="{{color}}" visible="{{ mvisible }}" bind:ok="modalok" bind:cancel="modalClose">
+  <view>保证金退还后可再次缴纳</view>
+</i-modal>

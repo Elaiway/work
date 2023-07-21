@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "wux-tabs": "/dist/wux-weapp/tabs/index",
+        "wux-cell-group": "/dist/wux-weapp/cell-group/index",
+        "wux-cell": "/dist/wux-weapp/cell/index",
+        "t-modal": "/dist/iview-weapp/modal/modal",
+        "load-more": "/dist/public/storecell/loading"
+    }
+}

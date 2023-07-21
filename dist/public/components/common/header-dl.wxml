@@ -1,0 +1,10 @@
+<!--dist/public/components/common/header-dl.wxml-->
+<view class='flex-center headerdl posi-f t0 wid br-b-e'>
+  <text bindtap='back' wx:if="{{content.hd}}" class='headerdltext iconfont icon-zuo'></text>
+  <view class='flex-g-1 flex-row headerdlbd'>
+    <block wx:for="{{content.bd}}" wx:key="*this">
+      <view bindtap='bdClick' data-index='{{index}}' class='flex-1 flex-center' style="color:{{acindex==index?color:''}}">{{item}}</view>
+    </block>
+  </view>
+  <text wx:if="{{content.ft}}" class='headerdltext t_r iconfont icon-caidan fon_40'></text>
+</view>

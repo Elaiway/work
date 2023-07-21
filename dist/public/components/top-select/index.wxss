@@ -1,0 +1,285 @@
+/* dist/public/components/top-select/index.wxss */
+.bor-l{
+  border-left: 1px solid #eee;
+}
+.padding-top{
+  padding-top: 90rpx;
+}
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  color: #666;
+}
+
+.nav-son {
+  display: flex;
+  flex: 1;
+  text-align: center;
+  height: 90rpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.borders {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.content {
+  display: inline-block;
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon {
+  display: inline-block;
+  border-left: 12rpx solid transparent;
+	border-right: 12rpx solid transparent;
+	border-top: 12rpx solid #bbb;
+  margin-left: 5px;
+}
+
+.temp {
+  position: relative;
+  z-index: 4;
+  font-size: 14px;
+}
+
+.temp1 {
+  display: flex;
+  width: 100%;
+  height: 750rpx;
+  overflow-y: scroll;
+  background: #fff;
+  color: #666;
+}
+
+
+
+.slidedown {
+  transform: translateY(0%);
+}
+
+.quyu {
+  position: fixed;
+  top: 90rpx;
+  width: 100%;
+  height: 750rpx;
+  z-index: 5;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  padding: 0 30rpx;
+}
+
+.quyu .qy {
+  overflow-y: scroll;
+  flex: 1;
+  height: 750rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #717273;
+}
+
+.qy-item{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 15rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.quyu-left {
+  background: #c5c5c5;
+}
+
+.quyu-center {
+  background: #eee;
+}
+
+.quyu-right {
+  background: #fff;
+}
+
+.current {
+  /* background: #eee; */
+}
+
+.current2 {
+  background: #fff;
+}
+
+.fullbg {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgb(1, 1, 1);
+  transition: all 1.5s;
+  -moz-transition:all 1.5s; /* Firefox 4 */
+-webkit-transition: all 1.5s; /* Safari 和 Chrome */
+-o-transition: all 1.5s; /* Opera */
+  opacity: 0;
+}
+
+.fullopacity {
+  opacity: 0.5;
+}
+
+.nav-son.active .content {
+  color: #fa871e;
+}
+
+.nav-son.active .icon {
+  border-top: 0;
+	border-bottom: 12rpx solid #fa871e;
+}
+
+@keyframes slidown {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.slidown {
+  /* display: block; */
+  animation: slidown 0.2s ease-in both;
+}
+
+@keyframes slidup {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.tempheight {
+  height: 1020rpx;
+  overflow-y: scroll;
+}
+
+.slidup {
+  /* display: block; */
+  animation: slidup 0.2s ease-in both;
+}
+
+.disappear {
+  display: none;
+}
+
+.slidowntop {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 24rpx 10rpx 24rpx;
+}
+
+.emptyall {
+  margin-left: 475rpx;
+  color: #fa871e;
+}
+
+.emptyallright {
+  width: 80rpx;
+  text-align: center;
+}
+
+.endselect {
+  width: 350rpx;
+  text-align: left;
+}
+
+.return {
+  margin-left: 200rpx;
+  color: #fa871e;
+}
+
+.slidowncenter {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  padding-left: 24rpx;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  border-top: solid #d1d3d4 1rpx;
+}
+
+.slidownbottom {
+  margin-top: 10rpx;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.sdbitem {
+  width: 119rpx;
+  text-align: center;
+  border: solid #ccc 1rpx;
+  margin: 12rpx;
+  justify-content: space-between;
+  padding: 12rpx 19rpx 12rpx 19rpx;
+}
+
+.emptyendcitys {
+  padding-left: 12rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.emptyendcitysitem {
+  width: 120rpx;
+  text-align: center;
+  border: solid #ccc 1rpx;
+  margin: 10rpx;
+  justify-content: space-between;
+  padding: 12rpx 18rpx 12rpx 18rpx;
+}
+
+.queding {
+  width: 100%;
+  height: 100rpx;
+  background-color: #fa871e;
+  color: #fff;
+  text-align: center;
+}
+
+.queding {
+  font-size: 18px;
+  line-height: 100rpx;
+}
+.temp2 {
+  width: 100%;
+  height: 750rpx;
+  overflow-y: scroll;
+  background: #fff;
+  color: #666;
+}
+.commanders{
+  padding: 10rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.sdbitem.active{  
+  color: #fa871e;  
+  background-color: #F1E6B8;
+}  

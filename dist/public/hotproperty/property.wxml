@@ -1,0 +1,17 @@
+<view class='hot-seller-ind'>
+  <view class='wrap'>
+    <view class="list {{storelist.length>3?'animation':''}}">
+      <view class="hot-seller-item rel" wx:for="{{storelist}}" wx:key="id" bindtap='storeinfo' data-id='{{item.id}}'>
+        <image class='hot-seller-img' src="{{item.imgs[0].url}}"></image>
+        <view class='ab storeName'>
+          <view class='whfull ab storeNamev1'></view>
+          <view class='whfull ab storeNamev2 fon_28'>
+            <block wx:if="{{item.rentType!==null}}"><view class="ab lables color_f fon_24 flex-y-center" style="background:{{item.rentType=='待售'?'#FF9212':''||item.rentType=='在售'?'#287AE0':''||item.rentType=='停售'?'#22D4D4':''}}">{{item.rentType}}</view></block>
+            <view class="gobyndsingle color_3">{{item.communityName}}</view>
+            <view class="gobyndsingle color_3 fon_24"><text class="iconfont icon-location fon_28 mar_r_5"></text>{{item.area}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

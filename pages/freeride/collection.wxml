@@ -1,0 +1,7 @@
+<view class='container after-navbar'>
+  <view class="latestMsg pa_l30">
+    <freeride-cell content="{{collList}}" type="{{typec}}" bind:cancelColl='onCancelColl' />
+  </view>
+  <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+</view>
+<foot-nav color='{{color}}' page-type='freeride' />

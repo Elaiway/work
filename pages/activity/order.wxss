@@ -1,0 +1,29 @@
+.marginLr{
+  padding: 0 25rpx !important;
+}
+.theight{
+  height: 130rpx;
+}
+.imglogo{
+  width: 240rpx;
+  height: 100%;
+  /* background: #74E3FF; */
+  border-radius: 10rpx;
+}
+.flex-y-top{
+  align-items: flex-start;
+  display: flex;
+}
+/* .flex-y-bottom{
+  align-items: flex-end;
+  display: flex;
+} */
+.tba_f5{
+  background: #F4F6F9;
+}
+.btn-ckxq,.btn-qhx{
+  border:1rpx solid #ddd;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+  min-width: 120rpx;
+}

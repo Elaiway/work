@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "Search": "/dist/public/search/index",
+    "Headline": "/dist/public/headline/index",
+    "swiper-case": "/dist/public/swiper/index",
+    "advert": "/dist/public/advert/index",
+    "type-swiper": "/dist/public/typeswiper/index",
+    "message-postinfo": "/dist/public/message-postinfo/index",
+    "weather": "/dist/public/weather/index",
+    "load-more": "/dist/public/storecell/loading"
+  }
+}

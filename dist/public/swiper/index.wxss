@@ -1,0 +1,7 @@
+/* dist/public/swiper/index.wxss */
+@import "/app.wxss";
+.swiper{
+    width: 100%;
+    height: 350rpx;
+    overflow: hidden;
+}

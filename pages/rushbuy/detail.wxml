@@ -1,0 +1,186 @@
+<!--pages/rushbuy/detail.wxml-->
+<view class='container after-navbar'>
+	<!-- 轮播图 -->
+	<view class='' hidden="{{Swiper==null}}">
+		<swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+	</view>
+	<view class="ba-lg-ff1e whs wid flex-bet flex-y-center color_f">
+		<view class="flex-g-0 fon_36 wei mar_l30">{{isOver?'已结束':'抢购中'}}</view>
+		<view class="flex-g-1 flex flex-x-bottom mar_r30">
+			<text class="fon_26 mar_r_10">距离活动结束还有</text>
+			<view class="flex">
+				<view class="boxs ba_f color_rb flex-center fon_26 wei o-h">{{endTime[0]}}</view>
+				<text class="mar_l_8">天</text>
+				<view class="boxs ba_f color_rb flex-center fon_26 wei o-h">{{endTime[1]}}</view>
+				<text class="mar_l_8">时</text>
+				<view class="boxs ba_f color_rb flex-center fon_26 wei o-h">{{endTime[2]}}</view>
+				<text class="mar_l_8">分</text>
+				<view class="boxs ba_f color_rb flex-center fon_26 wei o-h">{{endTime[3]}}</view>
+				<text class="mar_l_8">秒</text>
+			</view>
+		</view>
+	</view>
+	<view class='pad_20 ba_f'>
+		<view class='flex-y-center'>
+			<view class='wei fon_36'>{{goodsInfo.title}}</view>
+		</view>
+		<view class='flex-x-bt mar_t color_rb'>
+			<view>
+				<text class='wei fon_36'>￥{{goodsInfo.rushPrice}}</text>
+				<block-text wx:if="{{system.openVip&&goodsInfo.memberPrice>0}}" type='2 ' color='#FFE100' class-name='pa_10_15 br-r-10 mar_l color_3' text='会员￥{{goodsInfo.memberPrice}}' />
+			</view>
+			<view class="color_9 flex-g-0">已售{{goodsInfo.salesNum}}份</view>
+		</view>
+		<view class='mar_b'>
+			<text class='fon_26 color_9 t-d-l'>￥{{goodsInfo.originalPrice}}</text>
+		</view>
+		<!-- 会员卡提示 -->
+		<navigator wx:if="{{system.openVip}}" url='/pages/vip/index' class="br-r-10 pad_20 flex-x-bt" style='background:#FFECF2'>
+			<view class="">
+				<view class="pa_5_10 color_3 mar_b_10 br-r-10">
+					<text class="fon_36 iconfont icon-tianchongxing- mar_r_10"></text>
+					<text class="fon_30 wei">超级会员卡</text>
+				</view>
+				<view class='fon_24 color_9'>开通超级会员可
+					<text class='color_rb'>{{goodsInfo.memberPrice}}元购买</text>
+				</view>
+			</view>
+			<view class='flex-g-0 jbyjbtn ba-lg-fef7'>立即开通</view>
+		</navigator>
+	</view>
+
+        <view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>
+
+	<!-- <wux-cell padding='0 30rpx 20rpx' is-last='true' bind:click='showTypeOne' is-link>
+    <view slot='bodyer' class='flex-raw'>
+      <block wx:for='{{goodsInfo.label}}' wx:key="*this">
+        <view wx:if='{{index<3}}' class='mar_r30'>
+          <text class='mar_r iconfont icon-tuanbuxingbiao color_rb'></text>
+          <text class='color_9'>{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </wux-cell> -->
+	<!-- 购买须知 -->
+	<view class="mar_t ba_f br-r-30">
+		<view class='fon_32 wei pad_20'>购买须知</view>
+		<view class="">
+			<wux-cell isLeft='true' wux-class='flex-y-center fon_24 wei color_3' title='每人限购'>
+				<view slot='footer' class="flex-y-center normal" style="color:#f00">限时限量，疯狂抢购(每人限购{{goodsInfo.limitNum}}份)</view>
+			</wux-cell>
+			<wux-cell isLeft='true' wux-class='flex-y-center fon_24 wei color_3' title='开始时间'>
+				<view slot='footer' class="flex-y-center normal">
+					<text class="mar_l_10 mar_r_10" style="color:#f00">{{goodsInfo.startTimes}}</text> </view>
+			</wux-cell>
+			<wux-cell isLeft='true' wux-class='flex-y-center fon_24 wei color_3' title='结束时间'>
+				<view slot='footer' class="flex-y-center normal">
+					<text class="mar_l_10 mar_r_10" style="color:#f00">{{goodsInfo.endTimes}}</text> </view>
+			</wux-cell>
+			<wux-cell isLeft='true' wux-class='flex-y-center fon_24 wei color_3' title='有效期'>
+				<view slot='footer' class="flex-y-center normal">到
+					<text class="mar_l_10 mar_r_10" style="color:#f00">{{goodsInfo.expireTime}}</text> 截止</view>
+			</wux-cell>
+			<wux-cell isLast='true' wux-class='flex-y-center fon_24 wei color_3' title='发货方式'>
+				<view slot='footer' class="flex-y-center normal">{{goodsInfo.delivery=='1'?'快递发货':'到店自提'}}</view>
+			</wux-cell>
+		</view>
+	</view>
+	<!-- 商品详情 -->
+	<view class='mar_t ba_f basepadding' bindtap='goStoreDetail'>
+		<view class='flex-row'>
+			<image class='flex-g-0 br-r-30' style='width:160rpx;height:160rpx;' src='{{goodsInfo.storeLogo}}'></image>
+			<view class='flex-g-1 flex-col flex-bt mar_l'>
+				<view class='gobyndsingle fon_32 wei'>{{goodsInfo.storeName}}</view>
+				<view class='flex-x-bt'>
+					<text>{{goodsInfo.fans || 0}}粉丝</text>
+					<text>{{goodsInfo.goodsNUm || 0}}商品</text>
+					<text class='iconfont icon-iconfront-'></text>
+				</view>
+				<wux-rater slot="footer" default-value="{{ 5 }}" font-size="{{ 18 }}" disabled />
+			</view>
+		</view>
+	</view>
+	<wux-cell tclass="fon_32 wei" tstyle='color:#000' tftsize='30' is-left="true" wux-class='mar_t' title='商品详情' />
+	<view class='pad_20 ba_f color_6'>
+		<rich-text nodes="{{goodsInfo.details}}"></rich-text>
+		<view wx:if="{{goodsInfo.video}}">
+			<video src="{{goodsInfo.video}}" binderror="videoErrorCallback"></video>
+		</view>
+		<view class='mar_t' wx:if='{{goodsInfo.detailImgs.length!=0}}'>
+			<image mode='widthFix' class='image_all' wx:for='{{goodsInfo.detailImgs}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{url}}{{item.url}}'></image>
+		</view>
+	</view>
+</view>
+<block wx:if="{{foot_menu!=null}}">
+	<foot-dl type='2' width='50' bind:footclick='footclick' content="{{foot_menu}}" />
+</block>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>
+<!-- 立即购买 -->
+<van-popup show="{{popupshow}}" z-index='1000' position="bottom" custom-style="overflow: initial;background: #f4f4f4;border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;" bind:close="togglePopup">
+	<form bindsubmit="formSubmit" bindreset="formReset">
+		<view class='ba_f5 br-r-tlr30'>
+			<block>
+				<view class='ba_f pa_l30 mar_b'>
+					<layout-one is-last='true' no-pad='true' body-src='{{goodsInfo.showImgs[0].url}}' body="{{layoutBody}}" class-name="pa_t30">
+						<view slot="body-bd-s" class="flex-row fon_24">
+							<view class='flex-col'>
+								<view>
+									<text class='fon_34 mar_r' style='color:{{color}}'>￥{{goodsInfo.rushPrice}}</text>
+									<text class='color_9 t_through'>￥{{goodsInfo.originalPrice}}</text>
+								</view>
+								<view class="mar_t">
+									<block-text wx:if="{{system.openVip && goodsInfo.memberPrice>0}}" type='2' color='#FFE100' class-name='pa_10_15 br-r-10 mar_l color_3' text='会员￥{{goodsInfo.memberPrice}}' />
+								</view>
+							</view>
+						</view>
+						<view slot="body-bd-t">{{goodsInfo.title}}</view>
+					</layout-one>
+				</view>
+				<view style='max-height:600rpx;overflow-x:hidden;overflow-y:scroll;'>
+					<view class="weui-cells weui-cells_after-title">
+						<view hidden="{{goodsInfo.delivery!='1'}}">
+							<choose-address bind:getaddress="getaddress" />
+						</view>
+						<view hidden="{{goodsInfo.delivery!='2'}}">
+							<choose-ztd wx:if="{{goodsInfo.storeId}}" bind:getaddress="getztd" store-id="{{goodsInfo.storeId}}" />
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__hd">
+								<view class="weui-label">购买数量</view>
+							</view>
+							<view class="weui-cell__bd flex-x-end">
+								<block wx:if="{{max}}">
+									<wux-input-number bind:change="onChange" value="{{num}}" color="stable" min="1" max="{{max}}" />
+								</block>
+							</view>
+						</view>
+						<view class="weui-cell weui-cell_input">
+							<view class="weui-cell__hd">
+								<view class="weui-label">备注信息</view>
+							</view>
+							<view class="weui-cell__bd">
+								<input name='note' placeholder-class='fon_28' value="{{params.title}}" class="weui-input" placeholder="请输入备注信息" />
+							</view>
+						</view>
+						<!-- <view style='color:{{color}}' class="weui-cell flex-x-end fon_32">
+              共1份 合计{{system.openVip && goodsInfo.memberPrice>0?goodsInfo.memberPrice:goodsInfo.rushPrice}}元
+            </view> -->
+						<view style='color:{{color}}' class="weui-cell flex-x-end fon_32">
+							共1份 合计{{params.totalMoney}}元
+						</view>
+						<view class="weui-cell">
+							<view class="weui-cell__bd">
+								注：购买后，请在{{goodsInfo.expireTime}}前找商家消费
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+		<view class='foot-buttont'>
+			<button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">立即抢购</button>
+		</view>
+	</form>
+</van-popup>

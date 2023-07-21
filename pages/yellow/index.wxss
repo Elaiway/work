@@ -1,0 +1,7 @@
+/* pages/yellow/index.wxss */
+.release{
+  bottom: 300rpx;
+  right: 50rpx;
+  /* width: 100rpx;
+  height: 100rpx; */
+}

@@ -1,0 +1,40 @@
+<!--pages/personal/integral/integralmall/payment.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container after-navbar color_3'>
+    <dd-radio title='请选择配送方式' bind:change="lcrdioonChange" name='psradio' value="{{params.lcradiovalue}}" radioarr="{{lcradioarr}}" />
+    <block wx:if="{{goodsinfo.delivery == 1}}">
+      <choose-address bind:getaddress="getaddress" />
+    </block>
+    <goods-cell content="{{content1}}" goods-info="{{goodsinfo}}" color="{{color}}" />
+    <!-- <goods-cell content="{{content2}}" color="{{color}}" />
+    <goods-cell content="{{content3}}" color="{{color}}" /> -->
+    <wux-cell isLast='true' wux-class='pa_b0' title="购买数量" hover-class="none" >
+      <block wx:if="{{max}}">
+        <wux-input-number bind:change="onChange"  value="1" color="stable" min="1" max="{{max}}" slot="footer" />
+      </block>
+    </wux-cell>
+    <!-- <view class="deduction flex-row fon_28 pa_tr30 rel">
+      <view class="trigon ab"><view class="trigonb"></view></view>
+      <view class="flex-grow-0">积分抵扣：</view>
+      <view class="pa_left30 color_9 flex-grow-1">已使用
+        <text class="color_rb">222</text>积分享受
+        <text class="color_rb">100</text>元优惠</view>
+    </view> -->
+    <!-- <block>
+      <wux-cell isLast='true' tftsize='32' padding='32rpx 30rpx' imgw='80' imgh='80' boradius='50%' thumb="{{'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=25548805,3030244295&fm=11&gp=0.jpg'}}" title='微信支付' is-link label="请选择支付方式"></wux-cell>
+    </block> -->
+    <wux-cell-group title="请填写以下内容">
+      <wux-cell title="积分" extra="-{{params.score}}"></wux-cell>
+      <!-- <text-area name='textarea' value='{{params.textareavalue}}' bind:textblur='textareachange' maxlength='100' placeholder='请输入备注'></text-area> -->
+      <block wx:if="{{goodsinfo.delivery == 1}}"><wux-cell title="运费" extra="{{params.deliveryMoney}}"></wux-cell></block>
+    </wux-cell-group>
+  </view>
+
+  <view class="footpay">
+    <view class="footpay-l">共1件商品，合计（含运费）
+      <text class="color_rb fon_28">￥{{params.money}}</text>
+    </view>
+    <button form-type="submit" class="footpay-r" style='background:{{color}}'>{{paybtn}}</button>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

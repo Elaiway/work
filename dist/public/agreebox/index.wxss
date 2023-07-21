@@ -1,0 +1,15 @@
+/* dist/public/textarea.wxss */
+@import "/assets/styles/weui.wxss";
+.weui-agree__text{
+  font-size: 26rpx;
+  color: #999;
+}
+.weui-agree{
+  padding: 20rpx 0 20rpx 30rpx;
+}
+.agree{
+  padding: 10rpx 0;
+}
+.weui-agree{
+  display: flex;flex-direction: row;align-items: center;
+}

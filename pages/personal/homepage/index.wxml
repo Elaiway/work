@@ -1,0 +1,45 @@
+<view class='container'>
+    <view class='user_head rel pa_l' style='background:{{color}}'>
+        <view class='user_headv user_headv1 ab'>
+            <image class='back_img' mode='aspectFill' src='/assets/images/img/personal.png'></image>
+        </view>
+        <view class='user_headv user_headv2 ab'>
+            <view class='users t_c'>
+                <image class='dis_in usersimg' mode='aspectFill' src='{{Userhead.portrait}}'></image>
+            </view>
+            <view class='flex-center user_t'>
+                <view class='fon_32 fon_wei color_f'>{{Userhead.userName}}</view>
+                <image wx:if="{{Userhead.isAuth=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/grrz.png'></image>
+                <image wx:if="{{Userhead.isEnsure=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/bzj.png'></image>
+            </view>
+            <view class='t_c fon_24 color_f'>注册时间：{{Userhead.registerTime}}</view>
+            <view class=' t_c fon_28 color_f user_lavel'>
+                <text class='user_text'>浏览量：{{Userhead.viewNum||0}}</text>
+                <text class='user_text'>发布量：{{Userhead.articleNum||0}}</text>
+                <text class='user_text user_laveltnb'>访客量：{{Userhead.visitorNum||0}}</text>
+            </view>
+            <view class=' t_c fon_26 color_f user_lavel pa_t'>{{Userhead.sign||'此人很懒，没有留下个性签名'}}</view>
+        </view>
+    </view>
+    <view class='rel'>
+        <view>
+        <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+</wux-tabs>
+    </view>
+    <Postinfo  show_commend="0" show_collection="0" show_operation="0" show_zan="0" color="{{color}}" wx:if="{{key==0}}" id="Postinfo" content="{{postList}}" />
+    <!-- 发布人的店铺 -->
+        <block wx:if="{{key==1}}">
+            <store-cell content="{{postList}}" key="hot" color="{{color}}"></store-cell>
+        </block>
+    <block wx:if="{{key==2}}">
+        <view class='visitor bor_bottom ba_f' wx:for="{{postList}}">
+            <view class='visitorv1 dis_in'>
+                <image class='visitorimg' mode='aspectFill' src='{{item.portrait}}'></image>
+            </view>
+            <view class='visitorv2 dis_in fon_30'>{{item.userName}}</view>
+            <view class='visitorv3 dis_in t_r fon_26 color_9'>{{item.createAT}}</view>
+        </view>
+    </block>
+    <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+    </view>
+</view>

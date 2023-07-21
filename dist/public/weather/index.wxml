@@ -1,0 +1,55 @@
+<view class='weather pa fon_28 ba_f mar_t'>
+  <view class='weather_img dis_in' wx:if="{{content.type=='多云'}}">
+    <text class='mar_l middle iconfont color_9 icon-duoyun fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='晴'}}">
+    <text class='mar_l middle iconfont color_9 icon-tianqi-qing fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='中雨'}}">
+    <text class='mar_l middle iconfont color_9 icon-zhongyu fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='小雨'}}">
+    <text class='mar_l middle iconfont color_9 icon-xiaoyu fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='暴雨'}}">
+    <text class='mar_l middle iconfont color_9 icon-baoyu fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='阵雨'}}">
+    <text class='mar_l middle iconfont color_9 icon-zhenyu fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='雷阵雨'}}">
+    <text class='mar_l middle iconfont color_9 icon-leizhenyu fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='霾'}}">
+    <text class='mar_l middle iconfont color_9 icon-mai fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='大雨'}}">
+    <text class='mar_l middle iconfont color_9 icon-dayu fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='少云'}}">
+    <text class='mar_l middle iconfont color_9 icon-3shaoyun fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='雾'}}">
+    <text class='mar_l middle iconfont color_9 icon-wu fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='weather_img dis_in' wx:if="{{content.type=='阴'}}">
+    <text class='mar_l middle iconfont color_9 icon-yin fon_60' style='color:{{content.color}}'></text>
+  </view>
+  <view class='dis_in weatherv2'>
+    <view> 
+    <text class='fon_wei' style='color:{{content.color}}'>{{content.name}}</text>
+     {{content.city}}</view>
+    <view class='color_9'>
+        <!-- <text>今日:</text> -->
+        <text style='color:{{content.color}}'>{{content.type}}</text>
+        <!-- <text>风力:</text> -->
+        <text class='mar_l' style='color:{{content.color}}'>风力{{content.windpower}}</text>
+        <!-- <text>风向:</text> -->
+        <text class='mar_l' style='color:{{content.color}}'>{{content.winddirection}}</text>
+    </view>
+  </view>
+  <view class='dis_in color_9 weatherv3'>
+    <view>星期{{content.week}}</view>
+    <view>{{content.time}}</view>
+  </view>
+</view>

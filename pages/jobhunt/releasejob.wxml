@@ -1,0 +1,117 @@
+<!--pages/jobhant/release.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container'>
+    <wux-upload wx:if="{{uploadArr[0].show}}" type='2' color="{{color}}" tipstext='{{uploadArr[0].tips}}' htitle='{{uploadArr[0].title}}' count="{{uploadArr[0].count}}" file-list="{{ uploadArr[0].fileList }}" data-idx="{{0}}" bind:change="uploadChange">
+    </wux-upload>
+    <view class="ba_f color_3">
+      <view class="t_c pa_t30 bor-btm">
+        <view class="color_9 fon_28">真实姓名</view>
+        <view class="fon_32 mar_t_10">
+          <input name='name' placeholder-class='fon_28' value="{{params.name}}" class="weui-input" placeholder="请输入真实姓名" />
+        </view>
+      </view>
+      <view class="t_c pa_t30 bor-btm">
+        <view class="color_9 fon_28">性别</view>
+        <view class="fon_32 mar_t_10 flex-x-center">
+          <view wx:for="{{sextype}}" wx:key="" bindtap='onsextype' data-index="{{index}}" class="pa_l br-r-30 bor-e mar_r30" style="border-color:{{index==current ? color : ''}}">
+            <text class="iconfont fon_28 mar_r_10 {{item.name=='男' ? 'icon-qunfengfabushangxian color_nan' : 'icon-dianhuahover color_nv'}}"></text> {{item.name}}
+          </view>
+        </view>
+      </view>
+      <view class="t_c pa_t30 bor-btm">
+        <view class="color_9 fon_28">手机号</view>
+        <view class="fon_32 mar_t_10">
+          <input name='tel' placeholder-class='fon_28' value="{{params.tel}}" class="weui-input" placeholder="请输入手机号码" />
+        </view>
+      </view>
+      <view class="flex-bet t_c mar_tb_20">
+        <view class="flex-1 borr mar_tb_20">
+          <view class="color_9">年龄（岁）</view>
+          <view>
+            <input name='age' placeholder-class='fon_28' value="{{params.age}}" class="weui-input" placeholder="请输入年龄" />
+          </view>
+        </view>
+        <view class="flex-1 borr">
+          <view class="color_9">最高学历</view>
+          <view>
+            <picker class='cellr' name='zgxl' bindchange="bindxlCChange" value="{{xlindex.name}}" range="{{xlarray}}" range-key="{{'name'}}">
+              <view class='color_6 fon_30 mar_t_10'>{{xlarray[xlindex].name}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="flex-1">
+          <view class="color_9">工作时间</view>
+          <view>
+            <picker class='cellr' name='gzsj' bindchange="bindsjCChange" value="{{sjindex.name}}" range="{{sjarray}}" range-key="{{'name'}}">
+              <view class="color_6 fon_30 mar_t_10">{{sjarray[sjindex].name}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <h-title bdname="求职意向"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">期望职位</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='qwzw' mode="multiSelector" bindcolumnchange="bindzwCChange" value="{{zwIndex}}" range="{{zwMarr}}" range-key="{{'name'}}">
+            <view class="weui-select">{{zwMarr[0][zwIndex[0]].name}}，{{zwMarr[1][zwIndex[1]].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">期望薪资</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='qwxz' bindchange="bindxzCChange" value="{{xzindex.name}}" range="{{xzarray}}" range-key="{{'name'}}">
+            <view class="weui-select">{{xzarray[xzindex].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">工作性质</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='gzxz' bindchange="bindxzzCChange" value="{{xzzindex.type}}" range="{{xzzarray}}" range-key="{{'name'}}">
+            <view class="weui-select">{{xzzarray[xzzindex].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">求职区域</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input wx:if="{{system.mode=='1'}}" name='area' value='{{params.area}}' placeholder-class='fon_28' class="weui-input color_6" placeholder="请输入公司地址" />
+          <picker wx:else mode="region" name='region' bindchange="bindRegionChange" value="{{region}}">
+            <view class="weui-select weui-select_in-select-after">{{region[0]}}，{{region[1]}}，{{region[2]}}</view>
+          </picker>
+          </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">求职状态</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='jobStatus' placeholder-class='fon_28' value="{{params.jobStatus}}" class="weui-input" placeholder="请输入求职状态" />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="我的标签（最多选择5个）"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <dd-label bind:change='labelChange' labels='{{tags}}' labelsDefault="{{labelsDefault}}" color="{{color}}" />
+    </view>
+    <h-title bdname="介绍自己"></h-title>
+    <text-area name='introduce' value='{{params.introduce}}' bind:textblur='textareachange' maxlength='200' placeholder='自我描述，包括性格，特长，工作经历等...' extra-class='bor-tb'></text-area>
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='求职发布协议' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='foot-button'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">{{money>0&&!isEdit?'需要支付￥'+money+'元':'确认发布'}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

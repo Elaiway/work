@@ -1,0 +1,39 @@
+/* pages/personal/integral/index.wxss */
+.signmodal{
+  padding: 50rpx 20rpx;
+  width: 100%;
+  border-radius: 20rpx;
+  background: #fff;
+  margin-bottom: 80rpx;
+}
+.signmodal1{
+  padding: 0rpx 0rpx 50rpx;
+  width: 90%;
+  border-radius: 20rpx;
+  background: #fff;
+  margin-bottom: 80rpx;
+}
+.bqkimg{
+  width: 300rpx;height: 160rpx;margin: 20rpx 0;
+}
+.qdcgimg{
+  /* width: 100%; */
+  width: 493rpx;
+  height: 350rpx;
+}
+.qdcg{
+  color: #F76539;
+  font-size: 40rpx;
+  margin-top: 20rpx;
+  font-weight: bold;
+}
+.signbtn{
+  width: 200rpx;
+  font-size: 28rpx;
+  color: #fff;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  background: linear-gradient(to bottom,#FF9A4F,#FF381C)
+}

@@ -1,0 +1,20 @@
+<!--dist/public/textarea.wxml-->
+<view class='pa_t' style='background:{{content.backgroundColor}};color:{{content.color}};border-radius:{{content.radius}}px;margin-top:{{content.topMargin}}px;'>
+  <view wx:if="{{content.titleStyle=='1'}}" class='flex-center'>
+    <view style='background:{{content.color}}' class='hx'></view>
+    <view class="wz fon_32 {{content.fontWeight=='bold'?'wei':''}}">{{content.title}}</view>
+    <view style='background:{{content.color}}' class='hx'></view>
+  </view>
+  <view wx:if="{{content.titleStyle=='2'}}" class='flex-center-col'>
+    <view class="wz fon_32 {{content.fontWeight=='bold'?'wei':''}}">{{content.title}}</view>
+    <view class='flex-center'>
+      <view style='background:{{content.color}}' class='hx'></view>
+      <view class="wz fon_26 {{content.fontWeight=='bold'?'wei':''}}">{{content.subTitle}}</view>
+      <view style='background:{{content.color}}' class='hx'></view>
+    </view>
+  </view>
+  <view wx:if="{{content.titleStyle=='3'}}" class="flex-center {{content.typesetting=='0'?'flex-bt':''}}">
+     <view class="mar_l fon_32 {{content.fontWeight=='bold'?'wei':''}}">{{content.title}}</view>
+     <view class="mar_l_10 mar_r fon_26 {{content.fontWeight=='bold'?'wei':''}}">{{content.subTitle}}</view>
+  </view>
+</view>

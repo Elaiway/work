@@ -1,0 +1,29 @@
+<view>
+    <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+</wux-tabs>
+    <view class='mar_t ba_f'>
+        <block wx:if="{{key=='0'}}">
+            <view wx:for="{{postList}}" wx:key="postId" class="pa storeList bor_bottom {{index>0?'bor_bottom':''}}" bindtap='storeinfo' data-id="{{item.id}}">
+                <view class='dis_in storeLogo'>
+                    <image class='storeLogoimg' mode='aspectFill' src='{{url}}{{item.storeLogo[0].url}}'></image>
+                </view>
+                <view class='dis_in storeInfo'>
+                    <view class='fon_28 color_3'>{{item.storeName}}</view>
+                    <view class='storeLabel fon_24 mar_t'>
+                        <text class='storeLabeltext'>{{item.typeName}}</text>
+                        <text class='mar_l storeLabeltext' wx:if="{{item.newName!=''}}">{{item.newName}}</text>
+                    </view>
+                </view>
+                <view class='dis_in t_c fon_28 storeCollection' catchtap='cacelCollection' data-index="{{index}}" data-id="{{item.id}}">
+                    取消收藏
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{key=='1'}}">
+            <block wx:if="{{postList.length>0}}">
+                 <Postinfo  show_distance="0" show_commend="0" show_distance="0" show_collection="1" show_operation="0" show_zan="0" color="{{color}}" id="Postinfo" bind:newData='refreshtzData' bind:cancel_collection="cancel_collection" bind:slide="slide" content="{{postList}}" />
+            </block>
+        </block>
+            <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+    </view>
+</view>

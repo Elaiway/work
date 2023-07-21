@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "Postinfo": "/dist/public/postinfo/index",
+    "store-cell": "/dist/public/storecell/index",
+    "seal": "/dist/public/components/seal/seal"
+  }
+}

@@ -1,0 +1,7 @@
+<!--dist/public/textarea.wxml-->
+<view class="extra-class ba_f basepadding flex-col flex-x-center">
+  <view class="flex-center">
+    <image bindtap='onTap' mode='aspectFill' style='width:{{imgw}}rpx;height:{{imgh}}rpx;' src='{{code}}'></image>
+  </view>
+  <view class='color_6 t_c mar_t fon_28'>{{title}}</view>
+</view>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "freeride-cell": "/dist/public/auxiliary/freeride/freeride-cell"
+  }
+}

@@ -1,0 +1,41 @@
+@import "/app.wxss";
+.main{
+  background-color: #fff;
+  padding: 20rpx;
+}
+.title{
+  font-weight: bold;
+  font-size: 30rpx;
+  margin-bottom: 40rpx;
+  
+}
+.list{
+  border-bottom: 1px solid #eee;
+  margin-bottom:30rpx;
+}
+.list > view{
+  margin-bottom: 30rpx;
+}
+.pic-list{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20rpx 0;
+}
+.pic-list-detail{
+  width: 32%;
+  height: 240rpx;
+  margin:0 2% 2% 0;
+  overflow: hidden;
+}
+.pic-list-detail:nth-of-type(3n){
+  margin-right: 0;
+}
+
+.code{
+  margin: 80rpx 0;
+  text-align: center;
+}
+.code > view{
+  margin-top: 50rpx;
+}

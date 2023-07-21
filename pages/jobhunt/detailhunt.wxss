@@ -1,0 +1,60 @@
+.tagad{
+  border-radius: 10rpx;
+  padding:10rpx;
+  /* height: 45rpx; */
+}
+.i-tags{
+  margin-right: 10rpx;
+}
+.bgblue{
+  background: #618AFF;
+}
+.bgsku{
+  background: #20D4D0;
+}
+.bgorange{
+  background:#FFB131;
+}
+.bororange{
+  border:1rpx solid #FF7123;
+  background: #fff;
+  color: #FF7123;
+}
+.borbgblue{
+  border:1rpx solid #7594B6;
+  background: #fff;
+  color: #7594B6;
+}
+.borbgsku{
+  border:1rpx solid #618AFF;
+  background: #fff;
+  color: #618AFF;
+}
+.scrolly{
+  max-height: 450rpx;
+  overflow-y: scroll;
+}
+.cimg{
+  /* min-height: 313rpx; */
+  width: 100%;
+  background: #ddd;
+}
+.line{
+  border-right:1rpx solid #eee;
+  padding: 0 20rpx;
+}
+.dial{
+  border-radius: 40rpx;
+  padding: 5rpx 25rpx;
+}
+.widthb{
+  width: 650rpx;
+  /* height: 500rpx; */
+}
+.tcolor{
+  color:#5C93FC;
+}
+.mbody{
+  max-height: 450rpx;
+  overflow-y: scroll;
+}

@@ -1,0 +1,30 @@
+.cartype{
+  padding: 20rpx 60rpx;
+}
+.typebtn{
+  height: 60rpx;
+  background: #e8e8e8;
+}
+.typetext{
+  height: 100%;
+}
+.main-box{
+  border-radius: 20rpx;
+  box-shadow: 0 0 8rpx 8rpx  rgba(151, 151, 151, 0.1 );
+  margin:10rpx 30rpx 0 30rpx;
+}
+.circular{
+  display: inline-block;
+  border-radius: 50%;
+  width: 38rpx;
+  height: 38rpx;
+}
+.bgSku{
+  background-color:#17D2BB;
+}
+.bgYellow{
+  background-color:#FF8D1E;
+}
+.bgRed{
+  background-color: #FF3838;
+}

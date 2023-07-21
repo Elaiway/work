@@ -1,0 +1,14 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container ba_f'>
+    <view class='containerv containerv1 ba_f9 color_9 fon_30'>一个手机号只能绑定一个账号哦!</view>
+    <view class='containerv containerv2'>
+      <view class='dis_in fon_30'>绑定手机号</view>
+      <view class='dis_in fon_30 t_r' bindtap='modify'>
+        <text>13277915655</text>
+      </view>
+    </view>
+  </view>
+    <view class='mar_t pa'>
+      <button class='color_f' formType="submit" style='background:{{color}}'>修改手机号</button>
+    </view>
+</form>

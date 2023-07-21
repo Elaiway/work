@@ -1,0 +1,66 @@
+<!--pages/mall/refundorder.wxml-->
+<view class='container'>
+  <wux-cell wx:if="{{orderInfo.delivery=='1'}}" is-last='true'>
+    <text slot='header' class='iconfont icon-icon- fon_34 mar_r'></text>
+    <view class='fon_26 color_6' slot="bodyer">
+      <view class='flex-row flex-bet'>
+        <view class='fon_30'>收货人：{{orderInfo.receivedName}}</view>
+        <view>{{orderInfo.receivedTel}}</view>
+      </view>
+      <view class='mar_t_10'>收货地址：{{orderInfo.receivedAddress}}</view>
+    </view>
+  </wux-cell>
+  <view class='mar_t pa_l30'>
+    <goods-card content="{{orderInfo}}" config="{{goodscardconfig}}" />
+  </view>
+  <wux-cell title="商品总计" extra="{{orderInfo.goodsMoney}}元"></wux-cell>
+  <wux-cell title="运费" extra="{{orderInfo.freight}}元"></wux-cell>
+  <wux-cell is-last='true'>
+    <view class='color_0' slot='footer'>
+      共{{orderInfo.num}}件商品，合计：
+      <text class="color_r fon_34">￥{{orderInfo.totalMoney}}</text>
+    </view>
+  </wux-cell>
+  <wux-cell wux-class='mar_t' title="订单号" extra="{{orderInfo.outTradeNo}}"></wux-cell>
+  <wux-cell title="下单时间" extra="{{orderInfo.createdAt}}"></wux-cell>
+  <wux-cell title="配送方式" extra="{{orderInfo.delivery=='1'?'快递配送':'到店自提'}}"></wux-cell>
+  <wux-cell title="订单备注" extra="{{orderInfo.note}}"></wux-cell>
+  <block wx:if="{{orderInfo.state==2&&orderInfo.delivery=='1'}}">
+    <wux-cell title="快递公司" extra="{{orderInfo.logisticsName}}"></wux-cell>
+    <wux-cell title="快递单号" extra="{{orderInfo.logisticsCode}}"></wux-cell>
+  </block>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class='ba_f' wx:if="{{orderInfo.state==1&&orderInfo.delivery=='1'}}">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">快递公司</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='logisticsName' placeholder-class='fon_28' value="" class="weui-input color_6" placeholder="请输入快递公司" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">快递单号</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='logisticsCode' placeholder-class='fon_28' value="" class="weui-input color_6" placeholder="请输入快递单号" />
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{orderInfo.state==1&&orderInfo.delivery=='1'}}" class='foot-buttont'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">立即发货
+      </button>
+    </view>
+  </form>
+  <wux-cell wux-class='mar_t'>
+    <view bindtap='concatClick' slot='bodyer' class='flex-center' style='color:{{color}}'>
+      <text slot='header' class='iconfont icon-dianhua3 fon_34 mar_r'></text>
+      <text>联系买家</text>
+    </view>
+  </wux-cell>
+  <view wx:if="{{orderInfo.state==5}}" class='foot-buttont flex-x-bt'>
+    <button class="button-ft" bindtap='orderClick' data-field='jjtk'>拒绝退款</button>
+    <button style='background:{{color}}' class="button-ft color_f" bindtap='orderClick' data-field='tytk'>同意退款</button>
+  </view>
+</view>

@@ -1,0 +1,157 @@
+<!--pages/activity/release.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <wux-upload wx:if="{{uploadArr[0].show}}" type='2' color="{{color}}" tipstext='{{uploadArr[0].tips}}' htitle='{{uploadArr[0].title}}' count="{{uploadArr[0].count}}" file-list="{{ uploadArr[0].fileList }}" data-idx="{{0}}" bind:change="uploadChange">
+    </wux-upload>
+    <view class="ba_f color_3">
+      <view class="t_c pa_t30 bor-btm mar-leri">
+        <view class="color_9 fon_28">活动主题</view>
+        <view class="fon_32 mar_t_10">
+          <input name='name' placeholder-class='fon_28' value="{{params.name}}" class="weui-input" placeholder="请输入活动主题" />
+        </view>
+      </view>
+      <view class="t_c pa_t30 bor-btm mar-leri">
+        <view class="color_9 fon_28" bind:operation='operation'>活动类型</view>
+        <view class="fon_32 mar_t_10">
+          <picker name='type' mode="multiSelector" data-name='type' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData['type']}}" range-key='name'>
+              <view class="">{{params.type||'请选择'}}</view>
+            </picker>
+        </view>
+      </view>
+    </view>
+    <view class="ba_f color_3 mar_t">
+      <view class="flex-bet t_c  bor-btm mar-leri">
+        <view class="flex-1 borr mar_tb_20">
+          <view class="color_9">活动开始时间</view>
+          <dd-time-picker style-name='padding:20rpx 0' name='startTime' arrow='{{1}}' value='{{params.startTime}}' bind:change='timePickerChange' data-field='startTime' />
+        </view>
+        <view class="flex-1">
+          <view class="color_9">活动结束时间</view>
+          <dd-time-picker style-name='padding:20rpx 0' name='endTime' arrow='{{1}}' value='{{params.endTime}}' bind:change='timePickerChange' data-field='endTime' />
+        </view>
+      </view>
+      <view class="flex-bet t_c">
+        <view class="flex-1 borr mar_tb_20">
+          <view class="color_9">报名开始时间</view>
+          <dd-time-picker style-name='padding:20rpx 0' name='enrollStartTime' arrow='{{1}}' value='{{params.enrollStartTime}}' bind:change='timePickerChange' data-field='enrollStartTime' />
+        </view>
+        <view class="flex-1">
+          <view class="color_9">报名截止时间</view>
+          <dd-time-picker style-name='padding:20rpx 0' name='enrollEndTime' arrow='{{1}}' value='{{params.enrollEndTime}}' bind:change='timePickerChange' data-field='enrollEndTime' />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6">活动地址</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+        </view>
+        <view bindtap='chooseLocation' class="weui-cell__ft weui-cell__ft_in-access fon_24">
+          <input name='poiaddress' value='{{params.poiaddress}}' placeholder-class='fon_24' class="weui-input color_9 fon_24" disabled='true' placeholder="请选择活动地址" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input name='address' value='{{params.address}}' placeholder-class='fon_28' class="weui-input" placeholder="请输入详细地址：区域，街道，楼宇，门牌号等" />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="活动详情"></h-title>
+    <text-area name='detail' value='{{params.detail}}' bind:textblur='textareachangexq' maxlength='500' placeholder="填写活动详情" extra-class=''></text-area>
+    <view class="weui-cells weui-cells_after-title">
+      <wux-upload wx:if="{{uploadArr[1].show}}" tipstext='{{uploadArr[1].tips}}' htitle='{{uploadArr[1].title}}' count="{{uploadArr[1].count}}" file-list="{{ uploadArr[1].fileList }}" data-idx="{{1}}" bind:change="uploadChange">
+      </wux-upload>
+    </view>
+    <h-title bdname="活动须知"></h-title>
+    <text-area name='notice' value='{{params.notice}}' bind:textblur='textareachange' maxlength='500' placeholder="填写活动须知" extra-class=''></text-area>
+    <!-- 活动费用 -->
+    <view class="weui-cells">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">活动费用</view>
+        </view>
+        <view class="weui-cell__bd">
+          <wux-radio-group typesetting='2' radioColor="{{color}}" radioarr="{{lcradioarr}}" name="lcradio" value="{{ lcradiovalue }}" bind:change="lcrdioonChange">
+          </wux-radio-group>
+        </view>
+      </view>
+      <!-- 免费 -->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">人数限制</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='num' placeholder-class='fon_28' type='number' value="{{params.num}}" class="weui-input" placeholder="请输入总人数" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">每人限制</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='limitNum' placeholder-class='fon_28' type='number' value="{{params.limitNum}}" class="weui-input" placeholder="请输入限购数量" />
+        </view>
+      </view>
+      <!-- 收费 -->
+      <view hidden="{{lcradiovalue != '2'}}">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">报名原价</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='originalPrice' placeholder-class='fon_28' type='number' value="{{params.originalPrice}}" class="weui-input" placeholder="请填写报名原价" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">报名费用</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='currentPrice' placeholder-class='fon_28' type='number' value="{{params.currentPrice}}" class="weui-input" placeholder="请填写报名费用" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="报名表单"></h-title>
+    <dd-label bind:change='labelChange' data-name='info' labels='{{labels}}' labelsDefault="{{labelsDefaultl}}" color="{{color}}" />
+    <view class="ba_f color_3 mar_t">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">活动音乐</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='music' value='{{params.music}}' placeholder-class='fon_28' class="weui-input color_6 fon_28" placeholder="请填写活动音乐链接" />
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-yinpin fon_44' style='color:{{color}}'></text>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">活动视频</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='video' value='{{params.video}}' placeholder-class='fon_28' class="weui-input color_6 fon_28" placeholder="请填写活动视频链接" />
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-shipin fon_44' style='color:{{color}}'></text>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系方式</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='linkTel' placeholder-class='fon_28' type='number' value="{{params.linkTel}}" class="weui-input" placeholder="请填写主办方联系方式" />
+        </view>
+      </view>
+    </view>
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='用户协议条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" formType="submit">{{releaseName||'立即发布'}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

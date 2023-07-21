@@ -1,0 +1,46 @@
+<block>
+  <view class="Searchbox" style="height:{{content.height}}px;padding:{{content.padding}}rpx 0;background:{{!content.position?'#fff':content.position||scrollBack?'rgba(255, 255, 255, .5)':'#fff'}};position:{{content.position?'fixed':''}};margin-top:{{content.topMargin}}px;">
+    <view class='Searchboxv posi-r'>
+      <block wx:if="{{content.city==1}}">
+        <view class="Searchcity" wx:if="{{content.city==1}}" bindtap='location'>
+          <text class='iconfont icon-dingwei1 fon_38' style='color:#F14A4A'></text>
+          <text class="fon_32 wei">{{text}}</text>
+          <!-- <image class="select_city" src="/assets/images/img/selecity.png" alt=""></image> -->
+        </view>
+        <image mode='aspectFit' class='iconimg' wx:else src="{{leftIcon.icon}}" data-link='{{leftIcon.link}}' bindtap='link'></image>
+      </block>
+      <view class="search rel anxz{{content.shape}} {{content.borderStyle?'':'bor-c11'}}">
+        <view class="ba_f5 searchv1 ab wid_hei" style='opacity:1;background:#EFF3F6'></view>
+        <view class="ab wid_hei searchv2" bindtap='search' data-type="{{content.type}}">
+          <input class="shinput t_l fon_24 color_9 {{content.fontStyle=='left'?'t_l':'t_c'}}" disabled='true' type="text" placeholder="请输入关键字搜索" value="{{content.recommendSearch?content.keyWords:'请输入关键字搜索'}}" />
+          <!-- <view class="ab fon_28 ud Searchclick" style="color:{{content.rightcolor}}">搜索</view> -->
+        </view>
+      </view>
+      <block wx:if="{{rightIcon}}">
+        <view class="Searchcity" wx:if="{{rightIcon.style==0}}" bindtap='location'>
+          <text class="fon_26 color_f">{{text}}</text>
+          <image class="select_city" src="/assets/images/img/selecity.png" alt=""></image>
+        </view>
+        <image mode='aspectFit' class='iconimg' wx:else src="{{rightIcon.icon}}" data-link='{{rightIcon.link}}' bindtap='link'></image>
+      </block>
+      <view class='flex-col fon_26 color_f' wx:if="{{content.weather==1}}">
+        <view>星期{{week}}</view>
+        <view class='flex-row'>
+          <view>{{name}}</view>
+          <view class='mar_l_10'>{{type}}</view>
+        </view>
+      </view>
+      <!-- showMore -->
+      <image bindtap='showmore' wx:if="{{content.showMore}}" class='plus-bg' src='/assets/images/img/plus.png' />
+      <view hidden='{{!show}}' class='posi-a morelist' style='top:{{content.height-20}}px'>
+        <view class='triangle'></view>
+        <view class='ba_05 listitem color_f flex-center' wx:for="{{content.searchMore}}" wx:key="*this">
+          <navigator url='/pages/personal/index' wx:if="{{item=='personal'}}">个人中心</navigator>
+          <navigator url='/pages/sign/index' wx:if="{{item=='sign'}}">签到中心</navigator>
+          <navigator url='/pages/personal/help/index' wx:if="{{item=='help'}}">帮助中心</navigator>
+          <navigator url='/pages/personal/service' wx:if="{{item=='link'}}">联系客服</navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

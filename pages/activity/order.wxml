@@ -1,0 +1,53 @@
+<view class="content after-navbar">
+  <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" scroll='true' bindchange="onTabsChange"></wux-tabs>
+  <!-- <order-cell color="{{color}}" /> -->
+  <block wx:for="{{enrollList}}" wx:key="">
+    <view class="ba_f color_3 mar_b" bindtap='goDetail' data-id='{{item.activityId}}'>
+      <view class="flex-bet fon_26 base-pad2">
+        <view class="">订单号：
+          <text>{{item.outTradeNo}}</text>
+        </view>
+        <view style="color:{{color}}" wx:if="{{item.state == '0'}}">待付款</view>
+        <view style="color:{{color}}" wx:if="{{item.state == '1'}}">报名成功</view>
+        <view style="color:{{color}}" wx:if="{{item.state == '2'}}">待评价</view>
+        <view style="color:{{color}}" wx:if="{{item.state == '3'}}">已完成</view>
+        <view wx:if="{{item.state == '4'}}"></view>
+      </view>
+      <view class="tba_f5 flex-bet flex-y-top base-pad2">
+        <view class="flex-grow-0 theight">
+          <image mode="aspectFill" class="imglogo" src="{{item.showImgs}}"></image>
+        </view>
+        <view class="flex-grow-1 theight pa_l">
+          <view class="hydlnr_2 fon_28">{{item.name}}</view>
+          <view class="flex-bet fon_24 color_9 mar_t_10">
+            <view wx:if="{{item.typeName!==null}}">{{item.typeName}}</view>
+            <view class="">人数：
+              <text style="color:{{color}}">{{item.num}}</text>人</view>
+            <view class="">金额：
+              <text style="color:{{color}}">￥{{item.money}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="color_6 fon_24 base-pad2 ">
+        <text class="iconfont icon-rili mar_r_10"></text>
+        <text>{{item.startTime}} ~ {{item.endTime}}</text>
+      </view>
+      <view wx:if="{{item.state !== '4'}}" class="base-pad2 flex-x-bottom bor-top">
+        <view wx:if="{{item.state == '0'}}" class="btn-ckxq fon_26 t_c" catchtap='cancellOrder' data-id='{{item.enrollId}}'>取消订单</view>
+        <view wx:if="{{item.state == '0'}}" class="btn-qhx fon_26 t_c color_f mar_l" style="background:{{color}};border-color:{{color}}" catchtap='toPay' data-paymsg='{{item}}'>去支付</view>
+        <view wx:if="{{item.state == '1'}}">
+          <view wx:if="{{item.nowTime >= item.startTime && item.nowTime <= item.endTime}}" class="btn-qhx fon_26 t_c color_f mar_l" style="background:{{color}};border-color:{{color}}" catchtap='viewDetail' data-id='{{item.enrollId}}'>去核销</view>
+          <view wx:else class="btn-ckxq fon_26 t_c" catchtap='viewDetail' data-id='{{item.enrollId}}'>查看详情</view>
+        </view>
+         <!-- <view wx:if="{{item.state == '2'}}" class="btn-qhx fon_26 t_c color_f mar_l" style="background:{{color}};border-color:{{color}}">去评价</view> -->
+          <view wx:if="{{item.state == '3'}}" class="btn-ckxq fon_26 t_c" catchtap='viewDetail' data-id='{{item.enrollId}}'>查看详情</view>
+      </view>
+    </view>
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{enrollList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='activity' />
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

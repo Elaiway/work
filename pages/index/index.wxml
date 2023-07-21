@@ -1,0 +1,215 @@
+<!-- 开屏广告 -->
+
+<view class="posi-f wid_hei t0" style="z-index:9999" wx:if="{{isKping}}">
+	<swiper style="height:100vh" autoplay interval="2000">
+		<block wx:for="{{kpgg}}" wx:key="*this">
+			<swiper-item>
+				<image mode="aspectFill" src="{{item}}" class="image_all" />
+			</swiper-item>
+		</block>
+	</swiper>
+	<view catchtap="tg" class='posi-a flex-center countC color_f'>{{second}} 跳过</view>
+</view>
+<at-form>
+	<include src="/assets/commons/navbar/navbar.wxml" />
+	<!-- <loading hidden="{{isloading}}">加载中...</loading> -->
+	<view hidden="{{isKping}}" class="container after-navbar">
+		<block wx:if="{{!isloading}}">
+			<view class='pad_20'>
+				<view class=" flex-row flex-wrap">
+					<view wx:for="1234567890" class='flex-center-col' style='width:20%;'>
+						<view class='ba_e' style='margin:20rpx;width:85rpx;height:85rpx;border-radius:50%'>
+						</view>
+						<view class='ba_e mar_t_10' style='width:85rpx;height:25rpx;'></view>
+					</view>
+				</view>
+				<view class='ba_e' style='width:690rpx;height:200rpx;margin: 50rpx 0 30rpx 0;'></view>
+				<view wx:for="12345" class='pa_t mar_t flex-row'>
+					<view class='ba_e mar_r' style='width:150rpx;height:120rpx;'></view>
+					<view class='mar_r flex-grow-1'>
+						<view class='ba_e mar_b' style='width:280rpx;height:30rpx;'></view>
+						<view class='ba_e mar_b' style='width:280rpx;height:30rpx;'></view>
+						<view class='ba_e' style='width:320rpx;height:30rpx;'></view>
+					</view>
+					<view class=''>
+						<view class='ba_e mar_b' style='width:100rpx;height:30rpx;'></view>
+						<view class='ba_e' style='width:100rpx;height:30rpx;'></view>
+					</view>
+				</view>
+			</view>
+		</block>
+		<block wx:for="{{layout}}" wx:key="id">
+			<!-- 顶部搜索栏 -->
+			<view wx:if="{{item.cmpName=='searchBox'}}">
+				<Search id='Search' content="{{item.config}}" scroll-back='{{scrollBack}}' searchtype='1' text="{{city}}" color="{{color}}"></Search>
+			</view>
+			
+			<!-- 首页轮播图 -->
+			<swiper-case wx:if="{{item.cmpName=='customSwiper'}}" id='Swiper' color="{{color}}" content="{{item.config}}"></swiper-case>
+			<!-- 首页分类 -->
+			<type-swiper wx:if="{{item.cmpName=='entryButtonGroup'}}" color="{{color}}" type-obj='{{item.config}}'></type-swiper>
+			<!-- 首页统计 -->
+			<Notice wx:if="{{item.cmpName=='noticeWithInfo'}}" id="Notice" datatype='2' color="{{color}}" content="{{item.config}}" />
+			<!-- 首页公告 -->
+			<Headline wx:if="{{item.cmpName=='noticeGroup'}}" datatype='1,0' content="{{item.config}}" />
+			<!-- 首页图片列表 -->
+			<cardlist wx:if="{{item.cmpName=='imageGroup'}}" id="Cardlist" content="{{item.config}}" />
+			<!-- 大图展示 -->
+			<cardlist wx:if="{{item.cmpName=='bigImage'}}" id="bigImage" content="{{item.config}}" />
+			<!-- 首页推荐商家 -->
+			<hotstore-store wx:if="{{item.cmpName=='businessRecommendation'}}" content="{{item.config}}" />
+			<!--图片展播-->
+			<hotstore-index wx:if="{{item.cmpName=='recommendation'}}" content="{{item.config}}" />
+			<!-- 首页图片组 -->
+			<Picmagic wx:if="{{item.cmpName=='magicCube'}}" id="Picmagic" content="{{item.config}}" />
+			<!-- 文字图组 -->
+			<text-and-image wx:if="{{item.cmpName=='textAndImage'}}" content="{{item.config}}" />
+			<!-- 同城资讯 -->
+			<information wx:if="{{item.cmpName=='information'}}" content="{{item.config}}" />
+			<!-- 限时抢购 -->
+			<rushbuy-com wx:if="{{item.cmpName=='rushBuy'}}" content="{{item.config}}" />
+			<!-- 全民拼团 -->
+			<assemble-com wx:if="{{item.cmpName=='collage'}}" content="{{item.config}}" />
+			<!-- 精选活动 -->
+			<activity-com wx:if="{{item.cmpName=='activity'}}" content="{{item.config}}" />
+			<!-- 品质好货 -->
+			<mall-com wx:if="{{item.cmpName=='storeMall'}}" content="{{item.config}}" />
+			<!-- 天天砍价 -->
+			<bargain-com wx:if="{{item.cmpName=='bargain'}}" content="{{item.config}}" />
+			<!-- 富文本 -->
+			<r-text wx:if="{{item.cmpName=='richText'}}" content="{{item.config.richText}}"></r-text>
+			<!-- 辅助标题 -->
+			<custom-title wx:if="{{item.cmpName=='customTitle'}}" content="{{item.config}}"></custom-title>
+			<!-- 空白组件 -->
+			<white-space wx:if="{{item.cmpName=='whiteSpace'}}" content="{{item.config}}"></white-space>
+			<!-- 分段线组件 -->
+			<segment-line wx:if="{{item.cmpName=='segmentLine'}}" content="{{item.config}}"></segment-line>
+			<!-- 关注公众号组件 -->
+			<official-account wx:if="{{item.cmpName=='fllow'}}"></official-account>
+			<!-- 流量主组件 -->
+			<view class='ba_f' wx:if="{{item.cmpName=='flow'}}" style='padding:{{item.config.upDownPadding}}px {{item.config.leftRightPadding}}px;'>
+				<ad unit-id="{{item.config.code}}"></ad>
+			</view>
+			<!-- 首页信息列表tab切换栏 -->
+			<view wx:if="{{item.cmpName=='tabGroup'}}" class="bor_bottom" style='margin-top:{{item.config.topMargin}}px;'>
+				<wux-tabs tabs="{{ tabs }}" color='{{item.config.color}}' scroll current="{{ current }}" bindchange="onChange">
+				</wux-tabs>
+			</view>
+		</block>
+		<!-- 首页信息列表 -->
+		<view class='ba_f5'>
+			<view class="pa_20 {{tabs.length>0?'mainbk':''}}">
+
+				<view wx:if="{{selecttype=='0'}}">
+					<Postinfo show_distance="1" show_commend="1" show_collection="0" show_zan="1" color="{{color}}" id="Postinfo" bind:newData='refreshtzData' bind:slide="slide" content="{{postList}}" />
+				</view>
+				<view wx:if="{{selecttype=='20'}}">
+					<zan-active content="{{postList}}" color="{{color}}" />
+				</view>
+				<view wx:if="{{selecttype=='1'}}">
+					<store-cell content="{{postList}}" key="new" bind:storeInfo="getStoreinfo" color="{{color}}"></store-cell>
+				</view>
+				<view wx:if="{{selecttype=='2'}}">
+					<message-postinfo content="{{postList}}" />
+				</view>
+				<view wx:if="{{selecttype=='3'}}">
+					<block wx:for="{{postList}}" wx:key="{{item.id}}">
+						<record-cell content="{{item}}" color="{{color}}"></record-cell>
+					</block>
+				</view>
+				<view wx:if="{{selecttype=='5'}}" class="pa_l30">
+					<freeride-cell content="{{postList}}" type="1" />
+				</view>
+				<view wx:if="{{selecttype=='6'}}" class="pa_l30">
+					<job-hunt job-type="2" page-type='list' content="{{postList}}" color="{{color}}" />
+				</view>
+				<view wx:if="{{selecttype=='18'}}" class="pa_l30">
+					<job-hunt job-type="1" page-type='list' content="{{postList}}" color="{{color}}" />
+				</view>
+				<view wx:if="{{selecttype=='7'}}">
+					<block wx:for="{{postList}}" wx:key="{{item.id}}">
+						<hous-cell color="{{color}}" hous-type="1" content="{{item}}" />
+					</block>
+				</view>
+				<view wx:if="{{selecttype=='19'}}">
+					<block wx:for="{{postList}}" wx:key="{{item.id}}">
+						<hous-cell color="{{color}}" hous-type="2" content="{{item}}" />
+					</block>
+				</view>
+				<view wx:if="{{selecttype=='8'}}" class='flex-bt flex-wrap pad_20'>
+					<block wx:for="{{postList}}" wx:key="{{item.id}}">
+						<mall-cell content="{{item}}" color="{{color}}" />
+					</block>
+				</view>
+				<view wx:if="{{selecttype=='9'}}" class=''>
+					<block wx:for="{{postList}}" wx:key="">
+						<activity-cell color="{{color}}" content="{{item}}" />
+					</block>
+				</view>
+				<!-- 名片没有组件 -->
+				<view wx:if="{{selecttype=='10'}}">
+					<view class='mar_t' wx:for="{{postList}}" wx:key="">
+						<view class="box-shadow ba_f mar-lrb basepadding flex-row color_3" bindtap="cardInfo" data-id="{{item.id}}">
+							<view class="flex-grow-0 ">
+								<image class="iconw mar_t br-r-c" mode='aspectFill' src="{{item.logo}}"></image>
+							</view>
+							<view class='flex-grow-1 mar-lr'>
+								<view class="fon_30">
+									<text>{{item.name}}</text>
+									<block wx:if="{{item.isTop=='1'}}">
+										<i-tag i-class="i-tags" font-size="22" bgColor="#FF8800" border-color="#FF8800" color="#fff">置顶</i-tag>
+									</block>
+								</view>
+								<view class="fon_24 color_9 flex-row padd-tb5">
+									<view>{{item.position}}</view>
+									<view class="mar_l30">{{item.department}}</view>
+								</view>
+								<view class="fon_24 color_9 padd-tb5">{{item.company}}</view>
+								<view class="fon_24 color_9 flex-row padd-tb5">
+									<view class="mar_r">
+										<text style="color:{{color}}">{{item.followNum}}</text>关注</view>
+									<view class="mar_r">
+										<text style="color:{{color}}">{{item.loveNum}}</text>点赞</view>
+									<view>
+										<text style="color:{{color}}">{{item.viewNum}}</text>人气</view>
+								</view>
+							</view>
+							<view class='flex-grow-0 flex-y-bt'>
+								<view class="iconfont icon-comments fon_44" style="color:{{color}}"></view>
+								<view class="iconfont icon-dianhua3 fon_50 " style="color:{{color}}" catchtap='callup' data-msg='{{item}}'></view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view wx:if="{{selecttype=='11'}}" class=''>
+					<block wx:for="{{postList}}" wx:key="{{item.id}}">
+						<assemble-cell content="{{item}}" color="{{color}}" />
+					</block>
+				</view>
+				<view wx:if="{{selecttype=='12'}}" class=''>
+					<block wx:for="{{postList}}" wx:key="">
+						<rushbuy-cell content="{{item}}" color="{{color}}" />
+					</block>
+				</view>
+				<view wx:if="{{selecttype=='13'}}" class='mar_t'>
+					<block wx:for="{{postList}}" wx:key="">
+						<coupon-cell content="{{item}}" color="{{color}}" />
+					</block>
+				</view>
+				<view wx:if="{{selecttype=='14'}}" class=''>
+					<block wx:for="{{postList}}" wx:key="">
+						<privilege-cell type='1' content="{{item}}" color="{{color}}" />
+					</block>
+				</view>
+				<view wx:if="{{selecttype=='15'}}" class=''>
+					<block wx:for="{{postList}}" wx:key="">
+						<bargain-cell content="{{item}}" color="{{color}}" />
+					</block>
+				</view>
+				
+				<load-more bg-color="transparent" wx:if="{{tabs.length>0}}" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+			</view>
+			<footer wx:if="{{layout}}"></footer>
+		</view>
+	</view>
+</at-form>

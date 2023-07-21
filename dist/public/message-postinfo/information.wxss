@@ -1,0 +1,6 @@
+/* dist/public/cardlist/text-and-image.wxss */
+@import "/app.wxss";
+.infoimg{
+  width: 215rpx;
+  height: 145rpx;
+}

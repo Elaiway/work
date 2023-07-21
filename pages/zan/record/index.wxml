@@ -1,0 +1,16 @@
+<view class="main">
+
+	<view wx:for="{{list}}" wx:key="item" class="detail">
+		<view class="flex-between-center">
+			<view>{{item.storeName}}</view>
+			<view class="color1">
+				<text class="{{item.shareNum-item.number>=0?'':'color2'}}">{{item.shareNum-item.number>=0?'已达标':'未达标'}}</text>
+				<text class="{{item.hxState==1?'marginleft':'marginleft color2'}}">{{item.hxState==1?'已核销':'未核销'}}</text>
+			</view>
+		</view>
+		<view class="color1">
+			2020-09-15 14:00
+		</view>
+	</view>
+	<load-more bg-color="transparent" nodata="{{list.length==0}}" mygd="{{isget}}" />
+</view>

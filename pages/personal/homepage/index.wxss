@@ -1,0 +1,77 @@
+.user_head {
+    width: 100%;
+    height: 430rpx;
+}
+
+.user_headv {
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+
+.user_headv1 {
+    z-index: 100;
+}
+
+.user_t {
+    padding: 20rpx 0 10rpx 0;
+}
+
+.back_img {
+    width: 100%;
+    height: 100%;
+}
+
+.user_headv2 {
+    z-index: 200;
+    padding: 20rpx;
+}
+
+.usersimg {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    border: 6rpx solid #fff;
+}
+
+.user_lavel {
+    margin-top: 15rpx;
+}
+
+.user_text {
+    padding: 0rpx 40rpx;
+    height: 26rpx;
+    display: inline-block;
+    line-height: 26rpx;
+    border-right: 2rpx solid #fff;
+}
+.user_laveltnb {
+    border: none;
+}
+
+.visitorv1 {
+    width: 20%;
+}
+
+.visitorv2 {
+    width: 50%;
+}
+
+.visitorv3 {
+    width: 30%;
+}
+
+.visitor {
+    padding: 10rpx 20rpx;
+}
+
+.visitorimg {
+    border-radius: 50%;
+    width: 80rpx;
+    height: 80rpx;
+    margin-top: 10rpx;
+}
+
+.visitor:last-child {
+    border: none;
+}

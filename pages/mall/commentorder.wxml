@@ -1,0 +1,21 @@
+<!--pages/mall/commentorder.wxml-->
+<view class='container'>
+  <view wx:for="{{goods}}" class='ba_f mar_t'>
+    <wux-cell mode='scaleToFill' no-center='true' isLast='true' imgw='100' imgh='100' boradius='10rpx' thumb="{{item.img}}">
+      <view class='fon_24 color_6' slot="bodyer">
+        <view>{{item.name}}</view>
+        <block-text wx:if="{{item.data}}" class-name="fon_24 pa_5_15 ba_f5 color_9" text='{{item.data}}' />
+      </view>
+    </wux-cell>
+    <view class='flex-col flex-y-center pa_t30 br-b-e'>
+      <wux-rater bind:change="onChange" data-idx='{{index}}' value="{{ item.star }}" font-size="{{ 36 }}" />
+      <view class='fon_24 color_9 mar_t_10'>觉得怎么样，打个分吧</view>
+    </view>
+    <text-area name='textarea' value='{{item.note}}' bind:textblur='textareachange' data-idx='{{index}}' height='4.5' show-max='{{false}}' placeholder='亲，在这家店消费还满意吗？店家的环境和服务如何？'></text-area>
+    <wux-upload htitle='' tipstext='' count="3" list-type="picture-card" bind:change="uploadonChange" data-idx='{{index}}'>
+    </wux-upload>
+  </view>
+  <view class='basepadding'>
+    <button class='foot-btn' disabled='{{loading}}' loading='{{loading}}' bindtap="confirm" style='background:{{color}}'>提交评价</button>
+  </view>
+</view>

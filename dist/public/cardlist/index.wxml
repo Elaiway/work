@@ -1,0 +1,7 @@
+<view class='card-group-index extra-class' style="padding:{{content.upDownPadding}}px {{content.leftRightPadding}}px;margin-top:{{content.topMargin}}px;">
+  <view class='flex-row flex-wrap'>
+    <view bindtap='jumps' data-entry='{{item.entry}}' class='cardimgv' wx:for="{{content.pictureList}}" wx:key="url" style='width:{{100/content.numberOfRow||100}}%;padding:{{content.padding}}rpx;'>
+      <image style='border-radius:{{content.radius}}px;height:{{content.height}}px;' mode='aspectFill' class='cardimg' src="{{item.url}}"></image>
+    </view>
+  </view>
+</view>

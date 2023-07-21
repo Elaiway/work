@@ -1,0 +1,124 @@
+/* pages/personal/index.wxss */
+
+.usermain {
+  padding: 30rpx 20rpx;
+}
+
+.username {
+  width: 200rpx;
+}
+
+.user_head {
+  width: 100%;
+  /* height: 320rpx; */
+}
+
+.user_logo {
+  width: 110rpx;
+  height: 110rpx;
+  /* border:4rpx solid #fff; */
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.join {
+  width: 280rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+
+.joinv1 {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  z-index: 100;
+}
+
+.joinimg {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.joinv2 {
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.user_basic {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.user_basic_info {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.info_0v {
+  width: 20%;
+  margin-top: 20rpx;
+}
+
+.info_1v {
+  width: 25%;
+  margin-top: 20rpx;
+}
+
+.open_vip {
+  width: 92%;
+  height: 132rpx;
+  overflow: hidden;
+  bottom: -66rpx;
+  border-radius: 20rpx;
+  color: #8c6530;
+}
+
+.open_vipimg {
+  width: 100%;
+  height: 100%;
+}
+
+.ljkt {
+  background: linear-gradient(-45deg, #d8ae69, #d8ae69);
+  border-radius: 40rpx;
+  padding: 10rpx 24rpx;
+  margin-right: 26rpx;
+}
+
+.submenuv {
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.submenu_icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 0 auto 0;
+}
+
+.set_up {
+  width: auto;
+  height: 50rpx;
+  right: 0;
+  top: 23rpx;
+}
+
+.set_upimg {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
+  margin-right: 20rpx;
+}
+
+.user_basic_padding {
+  padding: 10rpx 0;
+}

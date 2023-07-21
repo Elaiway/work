@@ -1,0 +1,13 @@
+<!--dist/public/textarea.wxml-->
+<checkbox-group style="background:{{bgcolor}}" class='extra-class agree' bindchange="bindAgreeChange">
+  <view class="weui-agree__text">
+    <label class="weui-agree" for="weuiAgree">
+      <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+      <view class="weui-agree__checkbox-icon">
+        <icon color='{{iconcolor}}' class="weui-agree__checkbox-icon-check" type="success_no_circle" size="14" wx:if="{{isAgree}}"></icon>
+      </view>
+      阅读并同意
+    </label>
+    <navigator url='/pages/extra/agreement?xyname={{title}}' class="weui-agree__link">《{{title}}》</navigator>
+  </view>
+</checkbox-group>

@@ -1,0 +1,54 @@
+/* pages/index/help/index.wxss */
+@import "/app.wxss";
+.commodity{
+  padding: 0 30rpx;
+}
+.modle{
+  width: 48%;
+  height: 464rpx;
+  border-radius: 10rpx;
+  padding-bottom: 20rpx;
+  box-shadow: 0rpx 0rpx 8rpx 5rpx #eee;
+
+}
+.photo{
+  height: 333rpx;
+  width: 100%;
+}
+.ba-gray{
+  background: rgba(0, 0, 0, 0.7);
+}
+.state{
+  border-top-right-radius: 30rpx;
+  border-top-left-radius: 10rpx;
+  border-bottom-right-radius: 30rpx;
+}
+.whiteDot{
+  display: inline-block;
+  width: 15rpx;
+  height: 15rpx;
+  margin-right: 15rpx;
+  background: #fff;
+  border-radius: 50%;
+}
+.play{
+  width: 100rpx;
+  height: 100rpx;
+  border:1rpx solid #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  margin-top: -114rpx;
+  margin-left: -50rpx;
+}
+.imglogo{
+  width: 40rpx;
+  height: 40rpx;
+  }
+  .logoimg{
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+  }

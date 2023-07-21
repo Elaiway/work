@@ -1,0 +1,113 @@
+<!--pages/mall/index.wxml-->
+<view class='container after-navbar'>
+  <!-- 轮播图 -->
+  <view id='gooddl' class='' hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+    <view class='pad_20 ba_f'>
+      <view class='flex-y-center'>
+        <view class='wei color_f b-t-l30 b-b-r30 ba-lg-f4ee pa_5_20'>{{goodsInfo.groupNum}}人拼</view>
+        <view class='mar_l wei fon_36'>{{goodsInfo.title}}</view>
+      </view>
+      <view class='flex-x-bt mar_t color_rb'>
+        <view>
+          <text class='wei fon_36'>￥{{goodsInfo.groupPrice}}</text> -
+          <text class="wei fon_36">{{goodsInfo.alonePrice}}</text>
+          <block-text wx:if="{{system.openVip&&goodsInfo.memberPrice>0}}" type='2 ' color='#FFE100' class-name='pa_10_15 br-r-10 mar_l color_3' text='会员￥{{goodsInfo.memberPrice}}' />
+        </view>
+        <view class="color_9 flex-g-0">已售{{goodsInfo.salesNum}}份</view>
+      </view>
+      <view class='mar_b'>
+        <text class='fon_26 color_9 t-d-l'>￥{{goodsInfo.originalPrice}}</text>
+      </view>
+      <!-- 会员卡提示 -->
+      <navigator wx:if="{{system.openVip}}" url='/pages/vip/index' class="br-r-10 pad_20 flex-x-bt" style='background:#FFECF2'>
+        <view class="">
+          <view class="pa_5_10 color_3 mar_b_10 br-r-10">
+            <text class="fon_36 iconfont icon-tianchongxing- mar_r_10"></text>
+            <text class="fon_30 wei">超级会员卡</text>
+          </view>
+          <view class='fon_24 color_9'>开通超级会员可
+            <text class='color_rb'>{{goodsInfo.memberPrice}}元购买</text>
+          </view>
+        </view>
+        <view class='flex-g-0 jbyjbtn ba-lg-fef7'>立即开通</view>
+      </navigator>
+      <!-- <view class='color_9 mar_t_10'>
+        <text class='mar_r60' wx:if="{{goodsInfo.isPost == 1}}">包邮</text>
+        <text class='mar_r60' wx:else>快递：￥{{goodsInfo.freight}}(满{{goodsInfo.satisfy}}包邮)</text>
+        <text class='mar_r60'>热销：{{goodsInfo.salesNum}}</text>
+        <text>库存：{{goodsInfo.stock}}</text>
+      </view> -->
+    </view>
+  </view>
+  <wux-cell padding='0 30rpx 20rpx' is-last='true' bind:click='showTypeOne' is-link>
+    <view slot='bodyer' class='flex-raw'>
+      <block wx:for='{{goodsInfo.label}}' wx:key="*this">
+        <view wx:if='{{index<3}}' class='mar_r30'>
+          <text class='mar_r iconfont icon-tuanbuxingbiao color_rb'></text>
+          <text class='color_9'>{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </wux-cell>
+  <view class='mar_t ba_f basepadding' bindtap='goStoreDetail'>
+    <view class='flex-row'>
+      <image class='flex-g-0 br-r-30' style='width:160rpx;height:160rpx;' src='{{goodsInfo.storeLogo}}'></image>
+      <view class='flex-g-1 flex-col flex-bt mar_l'>
+        <view class='gobyndsingle fon_32 wei'>{{goodsInfo.storeName}}</view>
+        <view class='flex-x-bt'>
+          <text>{{goodsInfo.fans || 0}}粉丝</text>
+          <text>{{goodsInfo.goodsNUm || 0}}商品</text>
+          <text class='iconfont icon-iconfront-'></text>
+        </view>
+        <wux-rater slot="footer" default-value="{{ 5 }}" font-size="{{ 18 }}" disabled />
+      </view>
+    </view>
+  </view>
+
+  <wux-cell id='gooddl' tclass="fon_32 wei" tstyle='color:#000' tftsize='30' is-left="true" wux-class='mar_t' title='商品详情' />
+                <view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>
+  <view class='pad_20 ba_f color_6'>
+    <rich-text nodes="{{goodsInfo.details}}"></rich-text>
+    <view class='mar_t' wx:if='{{goodsInfo.detailImgs.length!=0}}'>
+      <image mode='widthFix' class='image_all' wx:for='{{goodsInfo.detailImgs}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{url}}{{item.url}}'></image>
+    </view>
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl type='2' width='55' bind:footclick='footclick' content="{{foot_menu}}" />
+</block>
+<!-- 弹窗 -->
+<van-popup show="{{popupshow}}" z-index='1000' position="bottom" custom-style="overflow: initial;background: #f4f4f4;border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;" bind:close="togglePopup">
+  <view class='ba_f pa_l30 br-r-tlr30'>
+    <block wx:if="{{showType==1}}">
+      <view class='t_c pad_20 fon_32'>服务说明</view>
+      <view class='' style='max-height:600rpx;overflow-y:scroll'>
+        <view wx:for="{{goodsInfo.label}}" class='flex-row mar_b50'>
+          <text class='iconfont icon-tuanbuxingbiao mar_r30' style='color:{{color}}'></text>
+          <view class='flex-g-1'>
+            <view class='fon_30'>{{item}}</view>
+            <!-- <view class='color_9 fon_26'>{{item.body}}</view> -->
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{showType==2}}">
+      <view class='t_c pad_20 fon_32'>优惠券</view>
+      <view class='' style='max-height:600rpx;overflow-y:scroll'>
+        <view wx:for="{{goodsService}}" class='flex-row mar_b50'>
+          <text class='iconfont icon-huo mar_r30' style='color:{{color}}'></text>
+          <view class='flex-g-1'>
+            <view class='fon_30'>{{item.name}}</view>
+            <view class='color_9 fon_26'>{{item.body}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='ba_f pad_20'>
+    <view class='foot-btn' bindtap="confirm" style='background:{{color}}'>{{showType==3?buyType==2?'加入购物车':'立即购买':'完成'}}</view>
+  </view>
+</van-popup>

@@ -1,0 +1,29 @@
+/* pages/publish/publishpost.wxss */
+.fixedtop{
+  /* position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 9999; */
+}
+.weui-tab__panel{
+  padding-top: 20rpx;
+}
+.weui-cells:before {
+  border-top: none;
+}
+.weui-cells:after {
+  border-bottom: none;
+}
+.borbtm{
+  border-bottom: 1rpx solid #eee;
+}
+.flje .weui-cell{
+  font-size: 30rpx;
+  color: #666;
+}
+.bottomfixed{
+  z-index: 9999;
+}
+.weui-btn{
+  border-radius: 0;
+}

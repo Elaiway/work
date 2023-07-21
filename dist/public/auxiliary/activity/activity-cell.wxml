@@ -1,0 +1,26 @@
+<!--dist/public/auxiliary/activity/activity-cell.wxml-->
+<view class="content">
+  <view class="mar_tblr ba_f" bindtap="activityInfo" data-id="{{content.id}}">
+    <view class="bgimg image_all rels">
+      <image class="imgsize" mode='aspectFill' src="{{content.showImgs}}"></image>
+      <view class="ab coll color_f">
+        <text class="iconfont icon-shoucangcopy fon_28 mar_r_10" style="color:{{color}}"></text>
+        <text class="fon_24">{{content.count}}人</text>
+      </view>
+      <view class="startime ab color_f fon_24 pa_8_20">{{content.startTime}} 开始</view>
+    </view>
+    <view class="pa">
+      <view class="fon_26 color_3">{{content.name}}</view>
+      <view class="flex-bet">
+        <view class="fon_24 color_9">
+          <text class="mar_r30">{{content.createdAt}}</text>
+          <text wx:if="{{content.typeName!==null}}">{{content.typeName}}</text>
+        </view>
+        <view class="">
+          <text class="fon_34 mar_r_10" style="color:{{color}}">￥{{content.currentPrice}}</text>
+          <text class="fon_24 color_9">￥{{content.originalPrice}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

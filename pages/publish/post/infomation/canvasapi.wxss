@@ -1,0 +1,19 @@
+/* pages/index/infomation/canvasapi.wxss */
+.canvas{
+    width: 100%;
+    top:-2000000rpx;
+    position: fixed;
+    /* background: orange; */
+}
+button{
+    width: 90%;
+    margin-top: 5%;
+}
+.poster{
+    width: 100%;
+    height: 85%;
+    overflow-y:auto;
+}
+.posterimg{
+    width: 100%;
+}

@@ -1,0 +1,2 @@
+<!-- <include src="/zh_cjdianc/pages/commons/navbar/navbar.wxml" /> -->
+<web-view src="{{vr}}"></web-view>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "nav-select":"/dist/public/components/top-select/nav-select"
+  }
+}

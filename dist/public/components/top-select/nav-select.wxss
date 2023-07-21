@@ -1,0 +1,15 @@
+/* dist/public/components/top-select/nav-select.wxss */
+@import "/app.wxss";
+
+.sortimg {
+  width: 30rpx;
+  height: 30rpx;
+  transition: all 500ms;
+}
+
+.sortimg1 {
+  width: 30rpx;
+  height: 30rpx;
+  transform: rotate(-180deg);
+  transition: all 500ms;
+}

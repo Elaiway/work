@@ -1,0 +1,8 @@
+.mWidth{
+  width: 150rpx;
+  height: 150rpx;
+  background: #ccc;
+}
+.str{
+  align-items: flex-start !important;
+}

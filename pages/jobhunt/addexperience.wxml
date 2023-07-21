@@ -1,0 +1,40 @@
+<!--pages/jobhant/addexperience.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container'>
+    <view class="ba_f color_3">
+      <view class="t_c pa_t30 bor-btm">
+        <view class="color_9 fon_28">{{type=='1'?'学校名称':'公司名称'}}</view>
+        <view class="fon_32 mar_t_10">
+          <input name='name' placeholder-class='fon_28' value="{{params.name}}" class="weui-input" placeholder="{{type=='1'?'请输入学校名称':'请输入公司名称'}}" />
+        </view>
+      </view>
+      <view class="t_c pa_t30 bor-btm">
+        <view class="color_9 fon_28">{{type=='1'?'专业名称':'职位名称'}}</view>
+        <view class="fon_32 mar_t_10">
+          <input name='jobName' placeholder-class='fon_28' value="{{params.jobName}}" class="weui-input" placeholder="{{type=='1'?'请输入专业名称':'请输入职位名称'}}" />
+        </view>
+      </view>
+      <view class="flex-bet t_c mar_tb_20">
+        <view class="flex-1 borr">
+          <view class="color_9">开始时间</view>
+          <view class="section">
+            <picker mode="date" value="{{params.startTime}}" start="2009-09-01" end="2039-09-01" bindchange="bindsDateChange">
+              <view class="picker fon_30 mar_tbt">{{params.startTime||'请选择'}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="flex-1">
+          <view class="color_9">结束时间</view>
+          <view class="section">
+            <picker mode="date" value="{{params.endTime}}" start="2009-09-01" end="2039-09-01" bindchange="bindeDateChange">
+              <view class="picker fon_30 mar_tbt">{{params.endTime||'请选择'}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" bindtap="operation" data-info='{{jobInfo}}' type="primary" formType="submit">保存</button>
+    </view>
+  </view>
+</form>

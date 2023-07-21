@@ -1,0 +1,46 @@
+/* dist/public/auxiliary/housingdeal/housingdeal.wxss */
+@import "/app.wxss";
+.housimg{
+  width: 190rpx;
+  height: 136rpx;
+  border-radius: 10rpx;
+}
+.bgblue{
+  background: #618AFF;
+}
+.bgsku{
+  background: #20D4D0;
+}
+.bgorange{
+  background:#F5431A;
+}
+.bggreen{
+  background: #12BC26;
+}
+.borderRight{
+  margin-right: 15rpx;
+  border-color:#17D2BB;
+  color:#17D2BB;
+}
+.mar_t_5{
+  margin-top: 5rpx;
+}
+.userimg{
+  width: 54rpx;
+  height: 54rpx;
+}
+.paj{
+  padding-top:0rpx;
+}
+.mar_tblr{
+  margin: 20rpx;
+}
+.btn{
+  padding: 5rpx 20rpx;
+  border: 1rpx solid #618AFF;
+}
+.areaminit{
+  width: 10rpx !important;
+  overflow: hidden;
+  border: 1px solid red;
+}

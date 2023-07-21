@@ -1,0 +1,34 @@
+<view class='container after-navbar'>
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <view class='t_c interval ba_f bor_bottom'>
+    <view class='bor_right dis_in wid_50 pa_t fon_28' bindtap='interval' data-type='0'>
+      <text class='iconfont icon-jifen fon_40 middle color_y'></text>
+      <text class='mar_l middle color_6'>积分</text>
+      <text class='middle mar_l' style='color:{{color}}'>{{userinfo.integral}}</text>
+    </view>
+    <view class='bor_right dis_in wid_50 pa_t' bindtap='interval' data-type='1'>
+      <text class='iconfont icon-jilu1 fon_40 middle color_e'></text>
+      <text class='mar_l middle color_6'>兑换记录</text>
+    </view>
+  </view>
+  <view wx:if="{{Typeswiper!=null}}">
+    <type-swiper color="{{color}}" type-obj='{{Typeswiper}}'></type-swiper>
+  </view>
+  <!-- <view class='' wx:if="{{Headline}}">
+    <headline content="{{Headline}}" datatype='1,0' />
+  </view> -->
+  <!-- <view class='ba_f pa_t'>
+    <picmagic content="{{picmagic}}" />
+  </view> -->
+  <view class="proList">
+    <integral-good content="{{itemList}}" />
+  </view>
+  <block wx:if="{{foot_menu!=null}}">
+    <foot-dl bind:footclick='footclick' width='68' content="{{foot_menu}}" />
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{itemList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

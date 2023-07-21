@@ -1,0 +1,7 @@
+{
+  
+  "usingComponents": {
+    "wux-upload": "/dist/wux-weapp/upload/index"
+  },
+  "navigationBarTitleText": "集赞榜"
+}

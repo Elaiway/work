@@ -1,0 +1,2 @@
+<!--dist/public/textarea.wxml-->
+<view style='height:{{content.height}}px;background:{{content.color}};opacity:{{content.opacity/100}};margin-top:{{content.topMargin}}px;'></view>

@@ -1,0 +1,25 @@
+<include src="/assets/commons/navbar/navbar.wxml" />
+<view class="container after-navbar">
+    <Search id='Search' content="{{Search}}" searchtype='2' color="{{color}}"></Search>
+    <!-- 资讯首页轮播图 -->
+    <view wx:if="{{Swiper!=false}}">
+        <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+    </view>
+    <block wx:if="{{Typeswiper!=false}}">
+        <type-swiper color="{{color}}" type-obj='{{Typeswiper}}'></type-swiper>
+    </block>
+    <view wx:if="{{Headline!=null}}" class='mar_t'>
+        <Headline datatype='4,0' pagetype='news' content="{{Headline}}"/>
+    </view>
+    <weather content="{{weather}}" />
+    <!-- 中间广告位 -->
+    <view wx:if="{{advert!=null}}" class='mar_t pa_l ba_f'>
+        <advert content="{{advert}}" />
+    </view>
+    <view class='mar_t'>
+        <view wx:if="{{Postlist.length>0}}">
+            <message-postinfo content="{{Postlist}}" />
+        </view>
+        <load-more nodata="{{Postlist.length==0&&isget}}" mygd='{{mygd}}' />
+    </view>
+</view>

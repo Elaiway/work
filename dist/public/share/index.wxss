@@ -1,0 +1,30 @@
+@import "/app.wxss";
+.onShareAppMessage{
+  border-top: 1rpx solid #eee;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  bottom: 0;
+}
+.sharetitle{
+  padding: 30rpx 0;
+}
+.sharemessageimg{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  margin: 0 auto 0;
+  display: block;
+}
+.sharemessagebtn{
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  top: 0;
+  background: none;
+  left: 0;
+}
+.cancel{
+  height: 90rpx;
+  line-height: 90rpx;
+}

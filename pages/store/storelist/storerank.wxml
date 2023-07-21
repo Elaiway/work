@@ -1,0 +1,39 @@
+<!--pages/extra/verification.wxml-->
+<view class='rankmain posi-r'>
+  <image mode='widthFix' class='image_all' src='/assets/images/store/rankingBack.png'></image>
+  <view class='posi-a ranking color_f flex-col'>
+    <view class='ranking-con flex-g-0'>
+      <view bindtap='changeBtn' data-type='2' class="ranking-btn posi-r {{params.type==2?'top':''}}">
+        <image class='image_all' src='/assets/images/store/ranking.png'></image>
+        <view class='posi-a image_all text hydlnr'>{{configRank.followName || '关注排行'}}</view>
+      </view>
+      <view bindtap='changeBtn' data-type='1' class="ranking-btn posi-r {{params.type==1?'top':''}}">
+        <image class='image_all' src='/assets/images/store/hot.png'></image>
+        <view class='posi-a image_all text hydlnr'>{{configRank.popularityName || '人气排行'}}</view>
+      </view>
+      <view bindtap='changeBtn' data-type='3' class="ranking-btn posi-r {{params.type==3?'top':''}}">
+        <image class='image_all' src='/assets/images/store/store.png'></image>
+        <view class='posi-a image_all text hydlnr'>{{configRank.qualityName || '品质商家'}}</view>
+      </view>
+    </view>
+    <view class='datalist flex-g-1'>
+      <view bindtap='storeInfo' data-id='{{item.id}}' wx:for="{{dataList}}" class='data-con posi-r'>
+        <image class='image_all' src='/assets/images/store/listBack.png'></image>
+        <image wx:if="{{index<3}}" class='rankimg posi-a' src="/assets/images/store/{{index==0?'one':index==0?'two':'three'}}.png"></image>
+        <block wx:else>
+          <image class='rankimg2 posi-a' src='/assets/images/store/rankingIndex.png'></image>
+          <view class='rankimg2text posi-a'>{{index+1}}</view>
+        </block>
+        <image class='rankimg3 posi-a' src='/assets/images/store/placehodel.png'></image>
+        <view class='rankimg3text posi-a'>进店</view>
+        <view class='data-main posi-a flex-y-center'>
+          <image class='imgsize100 mar_r_10' src='{{item.storeLogo}}'></image>\
+          <view class=''>
+            <view class='fon_32 color_0'>{{item.storeName}}</view>
+            <view class='color_rb'>{{params.type==1?item.popularity:params.type==2?item.followNum:''}}<text>{{params.type==1?'人气':params.type==2?'人已关注':''}}</text></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

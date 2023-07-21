@@ -1,0 +1,15 @@
+<view class="navs ba_f">
+    <view class='navsv1'>
+        <wux-tabs tabs="{{ postNav }}" color='{{color}}' scroll current="{{ current }}" bindchange="onChange">
+</wux-tabs>
+    </view>
+    <view class='ab t_c navs_all' bindtap='more_nav'>
+        <text class=' middle iconfont color_9 icon-weibiaoti303 fon_50'></text>
+    </view>
+</view>
+<view style='margin-top:108rpx;'>
+    <view>
+        <message-postinfo content="{{Postlist}}" />
+        <load-more nodata="{{Postlist.length==0&&isget}}" mygd='{{mygd}}' />
+    </view>
+</view>

@@ -1,0 +1,184 @@
+<!-- <import src="../../../wxParse/wxParse.wxml" /> -->
+<view class='container' wx:if="{{load==true}}">
+  <view>
+    <!-- 信息头部信息 -->
+    <view class='flex-row basepadding rel ba_f bor_bottom'>
+      <view class='flex-grow-0 mar_r flex-center-col'>
+        <image class='postLogo' mode='aspectFill' src="{{postInfo.customPortrait.length>0&&postInfo.customPortrait?url+postInfo.customPortrait[0].url:postInfo.portrait}}"></image>
+      </view>
+      <view class='flex-grow-1 flex-row'>
+        <view class='flex-grow-1 flex-colbt'>
+          <view class='flex-raw'>
+            <text class='fon_30 color_6'>{{postInfo.customUser?postInfo.customUser:postInfo.userName}}</text>
+            <text class='isTop fon_24 mar_l color_f' wx:if="{{postInfo.isTop=='1'}}">置顶</text>
+            <!-- <text class='isRedbag fon_24 mar_l color_f' wx:if="{{postInfo.isRedBag=='1'}}"></text> -->
+            <image wx:if="{{postInfo.isAuth=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/grrz.png'></image>
+            <image wx:if="{{postInfo.isEnsure=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/bzj.png'></image>
+          </view>
+          <view class='flex-raw mar_t_10 fon_24 color_9'>
+            <i-tag i-class="i-tags" font-size="24" border-color="#fff" bg-color='{{color}}' color='#fff'>
+              {{postInfo.typeName}}
+            </i-tag>
+            <text class='mar_l'>{{postInfo.creatTime}}发布</text>
+          </view>
+        </view>
+        <view class='flex-grow-0 flex-center-col'>
+          <button wx:if="{{postInfo.status=='1'}}" class='fon_28 share color_f' bindtap='share' style='background:{{color}}'>分享</button>
+        </view>
+        <image mode='aspectFill' wx:if="{{postInfo.isEnd=='1'}}" src='{{imgsrc}}/wechatimg/img/isend.png' class='ab postEnd'></image>
+      </view>
+    </view>
+    <!-- 信息详情 -->
+    <view class='infoDetail pa_l ba_f'>
+      <view class='pa_t'>
+          <text class='classification_label fon_26' wx:for="{{postInfo.label}}" style='border:2rpx solid {{item.color}};color:{{item.color}}'>{{item.name}}</text>
+      </view>
+      <view class='detail fon_30'>
+        <!-- <template wx:if="{{postInfo.checkHtml==true}}" is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
+        <r-text wx:if="{{postInfo.checkHtml==true}}" content="{{postInfo.body}}" styleName='padding:0'></r-text>
+        <text wx:if="{{postInfo.checkHtml==false}}">{{postInfo.body}}</text>
+        <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}" wx:if="{{postInfo.contentType=='2'}}" /> -->
+        <r-text wx:if="{{postInfo.contentType=='2'}}" content="{{postInfo.wechatContent}}" styleName='padding:0'></r-text>
+      </view>
+      <view class='infoImgs' wx:if="{{postInfo.contentType!='2'}}">
+        <block wx:for="{{postInfo.media}}">
+          <!-- 本地上传的图片 -->
+          <block wx:if="{{postInfo.contentType=='1'}}">
+          <image style="margin-bottom:20rpx" class='infoImgsimg' wx:if="{{item.type=='img'&&item.url!=''}}" mode='widthFix' src='{{url}}{{item.url}}' bindtap='previewImage' data-index="{{index}}"></image>
+          </block>
+          <!-- 本地上传的视频 -->
+          <video wx:if="{{item.type=='video'&&postInfo.contentType=='3'}}" src="{{url}}{{item.url}}"></video>
+          <!-- 腾讯视频解码后的路径 -->
+          <video wx:if="{{item.type=='qqVideo'}}" src="{{item.url}}"></video>
+        </block>
+      </view>
+      <!-- 点赞模块 -->
+      <view class=' give_thumbs'>
+        <view class='give_thumbsv1 dis_in t_l' bindtap='postPraise'>
+          <text class='middle iconfont color_e icon-dianzan1 fon_50' style="color:{{love==1?'red':'#ee5e5e5'}}"></text>
+          <text class='middle color_9'>{{postInfo.love}}</text>
+        </view>
+        <view class='give_thumbsv2 dis_in t_r fon_26'>
+          <text class='middle color_9'>浏览：</text>
+          <text class='middle color_9'>{{postInfo.browse}}</text>
+          <text class='middle color_9 mar_l'>评论：</text>
+          <text class='middle color_9'>{{postInfo.comment||0}}</text>
+          <text class='middle color_9 mar_l'>分享</text>
+          <text class='middle color_9'>{{postInfo.share}}</text>
+          <text class='middle mar_l iconfont color_e icon-gengduo fon_40'></text>
+        </view>
+        <!-- <view class='thumbs_num'>
+                    <text class='dis_in fon_26 color_9'>赞：{{dz.length}}人</text>
+                    <image class='thumbs_numimg' mode='aspectFill' class='dis_in' wx:for="{{dz}}" wx:key="*this" src='{{item}}'></image>
+                </view> -->
+      </view>
+    </view>
+  </view>
+  <view class='redEnvelopes' catchtap='redEnvelopes' wx:if="{{postInfo.isRedBag==''}}">
+    <image class='redEnvelopesimg' mode='aspectFill' src='{{imgsrc}}/wechatimg/receive/receive.gif'></image>
+  </view>
+  <!-- 领取列表 -->
+  <block wx:if="{{receiveList!=null&&postInfo.isRedBag==''}}">
+    <view wx:if="{{receiveList.list.length>0}}">
+      <receive-list imgsrc="{{imgsrc}}" content="{{receiveList}}" />
+    </view>
+  </block>
+  <!-- 信息评论处 -->
+  <view class='mar_t ba_f pa_l' wx:if="{{postCommend.length>0}}">
+    <submenu content="{{submenu_2}}" />
+    <commend color="{{color}}" comment_close="{{comment_close}}" bind:openpl="openpl" bind:comment="comment_info" comment_list="{{comment_list}}" content="{{postCommend}}" />
+  </view>
+  <!-- 信息发布人信息 -->
+  <view class='pa mar_t ba_f'>
+    <view class='publisher bor_bottom'>
+      <view class='publisherv1 dis_in rel t_c'>
+        <text class='middle ab udlr publisher_icon iconfont color_e icon-wo fon_36 ab' style='color:{{color}}'></text>
+      </view>
+      <view class='publisherv2 dis_in fon_30 color_6 rel'>
+        <text class='mar_l'>{{postInfo.linkMan}}</text>
+      </view>
+    </view>
+    <view class='publisher bor_bottom' bindtap='makephone1' wx:if="{{tel_close==1&&postInfo.isEnd!='1'}}">
+      <view class='publisherv1 dis_in rel t_c'>
+        <text class='middle ab udlr publisher_icon iconfont color_e icon-dianhua fon_36 ab' style='color:{{color}}'></text>
+      </view>
+      <view class='publisherv2 dis_in fon_30 color_6 rel'>
+        <text wx:if="{{alreadyCharge}}" class='mar_l'>{{postInfo.userTel}}</text>
+        <text wx:else class='mar_l'>{{postInfo.linkTel}}</text>
+        <view class='mar_l fon_24' style='color:{{color}}'>注：联系我时,请说明是在{{system.name}}上看到的</view>
+        <text class='iconfont color_9 icon-you fon_24 ab ud'></text>
+      </view>
+    </view>
+    <view class='publisher' bindtap='getLocation'>
+      <view class='publisherv1 dis_in rel t_c'>
+        <text class='middle ab udlr publisher_icon iconfont color_e icon-dizhi1 fon_36 ab' style='color:{{color}}'></text>
+      </view>
+      <view class='publisherv2 dis_in fon_30 color_6 rel'>
+        <view class='mar_l'>{{postInfo.address}}</view>
+        <text class='iconfont color_9 icon-you fon_24 ab ud'></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 信息举报处 -->
+  <!-- <view class='report mar_t ba_f pa rel' bindtap='getComment'>
+        <view class='reportv1 dis_in'>
+            <view class='fon_24' style='color:{{color}}'>如遇无效、虚假、诈骗信息，请立即举报</view>
+            <view class='fon_24'>为了您的资金安全，请见面交易，切勿提前支付任何费用</view>
+        </view>
+        <text class='reporttext middle iconfont color_e icon-jubao fon_40 ab' style='color:{{color}}'></text>
+    </view> -->
+  <!-- 广告位 -->
+  <!-- <view class='advertising'>
+        <image class='advertisingimg' mode='aspectFill' src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540027250812&di=554eb8dac59be292046940506c2fc2ea&imgtype=0&src=http%3A%2F%2Fs9.knowsky.com%2Fbizhi%2Fl%2F1-5000%2F2009528154431449393212.jpg'></image>
+    </view> -->
+
+<view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>
+
+  <!-- 发布人 -->
+  <navigator class='mar_t' url='/pages/personal/homepage/index?user_id={{postInfo.ReleaseId}}'>
+    <wux-cell isLast='true' tftsize='32' padding='32rpx 30rpx' imgw='80' imgh='80' boradius='50%' thumb="{{postInfo.portrait}}" title="{{postInfo.userName||'神秘人'}}" is-link label="已经发布{{count}}条"></wux-cell>
+  </navigator>
+  <!-- 发布人的店铺 -->
+  <view class='issuer_store pa_l ba_f mar_t' wx:if="{{userStore.length>0}}">
+    <submenu content="{{submenu_1}}" />
+  </view>
+  <store-cell content="{{userStore}}" key="hot" color="{{color}}"></store-cell>
+</view>
+<view class='spread ba_f' wx:if="{{userinfo.id&&postInfo.ReleaseId==userinfo.id&&postInfo.status!='0'}}">
+  <button bindtap='spread_info' style='background:{{color}}' class='color_f'>我要扩散信息</button>
+</view>
+<block wx:if="{{foot_menu!=null&&postInfo.ReleaseId!=userinfo.id&&postInfo.status!='0'}}">
+  <footmenu comment_close="{{comment_close}}" bind:openpl="openpl" bind:collection="getCollection" content="{{foot_menu}}" />
+</block>
+<view class='spread ba_f' wx:if="{{postInfo.status=='0'}}">
+  <button style='background:#e5e5e5' class='color_f'>信息正在审核中</button>
+</view>
+<share bind:poster="poster" closepop='closepop' onshare="{{onshare}}" />
+<i-action-sheet visible="{{ infomationVisible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem1">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+</i-action-sheet>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>
+<!-- 评论框 -->
+<!-- <view class='modalzz' bindtap='closepl' hidden='{{plmodal}}'></view>
+<view class='srkb' hidden='{{plmodal}}'>
+    <view class='hftitle' hidden='{{reply}}'>回复：{{name}}</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+                <input class="weui-input" bindconfirm='fspl' maxlength='50' focus='{{!plmodal}}' confirm-type='send' placeholder="请输入文字" />
+            </view>
+        </view>
+    </view>
+</view> -->
+<i-modal catchtouchmove="true" title="发表评论" visible="{{ commentShow }}" bind:ok="handleopen1" bind:cancel="handleClose1">
+  <view class='t_l commend pa_l'>
+    <textarea wx:if="{{commentShow}}" class='wid_hei' maxlength='140' bindinput='getComment' bindconfirm='fspl' confirm-type='send' placeholder='{{reply_user}}'></textarea>
+  </view>
+</i-modal>
+<!-- 测试 -->
+<view>
+  <receive imgsrc="{{imgsrc}}" bind:lookMore="lookMore" bind:receive="redPacket" content="{{receive}}" receiveShow="{{receiveShow}}" bind:click="closeReceive" />
+</view>

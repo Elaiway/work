@@ -1,0 +1,36 @@
+<!--pages/mall/cart.wxml-->
+<view class='container after-navbar'>
+  <view class='posi-f wid'>
+    <layout-one background="{{color}}" is-last='true' body-src='{{storeInfo.storeLogo}}' body="{{layoutBodyOne}}">
+      <view slot="body-bd-f" class="flex-x-bt color_f">
+        <view class='gobyndsingle'>{{storeInfo.storeName}}</view>
+      </view>
+      <view slot="body-bd-s" class="flex-x-bt color_f">
+        <view class='fon_26'>{{storeInfo.followNum}}人关注</view>
+      </view>
+      <view bindtap='collection_store' slot="body-ft" class="flex-center pa_8_20 br-r-30 color_f follow ba_05">
+        <text class="iconfont icon-dianzan2" style=" color:{{follow?color:''}}"></text>
+        <text class='mar_l_10 fon_26'>{{!follow?'关注':'已关注'}}</text>
+      </view>
+    </layout-one>
+    <view class='flex-row ba_f'>
+      <view class='flex-g-1'>
+        <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+      </view>
+      <view bindtap='changeClass' class='flex-g-0 flex-center' style='width:100rpx;'>
+        <text class="iconfont icon-fenleiweixuan fon_44" style="color:{{mallClass?color:''}}"></text>
+      </view>
+    </view>
+  </view>
+  <view style='padding-top:260rpx;'>
+    <view wx:if="{{postList.length}}" class="{{!mallClass?'flex-bt flex-wrap':''}} pad_20">
+      <block wx:for="{{postList}}" wx:key="{{item.id}}">
+        <mall-cell type="{{!mallClass?1:2}}" content="{{item}}" color="{{color}}" />
+      </block>
+    </view>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl type='2' bind:footclick='footclick' content="{{foot_menu}}" />
+</block>

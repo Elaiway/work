@@ -1,0 +1,7 @@
+/* pages/personal/wallet/index.wxss */
+.weui-cell{
+    padding: 30rpx;
+}
+.mar_l{
+  margin-left: 25rpx;
+}

@@ -1,0 +1,43 @@
+<view class="container">
+<wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  <view class='mar_t'>
+    <view class="ba_f mar_b basepadding flex-row color_3" wx:for="{{postList}}" wx:key="{{item.id}}">
+      <view class="flex-grow-0 ">
+        <image class="iconw mar_t br-r-c" mode='aspectFill' src="{{item.portrait}}"></image>
+      </view>
+      <view class='flex-grow-1 mar-lr'>
+        <view class="fon_30">
+          <text>{{item.userName}}</text>
+        </view>
+        <view class="fon_24 color_9 padd-tb5">
+          <view>联系人姓名：<text>{{item.userName}}</text></view>
+        </view>
+        <view class="fon_24 color_9 padd-tb5">
+          <view>联系人电话：<text>{{item.userTel}}</text></view>
+        </view>
+        <view class="fon_24 color_9 padd-tb5">
+          <view>支付金额：<text>{{item.money}}元</text></view>
+        </view>
+        <!-- <view class="fon_24 color_9 flex-row padd-tb5">
+          <view>报名人数：<text style="color:{{color}}">{{item.num}}</text>人</view>
+          <view class="mar_l">支付金额：￥
+            <text style="color:{{color}}">{{item.money}}</text>
+          </view>
+        </view> -->
+         <view class="fon_24 color_9 padd-tb5">
+          <view>订单编号：<text>{{item.outTradeNo}}</text></view>
+        </view>
+        <view class="fon_24 color_9 padd-tb5">
+          <view>下单时间：<text>{{item.createdAt}}</text></view>
+        </view>
+      </view>
+      <view class='flex-grow-0 flex-y-bt'>
+        <view class="fon_24" style="color:{{color}}">{{item.tips}}</view>
+        <view class="iconfont icon-dianhua1 fon_50 mar_b50" catchtap='onlinkTel' data-tel='{{item.userTel}}' style="color:{{color}}"></view>
+      </view>
+    </view>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

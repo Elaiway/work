@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "swiper-case": "/dist/public/swiper/index",
+    "agree-box": "/dist/public/agreebox/index",
+    "wux-upload": "/dist/wux-weapp/upload/index"
+  }
+}

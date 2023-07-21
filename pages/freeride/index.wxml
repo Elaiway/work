@@ -1,0 +1,48 @@
+<view class='container after-navbar'>
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <view class='bor_bottom'>
+    <notice id="notice" datatype='5' color="{{color}}" content="{{notice}}" />
+  </view>
+  <view class='ridetype ba_f bor-top flex-bet'>
+    <view wx:for="{{freeNav}}" wx:key="" class='flex-center-col conwid' data-msg="{{item}}" bindtap='freeNav'>
+      <!-- <view class="con-t {{index==0?'bgSku':'' || index==1?'bgOrange':'' || index==2?'bgYellow':'' || index==3?'bgBlue':''}}">
+        <image class="imgwidth" src="item.icon"></image>
+      </view> -->
+      <view class="con-t">
+        <image class="imgwidth" src="{{item.icon}}"></image>
+      </view>
+      <view class="con-f color_3">{{item.name}} </view>
+    </view>
+  </view>
+
+  <view class='' wx:if="{{Headline}}">
+    <headline content="{{Headline}}" pagetype='car' datatype='10,0' />
+  </view>
+
+  <view class="search ridetype ba_f color_6 fon_30">
+    <view class="srarchbox flex-row pa_l30 flex-y-center">
+      <view class="flex-grow-1 flex-row">
+        <view class="flex-grow-1 flex-x-center">
+          <input placeholder="出发地" focus="{{focus}}" class="t_c" />
+        </view>
+        <view class="flex-grow-0">——</view>
+        <view class="flex-grow-1 flex-x-center">
+          <input placeholder="目的地" focus="{{focus}}" class="t_c" />
+        </view>
+      </view>
+      <view class="flex-grow-0 serBtn" style="color:{{color}};border-left:4rpx solid {{color}}">搜索</view>
+    </view>
+  </view>
+  <view class="mar_t">
+    <wux-tabs tabs="{{ tabs }}" wux-class="" color='{{color}}' scroll current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="pa_l30">
+    <freeride-cell content="{{freeList}}" type="{{typec}}" bind:detailPage='goDetail' />
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{freeList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if="{{freeNav}}" color='{{color}}' actions='{{freeNav}}' page-type='freeride' />

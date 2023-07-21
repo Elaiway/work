@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "job-hunt": "/dist/public/auxiliary/jobhunt/job-hunt"
+  }
+}

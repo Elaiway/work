@@ -1,0 +1,18 @@
+/* dist/public/notice/index.wxss */
+@import "/app.wxss";
+.notice_icon{
+    width: 40rpx;
+    height: 36rpx;
+    margin-top:-10rpx;
+}
+.help{
+    right:0;
+    line-height: 50rpx;
+}
+.margin_left_10{
+    margin-left:10rpx;
+}
+.notice{
+    height: 50rpx;
+    line-height: 50rpx;
+}

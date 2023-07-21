@@ -1,0 +1,16 @@
+.btnat{
+  background: #22D4D4;
+  height: 84rpx;
+  width: 46%;
+  border-radius:10rpx;
+}
+.bgsku{
+  background: linear-gradient(to bottom,#FF7D53,#FA5447);
+}
+.bgorange{
+  background: linear-gradient(to bottom, #22D4D4, #16D2B7);
+}
+.navlogo{
+  width: 47rpx;
+  height: 47rpx;
+}

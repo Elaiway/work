@@ -1,0 +1,14 @@
+<view class='container after-navbar'>
+  <view class="latestMsg pa_l30">
+    <freeride-cell content="{{myResList}}" type="{{typec}}" pageType="{{myrelease}}" bind:editRele='goEdit' />
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{myResList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+  <!-- 扩散信息组件 -->
+  <i-action-sheet visible="{{ infomationVisible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem1">
+    <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+  </i-action-sheet>
+</view>
+<foot-nav color='{{color}}' page-type='freeride' />
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

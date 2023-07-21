@@ -1,0 +1,20 @@
+@import "mycard.wxss";
+page{
+  /* background: #fff !important; */
+}
+.rich-text{
+  overflow: hidden;
+}
+.borline{
+  padding: 10rpx 30rpx;
+  border-radius: 50rpx;
+}
+.container{
+  background: #fff;
+}
+.img-con{
+ box-shadow: 0 0 5rpx 5rpx  rgba(151, 151, 151, 0.1 )
+}
+.minheight{
+  min-height: 100rpx;
+}

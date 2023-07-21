@@ -1,0 +1,98 @@
+/* dist/public/search/index.wxss */
+@import "/app.wxss";
+.flex-col{
+  align-items: flex-end;
+}
+.Searchbox{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    top:0;
+    z-index: 5000;
+}
+.Searchboxv{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10rpx 20rpx;
+}
+.iconimg{
+  width: 60rpx;
+  height: 60rpx;
+}
+.Searchcity{
+    max-width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.search{
+    flex: 1;
+    border-radius: 40rpx;
+    overflow: hidden;
+    height: 60rpx;
+    margin: 0 30rpx;
+}
+/*anxz*/
+.anxz1{
+  border-radius: 15rpx;
+}
+.anxz2{
+  border-radius: 0rpx;
+}
+.anxz3{
+  border-radius: 40rpx;
+}
+.searchv1{
+  z-index: 10;
+}
+.searchv2{
+  z-index: 40;
+}
+.Searchback{
+    opacity: .5;
+}
+.shinput{
+    height: 100%;
+    width: 100%;
+    display: block;
+    line-height: 60rpx;
+    padding: 0 30rpx;
+    /* margin-left:30rpx; */
+}
+.Searchclick{
+    line-height: 60rpx;
+    right: 20rpx;
+}
+.select_city{
+  width: 31rpx;
+    min-width: 31rpx;
+    height: 19rpx;
+    margin-left:10rpx;
+}
+.plus-bg{
+  width: 35rpx;
+  height: 35rpx;
+  margin-left: 0rpx;
+}
+.morelist{
+  right: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.triangle {
+    width: 0;
+    height: 0;
+    border: 20rpx solid transparent;
+    border-bottom: 20rpx solid rgba(0, 0, 0, 0.5);
+    margin-right: 20rpx;
+}
+.listitem{
+  padding: 0 30rpx;
+  width: 175rpx;
+  height: 66rpx;
+}

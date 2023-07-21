@@ -1,0 +1,49 @@
+.bgSku{
+  background-color:#17D2BB;
+}
+.bgOrange{
+  background-color:#FD6C4E;
+}
+.bgYellow{
+  background-color:#FFB829;
+}
+.bgBlue{
+  background-color:#369CDE;
+}
+.imgW{
+  width: 80rpx;
+  height: 80rpx;
+}
+.conwid{
+  width: 20%
+}
+.con-t{
+  width: 100%;
+  height: 100rpx;
+ border-radius: 10rpx;
+}
+.ridetype{
+  padding: 30rpx 40rpx
+}
+.srarchbox{
+  border: 1rpx solid #999;
+  border-radius: 30rpx;
+  height: 67rpx;
+}
+.serBtn{
+  /* border-left: 4rpx solid #FF3838;
+  color:#FF3838; */
+  height: 32rpx;
+  line-height: 32rpx;
+  padding-left: 20rpx;
+}
+/* .wux-tabs__tab{
+   padding:0rpx 30rpx !important; 
+} */
+.marginLr{
+  padding: 0 25rpx !important;
+}
+.imgwidth{
+  width: 132rpx;
+  height: 84rpx;
+}

@@ -1,0 +1,65 @@
+/* dist/public/headline/index.wxss */
+@import "/app.wxss";
+
+.pa_l {
+  padding: 20rpx;
+}
+
+.headlineimg {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 5rpx;
+  margin-right: 4%;
+}
+
+.headline_left {
+  /* width: 21%; */
+  width: 88rpx;
+  height: 88rpx;
+  letter-spacing: 5rpx;
+  line-height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.headline {
+  border-radius: 50rpx;
+  padding: 18rpx 20rpx;
+}
+
+.headline_right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100rpx;
+  line-height: 40rpx;
+}
+
+.right-button {
+  width: 88rpx;
+  height: 88rpx;
+  padding: 10rpx 0;
+  letter-spacing: 5rpx;
+  line-height: 35rpx;
+  margin-left: 20rpx;
+  text-align: center
+}
+
+.rich {
+  height: 40rpx;
+}
+
+.headline_swiper {
+  width: 100%;
+  /* margin-right: 20rpx; */
+  height: 100%;
+}
+
+.right_botton {
+  width: auto;
+  padding: 0;
+  background: none;
+}
+
+.mar_t_5 {
+  margin-top: 5rpx;
+}

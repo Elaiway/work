@@ -1,0 +1,9 @@
+<!--dist/public/textarea.wxml-->
+<!-- <form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <button class='form_button' form-type="submit">
+    <slot></slot>
+  </button>
+</form> -->
+<view>
+  <slot></slot>
+</view>

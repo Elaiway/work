@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "freeride-detail": "/dist/public/auxiliary/freeride/freeride-detail"
+  }
+}

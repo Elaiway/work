@@ -1,0 +1,4 @@
+/* pages/mall/refundorder.wxss */
+.pad_10{
+  padding: 15rpx 30rpx;
+}

@@ -1,0 +1,10 @@
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <view class='container padding-bottom'>
+    <view class='ba_f'>
+      <r-text content='{{nodes}}'></r-text>
+    </view>
+  </view>
+  <view class='foot-button btn-btm'>
+    <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">我已阅读并同意此协议</button>
+  </view>
+</form>

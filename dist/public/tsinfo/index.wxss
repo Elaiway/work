@@ -1,0 +1,9 @@
+/* dist/public/textarea.wxss */
+@import "/assets/styles/weui.wxss";
+.weui-cell{
+  font-size: 26rpx;
+  color: #999;
+}
+.bznotetext{
+  color: red; 
+}

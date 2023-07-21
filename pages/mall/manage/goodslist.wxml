@@ -1,0 +1,40 @@
+<view class="container after-navbar">
+  <view class='fixedtop'>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="padding-top">
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <layout-one is-last="true" after-left="true" body-src='{{url}}{{item.showImgs[0].url}}' body="{{layoutBodyOne}}" class-name='mar_t'>
+        <view bindtap='goodinfo' data-id="{{item.goodsId}}" slot="body-bd-f" class="flex-x-bt">
+          <view class='hydlnr_2'>
+            <text>{{item.title}}</text>
+          </view>
+        </view>
+        <view bindtap='goodinfo' data-id="{{item.goodsId}}" slot="body-bd-s" class="flex-x-bt mar_t_10">
+          <view class='fon_24 color_9 t-d-l'>
+            <text>￥</text>{{item.originalPrice}}</view>
+          <view style='color:{{color}}'>
+            <text class='fon_24'>￥</text>{{item.currentPrice}}</view>
+        </view>
+        <view slot="body-bd-t" class="flex-x-bt fon_24 mar_t_10">
+          <view class='color_9'>库存{{item.num}}</view>
+        </view>
+        <view slot='footer' class='flex-bt mar_t30'>
+          <view class='flex-bt'>
+            <block-text wx:if="{{item.pName}}" display='block' class-name="fon_24 pa_5_15 ba_f5 color_9" text='{{item.pName}}' />
+            <block-text wx:if="{{item.typeName}}" display='block' class-name="fon_24 pa_5_15 ba_f5 color_9 mar_l" text='{{item.typeName}}' />
+          </view>
+          <view class='text-btn br-r-30 pa_5_20' style='border-color:{{color}};color:{{color}}' bindtap='operation' data-info='{{item}}'>操作/编辑</view>
+        </view>
+      </layout-one>
+    </block>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='managemall' />
+<!-- action组件 -->
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">{{xzname}}</i-button>
+</i-action-sheet>

@@ -1,0 +1,137 @@
+/* pages/vip/index.wxss */
+
+.vip-bg {
+  position: relative;
+  z-index: 1;
+  width: 120%;
+  margin-left: -10%;
+  border-bottom-left-radius: 70%;
+  border-bottom-right-radius: 70%;
+  overflow: hidden;
+  height: 280rpx;
+  background: #000;
+}
+
+.vip-con {
+  margin-top: -280rpx;
+  position: relative;
+  z-index: 9;
+  padding-top: 40rpx;
+}
+
+.vip-card {
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  height: 414rpx;
+  overflow: hidden;
+}
+
+.bg-img {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.vip-text {
+  overflow: hidden;
+  color: #8f6f39;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.level-text {
+  border-top-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  padding: 10rpx 20rpx;
+  background: linear-gradient(-45deg, #fff0dc, #f6d9b8);
+}
+
+.user {
+  padding: 0 30rpx;
+}
+
+.tx {
+  border-radius: 50%;
+  width: 110rpx;
+  height: 110rpx;
+  margin-right: 20rpx;
+  overflow: hidden;
+}
+
+.open {
+  margin: 50rpx 0;
+}
+
+.btn {
+  padding: 13rpx 30rpx;
+  border-radius: 20rpx;
+  border: 1.1rpx solid #8f6f39;
+  margin-right: 30rpx;
+}
+
+.number {
+  font-weight: 500;
+  margin: 0 30rpx 20rpx 0;
+}
+
+/**/
+
+.vip-head {
+  padding: 30rpx 30rpx;
+}
+
+.timg {
+  width: 130rpx;
+  height: 20rpx;
+}
+
+/**/
+
+.tq-list {
+  color: #333;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  background: #fff;
+}
+
+.tq-con {
+  padding: 30rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-con {
+  font-size: 22rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border: 1.1rpx solid #999;
+  border-radius: 50%;
+  position: relative;
+  margin-top: 30rpx;
+}
+
+.num {
+  position: absolute;
+  color: #fff;
+  font-size: 20rpx;
+  right: -15rpx;
+  top: -10rpx;
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.today {
+  color: #fff;
+  border-color: #fff;
+}

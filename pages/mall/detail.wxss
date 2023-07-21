@@ -1,0 +1,7 @@
+/* pages/mall/index.wxss */
+@import "/pages/mall/index.wxss";
+.comment{
+  width: 165rpx;
+  height: 165rpx;
+  margin-right: 20rpx;
+}

@@ -1,0 +1,76 @@
+/* @import "/pages/businesscard/index.wxss"; */
+
+.container {
+  background: #fff;
+}
+
+.bordered:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2rpx;
+  border-bottom: 2rpx solid #d9d9d9;
+  color: #d9d9d9;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  background-color: #fff;
+}
+
+/*名片样式*/
+
+.boxbor {
+  border: 1rpx solid #f8987c;
+  background: #fff6ee;
+  margin: 20rpx 20rpx 0 20rpx;
+  border-radius: 10rpx;
+  color: #f67957;
+}
+
+.fon_110 {
+  font-size: 110rpx;
+}
+
+.pad-top {
+  padding-top: 90rpx;
+}
+
+.mar-lrb {
+  margin: 0 20rpx 20rpx 20rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 0 5rpx 5rpx rgba(151, 151, 151, 0.1);
+}
+
+.iconw {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.i-tags {
+  margin-left: 10rpx;
+}
+
+.mar-lr {
+  margin: 0 20rpx;
+}
+
+.padd-tb5 {
+  padding: 3rpx 0;
+}
+
+.countC {
+  width: 130rpx;
+  height: 60rpx;
+  top: 30rpx;
+  right: 30rpx;
+  border-radius: 10rpx;
+  background-color: rgba(147, 147, 147, 0.6);
+}

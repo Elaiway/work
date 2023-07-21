@@ -1,0 +1,16 @@
+<!--dist/public/cardlist/text-and-image.wxml-->
+<view wx:if="{{infoList.length>0}}" class='ba_f' style='margin-top:{{content.topMargin}}px;margin-bottom:{{content.isBottom}}px;'>
+  <view class='pa_15_30_0'>
+    <view class='fon_26'>LOCAL INFORMATION</view>
+    <wux-cell padding='0' url='/pages/message/index/index' is-last='true' is-link='true' tftsize='34' tclass='wei color_0' title="{{content.infoTitle||'同城资讯'}}" extra='更多' />
+  </view>
+  <view class=''>
+    <view bindtap='goodinfo' data-id='{{item.id}}' wx:for='{{infoList}}' wx:key='id' class='cell flex-bt pad_30'>
+      <view class='mar_r flex-g-1 flex-col flex-bt'>
+        <view class='wei fon_30'>{{item.title}}</view>
+        <view class='mar_t fon_26 color_9'>{{item.customUser}} {{item.createdAt}}</view>
+      </view>
+      <image wx:if="{{item.media[0].url}}" mode='aspectFill' class='flex-g-0 infoimg' src='{{url}}{{item.media[0].url}}'></image>
+    </view>
+  </view>
+</view>

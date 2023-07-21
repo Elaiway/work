@@ -1,0 +1,49 @@
+/* pages/location/index.wxss */
+.sv-left {
+  width: 23vw;
+}
+.sv-right {
+  width: 77vw;
+}
+.menu-item {
+  width: 100%;
+  height: 90rpx;
+  overflow: hidden;
+  position: relative;
+}
+.menu-itemv {
+  width: 100%;
+  height: 100%;
+  padding: 10rpx 10rpx 10rpx 18rpx;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-itemb{
+  width: 8rpx;
+  height: 100%;
+  position: absolute;
+  background: red;
+}
+.sv-rightvh{
+  padding: 10rpx 20rpx;
+  background: #f5f5f5;
+}
+.sv-rightvb{
+  padding: 0rpx 40rpx;
+}
+.citys {
+  min-width: 30%;
+  border: 2rpx solid #e5e5e5;
+  border-radius: 9rpx;
+  padding: 15rpx 20rpx;
+  margin-right: 3.33%;
+  display: inline-block;
+  margin-bottom: 20rpx;
+}
+.hot_city {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

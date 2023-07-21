@@ -1,0 +1,126 @@
+<!--pages/vip/giftdetails.wxml-->
+<view class="container padding-bottom">
+  <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  <wux-cell isLast='true' tftsize='28' title="{{detailInfo.title}}">
+    <view slot='header' class='flex-row mar_r br-r-10 bor-e' style='color:{{color}};border-color:{{color}}'>
+      <view class='color_f flex-center pa_5_15' style='background:{{color}}'>{{month}}月</view>
+      <view class='flex-center pa_5_15'>{{day}}日</view>
+    </view>
+  </wux-cell>
+  <wux-cell tftsize='28' tstyle="color:{{color}}" title="{{detailInfo.subheading}}">
+  </wux-cell>
+  <wux-cell isLast='true'>
+    <view slot='bodyer' class='flex-raw'>
+      <block wx:for='{{detailInfo.label}}' wx:key="*this">
+        <view class='mar_r30' style='color:{{color}}'>
+          <text class='mar_r iconfont icon-trues'></text>
+          <text>{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </wux-cell>
+  <!-- 会员卡提示 -->
+  <navigator wx:if="{{system.openVip}}" url='/pages/vip/index' class="ba_f9 basepadding flex-x-bt">
+    <view class="flex-y-center">
+      <view class="pa_5_10 color_f mar_r br-r-10" style='background:{{color}}'>
+        <text class="iconfont icon-tianchongxing- mar_r_10"></text>
+        <text class="fon_24">超级会员卡</text>
+      </view>
+      <view>还不是会员?</view>
+    </view>
+    <view style='color:{{color}}'>
+      <text>立即开通</text>
+      <text class="ljkt-jt" style='border-color:{{color}}'></text>
+    </view>
+  </navigator>
+  <!-- 使用流程 -->
+  <view class='ba_f mar_t'>
+    <view class='flex-y-center pad_20 br-b-e'>
+      <text style='color:{{color}}' class='iconfont icon-gonggao fon_36 mar_r_10'></text>
+      <text class='fon_30'>使用流程</text>
+    </view>
+    <wux-cell isLast='true'>
+      <view slot='bodyer' class='flex-raw'>
+        <block wx:for='{{sylc}}' wx:key="*this">
+          <view class='mar_r30 flex-y-center fon_26' style='color:{{color}}'>
+            <text class='mar_r_10 f-text' style='background:{{color}};width:30rpx;height:30rpx;'>{{index+1}}</text>
+            <text>{{item}}</text>
+          </view>
+        </block>
+      </view>
+    </wux-cell>
+  </view>
+  <!-- 商家信息 -->
+  <view class='ba_f mar_t'>
+    <view class='flex-y-center pad_20 br-b-e'>
+      <text style='color:{{color}}' class='iconfont icon-shangdian fon_36 mar_r_10'></text>
+      <text class='fon_30'>商家信息</text>
+    </view>
+    <wux-cell tftsize='28' bind:click='maketTel'>
+      <view slot='bodyer'>
+        <view class='flex-y-center'>
+          <text slot='bodyer' class='iconfont icon-dingwei fon_36 mar_r_10' style='color:{{color}}'></text>
+          <text>{{detailInfo.storeName}}</text>
+        </view>
+        <view class="fon_24 color_9 mar_t_10">营业时间:{{detailInfo.businessStartTime}}-{{detailInfo.businessEndTime}}</view>
+      </view>
+      <text slot='footer' class='iconfont icon-dianhuahover fon_46 color_rb'></text>
+    </wux-cell>
+    <wux-cell isLast='true' tftsize='28' bind:click='openAddress' title="{{detailInfo.address}}">
+      <text slot='footer' class='iconfont icon-qunfengfabushangxian fon_46' style='color:{{color}}'></text>
+    </wux-cell>
+  </view>
+  <!-- 使用须知 -->
+  <view class='ba_f mar_t'>
+    <view class='flex-y-center pad_20 br-b-e'>
+      <text style='color:{{color}}' class='iconfont icon-jilu1 fon_36 mar_r_10'></text>
+      <text class='fon_30'>使用须知</text>
+    </view>
+    <view class='color_6'>
+      <wux-cell is-last='true' no-center='true'>
+        <view slot='header' class='f-text40 ba_r mar_r'>折</view>
+        <view slot='bodyer'>会员卡可享受
+          <text style='color:{{color}}'>{{detailInfo.discount}}</text>折优惠</view>
+      </wux-cell>
+      <wux-cell is-last='true' no-center='true'>
+        <view slot='header' class='f-text40 ba_b mar_r'>周</view>
+        <view slot='bodyer'>{{detailInfo.week}}
+          <text class='mar_l'>可用</text>
+        </view>
+      </wux-cell>
+      <wux-cell is-last='true' no-center='true'>
+        <view slot='header' class='f-text40 ba_y mar_r'>月</view>
+        <view slot='bodyer'>{{detailInfo.month}}
+          <text class='mar_l'>可用</text>
+        </view>
+      </wux-cell>
+      <wux-cell is-last='true' no-center='true'>
+        <view slot='header' class='f-text40 ba_9 mar_r'>限</view>
+        <view slot='bodyer'>1个会员仅可领取
+          <text style='color:{{color}}'>{{detailInfo.max}}</text>次优惠</view>
+      </wux-cell>
+      <wux-cell is-last='true' no-center='true'>
+        <view slot='header' class='f-text40 ba_9 mar_r'>注</view>
+        <view slot='bodyer'>{{detailInfo.explain}}</view>
+      </wux-cell>
+    </view>
+  </view>
+  <!-- 优惠说明 -->
+  <view class='ba_f mar_t'>
+    <view class='flex-y-center pad_20 br-b-e'>
+      <text style='color:{{color}}' class='iconfont icon-yufukuanyufukuanjil fon_36 mar_r_10'></text>
+      <text class='fon_30'>优惠详情</text>
+    </view>
+    <r-text content="{{detailInfo.details}}"></r-text>
+    <view class='pad_20' wx:if='{{detailInfo.media.length!=0}}'>
+      <image mode='widthFix' class='image_all' wx:for='{{detailInfo.media}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{url}}{{item.url}}'></image>
+    </view>
+  </view>
+</view>
+<t-modal ismr='true' width='70' mdoalclose="mdoalclose" mdoaltoggle='{{qrcodetoggle}}'>
+  <view class='flex-center basepadding ba_f' style='height:70vw'>
+    <image style="width: 80%;height: 80%;" src="data:image/png;base64,{{hxm}}"></image>
+  </view>
+  <button class='submit-btn bor-a0 fon_30 color_f t_c' style='background:{{color}}' bindtap='qrcodeclose'>确 定</button>
+</t-modal>
+<foot-dl bind:footclick='footclick' content="{{foot_menu}}" />

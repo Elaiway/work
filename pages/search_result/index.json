@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "store-cell": "/dist/public/storecell/index",
+    "message-postinfo": "/dist/public/message-postinfo/index",
+    "load-more": "/dist/public/storecell/loading",
+    "Postinfo": "/dist/public/postinfo/index"
+  }
+}

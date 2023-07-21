@@ -1,0 +1,39 @@
+<!--dist/public/components/common/layout-one.wxml-->
+<view class="layoutone cell {{isLast?'cell-last':''}} {{afterRight?'cell-after-right':''}} {{afterLeft?'cell-after-left':''}} {{noPad?'':'base-pad2'}} {{className}}" style="background:{{background}}">
+  <!--头部-->
+  <view wx:if="{{header}}" class="flex-g-1 flex-x-bt br-b-e base-pad2">
+    <slot name="header-bd"></slot>
+  </view>
+  <slot wx:else name="header"></slot>
+  <!--中部-->
+  <view class="flex-row {{body.className}}">
+     <!--中部左边-->
+    <view wx:if="{{body.hd}}" class="flex-g-0 flex-col mar_r30 {{body.hd.className}}">
+      <view wx:if="{{body.img}}" class="{{body.img.brs||'br-r-10'}}" style="width:{{body.img.wid}}rpx;height:{{body.img.hei}}rpx;{{body.img.styleName}}">
+        <image mode='aspectFill' class='image_all' src="{{bodySrc}}"></image>
+      </view>
+      <slot wx:else name="body-hd"></slot>
+    </view>
+    <!--中部中间-->
+    <view wx:if="{{body.bd}}" class="flex-g-1 flex-y-bt {{body.bd.className}}" style='{{body.bd.styleName}}'>
+      <!-- <view class="flex-row flex-x-bt">
+        <slot name="body-bd-f"></slot>
+      </view> -->
+      <slot name="body-bd-f"></slot>
+      <slot name="body-bd-s"></slot>
+      <slot name="body-bd-t"></slot>
+    </view>
+    <view wx:else class="flex-g-1">
+      <slot name="body-bd"></slot>
+    </view>
+    <!--中部右边-->
+    <view wx:if="{{body.ft}}" class="flex-g-0 mar_l flex-col-end {{body.ft.className}}">
+      <slot name="body-ft"></slot>
+    </view>
+  </view>
+  <!--尾部-->
+  <view wx:if="{{footer}}" class="flex-g-1 flex-x-bt br-t-e base-pad2">
+    <slot name="footer-bd"></slot>
+  </view>
+  <slot wx:else name="footer"></slot>
+</view>

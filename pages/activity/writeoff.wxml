@@ -1,0 +1,49 @@
+<view class="content after-navbar">
+  <view class="ba_f color_3">
+    <view class="tba_f5 flex-bet flex-y-top base-pad2">
+      <view class="flex-grow-0 theight">
+        <image class="imglogo" src="{{detailPage.showImgs}}"></image>
+      </view>
+      <view class="flex-grow-1 theight pa_l">
+        <view class="hydlnr_2 fon_28">{{detailPage.name}}</view>
+        <view class="flex-bet fon_24 color_9 mar_t_10">
+          <view wx:if="{{detailPage.typeName!==null}}">{{detailPage.typeName}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="color_9 fon_24 base-pad2 ">
+      <text class="iconfont icon-rili mar_r_10"></text>
+      <text>{{detailPage.startTime}} ~ {{detailPage.endTime}}</text>
+    </view>
+  </view>
+  <view class="bras ba_f">
+    <wux-cell isLeft='true' wux-class=''>
+      <view slot='header' class='flex-grow-0 color_3'>人数：</view>
+      <view slot='bodyer' class='flex-grow-1 mar_l90'>{{detailPage.num}}人</view>
+    </wux-cell>
+    <wux-cell isLeft='true' wux-class='mar_t_10'>
+      <view slot='header' class='flex-grow-0 color_3'>总金额</view>
+      <view slot='bodyer' class='flex-grow-1 mar_l90' style="color:{{color}}">￥{{detailPage.money}}</view>
+    </wux-cell>
+  </view>
+  <view>
+    <wux-cell isLast='true' background='#f5f5f5' tftsize='30' title='出行人信息'></wux-cell>
+    <block wx:for="{{detailPage.info}}" wx:key="">
+      <wux-cell isLeft='true'>
+        <view slot='header' class='flex-grow-0 color_9'>{{item.name}}：</view>
+        <view slot='bodyer' class='flex-grow-1 mar_l90'>{{item.value}}</view>
+      </wux-cell>
+    </block>
+  </view>
+  <view class="mar_t">
+    <wux-cell isLast='true' title='{{detailPage.outTradeNo}}'>
+      <view slot='header' class='flex-grow-0 color_3'>订单编号：</view>
+    </wux-cell>
+    <wux-cell isLast='true' title='{{detailPage.payTime}}'>
+      <view slot='header' class='flex-grow-0 color_3'>报名时间：</view>
+    </wux-cell>
+  </view>
+  <view class="pa_tr30">
+    <button style='background:{{color}}' class="weui-btn color_f" catchtap='onverification'>确认核销</button>
+  </view>
+</view>

@@ -1,0 +1,37 @@
+<at-form>
+	<!--pages/store/storemain/storemain.wxml-->
+	<include src="/assets/commons/navbar/navbar.wxml" />
+	<view class="container after-navbar">
+		<view>
+			<Search id='Search' content="{{Search}}" searchtype='1' color="{{color}}"></Search>
+		</view>
+		<!-- 信息首页轮播图 -->
+		<view hidden="{{Swiper==null}}">
+			<swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+		</view>
+		<!-- 信息首页统计 -->
+		<view class='bor_bottom'>
+			<Notice id="Notice" datatype='2' color="{{color}}" content="{{Notice}}" />
+		</view>
+		<!-- 信息一级分类 -->
+		<view wx:if="{{Typeswiper!=null}}" class="">
+			<type-swiper color="{{color}}" type-obj='{{Typeswiper}}'></type-swiper>
+		</view>
+		<!-- 头条 -->
+		<view class='mar_t' wx:if="{{Headline!=null}}" class='mar_t'>
+			<Headline class='bor-top' datatype='2,0' pagetype='post' content="{{Headline}}" />
+		</view>
+		<!-- 中间广告位 -->
+		<view hidden="{{advert==null}}" class='mar_t pa_l ba_f'>
+			<advert content="{{advert}}" />
+		</view>
+		<!-- 信息信息 -->
+		<view class='mar_t mainbk'>
+			<wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+			</wux-tabs>
+			<Postinfo show_distance="1" show_commend="1" show_collection="0" show_zan="1" color="{{color}}" id="Postinfo" isTop="{{isTop}}" bind:newData='refreshtzData' bind:slide="slide" content="{{postList}}" />
+			<load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+		</view>
+		<footer></footer>
+	</view>
+</at-form>

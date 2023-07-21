@@ -1,0 +1,5 @@
+<!--dist/public/textarea.wxml-->
+<view class="weui-cell">
+  <view class="weui-cell__bd">{{bdname}}</view>
+  <view bindtap='openurl' style="color:{{color}}" class="weui-cell__ft">{{ftname}}</view>
+</view>

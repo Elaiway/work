@@ -1,0 +1,73 @@
+.wux-tabs {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	width: 100%;
+	height: 88rpx;
+	line-height: 88rpx;
+	box-sizing: border-box;
+	position: relative;
+	-webkit-justify-content: space-around;
+			justify-content: space-around;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+			align-items: center;
+	background: #fff;
+  }
+  .wux-tabs--scroll {
+	display: block;
+	overflow-x: auto;
+	white-space: nowrap;
+  }
+  /**/
+  .wux-tabs__tab {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  /* width: 100%; */
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #80848f;
+  padding: 0 20rpx;
+}
+.tabv{
+  position: relative;
+}
+.wux-tabs__tab-bar {
+  display: block;
+  width: 100%;
+  /* margin-left: 15%; */
+  height: 4rpx;
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #33cd5f;
+}
+.wux-tabs__tab--current {
+  color: #33cd5f;
+  font-weight: bold;
+}
+.wux-tabs__tab--scroll {
+  display: inline-block;
+  /* width: 160rpx; */
+}
+.wux-tabs__tab--disabled {
+  opacity: .3;
+}
+.wux-tabs__tab--current1{
+  background: linear-gradient(90deg, #ff3000 0%, #ffa256 100%);
+  color: #fff;
+  border-radius: 10rpx;
+}

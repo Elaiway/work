@@ -1,0 +1,9 @@
+<!--dist/public/textarea.wxml-->
+<view class="extra-class weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea value='{{value}}' placeholder-class='fon_28' bindblur='bindblur' maxlength='{{maxlength}}' bindinput='bindinput' class="weui-textarea color_6" placeholder="{{placeholder}}" style="height: {{height}}em" />
+      <view wx:if="{{showMax}}" class="weui-textarea-counter">{{value.length}}/{{maxlength}}</view>
+    </view>
+  </view>
+</view>

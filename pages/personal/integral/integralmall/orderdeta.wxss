@@ -1,0 +1,4 @@
+/* pages/personal/integral/integralmall/orderdata.wxss */
+.bor_right1{
+  border-right: 1rpx solid #E5E5E5;
+}

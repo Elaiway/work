@@ -1,0 +1,10 @@
+.borr {
+  border-right: 1rpx solid #eee;
+}
+
+.weui-labels {
+  font-size: 28rpx;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #666;
+}

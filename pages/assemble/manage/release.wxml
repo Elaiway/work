@@ -1,0 +1,193 @@
+<!--pages/yellow/sett.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <view>
+      <wux-upload wx:if="{{uploadArr[0].show}}" type='2' color="{{color}}" tipstext='{{uploadArr[0].tips}}' htitle='{{uploadArr[0].title}}' count="{{uploadArr[0].count}}" file-list="{{ uploadArr[0].fileList }}" data-idx="{{0}}" bind:change="uploadChange">
+      </wux-upload>
+    </view>
+    <h-title bdname="商品信息"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">商品标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='title' placeholder-class='fon_28' value="{{params.title}}" class="weui-input" placeholder="请输入商品标题" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">商品分类</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='category' mode="multiSelector" data-name='category' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData['category']}}" range-key='name'>
+            <view class="weui-select">{{params.category||'请选择'}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">商品原价</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='originalPrice' type='digit' placeholder-class='fon_28' value="{{params.originalPrice}}" class="weui-input" placeholder="请输入商品原价" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">单买原价</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='alonePrice' type='digit' placeholder-class='fon_28' value="{{params.alonePrice}}" class="weui-input" placeholder="请输入单买原价" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">拼团价格</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='groupPrice' type='digit' placeholder-class='fon_28' value="{{params.groupPrice}}" class="weui-input" placeholder="请输入商品拼团价格" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view hidden='{{!system.openVip}}' class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">会员拼团价</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='memberPrice' type='digit' placeholder-class='fon_28' value="{{params.memberPrice}}" class="weui-input" placeholder="请输入会员价，不填则正常价" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+    </view>
+    <h-title bdname="配送设置"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">配送方式</view>
+        </view>
+        <view class="weui-cell__bd">
+          <wux-radio-group typesetting='2' radioColor="{{color}}" radioarr="{{lcradioarr}}" name="delivery" value="{{params.delivery}}" bind:change="lcrdioonChange">
+          </wux-radio-group>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view class="weui-label">是否包邮</view>
+        </view>
+        <view class="weui-cell__ft">
+          <view class='weui-input'>
+            <switch bindchange="postSwitchChange" name='isPost' checked="{{params.isPost==1}}" color='{{color}}' />
+          </view>
+        </view>
+      </view>
+      <block wx:if='{{params.isPost!=1}}'>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">包邮条件</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='satisfy' type='number' placeholder-class='fon_28' value="{{params.satisfy}}" class="weui-input" placeholder="金额满足此条件则包邮" />
+          </view>
+          <view class="weui-cell__ft">元</view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">运费金额</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='freight' type='digit' placeholder-class='fon_28' value="{{params.freight}}" class="weui-input" placeholder="请输入运费金额" />
+          </view>
+          <view class="weui-cell__ft">元</view>
+        </view>
+      </block>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">核销截止</view>
+        </view>
+        <view class="weui-cell__bd">
+          <dd-time-picker name='endTime' value='{{params.endTime}}' bind:change='timePickerChange' data-name='endTime' />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="拼团设置"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">几人拼</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='groupNum' type='number' maxlength='2' placeholder-class='fon_28' value="{{params.groupNum}}" class="weui-input" placeholder="请输入拼团人数，最高99人" />
+        </view>
+        <view class="weui-cell__ft">人</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">拼团时限</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='hour' type='number' placeholder-class='fon_28' value="{{params.hour}}" class="weui-input" placeholder="请输入拼团时限" />
+        </view>
+        <view class="weui-cell__ft">小时</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">每人限购</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='limitNum' type='number' placeholder-class='fon_28' value="{{params.limitNum}}" class="weui-input" placeholder="请输入每人限购" />
+        </view>
+        <view class="weui-cell__ft">份</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">商品库存</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='num' type='number' placeholder-class='fon_28' value="{{params.num}}" class="weui-input" placeholder="请输入商品库存" />
+        </view>
+        <view class="weui-cell__ft">份</view>
+      </view>
+    </view>
+    <h-title bdname="商品详情"></h-title>
+    <text-area name='details' value='{{params.details}}' bind:textblur='textareachange' showMax='{{false}}' maxlength='500' placeholder="请输入商品详情" extra-class='bor-tb'></text-area>
+    <wux-upload wx:if="{{uploadArr[1].show}}" tipstext='{{uploadArr[1].tips}}' htitle='{{uploadArr[1].title}}' count="{{uploadArr[1].count}}" file-list="{{ uploadArr[1].fileList }}" data-idx="{{1}}" bind:change="uploadChange">
+    </wux-upload>
+    <h-title bdname="商品标签"></h-title>
+    <dd-label bind:change='labelChange' data-name='label' labels='{{labels}}' labelsDefault="{{labelsDefaultl}}" color="{{color}}" />
+    <view hidden='{{checkboxvalue}}'>
+      <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='用户协议条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    </view>
+    <h-title bdname="商品媒体"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">拼团音乐</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='music' value='{{params.music}}' placeholder-class='fon_28' class="weui-input" placeholder="请输入拼团音乐链接" />
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-yinpin fon_44' style='color:{{color}}'></text>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">拼团视频</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='video' value='{{params.video}}' placeholder-class='fon_28' class="weui-input" placeholder="请输入拼团视频链接" />
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-shipin fon_44' style='color:{{color}}'></text>
+        </view>
+      </view>
+    </view>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" formType="submit">{{releaseName||'立即发布'}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

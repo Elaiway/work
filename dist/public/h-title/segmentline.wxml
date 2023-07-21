@@ -1,0 +1,6 @@
+<!--dist/public/textarea.wxml-->
+<view class='pa_t ba_f'>
+  <view wx:if="{{content.segmentLineStyle=='1'}}" class='borderv' style='border-bottom:{{content.height}}px solid {{content.color}};opacity:{{content.opacity/100}};'></view>
+  <view wx:if="{{content.segmentLineStyle=='2'}}" class='borderv' style='border-bottom:{{content.height}}px dotted {{content.color}};opacity:{{content.opacity/100}};'></view>
+  <view wx:if="{{content.segmentLineStyle=='3'}}" class='borderv' style='border-bottom:{{content.height}}px dashed {{content.color}};opacity:{{content.opacity/100}};'></view>
+</view>

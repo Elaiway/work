@@ -1,0 +1,30 @@
+<!--dist/public/auxiliary/privilege/privilege-cell.wxml-->
+<layout-one bindtap='goodinfo' is-last='{{index==lbList.length-1}}' after-right='true' body-src='{{content.logo}}' body="{{layoutBodyOne}}" class-name='fon_24'>
+  <view slot="body-bd-f" class="flex-x-bt">
+    <view class='hydlnr_2 fon_28'>
+      <text>{{content.title}}</text>
+    </view>
+    <view class='flex-g-0 color_9'>
+      <text class='iconfont icon-yanjing mar_r_10 fon_24' style='color:{{color}}'></text>
+      <text>{{content.view}}</text>
+    </view>
+  </view>
+  <view slot="body-bd-s" class="flex-x-bt">
+    <view class='mar_t' style='color:{{color}}'>
+      <text class='fon_32'>{{content.discount}}折</text>
+      <text class=''>优惠</text>
+    </view>
+    <view class='color_9'>已有{{content.receiveNum}}人领取</view>
+  </view>
+  <view slot="body-bd-t" class="flex-x-bt mar_t_10">
+    <view class='mar_r color_9 gobyndsingle'>
+      {{content.explain}}
+    </view>
+    <view wx:if="{{type==1}}" class='flex-g-0'>
+      <block-text type='2' color="{{color}}" class-name='pa_10_20 br-r-30' text='立即领取' />
+    </view>
+    <view wx:if="{{type==3}}" class='flex-g-0'>
+      <block-text type='2' color="{{color}}" class-name='pa_10_20 br-r-30' text="{{content.state==0?'立即使用':'查看详情'}}"/>
+    </view>
+  </view>
+</layout-one>

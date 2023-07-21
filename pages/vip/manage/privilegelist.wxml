@@ -1,0 +1,56 @@
+<view class="container after-navbar">
+  <view class='fixedtop'>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="padding-top">
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <view class='ba_f pad_20 mar_t'>
+        <view bindtap='goodinfo' data-id='{{item.id}}' class='br-r-20'>
+          <view class='logo-img'>
+            <image mode='aspectFill' class='image_all' src='{{item.logo}}'></image>
+          </view>
+          <view class='ba_f5 pa_t'>
+            <wux-cell padding='10rpx 20rpx' background='#f5f5f5' is-last='true' no-center='true'>
+              <view slot='header' class='f-text40 ba_b mar_r'>周</view>
+              <view slot='bodyer'>{{item.week}}
+                <text class='mar_l'>可用</text>
+              </view>
+            </wux-cell>
+            <wux-cell padding='10rpx 20rpx' background='#f5f5f5' is-last='true' no-center='true'>
+              <view slot='header' class='f-text40 ba_y mar_r'>月</view>
+              <view slot='bodyer'>{{item.month}}
+                <text class='mar_l'>可用</text>
+              </view>
+            </wux-cell>
+            <wux-cell padding='10rpx 20rpx' background='#f5f5f5' is-last='true' no-center='true'>
+              <view slot='header' class=''>
+                <text style='color:{{color}}' class="fon_32">{{item.discount}}折</text>（满{{item.condition}}可用）</view>
+              <view slot='footer'>库存：
+                <text style='color:{{color}}'>{{item.stock}}</text>份
+              </view>
+            </wux-cell>
+            <wux-cell padding='10rpx 20rpx' background='#f5f5f5' is-last='true' no-center='true'>
+              <view slot='header' class=''>限每人领取
+                <text style='color:{{color}}'>{{item.max}}</text>份</view>
+              <view slot='footer'>库存：
+                <text style='color:{{color}}'>{{item.receiveNum}}</text>份
+              </view>
+            </wux-cell>
+          </view>
+        </view>
+        <view class='pad_20 mar_t flex-center'>
+          <view bindtap='operation' data-name='edit' data-info='{{item}}' class='text-btn mar_l' style="border-radius: 40rpx;padding: 18rpx 35rpx">修改</view>
+          <view bindtap='operation' data-name='upOrDown' data-info='{{item}}' class='text-btn mar_l' style="border-radius: 40rpx;padding: 18rpx 35rpx">{{item.display == 2 ? "上架" : "下架"}}</view>
+          <view bindtap='operation' data-name='receiveList' data-info='{{item}}' class='text-btn mar_l' style="border-radius: 40rpx;padding: 18rpx 35rpx">领取记录</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<!-- <foot-nav color='{{color}}' page-type='managemall' />
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">{{xzname}}</i-button>
+</i-action-sheet> -->

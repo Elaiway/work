@@ -1,0 +1,23 @@
+<view class="page">
+  <wux-search-bar id="searchBar" color="{{color}}" maxlength="8" bind:change="onChange" />
+  <view style='height:20rpx;' class='ba_f9'></view>
+  <view class='pa_l'>
+    <block wx:if="{{info_search.length>0}}">
+      <view class='pa_t fon_30 color_6 fon_wei'>
+          <view class='dis_in wid_50 t_l'>
+              搜索历史
+          </view>
+           <view class='dis_in wid_50 t_r'>
+             <text class='middle iconfont icon-shanchu fon_30' bindtap='cancel' style='color:{{color}}'></text>
+          </view>
+      </view>
+      <view class='hot_city'>
+        <view class='citys fon_24 color_6 t_c ba_f9 gobyndsingle' bindtap='search' data-text="{{item}}" wx:for="{{info_search}}" wx:key="*this">{{item}}</view>
+      </view>
+    </block>
+    <!-- <view class='pa_t fon_30 color_6 fon_wei'>热门搜索</view>
+    <view class='hot_city'>
+      <view class='citys fon_24 color_6 t_c ba_f9 gobyndsingle' bindtap='search' data-text="{{item}}" wx:for="{{hotcity}}" wx:key="*this">{{item}}</view>
+    </view> -->
+  </view>
+</view> 

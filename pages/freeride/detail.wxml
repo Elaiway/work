@@ -1,0 +1,17 @@
+<view class='container after-navbar ba_f'>
+  <view class="bgHeight" style="background:{{color}}"></view>
+  <view class="pad_20 detailBox rel margin-bot">
+    <freeride-detail content="{{detailPage}}" />
+    <view wx:if="{{ad}}" class="adContainer">
+      <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+    </view>
+    <!-- 流量主 -->
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl bind:footclick='footclick' content="{{foot_menu}}" />
+</block>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true">请选择发布类型</i-button>
+</i-action-sheet>

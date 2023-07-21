@@ -1,0 +1,4 @@
+<!--dist/public/components/form/dd-label.wxml-->
+<view class='ba_f basepadding flex-raw'>
+  <view wx:for="{{labelArr}}" bindtap='click' data-idx="{{index}}" class='text-btn' style="color:{{item.active?color:''}};border-color:{{item.active?color:''}}">{{item.name}}</view>
+</view>

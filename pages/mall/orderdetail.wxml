@@ -1,0 +1,63 @@
+<!--pages/mall/refundorder.wxml-->
+<view class='container'>
+  <view class='mar_t'>
+    <goods-card content="{{orderInfo}}" config="{{goodscardconfig}}" />
+  </view>
+  <wux-cell is-left='true' tftsize='28' class='mar_t' title="{{orderInfo.tips}}" tstyle="color:{{color}}" extra="共计{{orderInfo.num}}件">
+  </wux-cell>
+  <view class='pad_10 ba_f flex-row'>
+    <view wx:for="{{concat}}" wx:key="name" bindtap='concatClick' data-idx='{{index}}' class='flex-center flex-1 cellr'>
+      <text class='iconfont {{item.icon}} fon_40 mar_r' style='color:{{color}}'></text>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  <!-- <view wx:if="{{orderInfo.delivery == 2&&orderInfo.state=='2'||orderInfo.state=='3'||orderInfo.state=='4'||orderInfo.state=='9'}}" class='mar_t'> -->
+  <view wx:if="{{orderInfo.delivery == 2&&orderInfo.state=='2'}}" class='mar_t'>
+    <wux-cell is-left='true' tftsize='28' title='核销订单' tstyle="color:#333">
+      <view slot='header' class='iconfont fon_40 icon-saoma mar_r' style='color:{{color}}'></view>
+      <view slot='footer' class='iconfont fon_40 icon-mima1'></view>
+    </wux-cell>
+    <view class='ba_f pad_20'>
+      <view class='flex-center'>
+        <!-- 自提显示核销码 -->
+        <image class='mar' style='width:480rpx;height:480rpx;' src="data:image/png;base64,{{hxm}}"></image>
+      </view>
+      <view class='t_c'>请将小程序码出示给核销员</view>
+    </view>
+    <!-- <view class="t_c ba_f">
+      <view class="basepadding fon_28">请输入核销码</view>
+      <keyboard bind:myevent="onGetCode" code="{{code}}" />
+      <view class="pad_20" style='color:{{color}}'>核销码：{{orderInfo.code}}</view>
+    </view> -->
+  </view>
+  <view wx:if="{{orderInfo.delivery == 1}}" class='ba_f mar_t color_6'>
+    <wux-cell is-left='true' tftsize='28' title='配送信息' tstyle="color:#333">
+      <view slot='header' class='iconfont fon_40 icon-wuliuqiache mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <wux-cell isLast='true' title="联系人 ：{{orderInfo.receivedName}}"></wux-cell>
+    <wux-cell isLast='true' title="联系电话：{{orderInfo.receivedTel}}"></wux-cell>
+    <wux-cell isLast='true' title="配送地址：{{orderInfo.receivedAddress}}"></wux-cell>
+    <wux-cell isLast='true' title="快递公司：{{orderInfo.logisticsName}}"></wux-cell>
+    <wux-cell isLast='true' title="快递单号：{{orderInfo.logisticsCode}}"></wux-cell>
+  </view>
+  <view wx:if="{{orderInfo.delivery == 2}}" class='ba_f mar_t'>
+    <wux-cell is-left='true' tftsize='28' title='自提地址' tstyle="color:#333">
+      <view slot='header' class='iconfont fon_40 icon-wuliuqiache mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <wux-cell no-center="true" tstyle="color:#333" tftsize='30' lftsize='26' title="{{addressInfo.detailedAddress}}" label="{{addressInfo.address}}" extra='{{addressInfo.linkTel}}'>
+    </wux-cell>
+  </view>
+  <view class='ba_f mar_t color_6'>
+    <wux-cell is-left='true' tftsize='28' title='订单详情' tstyle="color:#333">
+      <view slot='header' class='iconfont fon_40 icon-yufukuanyufukuanjil mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <wux-cell isLast='true' title="订单编号：{{orderInfo.outTradeNo}}"></wux-cell>
+    <wux-cell isLast='true' title="下单时间：{{orderInfo.createdAt}}"></wux-cell>
+  </view>
+  <view wx:if="{{orderInfo.note}}" class='ba_f mar_t'>
+    <wux-cell is-left='true' tftsize='28' title='订单备注' tstyle="color:#333">
+      <view slot='header' class='iconfont fon_40 icon-jilu1 mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <wux-cell title='{{orderInfo.note}}' />
+  </view>
+</view>

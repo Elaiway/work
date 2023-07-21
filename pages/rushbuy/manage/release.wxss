@@ -1,0 +1,11 @@
+.weui-select2 {
+  position: relative;
+  height: 2.58823529em;
+  min-height: 2.58823529em;
+  line-height: 2.58823529em;
+  color: #666;
+  font-size: 28rpx;
+}
+.color_8{
+  color:#808080;
+}

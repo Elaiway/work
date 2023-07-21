@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "commend": "/dist/public/commend/index",
+    "integral-good": "/dist/public/auxiliary/integral/integral-good"
+  }
+}

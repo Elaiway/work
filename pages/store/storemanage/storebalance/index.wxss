@@ -1,0 +1,25 @@
+/* pages/personal/wallet/index.wxss */
+
+.walletBalance {
+  padding: 40rpx 0;
+}
+
+.putFowardList {
+  padding: 0rpx 30rpx;
+}
+
+.mar_t50 {
+  margin-top: 50rpx;
+}
+
+.icon_color{
+  color: rgb(75, 164, 255);
+}
+
+.mar_lr10{
+  margin: 0 10rpx;
+}
+
+.pa_tb10{
+  padding: 10rpx 0;
+}

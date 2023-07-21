@@ -1,0 +1,16 @@
+/* pages/message/nav/index.wxss */
+.navs{
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.navsv1{
+  width: 87%;
+}
+.navs_all{
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  width: 13%;
+  height: 100%;
+}

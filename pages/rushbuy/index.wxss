@@ -1,0 +1,13 @@
+.navlogo{
+  width: 72rpx;
+  height: 72rpx;
+}
+.bgone{
+  background: linear-gradient(0deg, rgb(25, 194, 243) 0%, rgb(29, 233, 242) 100%);
+}
+.bgtwo{
+  background: linear-gradient(0deg, rgb(49, 105, 228) 0%, rgb(80, 154, 251) 100%);
+}
+.bgthree{
+  background: linear-gradient(0deg, rgb(242, 8, 95) 0%, rgb(250, 62, 147) 100%);
+}

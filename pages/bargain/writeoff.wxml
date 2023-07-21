@@ -1,0 +1,53 @@
+<!--pages/extra/verification.wxml-->
+<block wx:if="{{pageType==1}}">
+  <layout-one bindtap='goDetail' data-id='{{detailInfo.bargainId}}' is-last="true" after-left="true" no-pad='true' footer='{{footer}}' body-src='{{detailInfo.logo}}' body="{{layoutBodyOne}}" class-name=''>
+    <view slot="body-bd-f" class="flex-x-bt">
+      <view class='hydlnr_2'>
+        <text>{{detailInfo.title}}</text>
+      </view>
+    </view>
+    <view slot="body-bd-s" class="flex-x-bt mar_t_10 color_9">有效期至：{{detailInfo.endTime}}</view>
+    <view slot="body-bd-t" class="flex-x-bt mar_t_10">
+      <view class='flex-y-center'>
+        <text class='fon_32 mar_r_10' style='color:{{color}}'>现价:￥{{detailInfo.orderInfo.money}}</text>
+        <text class='fon_24 color_9 t-d-l'>原价:￥{{detailInfo.price}}</text>
+      </view>
+    </view>
+    <view slot='footer-bd' class='wid'>
+      <view>支付金额：
+        <text style='color:{{color}}'>{{detailInfo.orderInfo.money}}</text>
+      </view>
+    </view>
+  </layout-one>
+  <h-title bdname="购买信息"></h-title>
+  <wux-cell>
+    <view slot='bodyer' class='flex-row color_3'>
+      <view class='weui-label'>姓名</view>
+      <view>{{detailInfo.user.userName}}</view>
+    </view>
+  </wux-cell>
+  <wux-cell>
+    <view slot='bodyer' class='flex-row color_3'>
+      <view class='weui-label'>电话</view>
+      <view>{{detailInfo.linkTel}}</view>
+    </view>
+  </wux-cell>
+  <wux-cell>
+    <view slot='bodyer' class='flex-row color_3'>
+      <view class='weui-label'>订单编号</view>
+      <view>{{detailInfo.orderInfo.outTradeNo}}</view>
+    </view>
+  </wux-cell>
+  <wux-cell isLast='true'>
+    <view slot='bodyer' class='flex-row color_3'>
+      <view class='weui-label'>下单时间</view>
+      <view>{{detailInfo.orderInfo.createdAt}}</view>
+    </view>
+  </wux-cell>
+</block>
+<block wx:if="{{pageType==2}}">
+  <goods-card content="{{detailInfo}}" config="{{goodscardconfig}}" />
+</block>
+<view class='basepadding mar_t'>
+  <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" bindtap='qdhx'>确定核销</button>
+</view>

@@ -1,0 +1,6 @@
+<!--dist/public/components/seal/seal.wxml-->
+<view wx:if="{{zhiding}}" class="location" style='right:{{right}}rpx;top:{{top}}rpx;'><image class="imgWidth" src="/assets/images/seal/zhiding.png"></image></view>
+<view wx:elif="{{fache}}" class="location" style='right:{{right}}rpx;top:{{top}}rpx;'><image class="imgWidth" src="/assets/images/seal/yifache.png"></image></view>
+<view wx:elif="{{xiajia}}" class="location" style='right:{{right}}rpx;top:{{top}}rpx;'><image class="imgWidth" src="/assets/images/seal/xiajia.png"></image></view>
+<view wx:elif="{{daishenhe}}" class="location" style='right:{{right}}rpx;top:{{top}}rpx;'><image class="imgWidth" src="/assets/images/seal/daishenhe.png"></image></view>
+<view wx:elif="{{jujue}}" class="location" style='right:{{right}}rpx;top:{{top}}rpx;'><image class="imgWidth" src="/assets/images/seal/jujue.png"></image></view>

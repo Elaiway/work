@@ -1,0 +1,14 @@
+@import "/app.wxss";
+.card-group-index{
+    background: white;
+    /* margin-bottom: 16rpx; */
+    /* padding: 0 20rpx; */
+  }
+  .cardimgv{
+    overflow: hidden;
+  }
+  .cardimg{
+    width: 100%;
+    height: 100%;
+  }
+  

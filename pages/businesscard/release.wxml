@@ -1,0 +1,141 @@
+<!--pages/businesscard/release.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <wux-upload wx:if="{{uploadArr[0].show}}" type='2' color="{{color}}" extra-class="t_c" tipstext='{{uploadArr[0].tips}}' htitle='{{uploadArr[0].title}}' count="{{uploadArr[0].count}}" file-list="{{ uploadArr[0].fileList }}" data-idx="{{0}}" bind:change="uploadChange">
+    </wux-upload>
+    <view class="ba_f color_3">
+      <view class="t_c pa_t30 bor-btm">
+        <view class="color_9 fon_28">真实姓名</view>
+        <view class="fon_32 mar_t_10">
+          <input name='name' placeholder-class='fon_28' value="{{params.name}}" class="weui-input" placeholder="请输入真实姓名" />
+        </view>
+      </view>
+    </view>
+    <view class="ba_f color_3">
+      <view class="flex-bet t_c bor-btm">
+        <view class="flex-1 borr mar_tb_20">
+          <view class="color_9">手机号</view>
+          <view class="fon_32 mar_t_10">
+            <input name='tel' placeholder-class='fon_28' type='number' value="{{params.tel}}" class="weui-input" placeholder="请输入手机号" />
+          </view>
+        </view>
+        <view class="flex-1">
+          <view class="color_9">微信号</view>
+          <view class="fon_32 mar_t_10">
+            <input name='wechat' placeholder-class='fon_28' value="{{params.wechat}}" class="weui-input" placeholder="请输入微信号" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="信息"></h-title>
+    <view class="ba_f color_3">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">公司名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='company' placeholder-class='fon_28' value="{{params.company}}" class="weui-input" placeholder="请填写公司名称" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">部门</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='department' placeholder-class='fon_28' value="{{params.department}}" class="weui-input" placeholder="请填写部门名称" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">职位</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='position' placeholder-class='fon_28' value="{{params.position}}" class="weui-input" placeholder="请填写职位名称" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <text-area name='body' value='{{params.body}}' bind:textblur='textareachange' maxlength='500' placeholder="一句话介绍自己负责的业务" extra-class=''></text-area>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6">地址</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='address' value='{{params.address}}' placeholder-class='fon_28' class="weui-input color_6 fon_28" placeholder="请选择地址" />
+        </view>
+        <view bindtap='chooseLocation' class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-dizhi1 fon_40' style='color:{{color}}'></text>
+          <view style='color:{{color}}' class='mar_l'>定位</view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">行业</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker name='category' mode="multiSelector" data-name='category' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData['category']}}" range-key='name'>
+            <view class="weui-select">{{category||'请选择'}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="隐私设置"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view class="weui-labels">公开名片上的手机号</view>
+        </view>
+        <view class="weui-cell__ft">
+          <view class='weui-input'>
+            <switch bindchange="isTelSwitchChange" name='isTel' checked="{{params.isTel==1}}" color='{{color}}' />
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view class="weui-labels">公开名片上的微信号</view>
+        </view>
+        <view class="weui-cell__ft">
+          <view class='weui-input'>
+            <switch bindchange="isWechatSwitchChange" name='isWechat' checked="{{params.isWechat==1}}" color='{{color}}' />
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view class="weui-labels">公开地址信息</view>
+        </view>
+        <view class="weui-cell__ft">
+          <view class='weui-input'>
+            <switch bindchange="isAddressSwitchChange" name='isAddress' checked="{{params.isAddress==1}}" color='{{color}}' />
+          </view>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{!isEdit}}">
+    <h-title bdname="选择套餐"></h-title>
+    <view wx:if="{{businesscard.openCountry=='open'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6">发布城市</view>
+        </view>
+        <view class="weui-cell__bd">
+          <wux-radio-group typesetting='2' radioColor="{{color}}" radioarr="{{lcradioarr}}" name="lcradio" value="{{ lcradiovalue }}" bind:change="lcrdioonChange">
+          </wux-radio-group>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <wux-radio-group radioColor="{{color}}" radioarr="{{rztimearr}}" name="rzradio" value="{{ rzradiovalue }}" bind:change="rzradioonChange">
+      </wux-radio-group>
+    </view>
+    </block>
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='名片发布协议' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" formType="submit">{{releaseName||'立即发布'}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

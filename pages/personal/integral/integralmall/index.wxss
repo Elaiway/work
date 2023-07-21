@@ -1,0 +1,4 @@
+/* pages/personal/integral/integralmall/index.wxss */
+.noBorder {
+    border-bottom: 0;
+}

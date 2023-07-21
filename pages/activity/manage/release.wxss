@@ -1,0 +1,6 @@
+.borr{
+  border-right: 1rpx solid #eee;
+}
+.mar-leri{
+  margin: 0 30rpx;
+}

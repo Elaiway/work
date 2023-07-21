@@ -1,0 +1,194 @@
+<!--pages/mall/index.wxml-->
+<view class='container after-navbar'>
+  <header-dl bind:bdclick='bdclick' color="{{color}}" content='{{header}}' />
+  <!-- 轮播图 -->
+  <view id='gooddl' class='mar_t90' hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+    <view class='pad_20 ba_f'>
+      <view style='color:{{color}}'>
+        <text class='fon_36'>￥{{goodsInfo.currentPrice}}</text>
+        <text wx:if="{{system.openVip&&goodsInfo.vipMoney>0}}" class='mar_l'>会员价￥{{goodsInfo.vipMoney}}</text>
+        <text class='fon_26 mar_l color_9 t-d-l'>￥{{goodsInfo.originalPrice}}</text>
+      </view>
+      <view class='mar_t_10'>
+        <block-text wx:if="{{goodsInfo.power&&goodsInfo.power.length}}" type='2' color='{{color}}' class-name='pa_5_10 br-r-20 mar_r_10' text='{{goodsInfo.power[0]}}' />
+        <text>{{goodsInfo.title}}</text>
+      </view>
+      <view class='color_9 mar_t_10'>
+        <text class='mar_r60' wx:if="{{goodsInfo.isPost == 1}}">包邮</text>
+        <text class='mar_r60' wx:else>快递：￥{{goodsInfo.freight}}(满{{goodsInfo.satisfy}}包邮)</text>
+        <text class='mar_r60'>热销：{{goodsInfo.salesNum}}</text>
+        <text>库存：{{goodsInfo.stock}}</text>
+      </view>
+    </view>
+  </view>
+  <wux-cell wux-class='mar_t' bind:click='showTypeOne' is-link>
+    <view slot='bodyer' class='flex-raw'>
+      <block wx:for='{{goodsInfo.label}}' wx:key="*this">
+        <view wx:if='{{index<3}}' class='mar_r30'>
+          <text class='mar_r iconfont icon-tuanbuxingbiao' style="color:{{color}}"></text>
+          <text class='color_9'>{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </wux-cell>
+  <wux-cell wx:if="{{goodsInfo.coupon.length}}" bind:click='showTypeTwo' extra='领券' is-link>
+    <view slot='bodyer' class='flex-y-center'>
+      <view class='flex-g-0'>优惠券</view>
+      <view class='flex-raw'>
+        <block wx:for='{{goodsInfo.coupon}}' wx:key="*this">
+          <block-text wx:if='{{index<2}}' class-name='mar_l' color='{{color}}' text='{{item.name}}' />
+        </block>
+      </view>
+    </view>
+
+  </wux-cell>
+  <view class='mar_t ba_f basepadding'>
+    <view class='flex-y-center'>
+      <image class='imgsize80' src='{{goodsInfo.storeLogo}}'></image>
+      <view class='flex-1 flex-col mar_l'>
+        <view>{{goodsInfo.storeName}}</view>
+        <wux-rater slot="footer" default-value="{{ 5 }}" font-size="{{ 16 }}" disabled />
+      </view>
+      <block-text bindtap='goStoreMall' color='{{color}}' class-name='pa_13_20 br-r-30 mar_l' text='全部宝贝' />
+      <block-text bindtap='goStoreDetail' type='2 ' color='{{color}} ' class-name='pa_13_20 br-r-30 mar_l' text='进店逛逛' />
+    </view>
+    <view class='flex-x-bt mar_t color_9'>
+      <view>粉丝数：{{storeInfo.followNum}}</view>
+      <view>全部商品：{{storeInfo.goodsNum}}</view>
+      <view>商家评价：{{storeInfo.commentNum}}</view>
+    </view>
+  </view>
+        <view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>
+  <wux-cell id='gooddl' tstyle="color:#333;" tftsize='30' is-left="true" wux-class='mar_t' title='商家详情' />
+  <view class='pad_20 ba_f color_6'>
+    <rich-text nodes="{{goodsInfo.details}}"></rich-text>
+    <view class='mar_t' wx:if='{{goodsInfo.detailImgs.length!=0}}'>
+      <image mode='widthFix' class='image_all' wx:for='{{goodsInfo.detailImgs}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{url}}{{item.url}}'></image>
+    </view>
+  </view>
+
+  <!-- 商品评价 -->
+  <wux-cell id='gooddl' tstyle="color:#333;" tftsize='30' is-left="true" wux-class='mar_t' title='商品评价({{goodsInfo.commentNum}})' ftcolor="{{color}}" extra='{{point}}' is-link/>
+  <view class='ba_f'>
+    <view wx:for="{{goodsInfo.comment}}" class='basepadding br-b-e'>
+      <view class='flex-row flex-y-center'>
+        <view class='flex-g-1 flex-y-center'>
+          <view class='mar_r'>{{item.userName}}</view>
+          <wux-rater slot="footer" default-value="{{ item.star }}" font-size="{{ 16 }}" disabled />
+          
+        </view>
+        <view class='flex-g-0 fon_24 color_9'>{{item.createdAt}}</view>
+      </view>
+      <view class='mar_t'>{{item.body}}</view>
+      <view class='flex-raw mar_t'>
+        <view wx:for="{{item.img}}" wx:for-item="imgitem" bindtap='previewImage2' data-url='{{imgitem.url}}' data-urls='{{item.img}}' class='comment'>
+          <image mode='aspectFill' class='image_all br-r-10' src='{{imgitem.url}}'></image>
+        </view>
+      </view>
+    </view>
+    <navigator url='commentlist?type==mall&id={{goodsInfo.id}}' class='pad_20 t_c color_9'>查看全部评论</navigator>
+  </view>
+  <!-- 信息信息 -->
+  <view id='gooddl' class='mainbk'>
+    <view class='mall-title'>猜你喜欢</view>
+    <wux-tabs scroll='true' type='1' wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+    <view wx:if="{{postList.length}}" class='flex-bt flex-wrap pad_20'>
+      <block wx:for="{{postList}}" wx:key="{{item.id}}">
+        <mall-cell content="{{item}}" color="{{color}}" />
+      </block>
+    </view>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl type='2' width='26' bind:footclick='footclick' content="{{foot_menu}}" />
+</block>
+<!-- 弹窗 -->
+<van-popup show="{{popupshow}}" z-index='1000' position="bottom" custom-style="overflow: initial;background: #f4f4f4;border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;" bind:close="togglePopup">
+  <view class='ba_f pa_l30 br-r-tlr30'>
+    <block wx:if="{{showType==1}}">
+      <view class='t_c pad_20 fon_32'>服务说明</view>
+      <view class='' style='max-height:600rpx;overflow-y:scroll'>
+        <view wx:for="{{goodsService}}" class='flex-row mar_b50'>
+          <text class='iconfont icon-tuanbuxingbiao mar_r30' style='color:{{color}}'></text>
+          <view class='flex-g-1'>
+            <view class='fon_30'>{{item.name}}</view>
+            <view class='color_9 fon_26'>{{item.body}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{showType==2}}">
+      <view class='t_c pad_20 fon_32'>优惠券</view>
+      <view class='' style='max-height:600rpx;overflow-y:scroll'>
+        <view wx:for="{{goodsInfo.coupon}}" wx:key="{{item.id}}" class='bor-e br-r-30 flex-row mar_b ba_f posi-r'>
+          <view class='flex-col-center color_f' style='width:175rpx;min-height:175rpx;background:#FF3838'>
+            <view wx:if="{{item.type==1}}">￥
+              <text class='fon_46'>{{item.discount}}</text>
+            </view>
+            <view wx:if="{{item.type==2}}">
+              <text class='fon_46'>{{item.discount}}</text>折
+            </view>
+            <view class='mar_t_10 fon_26'>{{item.reach>0?'满'+item.reach+'可用':'无门槛'}}</view>
+          </view>
+          <view class='pad_20 flex-g-1 flex-col flex-x-center'>
+            <view class=''>{{item.name}}</view>
+            <view class='mar_t fon_24 color_9 flex-y-center'>
+              <text class='iconfont icon-tuanbuxingbiao mar_r_10'></text>{{item.introduce}}</view>
+            <view class='mar_t fon_24 color_9'>有效期：{{item.startTime}}至{{item.endTime}}</view>
+          </view>
+          <view class='posi-a flex-col-center r0 hei' style='width:160rpx;'>
+            <view wx:if="{{item.receive!=1}}" class='text-btnf pa_5_20 br-r-30' style='background:#FF3838' bindtap='ljlq' data-info='{{item}}'>立即领取</view>
+            <view wx:else class='text-btnf pa_5_20 br-r-30' style='background:#d5d5d5'>已领取</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{showType==3}}">
+      <view>
+        <layout-one is-last='true' no-pad='true' body-src='{{goodsInfo.showImgs[0].url}}' body="{{layoutBody}}" class-name="pa_t30">
+          <view slot="body-bd-s" class="flex-row fon_24">
+            <view class='flex-col'>
+              <view>
+                <!-- 有规格 -->
+                <text wx:if="{{goodsInfo.isSpec=='1'}}" class='fon_34 mar_r' style='color:{{color}}'>￥{{groupInfo.money}}</text>
+                <!-- 没规格 -->
+                <text wx:else class='fon_34 mar_r' style='color:{{color}}'>￥{{goodsInfo.currentPrice}}</text>
+                <!-- 会员功能开启且有规格且有合理会员价 -->
+                <text wx:if="{{system.openVip&&goodsInfo.isSpec=='1'&&groupInfo.memberPrice>0}}" class='mar_r' style='color:{{color}}'>会员价￥{{groupInfo.memberPrice}}</text>
+                <!-- 无规格且有合理会员价 -->
+                <text wx:elif="{{system.openVip&&goodsInfo.isSpec!='1'&&goodsInfo.vipMoney>0}}" class='mar_r' style='color:{{color}}'>会员价￥{{goodsInfo.vipMoney}}</text>
+                <text class='color_9 t_through'>￥{{goodsInfo.originalPrice}}</text>
+              </view>
+              <view wx:if="{{goodsInfo.isSpec=='1'}}" class='mar_t_10 color_9'>库存：{{groupInfo.num}}</view>
+              <view wx:else class='mar_t_10'>请选择商品数量</view>
+            </view>
+          </view>
+        </layout-one>
+        <view style='max-height:600rpx;overflow-y:scroll'>
+          <block wx:if="{{goodsInfo.isSpec=='1'}}">
+            <view wx:for="{{spec}}" wx:key="name" wx:for-index="pindex" class='br-t-e pa_t30'>
+              <view>{{item.name}}</view>
+              <view class='flex-raw'>
+                <block wx:for="{{item.data}}" wx:key="*this" wx:for-item="dataItem">
+                  <block-text wx:if="{{item.acidx==index}}" type='2' display='block' data-idx='{{index}}' data-pidx='{{pindex}}' bindtap='specClick' color='{{color}}' class-name='br-r-30 mar_r mar_t' style-name='min-width:120rpx;' text='{{dataItem}}' />
+                  <block-text wx:else display='block' data-idx='{{index}}' data-pidx='{{pindex}}' bindtap='specClick' class-name='br-r-30 mar_r mar_t' style-name='background:#f4f4f4;min-width:120rpx;' text='{{dataItem}}' />
+                </block>
+              </view>
+            </view>
+          </block>
+          <view class='br-t-e pa_t30 flex-x-bt'>
+            <view>购买数量</view>
+            <wux-input-number bind:change="onChange" value="{{num}}" color="stable" min="1" max="99" disabled="{{false}}" />
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='ba_f pad_20'>
+    <view class='foot-btn' bindtap="confirm" style='background:{{color}}'>{{showType==3?buyType==2?'加入购物车':'立即购买':'完成'}}</view>
+  </view>
+</van-popup>

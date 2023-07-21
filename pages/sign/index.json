@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "submenu": "/dist/public/submenu/index",
+    "swiper-case": "/dist/public/swiper/index",
+    "at-form": "/dist/public/agreebox/form",
+    "wux-cell": "/dist/wux-weapp/cell/index"
+  }
+}

@@ -1,0 +1,10 @@
+/* pages/yellow/sett.wxss */
+
+.add-spec-btn {
+  margin: 10rpx 0;
+  padding: 16rpx 30rpx;
+  border: 1rpx solid #f5f5f5;
+  border-radius: 10px;
+  background: #f5f5f5;
+  color:#BABABA;
+}

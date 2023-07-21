@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "integral-good": "/dist/public/auxiliary/integral/integral-good"
+  }
+}

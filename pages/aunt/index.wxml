@@ -1,0 +1,33 @@
+<!--pages/personal/testcenter/index.wxml-->
+<view class="container">
+  <Swiper id='Swiper' style="height:auto" bind:jump="jump" content="{{Swiper.config}}"></Swiper>
+  <view class='rzmain'>
+    <view class='flex-col flex-y-center color_f'>
+      <image class='hdimg' src='{{portrait}}'></image>
+      <view class='mar_t fon_34'>{{userName}}</view>
+      <view class='mar_t_10'>埋了一个redpaper</view>
+      <view wx:if="{{content}}" class='hxwz fon_28'>
+        <view class='hx'></view>
+        <view class='wz'>共
+          <text>{{content.allcount}}</text>个redpaper,已抢
+          <text>{{content.getcount}}</text>个,还剩
+          <text>{{content.allcount-content.getcount}}</text>个</view>
+        <view class='hx'></view>
+      </view>
+    </view>
+    <view class='mar_t'>
+      <view class="weui-cell" bindtap='tzxq' data-index='{{index}}' wx:for='{{receiveList}}'>
+        <view class="weui-cell__hd">
+          <image class='wc-hdimg' mode='aspectFit' src="{{item.portrait}}"></image>
+        </view>
+        <view class="weui-cell__bd">
+          <view>{{item.userName}}</view>
+          <view class='mar_t_10 color_9 fon_26'>{{item.creatTime}}</view>
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center fon_36 fon_wei">
+          <view style='color:#FF4F3D'>{{item.money}}元</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

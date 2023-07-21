@@ -1,0 +1,49 @@
+/* dist/public/auxiliary/freeride/freeride-detail.wxss */
+@import "/app.wxss";
+.main-box{
+  border-radius: 20rpx;
+  box-shadow: 0 0 8rpx 8rpx  rgba(151, 151, 151, 0.1 )
+}
+.borderRight{
+  margin-right: 15rpx;
+}
+.boradiu{
+  border-radius: 10rpx;
+}
+.bgSku{
+  background-color:#17D2BB;
+}
+.bgOrange{
+  background-color:#FD6C4E;
+}
+.bgYellow{
+  background-color:#FFB829;
+}
+.bgBlue{
+  background-color:#369CDE;
+}
+.bgRed{
+  background-color: #FF3838;
+}
+.padd{
+  padding:0 10rpx;
+  border-radius: 10rpx;
+}
+.circular{
+  display: inline-block;
+  border-radius: 50%;
+  width: 38rpx;
+  height: 38rpx;
+}
+.borderRight{
+  margin-right: 15rpx;
+  border-color:#17D2BB;
+  color:#17D2BB;
+}
+.colorOreng{
+  color:#FF6F20;
+}
+.flex-y-top{
+  align-items: flex-start;
+  display: flex;
+}

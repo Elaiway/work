@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "load-more": "/dist/public/storecell/loading"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark",
+  "onReachBottomDistance":500,
+  "navigationBarTitleText": "集赞榜"
+}

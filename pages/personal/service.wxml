@@ -1,0 +1,21 @@
+<view>
+   <wux-cell isLeft='true' wux-class='mar_t str' title="平台二维码">
+    <view slot='header' class='iconfont icon-erweima mar_r fon_30' style='color:{{color}}'></view>
+    <view slot='footer' class=''><image class="mWidth" bindtap='previewqrcode' src="{{qrcode}}"></image></view>
+  </wux-cell>
+  <wux-cell isLeft='true' wux-class='mar_t str' title="客服微信">
+    <view slot='header' class='iconfont icon-weixin mar_r fon_30' style='color:{{color}}'></view>
+    <view slot='footer' class=''><image class="mWidth" bindtap='previewtCode' src="{{contactCode}}"></image></view>
+  </wux-cell>
+   <wux-cell isLeft='true' wux-class='mar_t' title="客服电话">
+    <view slot='header' class='iconfont icon-dianhua mar_r fon_30' style='color:{{color}}'></view>
+    <view slot='footer' class='' bindtap='onCall'>拨打{{phone}}</view>
+  </wux-cell>
+   <wux-cell isLeft='true' wux-class='mar_t' title="系统版本">
+    <view slot='header' class='iconfont icon-yingyeshijian mar_r fon_30' style='color:{{color}}'></view>
+    <view slot='footer' class=''>{{version}}</view>
+  </wux-cell>
+  <view class='foot-button mar_t ba_t'>
+    <button open-type='contact'  style='background:{{color}}' class="weui-btn" type="primary">客服会话</button>
+  </view>
+</view>

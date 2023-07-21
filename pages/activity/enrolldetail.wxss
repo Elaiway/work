@@ -1,0 +1,18 @@
+@import "order.wxss";
+.line {
+  height: 2rpx;
+  width: 100%;
+  background: #ddd;
+}
+.cir{
+  width: 54rpx;
+  height: 54rpx;
+  border:1rpx solid #ddd;
+  background: #fff;
+}
+.mar_l90{
+  margin-left: 90rpx;
+}
+.maxwidth{
+  width: 180rpx;
+}

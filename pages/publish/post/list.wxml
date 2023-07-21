@@ -1,0 +1,63 @@
+<!--pages/post/list.wxml-->
+<view class="page">
+  <view class="nav">
+    <view class="nav-son {{shownavindex == 1? 'active' : ''}}" bindtap="listqy" data-nav="1">
+      <view style="color:{{shownavindex == 1?color: ''}};" class="content">{{city}}</view>
+      <view style="border-bottom: {{shownavindex == 1?12: 0}}rpx solid {{shownavindex == 1?color: ''}}" class="icon"></view>
+    </view>
+    <view class="nav-son {{shownavindex == 2? 'active' : ''}}" bindtap="list" data-nav="2">
+      <view style="color:{{shownavindex == 2?color: ''}};" class="content">{{onetype}}</view>
+      <view style="border-bottom: {{shownavindex == 2?12: 0}}rpx solid {{shownavindex == 2?color: ''}}" class="icon"></view>
+    </view>
+    <view class="nav-son {{shownavindex == 3? 'active' : ''}}" bindtap="listpx" data-nav="3">
+      <view style="color:{{shownavindex == 3?color: ''}};" class="content">{{model}}</view>
+      <view style="border-bottom: {{shownavindex == 3?12: 0}}rpx solid {{shownavindex == 3?color: ''}}" class="icon"></view>
+    </view>
+  </view>
+  <view class="quyu {{qyopen ? 'slidown' : 'slidup'}} {{!qyopen ? 'disappear':''}}">
+    <view class="qy quyu-right">
+      <view style="color:{{select1 ==index?color: ''}};" class="qy-item {{select1 == index ? 'current' : ''}}" wx:for="{{qylist}}" bindtap="selectleft" data-index='{{index}}' wx:key="unique">
+        {{item.name}}
+      </view>
+    </view>
+    <!-- <view class="qy quyu-right">
+      <view class="{{select2 == index ? 'current2' : ''}}" wx:for="{{citycenter}}" bindtap="selectcenter" data-city='{{index}}' wx:key="unique">
+        {{index}}
+      </view>
+    </view>
+    <view class="qy quyu-right">
+      <view wx:for="{{cityright}}" wx:key="unique" bindtap='selectcity' data-city='{{index}}'>
+        {{item}}
+      </view>
+    </view> -->
+  </view>
+
+  <view class="quyu {{nzopen ? 'slidown' : 'slidup'}} {{!nzopen ? 'disappear':''}}">
+    <view class="qy quyu-right">
+      <view style="color:{{typeselect1 ==index?color: ''}};" class="qy-item {{typeselect1 == index ? 'current' : ''}}" wx:for="{{posttype}}" bindtap="typesl" data-index='{{index}}' wx:key="unique">
+        {{item.name}}
+      </view>
+    </view>
+    <view class="qy quyu-right bor-l">
+      <view style="color:{{typeselect2 ==index?color: ''}};" class="qy-item {{typeselect2 == index ? 'current2' : ''}}" wx:for="{{posttypeson}}" bindtap="typesr" data-index='{{index}}' wx:key="unique">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class="quyu {{pxopen ? 'slidown' : 'slidup'}} {{!pxopen ? 'disappear':''}}">
+    <view class="qy quyu-right">
+      <view style="color:{{pxselect1 ==index?color: ''}};" class="qy-item {{pxselect1 == index ? 'current' : ''}}" wx:for="{{pxtype}}" bindtap="pxsl" data-index='{{index}}' wx:key="unique">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{isfull}}" class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
+  <view class='padding-top'>
+    <Postinfo show_distance="1" show_commend="1" show_collection="0" show_zan="1" slide="1" own="1" control="1" color="{{color}}" id="Postinfo" bind:newData='refreshtzData' bind:slide="slide" content="{{postList}}" />
+    <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

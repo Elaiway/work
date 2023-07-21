@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "Search": "/dist/public/search/index",
+    "swiper-case": "/dist/public/swiper/index",
+    "advert": "/dist/public/advert/index",
+    "Notice": "/dist/public/notice/index",
+    "Headline": "/dist/public/headline/index",
+    "type-swiper": "/dist/public/typeswiper/index",
+    "wux-tabs": "/dist/wux-weapp/tabs/index",
+    "store-cell": "/dist/public/storecell/index",
+    "load-more": "/dist/public/storecell/loading"
+  }
+}

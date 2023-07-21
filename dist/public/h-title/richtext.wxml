@@ -1,0 +1,4 @@
+<!--dist/public/textarea.wxml-->
+<view class='ba_f pad_20' style="{{styleName}}">
+  <rich-text nodes="{{nodes}}"></rich-text>
+</view>

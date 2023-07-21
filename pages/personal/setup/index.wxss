@@ -1,0 +1,28 @@
+/* pages/personal/setup/index.wxss */
+.containerv{
+  padding: 20rpx 30rpx;
+}
+.containervv1{
+  width: 30%;
+}
+.containervv2{
+  width: 70%;
+}
+.containerimg{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  /* background: orange; */
+}
+.textarea{
+  background: #f9f9f9;
+  width: 100%;
+  height: 200rpx;
+  padding: 20rpx;
+}
+.fixed{
+  width: 100%;
+  height: 108rpx;
+  bottom: 0;
+  position: fixed;
+}

@@ -1,0 +1,9 @@
+<view class="container patop">
+  <top-select trees='{{trees}}' bind:selectchange='selectchange' color="{{color}}" />
+  <block  wx:for="{{postList}}" wx:key="">
+    <activity-cell color="{{color}}" content="{{item}}" />
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

@@ -1,0 +1,267 @@
+@import "/app.wxss";
+.img-head {
+  width: 30px;
+  height: 30px;
+  background-color: #eeeeee;
+  border-radius: 50%
+}
+.curLove{
+  background-color: #FF3838 !important;
+  color: #fff !important;
+  border: 1px solid #FF3838 !important; }
+.zan {
+  background-color: #fff;
+  padding:20rpx 20rpx 140rpx;
+  box-sizing: border-box;
+}
+.award{
+  width: 90%;
+  margin: 50rpx auto 30rpx;
+  background-color: #FF4919;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  border-radius: 40rpx;
+  text-align: center;
+}
+.zan-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30rpx;
+  border-bottom: 1px solid #F0F0F0;
+}
+.zan-name-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.zan-name-left view {
+  margin-left: 15rpx;
+  font-size: 28rpx;
+}
+.zan-name-right {
+  width: 150rpx;
+  border: 1px solid #DDDDDD;
+  color: #333333;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 10rpx 0;
+  border-radius: 30rpx;
+}
+.zan-intro {
+  margin-top: 10rpx;
+  color: #999;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.pic-list{
+  width: 100%;
+  margin: 30rpx 0;
+}
+.pic-list-detail{
+  width: 100%;
+  height: 300rpx;
+  margin:0 0 2% 0;
+  overflow: hidden;
+}
+.zan-number > view:nth-of-type(1) >text{
+  margin-right: 10rpx;
+  color: #999;
+}
+
+
+.product-type{
+ font-size: 28rpx;
+ padding: 20rpx 0;
+}
+.product-type > text:nth-of-type(1){
+  font-size:#222 ;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.product-type > text:nth-of-type(2){
+  color:#999 ;
+  font-size: 24rpx;
+}
+.product-list{
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #F0F0F0;
+  padding-bottom: 40rpx;
+}
+.product-list > view{
+  width: 49%;
+  height: 500;
+  background-color: #fff;
+  margin-right: 2%;
+}
+.product-list > view:nth-of-type(2n){
+  margin-right: 0;
+}
+.product-list > view>view:nth-of-type(1){
+  padding: 0 10rpx;
+  font-size: 24rpx;
+  color: #333;
+  font-weight: bold;
+}
+.product-list > view>view:nth-of-type(2){
+  padding:0  10rpx;
+  font-size: 24rpx;
+  color: #FD3432;
+}
+.single{
+  margin-top: 30rpx;
+}
+.bottom{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  width: 100%;
+  height: 120rpx;
+}
+.bottom > view{
+  border: 1px solid #DDDDDD;
+  border-radius: 40rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+}
+.bottom > view:nth-of-type(1){
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  width: 40%;
+}
+.bottom > view:nth-of-type(2){
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: bold;
+  background-color: #FF8010;
+  width: 25%;
+}
+.bottom > view:nth-of-type(3){
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: bold;
+  background-color: #FF3838;
+  width: 25%;
+}
+/* 抽屉 */
+/*button*/
+.btn {
+  width: 80%;
+  padding: 20rpx 0;
+  border-radius: 10rpx;
+  text-align: center;
+  margin: 40rpx 10%;
+  background: #0C1939;
+  color: #fff;
+}
+/*mask*/
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+}
+/*content*/
+.drawer_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  background: #fff;
+}
+.drawer_content {
+  padding: 20rpx 40rpx;
+  height: 240rpx;
+  overflow-y: scroll;
+}
+.drawer_title{
+  padding:20rpx;
+  font:42rpx "microsoft yahei";
+  text-align: center;
+}
+.line{
+  border-bottom: 1px solid #f8f8f8;
+}
+
+/* ---------------- */
+.mycanvas{
+  width: 320px;
+  height:441px;
+  position: fixed;
+  left: -100000px;
+}
+.bj{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.billImage{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.billImage-center{
+  overflow: hidden;
+  margin: 100rpx auto;
+  bottom: 1px solid red;
+
+}
+.finish{
+  width: 80%;
+  margin:50rpx auto 0;
+}
+.submit{
+  width: 60%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #FFE200;
+  text-align: center;  
+  border-radius: 50rpx;
+  font-size: 24rpx;
+}
+.close{
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #FFf;
+  width: 20%;
+  border-radius: 50rpx;
+}
+.publish{
+  position: fixed;
+  right: 40rpx;
+  bottom: 160rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: #F54E91;
+  color: #fff;
+  text-align: center;
+  line-height: 120rpx;
+}

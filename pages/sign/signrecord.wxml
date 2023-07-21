@@ -1,0 +1,64 @@
+<view class='container'>
+  <!-- <wux-cell imgw='70' imgh='70' boradius='50%' wux-class='wuxcell' isLast thumb="{{userinfo.portrait}}">
+    <view slot='bodyer' class='color_6 fon_28'>您有<text style='color:{{color}}'>0</text>张补签卡</view>
+    <view slot="footer" bindtap='gm' class='attention fon_28' style='background:{{color}}'>购买补签卡</view>
+  </wux-cell> -->
+  <view class='ba_f mar_t'>
+    <!-- <view class='flex-center pa_t'>
+      <icon type='info' size='18' color='#d9d9d9'></icon>
+      <view class='mar_l fon_26 color_9'>以下为60天以内的签到记录，漏签的日期可补签</view>
+    </view> -->
+    <block wx:for="{{signrecord}}" wx:key="*this">
+      <wux-cell padding='30rpx 20rpx' wux-class='bor-btm color_3' isLast>
+        <view slot='bodyer' class='flex-row fon_28'>
+          <view>{{item.signTime}}</view>
+          <view  style='color:{{color}}' class='mar_l'>+{{item.integral}}积分</view>
+        </view>
+        <view slot="footer" bindtap='collection_store' class='flex-center fon_28 color_3'>
+          <!-- <view>{{item.btnName}}</view> -->
+          <view>{{item.note}}</view>
+          <!-- <view wx:if="{{item.type=='1'}}">{{item.note}}</view> -->
+          <!-- <view bindtap='bq' wx:if="{{item.type=='2'}}">未签</view> -->
+          <image wx:if="{{item.type=='1'}}" class='imgsize30 mar_l' src='{{imgsrc}}/wechatimg/sign/signt.png'></image>
+          <image wx:if="{{item.type=='2'}}" class='imgsize30 mar_l' src='{{imgsrc}}/wechatimg/sign/signf.png'></image>
+        </view>
+      </wux-cell>
+    </block>
+    <!-- <load-more nodata="{{signrecord.length==0&&isget}}" mygd='{{mygd}}' /> -->
+  </view>
+</view>
+<!-- <view class="modalzz" hidden="{{mdoaltoggle}}" bindtap='mdoalclose'></view>
+<view class="modal {{mdoaltoggle?'':'active'}}">
+  <view class='flex-center'>
+    <icon type='success' size='50'></icon>
+    <view class='xdcg'>下单成功!</view>
+  </view>
+</view> -->
+<!-- <t-modal ismr='true' mdoalclose="mdoalclose" mdoaltoggle='{{mdoaltoggle}}'>
+  <view class='flex-center-col wid'>
+    <view class="flex-center-col {{acindex=='3'?'signmodal1':'signmodal'}} color_3">
+      <block wx:if="{{acindex=='1'}}">
+        <view class='fon_34'>补签一天需一张补签卡</view>
+        <view class='fon_28 mar_t'>当前拥有
+          <text class='color_rb'> 0 </text>张补签卡 </view>
+        <image mode='aspectFit' class='bqkimg' src='{{imgsrc}}/wechatimg/sign/signbq.png'></image>
+        <view bindtap='gm' class='mar_t signbtn'>立即购买</view>
+      </block>
+      <block wx:if="{{acindex=='2'}}">
+        <view class='fon_34'>确认购买一张补签卡？</view>
+        <view class='fon_28 mar_t'>
+          <text class='color_rb'> 10 </text>积分/张 </view>
+        <image mode='aspectFit' class='bqkimg' src='{{imgsrc}}/wechatimg/sign/signbq.png'></image>
+        <view bindtap='qrgm' class='mar_t signbtn'>确认购买</view>
+      </block>
+      <block wx:if="{{acindex=='3'}}">
+        <image mode='aspectFit' class='qdcgimg' src='{{imgsrc}}/wechatimg/sign/qdcg.png'></image>
+        <view class='qdcg'>签到成功</view>
+        <view class='fon_28 mar_t'>恭喜你获得
+          <text class='color_rb'> 22 </text>积分</view>
+        <view bindtap='mdoalclose' class='mar_t signbtn'>确 定</view>
+      </block>
+    </view>
+    <image bindtap='mdoalclose' mode='aspectFit' class='ximg' src='{{imgsrc}}/wechatimg/sign/ximg.png'></image>
+  </view>
+</t-modal> -->

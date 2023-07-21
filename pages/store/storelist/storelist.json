@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "store-cell": "/dist/public/storecell/index",
+    "load-more": "/dist/public/storecell/loading"
+  }
+}

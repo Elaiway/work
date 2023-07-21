@@ -1,0 +1,35 @@
+<!--pages/vip/index.wxml-->
+<view class='container after-navbar'>
+  <view class='fixedtop'>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bind:change="onTabsChange"></wux-tabs>
+  </view>
+  <view wx:if="{{key!=3}}" class='padding-top'>
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <privilege-cell type='3' content="{{item}}" color="{{color}}" />
+    </block>
+  </view>
+  <view wx:if="{{key==3}}" class='padding-top'>
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <layout-one bindtap='goodinfo' data-id="{{item.packId}}" is-last='{{index==lbList.length-1}}' after-right='true' body-src='{{url}}{{item.logo}}' body="{{layoutBodyOne}}" class-name=''>
+        <view slot="body-bd-f" class="flex-x-bt">
+          <view class='hydlnr_2'>
+            <text>{{item.title}}</text>
+          </view>
+          <view class='flex-g-0 fon_24 color_9' style="color:{{item.state=='0'?color:''}}">{{item.state=='0'?'未使用':item.state=='1'?'已使用':'已过期'}}</view>
+        </view>
+        <view slot="body-bd-s" class="flex-x-bt mar_t_10">
+          <view class='color_9'>
+            {{item.storeName}}
+          </view>
+        </view>
+        <view slot="body-bd-t" class="flex-x-bt fon_24 mar_t_10">
+          <view class='color_9' style="color:{{item.state=='0'?color:''}}">
+            到期时间:{{item.endTime}}
+          </view>
+        </view>
+      </layout-one>
+    </block>
+  </view>
+  <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+</view>
+<foot-nav color='{{color}}' page-type='vip' />

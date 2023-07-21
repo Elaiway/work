@@ -1,0 +1,13 @@
+.copimg {
+  background: #ddd;
+  min-width: 174rpx;
+  width: 174rpx;
+  height: 174rpx;
+  overflow: hidden;
+}
+.mar_t_5{
+  margin-top: 5rpx;
+}
+.minwidth{
+  min-width: 160rpx;
+}

@@ -1,0 +1,8 @@
+/* pages/index/help/info.wxss */
+rich-text .richImg{
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+  height: auto!important;
+  width: auto!important;
+}

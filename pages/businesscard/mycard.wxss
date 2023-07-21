@@ -1,0 +1,47 @@
+.nameBox,.nameBox2,.nameBox3{
+  padding: 20rpx 30rpx 0rpx 30rpx; 
+  width: 100%;
+  height: 500rpx;
+}
+.nameBox2{
+  height: 380rpx;
+}
+.nameBox3{
+  height: 600rpx;
+}
+.img-con,.img-con2{
+  position: relative;
+  height: 100%;
+  border-radius: 18rpx;
+  overflow: hidden;
+}
+.bg-img,.bg-img2{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.main-box,.main-box2{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.address{
+  width: 600rpx;
+}
+.abody{
+   width: 650rpx;
+}
+.gdrz{
+  width: 640rpx;
+}
+.btns{
+  padding: 15rpx 55rpx;
+  border-radius: 50rpx;
+}
+.minheight{
+  min-height: 50rpx;
+}
+.wids50{
+  width: 50%;
+}

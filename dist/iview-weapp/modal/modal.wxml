@@ -1,0 +1,8 @@
+<!--dist/iview-weapp/modal/modal.wxml-->
+<view bindtap='{{mdoalclose}}' class="i-modal-mask {{ mdoaltoggle ? 'i-modal-mask-show' : '' }}"></view>
+<view wx:if='{{mdoaltoggle}}' style='width:{{width}}%;' class="extra-class i-modal {{ mdoaltoggle ? 'i-modal-show' : '' }}">
+  <slot wx:if="{{ismr}}"></slot>
+  <view wx:else class='flex-center-col pad_20 ba_f'>
+    <slot></slot>
+  </view>
+</view>

@@ -1,0 +1,164 @@
+<!--pages/store/storemain/storedetail.wxml-->
+<view class="container padding-bottom">
+  <swiper-case content="{{Swiper}}"></swiper-case>
+  <view class='sharebtn' bindtap='share'>
+    <view class='sharebtntxt'>分享</view>
+  </view>
+  <!-- <i-notice-bar icon="systemprompt" backgroundcolor="#f4f4f4" color="#666" loop speed="2000">
+    {{storeInfo.introduce}}
+  </i-notice-bar> -->
+  <wux-cell mode='scaleToFill' isLast='true' imgw='100' imgh='100' boradius='50%' thumb="{{url}}{{storeInfo.storeLogo[0].url}}">
+    <view class='fon_28 color_6' slot="bodyer">
+      <view class='flex-ra'>
+        <view>{{storeInfo.storeName}}</view>
+        <image wx:if="{{storeInfo.isAuth=='1'}}" class='labelimg mar_l' src='{{imgsrc}}/wechatimg/img/qyrz.png'></image>
+        <image wx:if="{{storeInfo.isEnsure=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/bzj.png'></image>
+      </view>
+      <view>分享：{{storeInfo.shareNum||0}} 浏览：{{storeInfo.viewNum||0}}</view>
+    </view>
+    <view wx:if="{{storeInfo.follow==false}}" slot="footer" bindtap='collection_store' class='attention fon_28' style='background:{{color}}'>+关注</view>
+    <view wx:else slot="footer" bindtap='collection_store' class='attention fon_28' style='background:#e5e5e5'>已关注</view>
+  </wux-cell>
+  <wux-cell-group>
+    <wux-cell wx:if="{{storeInfo.introduce}}" tftsize='28' title="{{storeInfo.introduce}}" is-link>
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-gonggao fon_40' style='color:{{color}}'></text>
+      </view>
+    </wux-cell>
+    <wux-cell wx:if="{{storeInfo.vr}}" tftsize='28' bind:click='sjvr' title="商家实景VR" is-link>
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-shipin fon_40' style='color:{{color}}'></text>
+      </view>
+    </wux-cell>
+    <wux-cell tftsize='28' bind:click='ylphotoList' is-link>
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-tupian fon_40' style='color:{{color}}'></text>
+      </view>
+      <view slot='bodyer' class='flex-row flex-y-center'>
+        <block wx:for='{{storeInfo.photoList}}' wx:key="url">
+          <image wx:if='{{index<6}}' class='imgsize mar_r' src='{{item.url}}'></image>
+        </block>
+      </view>
+    </wux-cell>
+    <wux-cell tftsize='28' bind:click='maketel' title="{{storeInfo.linkTel}}" is-link label="营业时间：{{storeInfo.businessStartTime}}-{{storeInfo.businessEndTime}}">
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-dianhua1 fon_40' style='color:{{color}}'></text>
+      </view>
+    </wux-cell>
+    <wux-cell tftsize='28' bind:click='ylwx' title="商家微信" is-link>
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-erweima fon_40' style='color:{{color}}'></text>
+      </view>
+    </wux-cell>
+    <block wx:if="{{storeInfo.license && storeInfo.license!=null}}">
+      <wux-cell tftsize='28' bind:click='yyzz' title="营业执照" is-link>
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-tupian fon_40' style='color:{{color}}'></text>
+      </view>
+    </wux-cell>
+    </block>
+    <!-- <wux-cell isLast='true' tftsize='28' bind:click='opaddress' title="{{storeInfo.address}}" is-link label="距您{{distance}}千米  路程约{{seconds}}"> -->
+    <wux-cell isLast='true' tftsize='28' bind:click='opaddress' title="{{storeInfo.address}}" is-link>
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-dingwei fon_40' style='color:{{color}}'></text>
+      </view>
+    </wux-cell>
+    <!-- <wux-cell url="/pages/" title="商家视频" is-link>
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-spdy fon_50' style='color:{{color}}'></text>
+      </view>
+    </wux-cell> -->
+  </wux-cell-group>
+
+  <view class='flex-row flex-wrap flex-y-center pad_20 ba_f' style='padding-bottom:0' wx:if="{{storeInfo.storeLabel!=''}}">
+    <i-tag i-class="i-tags" font-size="30" border-color="{{color}}" bg-color='#fff' color='{{color}}' wx:for="{{storeInfo.storeLabel}}" wx:key="*this">
+      {{item}}
+    </i-tag>
+  </view>
+  <!-- 抢购 -->
+  <block wx:if="{{storeInfo.auxiliary.rush&&storeInfo.rush.length}}">
+    <wux-cell url='/pages/rushbuy/index?id={{storeInfo.id}}' wux-class='mar_t' is-link isLast='true' tftsize='30' tclass="color_0 wei" title="抢购" extra="更多"></wux-cell>
+    <view class=''>
+      <block wx:for="{{storeInfo.rush}}" wx:key="{{item.id}}">
+        <rushbuy-cell color="{{color}}" content="{{item}}" />
+      </block>
+    </view>
+  </block>
+  <!-- 优惠券 -->
+  <block wx:if="{{storeInfo.auxiliary.coupon&&storeInfo.coupon.length}}">
+    <wux-cell url='/pages/coupon/index?id={{storeInfo.id}}' wux-class='mar_t' is-link isLast='true' tftsize='30' tclass="color_0 wei" title="优惠券" extra="更多"></wux-cell>
+    <view class='mar_t'>
+      <block wx:for="{{storeInfo.coupon}}" wx:key="{{item.id}}">
+        <coupon-cell color="{{color}}" content="{{item}}" />
+      </block>
+    </view>
+  </block>
+  <!-- 拼团 -->
+  <block wx:if="{{storeInfo.auxiliary.group&&storeInfo.group.length}}">
+    <wux-cell url='/pages/assemble/index?id={{storeInfo.id}}' wux-class='mar_t' is-link isLast='true' tftsize='30' tclass="color_0 wei" title="拼团" extra="更多"></wux-cell>
+    <view class=''>
+      <block wx:for="{{storeInfo.group}}" wx:key="{{item.id}}">
+        <assemble-cell content="{{item}}" color="{{color}}" />
+      </block>
+    </view>
+  </block>
+  <!-- 砍价 -->
+  <block wx:if="{{storeInfo.auxiliary.bargain&&storeInfo.bargain.length}}">
+    <wux-cell url='/pages/bargain/index?id={{storeInfo.id}}' wux-class='mar_t' is-link isLast='true' tftsize='30' tclass="color_0 wei" title="砍价" extra="更多"></wux-cell>
+    <view class=''>
+      <block wx:for="{{storeInfo.bargain}}" wx:key="{{item.id}}">
+        <bargain-cell content="{{item}}" color="{{color}}" />
+      </block>
+    </view>
+  </block>
+  <view wx:if="{{ad}}" class="adContainer">
+  <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+</view>
+  <!-- 商品 -->
+  <block wx:if="{{storeInfo.auxiliary.shop&&storeInfo.goods.length}}">
+    <wux-cell url='/pages/mall/storemall?id={{storeInfo.id}}' wux-class='mar_t' is-link isLast='true' tftsize='30' tclass="color_0 wei" title="商城商品" extra="更多"></wux-cell>
+    <view class='ba_f flex-bt flex-wrap pad_20'>
+      <block wx:for="{{storeInfo.goods}}" wx:key="{{item.id}}">
+        <mall-cell content="{{item}}" color="{{color}}" />
+      </block>
+    </view>
+  </block>
+  <!-- 活动 -->
+  <block wx:if="{{storeInfo.auxiliary.activity&&storeInfo.activity.length}}">
+    <wux-cell url='/pages/activity/index?id={{storeInfo.id}}' wux-class='mar_t' is-link isLast='true' tftsize='30' tclass="color_0 wei" title="活动" extra="更多"></wux-cell>
+    <view>
+      <block wx:for="{{storeInfo.activity}}" wx:key="{{item.id}}">
+        <activity-cell color="{{color}}" content="{{item}}" />
+      </block>
+    </view>
+  </block>
+  <!-- 商家评论 -->
+  <!-- <wux-cell wux-class='mar_t' is-link isLast='true' title="评论留言" extra="我要留言"></wux-cell> -->
+  <!-- <commend/> -->
+  <view class='mar_t mainbk'>
+    <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+    </wux-tabs>
+    <view wx:if="{{key==0}}" class='pa ba_f color_6'>
+      <video wx:if="{{storeInfo.video}}" src="{{storeInfo.video}}"></video>
+      <rich-text nodes="{{storeInfo.introduce}}"></rich-text>
+      <view class='mar_t' wx:if='{{storeInfo.photoList.length!=0&&storeInfo.photoList.length!=null}}'>
+        <image mode='widthFix' class='image_all' wx:for='{{storeInfo.photoList}}' wx:key="url" src='{{item.url}}'></image>
+      </view>
+    </view>
+    <block wx:if="{{postList.length>0&&key=='1'}}">
+      <Postinfo max_length="3" show_commend="1" show_collection="0" show_zan="1" color="{{color}}" id="Postinfo" isTop="{{isTop}}" bind:slide="slide" content="{{postList}}" />
+      <view class='morePost pa_t t_c fon_26 color_6 ba_f' bindtap='morePost'>
+        <text class='morePosttext'>查看更多</text>
+      </view>
+    </block>
+    <view hidden="{{key==0}}">
+      <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+    </view>
+  </view>
+  <ewmgz extra-class='mar_t' code='{{xcxm}}' title='点击小程序码保存' />
+</view>
+<block wx:if="{{foot_menu!=null}}">
+  <footmenu comment_close="1" bind:click='maketel' content="{{foot_menu}}" />
+</block>
+<share closepop='closepop' onshare="{{onshare}}" />
+<canvas style="top:-10000px;" canvas-id="ctx"></canvas>

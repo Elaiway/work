@@ -1,0 +1,7 @@
+<!--dist/public/components/common/block-text.wxml-->
+<block wx:if='{{type==1}}'>
+  <text class='text-btn {{className}}' style="color:{{color}};border-color:{{color}};display:{{display}};{{styleName}}">{{text}}</text>
+</block>
+<block wx:elif='{{type==2}}'>
+  <text class='text-btnf {{className}}' style="background:{{color}};border-color:{{color}};display:{{display}};{{styleName}}">{{text}}</text>
+</block>

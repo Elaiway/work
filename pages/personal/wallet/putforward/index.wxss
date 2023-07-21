@@ -1,0 +1,10 @@
+/* pages/personal/wallet/putforward/index.wxss */
+.walletBalance{
+    padding: 40rpx 0;
+}
+.walletBalance input{
+  height: 2em;
+}
+radio{
+    transform: scale(0.8,0.8);
+}

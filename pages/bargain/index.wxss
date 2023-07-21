@@ -1,0 +1,53 @@
+/* pages/mall/index.wxss */
+
+.mall-main {
+  margin: -40rpx 30rpx 30rpx;
+}
+
+.mall-category {
+  background: #fff;
+  overflow: hidden;
+  border-radius: 20rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.mall-title {
+  height: 88rpx;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  background-position:center;  /** 居中*/
+    background-repeat:no-repeat; /** 不重复*/
+    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAABgCAMAAAB15gd5AAABBVBMVEUAAACqWdVH/hbKFv7+VBYWxf5H/hbKFv4Wxf7+VBYWxf7+VBbKFv7KFv4Wxf7KFv7KFv7+VBb+VBb+VBbKFv4Wxf7KFv5H/hb+VBb+VBb+VBZH/hbKFv4Wxf5H/hb+VBZH/hb+VBb+VBZH/hbKFv4Wxf4Wxf4Wxf5H/hZH/hbKFv5H/hYWxf4Wxf5H/hYWxf7+VBbKFv7KFv7+VBbKFv4Wxf5H/hYWxf7+VBYWxf5H/hYWxf7KFv5H/hb+VBZH/hb+VBbKFv5H/hZH/hZH/hYWxf5H/hZH/hZH/hb+VBbKFv4Wxf5H/hbKFv4Wxf5H/hbKFv7+VBYWxf4Wxf5H/hb+VBbKFv4UN5aaAAAAU3RSTlMAAvv8+vrPCdZLFPDbycSolnxoVjY1KB8XEAYE7uHg28O2q46Cf1xHQioRDAnz7erl49HBvLqqnJeOhnVnS0E1IBwX1bemnH14dHFoYldUUT8uJ8HAU7QAAAI2SURBVHja7Nv3btpwFMXxa4YZCZuUFQKUQEhLs/dsuvfyeP9HaQO2kSpDnX8qXfL9PMPR0fH9yQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBFWqN+dyNmvhJg2d32d+yJbVGkWS5VGgI8yHXX9pyIJhnHcRK9iiFAVNem7TOfiyb1hHOvU24KEMV21w680ZV2kZIz1ckI8E+ti5jti30QdZ46nt5LARarmXZg41b0aQZ5T5QFWOT7zqzaL7QNmSnjzPH16gLM9SUWhP2kJlp9TDievZ8CzDGK+WF/p+ra/rebPcezciNAuNfeZn+v/SW1MRvwFQFCmbYdM/sjWQKZjp93LpII16rVWrIkmqUVb89wkMQj0PACfyZAVMZdSpRqlA8TjnMoQFQ5N57bvBOl6pkKx3dEd+D+ES88EWD5fXXdpQp8dniaTibfChCm6E7FN9WO+MB4eJy07rUFCGMcuZ7VqqiWHexanqEAoVIFNyh4xf8JZc9fWL6BAHMYRdd39Ex0Gl/Owp78LMB8n+LBoNH5xbqWtgLtNQEWqa66nnWFA964TFqB07EAi6WKcT/v6vo9e2wF8lQ7oqjm3Kl9Zfs9Oxsy6W8CRGJc7bsTBdHEyAfNvqX4sIT/LnU1mfBxVfW+ZU3snjNj8FA/igfrOVXPq7/SyXZ+QLEDAAAAAAAAAAAAAAAAAAAAAAAAAAD8bg8OCQAAAAAE/X9tcQYAAAAAAAAAAAAAACySOIpBPPTDBQAAAABJRU5ErkJggg==);
+  background-size: 100% 100%;
+}
+.mall-tj{
+  position: relative;
+  white-space: nowrap;
+  display: block;
+  padding: 0rpx 0rpx 30rpx 30rpx;
+}
+.mall-tjcellv{
+  display: inline-block;
+}
+.mall-tjcell{
+  max-width: 220rpx;
+  min-width: 220rpx;
+  padding: 20rpx 0rpx;
+  margin-right: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #eee;
+  box-shadow: 0 2rpx 4rpx 0 #ddd;
+}
+.mall-tjcell .img{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}

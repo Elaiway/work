@@ -1,0 +1,22 @@
+<!--dist/public/auxiliary/privilege/privilege-cell.wxml-->
+<view bindtap='goodinfo' class='basepadding ba_f mar_b'>
+  <view class='cell-top posi-r br-r-30'>
+    <image mode='aspectFill' class='image_all' src='{{content.showImgs}}'></image>
+    <view class='posi-a t0 l0 wei color_f b-t-l30 b-b-r30 ba-lg-f4ee pa_5_20'>{{content.groupNum}}人拼</view>
+  </view>
+  <view class='wei fon_36 pad_20'>{{content.title}}</view>
+  <view class='flex-x-bt'>
+    <view>
+      <view>
+        <text class='wei fon_36 mar_r_10 color_r'>￥{{content.groupPrice}}</text>
+        <text class='color_9 t-d-l'>￥{{content.originalPrice}}</text>
+      </view>
+      <view class='mar_t_10 flex-bt'>
+        <block wx:for="{{content.label}}" wx:key="*this">
+          <block-text wx:if="{{index<2}}" color="#E97D96" class-name="fon_24 pa_5_15 gobyndsingle {{index>0?'mar_l':''}}" text='{{item}}' />
+        </block>
+      </view>
+    </view>
+    <block-text type='2' color="#FF3838" class-name='pa_13_20 br-r-30' text='立即拼团' />
+  </view>
+</view>

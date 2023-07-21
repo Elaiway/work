@@ -1,0 +1,30 @@
+/* pages/personal/integral/integralmall/payment.wxss */
+.more{
+  margin-left: 40rpx;
+}
+.site{
+  width: 45rpx;
+}
+.letter{
+  letter-spacing: 3rpx
+}
+.hei{
+  height: 80rpx;
+}
+.trigon{
+  top: -48rpx;
+}
+.trigonb{
+  width: 40rpx;
+  height: 40rpx;
+  border-width: 25rpx;
+  border-style: solid;
+  border-color: transparent transparent #FFF0F1 transparent;
+  margin-left: 40rpx;
+}
+.deduction{
+  background: #FFF0F1;
+}
+.pa_left30{
+  padding-left: 30rpx;
+}

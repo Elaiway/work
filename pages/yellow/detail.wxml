@@ -1,0 +1,121 @@
+<!--pages/detail/detail.wxml-->
+<block wx:if="{{buttons.length}}">
+  <wux-floating-button color="{{color}}" wux-class='padding-bottom' position="{{ position }}" theme="{{ theme }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
+</block>
+<view class="container padding-bottom">
+  <view class="nameBox">
+    <view class='img-con'>
+      <image class='bg-img' src='/assets/images/yellow/bbg.png'></image>
+      <view class='main-box'>
+        <wux-cell background='transparent' mode='aspectFill' imgw='100' imgh='100' boradius='50%' thumb="{{yellowInfo.logo}}">
+          <view class='fon_26 color_6' slot="bodyer" style="min-height:120rpx;">
+            <view class='flex-ra'>
+              <view class='fon_32 color_3 mar_b_10 hydlnr_2'>{{yellowInfo.name}}</view>
+              <!-- <image wx:if="{{storeInfo.isAuth=='1'}}" class='labelimg mar_l' src='{{imgsrc}}/wechatimg/img/qyrz.png'></image>
+              <image wx:if="{{storeInfo.isEnsure=='1'}}" class='labelimg mar_l_10' src='{{imgsrc}}/wechatimg/img/bzj.png'></image> -->
+            </view>
+            <view>{{yellowInfo.nTypeName}}·{{yellowInfo.typeName}}</view>
+          </view>
+        </wux-cell>
+        <wux-cell background='transparent' isLast='true'>
+          <view class='fon_28 color_6' slot="bodyer">
+            <view class='flex-y-center'>
+              <text class='iconfont icon-landline fon_36' style='color:{{color}}'></text>
+              <text class='mar_l'>{{tel}}</text>
+            </view>
+            <view class='flex-y-center'>
+              <text class='iconfont icon-icon- fon_36' style='color:{{color}}'></text>
+              <text class='mar_l gobyndsingle address'>{{yellowInfo.address}}</text>
+            </view>
+          </view>
+        </wux-cell>
+        <wux-cell background='transparent' isLast='true' wux-class='mar_t_10'>
+          <view class='fon_26 color_3 flex-center flex-around' slot="bodyer">
+            <view class='flex-center-col'>
+              <view class='fon_32'>{{yellowInfo.viewNum}}</view>
+              <view>
+                <text class='iconfont icon-huo fon_32 color_rb'></text>
+                <text class='mar_l_10'>浏览</text>
+              </view>
+            </view>
+            <view class='flex-center-col'>
+              <view class='fon_32'>{{yellowInfo.followNum}}</view>
+              <view>
+                <text class='iconfont icon-shoucang1 fon_30'></text>
+                <text class='mar_l_10'>收藏</text>
+              </view>
+            </view>
+            <view class='flex-center-col'>
+              <view class='fon_32'>{{yellowInfo.shareNum}}</view>
+              <view>
+                <text class='iconfont icon-fenxiang1 fon_30'></text>
+                <text class='mar_l_10'>分享</text>
+              </view>
+            </view>
+          </view>
+        </wux-cell>
+      </view>
+    </view>
+  </view>
+  <view class="flex-center flex-around fon_30 basepadding">
+    <block wx:for='{{btnArr}}' wx:key="item.type">
+      <view class='yd-btn bor-c1' id='{{index}}' bindtap='mdoalopen'>{{item.name}}</view>
+    </block>
+  </view>
+    <view wx:if="{{ad}}" class="adContainer">
+      <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+    </view>
+  <view class="merchant">
+    <wux-tabs wux-class='bor-btm' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+    <view wx:if="{{key==0}}" class='pa ba_f color_6'>
+      <rich-text nodes="{{yellowInfo.introduce}}"></rich-text>
+    </view>
+    <view wx:if="{{key==1}}" class='pa ba_f color_6'>
+      <view wx:if="{{yellowInfo.photoList.length}}" class=''>
+        <image mode='widthFix' class='image_all' wx:for='{{yellowInfo.photoList}}' bindtap='previewImage' data-i='{{index}}' wx:key="url" src='{{item}}'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl bind:footclick='footclick' content="{{foot_menu}}" />
+</block>
+<t-modal ismr='true' width='80' mdoalclose="mdoalclose" mdoaltoggle='{{mdoaltoggle}}'>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='ba_f'>
+    <view class='ba_f9 basepadding t_c'>{{title}}</view>
+    <view class='ba_f'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">联系人</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input placeholder-class='fon_28' value='{{userinfo.userName}}' name='name' class="weui-input fon_28 color_6" placeholder="请输入联系人" />
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">联系电话</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input placeholder-class='fon_28' value='{{userinfo.userTel}}' name='tel' type='number' class="weui-input fon_28 color_6" placeholder="请输入联系电话" />
+          </view>
+        </view>
+      </view>
+      <view class='mar'>
+        <textarea class="weui-textarea ba_f9 pa fon_28" name='details' maxlength='100' placeholder="请输入100字以内详细说明" style="height: 200rpx" />
+      </view>
+      <!-- <view class='t_c mar_b fon_26 color_b'>我的认领记录</view> -->
+    </view>
+    <button disabled='{{loading}}' loading='{{loading}}' class='submit-btn bor-a0 fon_32 color_f t_c' style='background:{{color}}' form-type="submit">提 交</button>
+  </view>
+</form>
+</t-modal>
+<t-modal ismr='true' width='70' mdoalclose="mdoalclose" mdoaltoggle='{{qrcodetoggle}}'>
+<view class='flex-center basepadding ba_f' style='height:70vw'>
+<image bindtap='preqrcode' class='modal-img' src='{{url}}{{yellowInfo.qrcode[0].url}}'></image>
+</view>
+<button class='submit-btn bor-a0 fon_30 color_f t_c' style='background:{{color}}' bindtap='qrcodeclose'>确 定</button>
+</t-modal>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

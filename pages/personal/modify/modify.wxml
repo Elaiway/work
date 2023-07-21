@@ -1,0 +1,21 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container ba_f'>
+    <view class='containerv containerv1 ba_f9 color_9 fon_30'>一个手机号只能绑定一个账号哦!</view>
+    <view class='containerv containerv2 bor_bottom'>
+      <view class='dis_in fon_30'>手机号</view>
+      <view class='dis_in fon_30' bindtap='modify'>
+        <input placeholder='请输入新的手机号' type='number'></input>
+      </view>
+      <view style='color:{{color}};border-left:2rpx solid #f9f9f9' class='fon_30 t_c dis_in code'>获取验证码</view>
+    </view>
+    <view class='containerv containerv3 bor_bottom'>
+      <view class='dis_in fon_30'>验证码</view>
+      <view class='dis_in fon_30' bindtap='modify'>
+        <input placeholder='请输入验证码' type='number'></input>
+      </view>
+    </view>
+  </view>
+  <view class='mar_t pa'>
+    <button class='color_f' formType="submit" style='background:{{color}}'>确认修改并保存</button>
+  </view>
+</form>

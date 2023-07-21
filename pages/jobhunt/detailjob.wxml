@@ -1,0 +1,146 @@
+<view class="container after-navbar">
+  <view wx:if="{{jobInfo}}" class="ba_f">
+    <wux-cell isLast='true' background='transparent' mode='aspectFill' imgw='100' imgh='100' boradius='50%' thumb="{{jobInfo.logo}}">
+      <view class='fon_28 color_3' slot="bodyer">
+        <view class="flex-row flex-bet fon_32">
+          <view class="flex-grow-1 mar_r_10">{{jobInfo.name}}</view>
+          <view style="color:{{color}}" class="flex-grow-0 mar_l_10">{{jobInfo.salary}}</view>元/月
+        </view>
+        <view class="flex-row flex-bet fon_28 mar_t_10">
+          <view class='flex-grow-1 color_9'>{{jobInfo.createdAt}} 发布</view>
+          <view class="flex-grow-0" style="color:{{color}}">{{jobInfo.changedAt}}更新</view>
+        </view>
+      </view>
+    </wux-cell>
+    <view class="pa">
+      <text wx:for="{{jobInfo.labelarr}}" class="bgblue tagad fon_22 color_f mar_r_10 {{index=='0'?'bgorange':'' || index=='1'?'bororange':'' ||index=='2'?'borbgblue':'' || index=='3'?'borbgsku':''|| index=='4'?'borgreen':''}}">{{item}}</text>
+    </view>
+    <view class='flex-row flex-bet color_9 mar_t_10 fon_28 pa_tr30 bor-top'>
+      <view class="flex-row flex-y-center">
+        <text class="iconfont icon-xingbie fon_32 mar_r_10"></text>
+        <view>
+          <text wx:if="{{jobInfo.sex=='1'}}">男</text>
+          <text wx:if="{{jobInfo.sex=='2'}}">女</text>
+        </view>
+      </view>
+      <view class="flex-row flex-y-center">
+        <text class="iconfont icon-shengri fon_32 mar_r_10"></text>
+        <view>{{jobInfo.age}}岁</view>
+      </view>
+      <view class="flex-row flex-y-center">
+        <text class="iconfont icon-gongzuojingyan fon_32 mar_r_10"></text>
+        <view>{{jobInfo.experience}}</view>
+      </view>
+      <view class="flex-row flex-y-center">
+        <text class="iconfont icon-xueli fon_32 mar_r_10"></text>
+        <view>{{jobInfo.education}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_34' title="求职意向">
+      <view slot='header' class='iconfont icon-gongzuojingyan mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="pa_t">
+      <view class="flex-row fon_28 pa_l mar_tb_10">
+        <view class="flex-grow-0 color_9">求职状态</view>
+        <view class="flex-grow-1 color_3 mar_l">{{jobInfo.jobStatus}}</view>
+      </view>
+      <view class="flex-row fon_28 pa_l mar_tb_20">
+        <view class="flex-grow-0 color_9">工作性质</view>
+        <view wx:if="{{jobInfo.workNature=='1'}}" class="flex-grow-1 color_3 mar_l">全职</view>
+        <view wx:if="{{jobInfo.workNature=='2'}}" class="flex-grow-1 color_3 mar_l">兼职</view>
+      </view>
+      <!-- <view class="flex-row fon_28 pa_l mar_tb_10">
+        <view class="flex-grow-0 color_9">期望行业</view>
+        <view class="flex-grow-1 color_3 mar_l">{{jobInfo}}</view>
+      </view> -->
+      <view class="flex-row fon_28 pa_l mar_tb_20">
+        <view class="flex-grow-0 color_9">期望职位</view>
+        <view class="flex-grow-1 color_3 mar_l">{{jobInfo.industryName}},{{jobInfo.positionName}}</view>
+      </view>
+      <view class="flex-row fon_28 pa_l mar_tb_20">
+        <view class="flex-grow-0 color_9">期望地区</view>
+        <view class="flex-grow-1 color_3 mar_l">{{jobInfo.area}}</view>
+      </view>
+      <view class="flex-row fon_28 pa_l mar_tb_20">
+        <view class="flex-grow-0 color_9">期望薪资</view>
+        <view class="flex-grow-1 color_3 mar_l">{{jobInfo.salary}}元/月</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{jobInfo.userId == userinfo.id}}" class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_34' title="教育经历">
+      <view slot='header' class='iconfont icon-xueli mar_r fon_40' style='color:{{color}}'></view>
+    </wux-cell>
+    <view wx:for="{{study}}" class="fon_28 pad_20 flex-row color_3">
+      <view class="flex-grow-0 rel">
+        <view class="circle mar_r mar_t_10 flex-center">
+          <view class="innerc"></view>
+        </view>
+        <view class="grayline ab"></view>
+      </view>
+      <view class="flex-grow-1">
+        <view class="flex-bet">
+          <view class="flex-grow-1">{{item.startTime}}-{{item.endTime}}</view>
+          <view class="flex-grow-0 fon_30 color_r" bindtap='modifyjy' data-info='{{item}}'>修改</view>
+        </view>
+        <view class="flex-bet">
+          <view class="fon_30 flex-grow-1">{{item.name}}</view>
+          <view class="flex-grow-0 color_3">{{item.jobName}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="t_c flex-x-center">
+      <view class="addjy fon_28 flex-center mar_b50 mar_t30" style="border:1rpx solid {{color}};color:{{color}}" bindtap="addjy">+ 添加教育经历</view>
+    </view>
+  </view>
+  <view wx:if="{{jobInfo.userId == userinfo.id}}" class="ba_f lines">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_30' title="工作经历">
+      <view slot='header' class='iconfont icon-jilu1 mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <view wx:for="{{work}}" class="fon_28 pad_20 flex-row color_3">
+      <view class="flex-grow-0 rel">
+        <view class="circle mar_r mar_t_10 flex-center">
+          <view class="innerc"></view>
+        </view>
+        <view class="grayline ab"></view>
+      </view>
+      <view class="flex-grow-1">
+        <view class="flex-bet">
+          <view class="flex-grow-1">{{item.startTime}}-{{item.endTime}}</view>
+          <view class="flex-grow-0 fon_30 color_r" bindtap='modifyjy' data-info='{{item}}'>修改</view>
+          <!-- <view class="flex-grow-0">{{item.jobName}}</view> -->
+        </view>
+        <view class="flex-bet">
+          <view class="fon_30 flex-grow-1">{{item.name}}</view>
+          <!-- <view wx:if="{{item.salary!==null}}" class="flex-grow-0 color_3" style="color:{{color}}">{{item.salary}}</view> -->
+           <view class="flex-grow-0">{{item.jobName}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="t_c flex-x-center"> 
+      <view class="addgz fon_28 flex-center mar_b50 mar_t30" style="border:1rpx solid {{color}};color:{{color}}" bindtap="addgz">+ 添加工作经历</view>
+    </view>
+  </view>
+  <view class="ba_f">
+    <wux-cell isLeft='true' wux-class='mar_t flex-y-center fon_30' title="自我描述">
+      <view slot='header' class='iconfont icon-zhanghao mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <view class="color_9 pa_tr30 fon_28">{{jobInfo.introduce}}</view>
+  </view>
+</view>
+<block wx:if="{{foot_menu!=null && jobInfo.userId !== userinfo.id}}">
+  <foot-dl bind:footclick='footclick' content="{{foot_menu}}" />
+</block>
+<block wx:else>
+  <view class='bottomfixed'>
+    <button wx:if="{{jobInfo.status!=='0'}}" disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" bindtap="operation" data-info='{{jobInfo}}'>操作/编辑</button>
+    <button wx:if="{{jobInfo.status=='0'}}" disabled='{{true}}' loading='{{loading}}' style='background:#999' class="br-r-0" type="primary">待审核</button>
+  </view>
+</block>
+<!--  action组件 -->
+<i-action-sheet visible="{{ infomationVisible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+</i-action-sheet>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

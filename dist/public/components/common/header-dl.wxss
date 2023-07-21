@@ -1,0 +1,14 @@
+/* dist/public/components/common/header-dl.wxss */
+@import "/app.wxss";
+.headerdl{
+  height: 90rpx;
+  background: #fff;
+  padding: 0 30rpx;
+}
+.headerdltext{
+  width: 60rpx;
+  color: #666;
+}
+.headerdlbd{
+  font-size: 32rpx;
+}

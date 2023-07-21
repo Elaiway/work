@@ -1,0 +1,43 @@
+<!--pages/publishtype/publishtype.wxml-->
+<include src="/assets/commons/navbar/navbar.wxml" />
+<view class="container after-navbar">
+  <view class='flex-row basepadding'>
+    <icon type='info' size='16' color='#49CBF7'></icon>
+    <view class='fon_24 mar_l_10 color_6'>{{postconfig.disclaimer}}</view>
+  </view>
+  <wux-cell-group>
+    <wux-cell wx:if="{{storeconfig.enter=='1'}}" bind:click='rzsj' padding='32rpx 30rpx' fontweight='true' background='#fff' title="我是{{storeconfig.field}},入驻{{system.name}}" is-link label="超低成本，网络宣传，简单有效，方便快捷">
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-ruzhu fon_50' style='color:{{color}}'></text>
+      </view>
+    </wux-cell>
+    <!-- <wux-cell bind:click='rzmp' padding='32rpx 30rpx' fontweight='true' background='#fff' title="我是个人,入驻名片" is-link label="超低成本，网络宣传，简单有效，方便快捷">
+      <view slot='header' class='mar_r'>
+        <text class='iconfont icon-mingpian fon_50' style='color:{{color}}'></text>
+      </view>
+    </wux-cell> -->
+  </wux-cell-group>
+  <view class='basepadding t_c basefz  ba_f'>
+        <text class='color_9'>——</text>
+        <text class='mar_l color_6'>请选择您要发布的栏目</text>
+        <text class='color_9 mar_l'>——</text>
+  </view>
+  <wux-grids col="5">
+    <wux-grid width='20%' bind:click="handlegridclick" wx:for="{{posttype}}" index="{{index}}" grid-id="{{item.id}}" thumb="{{url}}{{item.icon}}" label="{{item.name}}" />
+  </wux-grids>
+  <view class='basepadding t_c ba_f basefz'>
+     <text class='color_9'>——</text>
+     <text class='mar_l color_6'>更多栏目</text>
+     <text class='color_9 mar_l'>——</text>
+  </view>
+   <wux-grids col="5">
+    <wux-grid width='20%' bind:click="handlegridclick2" wx:for="{{moretype}}" index="{{index}}" grid-id="{{item.type}}" thumb="{{item.icon}}" label="{{item.name}}" />
+  </wux-grids>
+  <footer bottom='2'></footer>
+</view>
+<i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button fontsize='35' slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+</i-action-sheet>
+<i-action-sheet visible="{{ visible2 }}" actions="{{ actions2 }}" show-cancel bind:cancel="handleCancel2" bind:click="handleClickItem2">
+  <i-button fontsize='35' slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel2">{{xzname2}}</i-button>
+</i-action-sheet>

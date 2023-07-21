@@ -1,0 +1,35 @@
+<view class="container after-navbar">
+  <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  <view class="mar_t">
+    <view wx:for="{{postList}}" wx:key="" bindtap='writeoff' data-info='{{item}}' class="mar_b30 ba_f flex pa">
+      <view class="flex-grow-0">
+        <image class="copimg" mode='aspectFill' src="{{item.showImgs}}"></image>
+      </view>
+      <view class="flex-grow-1 flex-row fon_24 mar_l">
+        <view class='wid'>
+          <view class='flex-row flex-y-bottom'>
+            <view class="fon_28 gobyndsingle">{{item.title}}</view>
+          </view>
+          <view class="fon_26 color_9 mar_t_5 gobyndsingle">下单时间：{{item.createdAt}}</view>
+          <view class="fon_26 color_9 mar_t_5 gobyndsingle">有效期至：{{item.expireTime}}</view>
+          <view class="fon_26 color_9 mar_t_5 gobyndsingle">购买数量：{{item.orderNum}} </view>
+          <view class="fon_26 color_9 mar_t_5 gobyndsingle">支付金额：{{item.totalMoney}}</view>
+          <view class="flex-bet">
+            <view class="flex flex-g-1 flex-y-center" style="color:{{color}}">
+              <view class="fon_36 mar_l_10">
+                ￥{{item.goodsMoney}}元
+                <text class='fon_26 color_9 t-d-l'>￥{{item.originalPrice}}</text></view>
+            </view>
+            <view class="flex-g-0 mar_r">
+              <view class="ybtn color_f" style="background-color:{{item.tips=='已付款'?color:'#999'}}" catchtap='writeoff' data-info='{{item}}'>{{item.tips}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='rushbuy' />

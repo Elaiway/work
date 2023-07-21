@@ -1,0 +1,4 @@
+.navlogo {
+  width: 82rpx;
+  height: 82rpx;
+}

@@ -1,0 +1,66 @@
+/* dist/public/textarea.wxss */
+@import "/app.wxss";
+.store-cell{
+  background: #fff;
+  padding: 20rpx 30rpx;
+}
+.sjleft{
+  position: relative;
+  overflow: hidden;
+}
+.sjleftimg{
+  width: 170rpx;
+  height: 170rpx;
+  margin-right: 20rpx;
+  border-radius: 15rpx;
+}
+.sjright1{
+  font-size: 30rpx;
+  color: #000;
+}
+.sjname{
+  width: 200rpx;
+  /* font-weight: bold; */
+}
+.ggname{
+  width: 400rpx;
+}
+.dzname{
+  width: 400rpx;
+}
+.m_r10{
+  margin-right: 10rpx;
+}
+.zantext{
+ color: #FF6565;
+}
+.color_r{
+  color: #FF6565;
+}
+.color_y{
+  color: #C5A166;
+}
+.color_f{
+  color: #fff;
+}
+.color_7{
+  color: #B7B7B7;
+}
+.color_9{
+  color: #999;
+}
+.fulltext{
+  min-width: 40rpx;
+  height: 40rpx;
+  color: white;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 6rpx;
+}
+.i-tags{
+  margin-right: 10rpx;
+  padding: 0 10rpx;
+}
+.dingwei{
+  margin-left: -4rpx;
+}

@@ -1,0 +1,37 @@
+<view class="container after-navbar">
+<view>
+    <search id='Search' class="postion" content="{{Search}}" searchtype='6' color="{{color}}"></search>
+  </view>
+   <!-- 分类 -->
+   <block wx:if="{{postName.length>0}}">
+    <wux-tabs tabs="{{ postName }}" color='{{color}}' current="{{ keyt }}" scroll bindchange="onTabsChanges"></wux-tabs>
+  </block>
+  <!-- 轮播图 -->
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <!-- 优惠券分类 -->
+  <view class="pad_20 flex-bet ba_f bor-top fon_30" wx:if="{{rushbuy.coupon == true}}">
+    <view wx:for="{{housCategory}}" wx:key="" class="flex-col-center flex-g-1 " bindtap='clicklist' data-index="{{index}}">
+      <view class="navlogo imgshape1 flex-center {{index=='0'?'bgone':'' || index=='1'?'bgtwo':'' || index=='2'?'bgthree':''}}">
+        <text class="iconfont fon_44 color_f {{index=='0'?'icon-swticonyouhuiquanwenzi':'' || index=='1'?'icon-youhui-':'' || index=='2'?'icon-wodeyouhuijuan':''}}"></text>
+      </view>
+      <view class="mar_t fon_26" style="color:{{ index==current ? color : '' }}">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="mar_t">
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <!-- 列表 -->
+  <view class="mar_t">
+    <view wx:if="{{postList.length}}" class=''>
+      <block wx:for="{{postList}}" wx:key="{{item.id}}">
+        <rushbuy-cell content="{{item}}" time="{{endTime}}" color="{{color}}" />
+      </block>
+    </view>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if="{{rushbuy}}" color='{{color}}' page-type='rushbuy' />

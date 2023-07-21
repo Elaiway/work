@@ -1,0 +1,15 @@
+<view class='ba_f' wx:if="{{content.swiper.children.length>0}}" style="padding:{{content.upDownPadding}}px {{content.leftRightPadding}}px;margin-top:{{content.topMargin}}px;">
+  <swiper class="swiper" duration="{{content.duration}}" style="height:{{content.height}}px;border-radius:{{content.radius}}px;" indicator-dots="{{content.swiper.children.length>1}}" circular="true" indicator-color="#FFF" indicator-active-color="{{color}}"
+    autoplay="{{content}}" interval="{{content.interval*1000||5000}}" duration="500">
+    <block wx:for="{{content.swiper.children}}" wx:key="url">
+      <swiper-item>
+        <navigator wx:if="{{item.mini.type=='mini'}}" target='miniProgram' app-id='{{item.mini.url}}' class='wid_hei'>
+          <image mode="{{content.mode||'scaleToFill'}}" style="width:100%;height:100%" src="{{item.url}}" class="slide-image" />
+        </navigator>
+        <view wx:else class='wid_hei'>
+          <image mode="{{content.mode||'scaleToFill'}}" catchtap='jump' data-idx="{{index}}" style="width:100%;height:100%" src="{{item.url}}" class="slide-image" />
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

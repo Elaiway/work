@@ -1,0 +1,21 @@
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+    <view class='container padding-bottom'>
+        <view class='ba_f basepadding' wx:if="{{type=='0'}}">
+            <!-- <rich-text nodes='{{nodes}}'></rich-text> -->
+            <view wx:for="{{rztimearr}}">
+                <view style='color:{{color}}'>{{item.setName}}</view>
+                <!-- <view class='color_9 fon_28'>{{item.body}}</view> -->
+                <rich-text class='color_9 fon_28' nodes='{{item.body}}'></rich-text>
+            </view>
+        </view>
+        <view class='ba_f basepadding' wx:if="{{type=='1'}}">
+            <!-- <rich-text nodes='{{nodes}}'></rich-text> -->
+            <view class='fon_wei pa_t color_3'>{{title}}</view>
+            <!-- <view class='color_9 fon_28'>{{info}}</view> -->
+            <rich-text class='color_9 fon_28' nodes='{{info}}'></rich-text>
+        </view>
+    </view>
+    <view class='foot-button btn-btm'>
+        <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">我知道了</button>
+    </view>
+</form>

@@ -1,0 +1,41 @@
+/* pages/detail/detail.wxss */
+@import "/app.wxss";
+page{
+  color: #333;
+}
+.nameBox{
+  padding: 20rpx 30rpx 0rpx 30rpx; 
+  width: 100%;
+  height: 500rpx;
+}
+.img-con{
+  position: relative;
+  height: 100%;
+  border-radius: 18rpx;
+  overflow: hidden;
+}
+.bg-img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.main-box{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.address{
+  width: 550rpx;
+}
+.yd-btn{
+  border-radius: 40rpx;
+  padding: 12rpx 52rpx;
+}
+.yd-modal{
+  width: 80%;
+}
+.modal-img{
+  width: 80%;
+  height: 80%;
+}

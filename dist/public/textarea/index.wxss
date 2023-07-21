@@ -1,0 +1,8 @@
+/* dist/public/textarea.wxss */
+@import "/app.wxss";
+.weui-cells:before {
+  border-top: none;
+}
+.weui-cells:after {
+  border-bottom: none;
+}

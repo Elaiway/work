@@ -1,0 +1,86 @@
+<view class="content">
+  <view class="ba_f base-pad2">
+    <view class="flex" style="color:{{color}}">
+      <view class="flex-grow-0">
+        <text class="iconfont icon-jinggao mar_r_10"></text>
+      </view>
+      <view class="flex-grow-1 fon_24">{{system.name}}不会以任何理由来要求您点击任何链接进行退款操 作，谨防诈骗！</view>
+    </view>
+    <view class="pa">
+      <view class="rel flex-y-center">
+        <view class="line ab"></view>
+        <view class="circular flex-bet wid">
+          <view class="cir imgshape1 rel" style="background:{{color}};border-color:{{color}}"></view>
+          <view class="cir imgshape1 rel" style="background:{{color}};border-color:{{color}}"></view>
+          <view class="cir imgshape1 rel" style="background:{{color}};border-color:{{color}}"></view>
+        </view>
+      </view>
+      <view class="flex-bet mar_t fon_28">
+        <view class="" style="color:{{color}}">填写信息</view>
+        <view style="color:{{color}}">等待付款</view>
+        <view style="color:{{color}}">报名成功</view>
+      </view>
+    </view>
+  </view>
+  <view class="ba_f color_3">
+    <view class="tba_f5 flex-bet flex-y-top base-pad2">
+      <view class="flex-grow-0 theight">
+        <image class="imglogo" src="{{detailPage.showImgs}}"></image>
+      </view>
+      <view class="flex-grow-1 theight pa_l">
+        <view class="hydlnr_2 fon_28">{{detailPage.name}}</view>
+        <view class="flex-bet fon_24 color_9 mar_t_10">
+          <view wx:if="{{detailPage.typeName!==null}}">{{detailPage.typeName}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="color_9 fon_24 base-pad2 ">
+      <text class="iconfont icon-rili mar_r_10"></text>
+      <text>{{detailPage.startTime}} ~ {{detailPage.endTime}}</text>
+    </view>
+  </view>
+  <view class="bras ba_f">
+    <wux-cell isLeft='true' wux-class=''>
+      <view slot='header' class='flex-grow-0 color_3'>人数：</view>
+      <view slot='bodyer' class='flex-grow-1 mar_l90'>{{detailPage.num}}人</view>
+    </wux-cell>
+    <wux-cell isLeft='true' wux-class='mar_t_10'>
+      <view slot='header' class='flex-grow-0 color_3'>总金额</view>
+      <view slot='bodyer' class='flex-grow-1 mar_l90' style="color:{{color}}">￥{{detailPage.money}}</view>
+    </wux-cell>
+  </view>
+  <view class="">
+    <wux-cell isLast='true' background='#f5f5f5' tftsize='30' title='核销订单'></wux-cell>
+      <view class="bor-btm ba_f t_c pad_20 head-img">
+        <image style="width:260rpx;height:260rpx;" src="data:image/png;base64,{{hxm}}"></image>
+      </view>
+    <view>
+      <wux-cell isLast='true' title='{{detailPage.code}}'>
+        <view slot='header' class='flex-grow-0 color_3'>核销码：</view>
+      </wux-cell>
+      <wux-cell isLast='true' title='{{detailPage.num}}'>
+        <view slot='header' class='flex-grow-0 color_3'>核销订单数：</view>
+      </wux-cell>
+    </view>
+  </view>
+  <view wx:if="{{detailPage.info}}">
+    <wux-cell isLast='true' background='#f5f5f5' tftsize='30' title='出行人信息'></wux-cell>
+    <block wx:for="{{detailPage.info}}" wx:key="">
+      <wux-cell isLeft='true'>
+        <view slot='header' class='maxwidth color_9'>{{item.name}}：</view>
+        <view slot='bodyer' class=''>{{item.value}}</view>
+      </wux-cell>
+    </block>
+  </view>
+  <view class="mar_t">
+    <wux-cell isLast='true' title='{{detailPage.outTradeNo}}'>
+      <view slot='header' class='flex-grow-0 color_3'>订单编号：</view>
+    </wux-cell>
+    <wux-cell isLast='true' title='{{detailPage.payTime}}'>
+      <view slot='header' class='flex-grow-0 color_3'>报名时间：</view>
+    </wux-cell>
+  </view>
+  <view class="pa_tr30">
+    <button style='background:{{color}}' class="weui-btn color_f" catchtap='onlinkTel'>联系主办方</button>
+  </view>
+</view>

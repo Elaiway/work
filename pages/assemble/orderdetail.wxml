@@ -1,0 +1,137 @@
+<!--pages/mall/refundorder.wxml-->
+<view class='container'>
+  <!-- 拼团提示 -->
+  <view class="pad_20 flex-bt" style='background:{{color}}' wx:if="{{query.orderId && goodsInfo.delivery == 2 && !query.isShare && goodsInfo.stateTips.code !=6}}">
+    <view class="">
+      <view class="fon_32 color_f mar_b">{{goodsInfo.stateTips.tips}}</view>
+      <view class="fon_32 color_f">{{goodsInfo.stateTips.tips2}}</view>
+    </view>
+    <view class="pa_l30 flex-y-center">
+      <text class="iconfont icon-shalou fon_60 color_y"></text>
+    </view>
+  </view>
+  <view class="pad_20 ba_f flex-y-center" style='color:{{color}}' wx:if="{{goodsInfo.delivery == 2 && goodsInfo.stateTips.code !=6}}">
+    拼团成功后，请到店使用，有效期至{{goodsInfo.endTime}}
+  </view>
+  <!-- 配送模式 -->
+  <block wx:if="{{goodsInfo.delivery == 1}}">
+    <choose-address renderInfo='{{addressInfo}}' />
+  </block>
+  <block wx:if="{{goodsInfo.delivery == 2}}">
+    <choose-ztd renderInfo='{{selfTaking}}' />
+  </block>
+  <!-- 商品信息 -->
+  <view class="cartmain basepadding">
+    <layout-one no-pad="true" is-last="true" after-left="true" body-src='{{goodsInfo.cover.src}}' body="{{layoutBodyOne}}" class-name='br-r-20'>
+      <view bindtap='storeInfo' slot='header' class='flex-y-center br-b-e pa_15_30'>
+        <text class='iconfont icon-shangjia fon_44'></text>
+        <text class='color_3 mar_l'>{{goodsInfo.storeName}}</text>
+        <text class='iconfont icon-you-copy color_9 fon_24 mar_l_10'></text>
+      </view>
+      <view slot="body-bd-f" class="flex-x-bt">
+        <view class='hydlnr_2'>
+          <text>{{goodsInfo.name}}</text>
+        </view>
+      </view>
+      <view slot="body-bd-s" class="flex-x-bt mar_t_10">
+        <view class='flex-raw'>
+          <block wx:for="{{goodsInfo.label}}">
+            <block-text wx:if="{{index<2}}" display='block' class-name="fon_24 pa_5_15 ba_f5 color_9 mar_r" text='{{item}}' />
+          </block>
+        </view>
+      </view>
+      <view slot="body-bd-t" class="flex-x-bt mar_t_10 color_9">
+        <view>
+          <text class='fon_30' style='color:{{color}}'>￥{{goodsInfo.money}}</text>
+          <text class='fon_24 t-d-l mar_l'>￥{{goodsInfo.oldPrice}}</text>
+        </view>
+        <view>已拼{{goodsInfo.quantity}}件</view>
+      </view>
+    </layout-one>
+  </view>
+  <view class="ba_f flex-y-center mar_tb_20 flex-bt pad_20" wx:if="{{!query.iswriteOff}}">
+    <view class="color_9">实付款：
+      <text style='color:{{color}}'>￥{{goodsInfo.totalMoney}}</text>（含运费）</view>
+    <!-- 自提订单并且已付款或拼团成功 -->
+    <view class="pa_10_20 color_f br-r-10" style='background:{{color}}' wx:if="{{goodsInfo.delivery == 2 && (goodsInfo.stateTips.code == 1||goodsInfo.stateTips.code == 2)}}" bindtap="operation">{{goodsInfo.stateTips.code == 1?'邀请好友拼团':'点击使用'}}</view>
+    <view style='color:{{color}}' wx:elif="{{goodsInfo.delivery==2 && goodsInfo.stateTips.code ==2 }}" bindtap="operation">点击使用</view>
+    <view style='color:{{color}}' wx:elif="{{!query.iswriteOff}}">{{tipsMap[goodsInfo.stateTips.code - 1]}}</view>
+  </view>
+  <view wx:if="{{query.iswriteOff}}" class='foot-buttont'>
+    <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" bindtap="qdhx">确认核销</button>
+  </view>
+  <view class='ba_f'>
+    <!-- 团信息 -->
+    <view wx:if="{{goodsInfo.groupId>0}}" class='br-b-e basepadding'>
+      <view class="flex-x-center flex-wrap">
+        <block wx:for="{{goodsInfo.faceMap}}">
+          <view class='mar_r posi-r mar_b' wx:if="{{index < showFaceLen}}">
+            <image class='imgsize100 br-d-b' style='border-color:{{color}}' src='{{item}}'></image>
+            <block-text class-name='posi-a l0 t0 br-r-20 fon_24' style-name='margin-left: -40rpx;padding:0rpx 15rpx' wx:if="{{!index}}" type='2' color="{{color}}" text='团长' />
+          </view>
+        </block>
+        <view wx:if="{{goodsInfo.num}}" class="br-d-b mar_r mar_b flex-center imgsize100">
+          <text class="iconfont icon-wenhao color_9 fon_46"></text>
+        </view>
+      </view>
+      <!-- 数量时间 -->
+      <view class="flex-x-bt" wx:if="{{goodsInfo.faceMap.length> 10 && showFaceLen != goodsInfo.faceMap.length}}">
+        <view class="color_9">共
+          <text style='color:{{color}}'>{{goodsInfo.faceMap.length}}</text>人</view>
+        <view class="pad-14-20-10" style='color:{{color}}'>查看全部</view>
+      </view>
+      <view class="pa_t" wx:if="{{goodsInfo.num && goodsInfo.stateTips.code == 1}}">
+        <view class="fon_26 t_c">还差
+          <text style='color:{{color}}'>{{goodsInfo.num}}</text>人</view>
+        <view class="posi-r flex-center dh">
+          <view class="br-b-e posi-a wid"></view>
+          <view class="ba_f posi-r basepadding color_9 flex-y-center">剩余
+            <text class="pa_10_15 color_f ba_3 br-r-10 mar_l mar_r_10">{{expireTime[1]}}</text>：
+            <text class="pa_10_15 color_f ba_3 br-r-10 mar_r_10">{{expireTime[2]}}</text>：
+            <text class="pa_10_15 color_f ba_3 br-r-10 mar_r">{{expireTime[3]}}</text> 结束
+          </view>
+        </view>
+      </view>
+      <!-- 邀请按钮 -->
+      <view wx:if="{{goodsInfo.stateTips.code == 1}}" class='foot-button pa_0'>
+        <button style='background:{{color}}' class="weui-btn" type="primary" bindtap='joinGroup'>{{goodsInfo.isJoin?'点击邀请好友拼团':'我要参与拼团'}}</button>
+      </view>
+    </view>
+    <!-- 规则 -->
+    <wux-cell title='拼团规则' is-last='true' tftsize='30' tclass='color_0' />
+    <view class="flex-y-center smpadding fon_24">
+      <view class="color_9 mar_r">
+        <text style='color:{{color}}' class="mar_r_10">1</text>开团/参团
+        <text class="iconfont icon-toright"></text>
+      </view>
+      <view class="color_9 mar_r">
+        <text style='color:{{color}}' class="mar_r_10">2</text>邀请好友
+        <text class="iconfont icon-toright"></text>
+      </view>
+      <view class="color_9 mar_r">
+        <text style='color:{{color}}' class="mar_r_10">3</text>满员发货，不满可申请退款
+        <text class="iconfont"></text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{goodsInfo.isJoin && !query.isShare}}" class='mar_t'>
+    <wux-cell title="购买用户" extra='{{goodsInfo.userName}}'></wux-cell>
+    <wux-cell title="手机号" extra='{{goodsInfo.userTel}}'></wux-cell>
+    <wux-cell title="订单编号" extra='{{goodsInfo.outTradeNo}}'></wux-cell>
+    <wux-cell title="下单时间" extra='{{goodsInfo.createdAt}}'></wux-cell>
+    <view wx:if="{{goodsInfo.delivery == 1&&goodsInfo.stateTips.code==3}}">
+      <wux-cell title="快递公司" extra='{{goodsInfo.logisticsName}}'></wux-cell>
+      <wux-cell title="快递单号" extra='{{goodsInfo.logisticsCode}}'></wux-cell>
+    </view>
+    <wux-cell wx:if="{{goodsInfo.note}}" title="订单备注" extra='{{goodsInfo.note}}'></wux-cell>
+  </view>
+</view>
+<!-- 分享组件 -->
+<share bind:poster="poster" onshare="{{onshare}}" />
+<!-- 核销码弹窗 -->
+<t-modal ismr='true' width='70' mdoalclose="mdoalclose" mdoaltoggle='{{qrcodetoggle}}'>
+  <view class='flex-center basepadding ba_f' style='height:70vw'>
+    <image style="width: 80%;height: 80%;" src="data:image/png;base64,{{hxm}}"></image>
+  </view>
+  <button class='submit-btn bor-a0 fon_30 color_f t_c' style='background:{{color}}' bindtap='qrcodeclose'>确 定</button>
+</t-modal>

@@ -1,0 +1,143 @@
+<!--pages/coupon/release.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <wux-upload wx:if="{{uploadArr[0].show}}" type='2' color="{{color}}" extra-class="t_c" tipstext='{{uploadArr[0].tips}}' htitle='{{uploadArr[0].title}}' count="{{uploadArr[0].count}}" file-list="{{ uploadArr[0].fileList }}" data-idx="{{0}}" bind:change="uploadChange">
+    </wux-upload>
+    <view class="ba_f color_3">
+      <view class="t_c pa_t30 bor-btm">
+        <view class="color_9 fon_28">优惠券标题</view>
+        <view class="fon_32 mar_t_10">
+          <input name='title' placeholder-class='fon_28' value="{{params.title}}" class="weui-input" placeholder="请输入优惠券标题" />
+        </view>
+      </view>
+    </view>
+    <view class="ba_f color_3">
+      <view class="t_c pa_t30">
+        <view class="color_9 fon_28">核销截止时间</view>
+        <dd-time-picker style-name='padding:20rpx 0' name='endTime' arrow='{{1}}' value='{{params.endTime}}' bind:change='timePickerChange' data-field='endTime' />
+      </view>
+    </view>
+    <view class="ba_f color_3 mar_t">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">购买价格</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='money' placeholder-class='fon_28' type="number" value="{{params.money}}" class="weui-input" placeholder="不填可免费领取" />
+        </view>
+        <view class='fon_28'>元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">会员价</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='vipMoney' placeholder-class='fon_28' type="number" value="{{params.vipMoney}}" class="weui-input" placeholder="不填可免费领取" />
+        </view>
+        <view class='fon_28'>元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label color_6">优惠券类型</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access fon_24">
+           <picker name='type' mode="multiSelector" data-name='type' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData['type']}}">
+              <view class="weui-select2">{{params.type||'请选择'}}</view>
+            </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input" wx:if="{{params.type}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text wx:if="{{params.type =='折扣券'}}">折扣比例</text>
+            <text wx:else="{{params.type =='代金券'}}">券的面额</text>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="{{params.type!='折扣券'?'reduce':'discount'}}" type="number" placeholder-class='fon_28' value="{{params.type!='折扣券'?params.reduce:params.discount}}" class="weui-input" placeholder="{{params.type!='折扣券'?'请填写券的面额':'请填写券的折扣比例'}}" />
+        </view>
+        <view class='fon_28'>
+          <text wx:if="{{params.type =='折扣券'}}">折</text>
+          <text wx:else="{{params.type =='代金券'}}">元</text>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">使用条件</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='condition' placeholder-class='fon_28' type="number" value="{{params.condition}}" class="weui-input" placeholder="消费满此金额可以使用此优惠" />
+        </view>
+        <view class='fon_28'>元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">库存数量</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='stock' placeholder-class='fon_28' type="number" value="{{params.stock}}" class="weui-input" placeholder="请填写库存数量" />
+        </view>
+        <view class='fon_28'>份</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">每人限领</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='max' placeholder-class='fon_28' type="number" value="{{params.max}}" class="weui-input" placeholder="每人限领份数，不填则无限制" />
+        </view>
+        <view class='fon_28'>份</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="flex-g-0">
+          <view class="weui-label">在店铺中显示</view>
+        </view>
+        <view class="flex-g-1 fon_28 color_8 mar_l">在您的店铺中公开显示</view>
+        <view class="weui-cell__ft">
+          <view class='weui-input'>
+            <switch bindchange="isTelSwitchChange" name='isStoreShow' checked="{{params.isStoreShow==1}}" color='{{color}}' />
+          </view>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="优惠详情"></h-title>
+    <text-area name='body' value='{{params.body}}' bind:textblur='textareachange' maxlength='500' placeholder="填写优惠详情" extra-class=''></text-area>
+    <view class="weui-cells weui-cells_after-title">
+      <wux-upload wx:if="{{uploadArr[1].show}}" tipstext='{{uploadArr[1].tips}}' htitle='{{uploadArr[1].title}}' count="{{uploadArr[1].count}}" file-list="{{ uploadArr[1].fileList }}" data-idx="{{1}}" bind:change="uploadChange">
+      </wux-upload>
+    </view>
+    <h-title bdname="服务范围"></h-title>
+    <dd-label bind:change='labelChange' data-name='service' labels='{{categoryInfo}}' labelsDefault="{{labelsDefaultl}}" color="{{color}}" />
+    <view class="ba_f color_3 mar_t">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">活动音乐</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='music' value='{{params.music}}' placeholder-class='fon_28' class="weui-input color_6 fon_28" placeholder="请填写活动音乐链接" />
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-yinpin fon_44' style='color:{{color}}'></text>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">活动视频</view>
+        </view>
+        <view class="weui-cell__bd bor_right">
+          <input name='video' value='{{params.video}}' placeholder-class='fon_28' class="weui-input color_6 fon_28" placeholder="请填写活动视频链接" />
+        </view>
+        <view class="weui-cell__ft flex-row flex-y-center" style='padding-left:20rpx;'>
+          <text class='iconfont color_e icon-shipin fon_44' style='color:{{color}}'></text>
+        </view>
+      </view>
+    </view>
+     <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='用户协议条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" formType="submit">{{releaseName||'立即发布'}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

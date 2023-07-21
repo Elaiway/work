@@ -1,0 +1,48 @@
+.swiper {
+  width: 100%;
+  height: 400rpx;
+}
+.imgicon{
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: #5C93FC;
+}
+.flex-y-top{
+  align-items: flex-start;
+  display: flex;
+}
+.wimgs{
+  width: 100%;
+}
+.storeLogo{
+  width: 48rpx;
+  height: 48rpx;
+}
+.portrait{
+  width: 56rpx;
+  height: 56rpx;
+}
+.pwidth{
+  overflow: hidden;
+}
+.mar-left{
+  margin-left: 70rpx;
+}
+.ohidden{
+  overflow: hidden;
+  padding-left:20rpx; 
+}
+.padd-top{
+  padding-top: 45rpx;
+}
+.fle{
+  float: left;
+  margin-left: -20rpx;
+  /* overflow: hidden; */
+  width: 56rpx;
+}
+.flowhidden{
+  max-height: 800rpx;
+  overflow-y: scroll;
+}

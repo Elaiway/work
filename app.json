@@ -1,0 +1,408 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/search/index",
+    "pages/location/index",
+    "pages/publishtype/publishtype",
+    "pages/search_result/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/zan",
+      "pages": [
+        "index/index",
+        "billboard/index",
+        "publish/index",
+        "record/index",
+        "publishDetail/index",
+        "award/index"
+      ]
+    },
+    {
+      "root": "pages/publish",
+      "pages": [
+        "publishpost/publishpost",
+        "publishpost/editpost",
+        "publishpost/postsuccess",
+        "mypublish/mypublish",
+        "post/index",
+        "post/commentlist/index",
+        "post/infomation/canvasapi",
+        "post/infomation/index",
+        "post/list"
+      ]
+    },
+    {
+      "root": "pages/store",
+      "pages": [
+        "storeentry/storeentry",
+        "storemain/storemain",
+        "storemain/storedetail",
+        "storemanage/index",
+        "storemanage/switchshop",
+        "storemanage/storeup/storeedit",
+        "storemanage/storeup/stafflist",
+        "storemanage/storeup/release",
+        "storemanage/storebalance/index",
+        "storemanage/storebalance/storebalancelist",
+        "storemanage/storebalance/storecash",
+        "storemanage/storebalance/storecashlist",
+        "storelist/storelist",
+        "storelist/storerank"
+      ]
+    },
+    {
+      "root": "pages/message",
+      "pages": [
+        "index/index",
+        "info/index",
+        "nav/index",
+        "reward/index",
+        "list/index",
+        "release/index",
+        "allcomments/index"
+      ]
+    },
+    {
+      "root": "pages/login",
+      "pages": [
+        "logincode/index"
+      ]
+    },
+    {
+      "root": "pages/personal",
+      "pages": [
+        "index",
+        "setup/index",
+        "modify/index",
+        "homepage/index",
+        "noresult",
+        "service",
+        "wallet/index",
+        "help/index",
+        "live/index",
+        "wallet/putforward/index",
+        "wallet/putforward/txmx",
+        "wallet/putforward/mxdl",
+        "wallet/recharge/index",
+        "modify/modify",
+        "address/dzlb",
+        "address/bjdz",
+        "mypanic/mypanic",
+        "integral/index",
+        "integral/integralmall/index",
+        "integral/integralmall/detail",
+        "integral/integralmall/payment",
+        "integral/integralmall/myorder",
+        "integral/integralmall/orderdeta",
+        "collection/index",
+        "testcenter/index",
+        "testcenter/sjrzindex",
+        "testcenter/sjtestbond",
+        "testcenter/testpersonal",
+        "testcenter/testcompany",
+        "testcenter/testbond"
+      ]
+    },
+    {
+      "root": "pages/extra",
+      "pages": [
+        "agreement",
+        "photolist",
+        "link",
+        "know",
+        "typelist",
+        "commonlist",
+        "verification"
+      ]
+    },
+    {
+      "root": "pages/aunt",
+      "pages": [
+        "index"
+      ]
+    },
+    {
+      "root": "pages/sign",
+      "pages": [
+        "index",
+        "signrank",
+        "signrecord",
+        "task"
+      ]
+    },
+    {
+      "root": "pages/yellow",
+      "pages": [
+        "index",
+        "detail",
+        "classify",
+        "myrecord",
+        "gategorylist",
+        "release",
+        "listdetail"
+      ]
+    },
+    {
+      "root": "pages/freeride",
+      "pages": [
+        "index",
+        "collection",
+        "detail",
+        "myrelease",
+        "freeNav",
+        "release"
+      ]
+    },
+    {
+      "root": "pages/jobhunt",
+      "pages": [
+        "index",
+        "detailjob",
+        "detailhunt",
+        "collection",
+        "myjobhunt",
+        "mygetjob",
+        "gategorylist",
+        "releaserecruit",
+        "releasejob",
+        "addexperience"
+      ]
+    },
+    {
+      "root": "pages/mall",
+      "pages": [
+        "index",
+        "category",
+        "categoryson",
+        "detail",
+        "cart",
+        "storemall",
+        "orderpay",
+        "commentorder",
+        "commentlist",
+        "refundorder",
+        "orderdetail",
+        "order",
+        "manage/order",
+        "manage/orderdetail",
+        "manage/goodslist",
+        "manage/release",
+        "manage/releasespec",
+        "manage/settings",
+        "manage/releaseztd",
+        "manage/couponlist",
+        "manage/releasecoupon"
+      ]
+    },
+    {
+      "root": "pages/housingdeal",
+      "pages": [
+        "index",
+        "detail",
+        "collection",
+        "release",
+        "myrelease",
+        "releasesale"
+      ]
+    },
+    {
+      "root": "pages/activity",
+      "pages": [
+        "index",
+        "detail",
+        "enroll",
+        "enrolldetail",
+        "order",
+        "collection",
+        "category",
+        "writeoff",
+        "manage/release",
+        "manage/myactivity",
+        "manage/enrolldetail"
+      ]
+    },
+    {
+      "root": "pages/businesscard",
+      "pages": [
+        "index",
+        "mycard",
+        "carddetail",
+        "cardholder",
+        "release"
+      ]
+    },
+    {
+      "root": "pages/vip",
+      "pages": [
+        "index",
+        "giftdetails",
+        "privilegedetails",
+        "privilegelist",
+        "entervip",
+        "my",
+        "manage/privilegelist",
+        "manage/release"
+      ]
+    },
+    {
+      "root": "pages/coupon",
+      "pages": [
+        "index",
+        "detail",
+        "myreceive",
+        "receivedetails",
+        "writeoff",
+        "manage/release",
+        "manage/myrelease",
+        "manage/receivedetail"
+      ]
+    },
+    {
+      "root": "pages/assemble",
+      "pages": [
+        "index",
+        "category",
+        "categoryson",
+        "detail",
+        "orderpay",
+        "order",
+        "orderdetail",
+        "manage/order",
+        "manage/orderdetail",
+        "manage/release"
+      ]
+    },
+    {
+      "root": "pages/bargain",
+      "pages": [
+        "index",
+        "detail",
+        "order",
+        "writeoff",
+        "manage/order",
+        "manage/orderdetail",
+        "manage/release"
+      ]
+    },
+    {
+      "root": "pages/rushbuy",
+      "pages": [
+        "index",
+        "detail",
+        "myreceive",
+        "receivedetails",
+        "writeoff",
+        "manage/release",
+        "manage/myrelease",
+        "manage/receivedetail"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/store/storemanage/index": {
+      "network": "all",
+      "packages": [
+        "pages/mall",
+        "pages/activity",
+        "pages/vip",
+        "pages/assemble",
+        "pages/bargain",
+        "pages/rushbuy"
+      ]
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {
+    "swiper-case": "/dist/public/swiper/index",
+    "wux-tabs": "/dist/wux-weapp/tabs/index",
+    "load-more": "/dist/public/storecell/loading",
+    "r-text": "/dist/public/h-title/richtext",
+    "at-form": "/dist/public/agreebox/form",
+    "wux-cell-group": "/dist/wux-weapp/cell-group/index",
+    "wux-cell": "/dist/wux-weapp/cell/index",
+    "wux-grids": "/dist/wux-weapp/grids/index",
+    "wux-grid": "/dist/wux-weapp/grid/index",
+    "i-action-sheet": "/dist/iview-weapp/action-sheet/index",
+    "i-button": "/dist/iview-weapp/button/index",
+    "show-pay": "/dist/public/showpay/index",
+    "van-popup": "/dist/vant-w/popup/index",
+    "tree-select": "/dist/vant-w/tree-select/index",
+    "top-select": "/dist/public/components/top-select/index",
+    "i-modal": "/dist/iview-weapp/modal/index",
+    "agree-box": "/dist/public/agreebox/index",
+    "h-title": "/dist/public/h-title/index",
+    "text-area": "/dist/public/textarea/index",
+    "wux-upload": "/dist/wux-weapp/upload/index",
+    "ts-info": "/dist/public/tsinfo/index",
+    "wux-radio-group": "/dist/wux-weapp/radio-group/index",
+    "dd-radio": "/dist/public/components/form/dd-radio",
+    "dd-time-picker": "/dist/public/components/form/dd-time-picker",
+    "dd-label": "/dist/public/components/form/dd-label",
+    "upload-video": "/dist/public/uploadvideo/index",
+    "wux-popup": "/dist/wux-weapp/popup/index",
+    "type-swiper": "/dist/public/typeswiper/index",
+    "custom-title": "/dist/public/h-title/customtitle",
+    "white-space": "/dist/public/h-title/whitespace",
+    "segment-line": "/dist/public/h-title/segmentline",
+    "postinfo": "/dist/public/postinfo/index",
+    "submenu": "/dist/public/submenu/index",
+    "store-cell": "/dist/public/storecell/index",
+    "message-postinfo": "/dist/public/message-postinfo/index",
+    "notice": "/dist/public/notice/index",
+    "headline": "/dist/public/headline/index",
+    "hotstore-index": "/dist/public/hotstore/index",
+    "hotstore-store": "/dist/public/hotstore/store",
+    "hotproperty-property": "/dist/public/hotproperty/property",
+    "cardlist": "/dist/public/cardlist/index",
+    "picmagic": "/dist/public/picmagic/index",
+    "text-and-image": "/dist/public/cardlist/text-and-image",
+    "information": "/dist/public/message-postinfo/information",
+    "search": "/dist/public/search/index",
+    "wux-search-bar": "/dist/wux-weapp/search-bar/index",
+    "wux-input-number": "/dist/wux-weapp/input-number/index",
+    "i-tag": "/dist/iview-weapp/tag/index",
+    "share": "/dist/public/share/index",
+    "footer": "/dist/public/foot_menu/footer",
+    "foot-nav": "/dist/public/foot_menu/foot-nav",
+    "foot-dl": "/dist/public/foot_menu/foot-dl",
+    "t-modal": "/dist/iview-weapp/modal/modal",
+    "wux-floating-button": "/dist/wux-weapp/floating-button/index",
+    "goods-cell": "/dist/public/components/goods-cell/index",
+    "goods-card": "/dist/public/components/common/goods-card",
+    "choose-address": "/dist/public/components/goods-cell/choose-address",
+    "choose-ztd": "/dist/public/components/goods-cell/choose-ztd",
+    "block-text": "/dist/public/components/common/block-text",
+    "record-cell": "/dist/public/record-cell/index",
+    "freeride-cell": "/dist/public/auxiliary/freeride/freeride-cell",
+    "job-hunt": "/dist/public/auxiliary/jobhunt/job-hunt",
+    "mall-cell": "/dist/public/auxiliary/mall/mall-cell",
+    "mall-com": "/dist/public/auxiliary/mall/mall-com",
+    "order-cell": "/dist/public/components/common/order-cell",
+    "layout-one": "/dist/public/components/common/layout-one",
+    "header-dl": "/dist/public/components/common/header-dl",
+    "hous-cell": "/dist/public/auxiliary/housingdeal/hous-cell",
+    "activity-cell": "/dist/public/auxiliary/activity/activity-cell",
+    "activity-com": "/dist/public/auxiliary/activity/activity-com",
+    "coupon-cell": "/dist/public/auxiliary/coupon/coupon-cell",
+    "privilege-cell": "/dist/public/auxiliary/privilege/privilege-cell",
+    "assemble-cell": "/dist/public/auxiliary/assemble/assemble-cell",
+    "assemble-com": "/dist/public/auxiliary/assemble/assemble-com",
+    "bargain-cell": "/dist/public/auxiliary/bargain/bargain-cell",
+    "bargain-com": "/dist/public/auxiliary/bargain/bargain-com",
+    "rushbuy-cell": "/dist/public/auxiliary/rushbuy/rushbuy-cell",
+    "rushbuy-com": "/dist/public/auxiliary/rushbuy/rushbuy-com"
+  },
+  "sitemapLocation": "sitemap.json"
+}

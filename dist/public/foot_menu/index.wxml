@@ -1,0 +1,13 @@
+<view class='footer_menu flex-row'>
+  <view class='flex-grow-1 flex-row'>
+    <block wx:for="{{content._left}}" wx:key="name">
+      <view class='fon_28 footer_menuv1 flex-center-col' wx:if="{{!item.hide}}" data-index="{{index}}" bindtap='menu_route' wx:key="*this" data-type="{{item.type}}" data-src="{{item.src}}" data-item='{{item}}'>
+        <image class='footer_menuimg' mode='aspectFit' src='{{item.img}}'></image>
+        <view class='color_6'>{{item.name}}</view>
+      </view>
+    </block>
+  </view>
+  <view class='color_f fon_34 flex-grow-0 flex-center footer_menuv2' bindtap='onTap' data-tel="{{content.right_tel}}" data-type="{{content.right_type}}" style='background:{{content.color}};width:{{width}}%' wx:if="{{comment_close==1}}">
+    {{content._right}}
+  </view>
+</view>

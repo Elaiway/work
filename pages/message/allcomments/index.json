@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "allcomments": "/dist/public/allcomments/index"
+  }
+}

@@ -1,0 +1,2 @@
+/* dist/public/components/form/dd-radio.wxss */
+@import "/dist/wux-weapp/radio-group/index.wxss";

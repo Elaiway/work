@@ -1,0 +1,42 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class='container ba_f'>
+        <view class='containerv ba_f9 color_9 fon_30'>基本资料</view>
+        <view class='containerv bor_bottom'>
+            <view class='containervv1 dis_in fon_30 color_6'>头像</view>
+            <view bindtap="chooseImg" class='containervv2 dis_in fon_30 t_r'>
+                <image mode='aspectFill' src='{{tx||userinfo.portrait}}' class='dis_in containerimg'></image>
+                <text class='mar_l iconfont icon-you fon_26 color_9'></text>
+            </view>
+        </view>
+        <view class='containerv bor_bottom'>
+            <view class='containervv1 dis_in fon_30 color_6'>昵称</view>
+            <view class='containervv2 dis_in fon_30 t_r'>
+                <input name="name" class='dis_in' placeholder='请输入您的昵称' value='{{userinfo.userName}}'></input>
+            </view>
+        </view>
+        <view class='containerv bor_bottom'>
+            <view class='containervv1 dis_in fon_30 color_6'>性别</view>
+            <view class='containervv2 dis_in fon_30 color_6 t_r' bindtap='sex'>
+                <text wx:if="{{sex==null}}">请选择</text>
+                <text wx:else>{{sex}}</text>
+                <text class='mar_l iconfont icon-you fon_26 color_9'></text>
+            </view>
+        </view>
+        <!-- <view class='bor_bottom'>  
+        <view class='dis_in fon_30 color_6'>手机号</view>
+        <view class='dis_in fon_30 t_r'>
+           <text>13277915655</text>
+        </view>
+    </view> -->
+        <view class='containerv'>
+            <view class='containervv1 dis_in fon_30 color_6'>个性签名</view>
+        </view>
+        <view class='containerv fon_28'>
+            <textarea class='textarea' name="detail" placeholder='请输入个性签名' maxlength='30' value='{{userinfo.sign}}'></textarea>
+        </view>
+    </view>
+    <view class='fixed pa_l'>
+        <button class='color_f' formType="submit" style='background:{{color}}'>保存修改</button>
+        <!-- <button class='color_0 ba_e mar_t'>退出当前账号</button> -->
+    </view>
+</form>

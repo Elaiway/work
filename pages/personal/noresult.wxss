@@ -1,0 +1,4 @@
+.no_resultimg{
+  margin-top: 200rpx;
+  width: 50%;
+}

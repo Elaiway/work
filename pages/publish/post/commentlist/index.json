@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-modal": "/dist/iview-weapp/modal/index",
+    "commend": "/dist/public/commend/index"
+  }
+}

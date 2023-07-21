@@ -1,0 +1,12 @@
+<!--dist/public/textarea.wxml-->
+<view class="extra-class">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <!-- <view class='mainnote'>温馨提示:感谢贡献，本次发布信息可得{{tsinfo.score}}积分，凭本次积分可到积分商城兑换相应商品。</view> -->
+      <view class='bznote'>本分类发布信息：
+        <text class='bznotetext'>{{tsinfo.vipFreeNum?tsinfo.vipFreeNum:tsinfo.lc=='2'?tsinfo.countryMoney!='0'&&tsinfo.countryMoney+'元/条'||'免费':tsinfo.money!='0'&&tsinfo.money+'元/条'||'免费'}}</text> ，有效期：
+        <text class='bznotetext'>{{tsinfo.expiryDate}}天</text>
+      </view>
+    </view>
+  </view>
+</view>

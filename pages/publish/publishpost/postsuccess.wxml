@@ -1,0 +1,100 @@
+<!--pages/publish/publishpost.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view wx:if="{{ispublish!='2'}}" class='bgscreen' style='background:{{color}}'></view>
+  <view class='container padding-bottom'>
+    <view class="weui-tab__panel basepadding">
+      <view wx:if="{{ispublish!='2'}}" class='ba_f bras mar_t'>
+        <view class='flex-col flex-y-center basepadding'>
+          <icon class='mar_t' type='success' color='{{color}}' size='70'></icon>
+          <view class='mar_t fon_36'>发布成功</view>
+        </view>
+        <view class='pad_10'>
+          <view class='flex-row flex-x-center fon_28 color_6 flex-around'>
+            <view bindtap='toindex' class='czbtn'>信息置顶</view>
+            <view bindtap='gxll' class='czbtn'>管理信息</view>
+            <view bindtap='toindex' class='czbtn'>查看信息</view>
+            <view bindtap='toback' class='czbtn'>再发一条</view>
+            <view bindtap='gxll' class='czbtn'>分享</view>
+            <view bindtap='toindex' class='czbtn'>首页</view>
+            
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ispublish!='2'&&postconfig.top=='open' && !isios}}" class='ba_f bras mar_t'>
+        <view wx:if="{{phoneStatus}}" class="hdtitle">
+          <view class="weui-cell__bd">置顶信息提高10倍曝光率</view>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+          <view wx:if="{{phoneStatus}}" class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">置顶</view>
+            <view class="weui-cell__ft">
+              <switch bindchange='zdswitchChange' name='zdkg' color='{{color}}' />
+            </view>
+          </view>
+        </view>
+        <wux-radio-group wx:if="{{zdvisible}}" radioColor="{{color}}" radioarr="{{rztimearr}}" wux-class='radioclass' name="rzradio" value="{{ rzradiovalue }}" bind:change="rzradioonChange">
+        </wux-radio-group>
+      </view>
+      <!-- <view class='ba_f bras mar_t'>
+        <view class="hdtitle">
+          <view class="weui-cell__bd">塞福利（可提高阅读量和转发量）</view>
+          <view class="weui-cell__ft">
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">塞福利</view>
+            <view class="weui-cell__ft">
+              <switch checked='{{sflchecked}}' bindchange='sflswitchChange' name='sflkg' color='{{color}}' />
+            </view>
+          </view>
+          <view wx:if="{{sflvisible}}" class='flje'>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">福利金额</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input bindinput='fljeinput' name='flje' type='digit' maxlength='5' placeholder-class='fon_28' class="weui-input" placeholder="请输入福利金额" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">分成几份</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name='flfs' type='number' maxlength='3' placeholder-class='fon_28' class="weui-input" placeholder="请输入福利份数" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_switch">
+              <view class="weui-cell__bd">是否分享后领取</view>
+              <view class="weui-cell__ft">
+                <switch color='{{color}}' checked />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_switch">
+              <view class="weui-cell__bd">是否平均福利</view>
+              <view class="weui-cell__ft">
+                <switch color='{{color}}' checked />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_switch">
+              <view class="weui-cell__bd">是否开启口令模式</view>
+              <view class="weui-cell__ft">
+                <switch color='{{color}}' checked />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{fwrate>0}}" class='t_r fon_28 color_9 pad_20'>福利服务费（{{fwrate}}%）：￥{{fwf}}</view>-->
+    </view>
+    <view class='bottomfixed' wx:if="{{zdvisible||sflvisible}}">
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">立即支付￥{{paymoney}}</button>
+    </view>
+  </view>
+</form>
+<!-- 置顶 -->
+<!-- <i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button fontsize='35' slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">选择置顶让更多人看到</i-button>
+</i-action-sheet> -->
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

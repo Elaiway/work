@@ -1,0 +1,8 @@
+<view class='container after-navbar'>
+  <view class="latestMsg pa_l30">
+    <freeride-cell content="{{freeList}}" type="{{typec}}" />
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{freeList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

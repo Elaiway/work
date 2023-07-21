@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-popup": "../../wux-weapp/popup/index",
+        "wux-radio-group": "../../wux-weapp/radio-group/index"
+    }
+}

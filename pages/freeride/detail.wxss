@@ -1,0 +1,12 @@
+.bgHeight{
+  height: 160rpx;
+}
+.detailBox{
+  top:-155rpx;
+}
+.container{
+  height: 100%;
+}
+.margin-bot{
+  margin-bottom: 115rpx;
+}

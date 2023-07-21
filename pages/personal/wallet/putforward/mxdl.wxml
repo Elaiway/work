@@ -1,0 +1,25 @@
+<!--pages/personal/wallet/putforward/mxdl.wxml-->
+<view class='container'>
+  <wux-cell-group>
+    <wux-cell padding='35rpx 30rpx' tftsize='30' class='wux-class' title="提现金额：">
+      <view slot='footer' class='mar_r'>
+        <view class='fon_40' style="color:#f66925">
+          {{mxdl.applyMoney}}元
+        </view>
+      </view>
+    </wux-cell>
+  </wux-cell-group>
+  <view class='ba_f pa_t'>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="实际到账" extra="{{mxdl.actualMoney}}元"></wux-cell>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="流水号：" extra="{{mxdl.orderNum}}"></wux-cell>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="类型：" extra="{{mxdl.mode}}"></wux-cell>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="转入账号：" extra="{{mxdl.accountNumber}}"></wux-cell>
+  <wux-cell wx:if="{{mxdl.mode=='银行卡提现'}}" padding='10rpx 30rpx' isLast='true' title="支行信息" extra="{{mxdl.branch}}"></wux-cell>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="提现状态：" extra="{{mxdl.status}}"></wux-cell>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="提现时间：" extra="{{mxdl.creatTime}}"></wux-cell>
+  <wux-cell wx:if="{{mxdl.status!='待审核'}}" padding='10rpx 30rpx' isLast='true' title="处理时间：" extra="{{mxdl.completeTime}}"></wux-cell>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="姓名：" extra="{{mxdl.name}}"></wux-cell>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="联系方式：" extra="{{mxdl.linkTel}}"></wux-cell>
+  <wux-cell padding='10rpx 30rpx' isLast='true' title="账户余额：" extra="{{userinfo.balance}}元"></wux-cell>
+  </view>
+</view>

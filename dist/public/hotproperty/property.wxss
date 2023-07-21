@@ -1,0 +1,5 @@
+/* dist/public/hotstore/index.wxss */
+@import "./index.wxss";
+.hot-seller-ind {
+    padding-bottom: 40rpx;
+}

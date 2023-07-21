@@ -1,0 +1,12 @@
+/* pages/personal/address/bjdz.wxss */
+.foot-button{
+  margin-top: 20rpx;
+  background: transparent;
+}
+.label{font-size: 26rpx;width: 120rpx;text-align: center;padding: 7rpx 0;border: 1rpx solid #eee;border-radius: 6rpx;margin-right: 20rpx;}
+/* .weui-cell:nth-child(2):before {
+  display: none;
+} */
+.borbtm{
+  border-bottom: 1rpx solid #eee;
+}

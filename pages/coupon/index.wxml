@@ -1,0 +1,31 @@
+<view class="container after-navbar">
+  <!-- 轮播图 -->
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <!-- 分类 -->
+  <view class="pad_20 flex-bet ba_f bor-top fon_30">
+    <view wx:for="{{housCategory}}" wx:key="" class="flex-col-center flex-g-1 " bindtap='clicklist' data-index="{{index}}">
+      <view class="navlogo imgshape1 flex-center {{index=='0'?'bgone':'' || index=='1'?'bgtwo':'' || index=='2'?'bgthree':''}}">
+        <text class="iconfont fon_44 color_f {{index=='0'?'icon-swticonyouhuiquanwenzi':'' || index=='1'?'icon-youhui-':'' || index=='2'?'icon-wodeyouhuijuan':''}}"></text>
+      </view>
+      <view class="mar_t fon_26" style="color:{{ index==current ? color : '' }}">{{item.name}}</view>
+    </view>
+  </view>
+    <!-- 中部广告位 -->
+  <view hidden="{{Swiper2==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper2}}"></swiper-case>
+  </view>
+  <view class="mar_t">
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="mar_t">
+    <block wx:for="{{postList}}" wx:key=''>
+      <coupon-cell color="{{color}}" content="{{item}}" />
+    </block>
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if="{{coupon}}" color='{{color}}' page-type='coupon' />

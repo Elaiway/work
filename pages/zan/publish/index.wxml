@@ -1,0 +1,67 @@
+<view class="main">
+	<view class="title color3 flex-between-center">
+		<text>活动简介</text>
+		<text></text>
+	</view>
+	<textarea value='{{describe}}' class="area" bindblur="updateValue" data-i="describe" placeholder="填写活动详情" />
+	<view class="title color3 flex-between-center">
+		<text>活动图片</text>
+		<text class="color1 fons1">最多上传6张图片</text>
+	</view>
+		<wux-upload tipstext='' htitle='' tiptitle='' extra-class='wuxupload' count="6" list-type="picture-card" file-list="{{ media }}" bind:change="conChange1">
+      <text>Upload</text>
+    </wux-upload>
+<view class="title color3 flex-between-center">
+		<text>奖品图片</text>
+		<text class="color1 fons1">最多上传3张图片</text>
+	</view>
+	<wux-upload tipstext='' htitle='' tiptitle='' extra-class='wuxupload' count="3" list-type="picture-card" file-list="{{ prizeMedia }}" bind:change="conChange2">
+      <text>Upload</text>
+    </wux-upload>
+<view class="title color3 flex-between-center">
+		<text>营业执照</text>
+		<text class="color1 fons1"></text>
+	</view>
+		<wux-upload tipstext='' htitle='' tiptitle='' extra-class='wuxupload' count="1" list-type="picture-card" file-list="{{ license }}" bind:change="conChange3">
+      <text>Upload</text>
+    </wux-upload>
+<view class="title color3 flex-between-center">
+		<text>微信客服二维码</text>
+		<text class="color1 fons1"></text>
+	</view>
+		<wux-upload tipstext='' htitle='' tiptitle='' extra-class='wuxupload' count="1" list-type="picture-card" file-list="{{ wxCode }}" bind:change="conChange4">
+      <text>Upload</text>
+    </wux-upload>
+
+
+
+
+	<view class="inputs">
+		<view>人数限制：</view>
+		<input value="{{num}}" bindblur="updateValue" data-i="num" class="number" placeholder="请输入需要集赞的人数"/>
+	</view>
+	<view class="inputs">
+		<view>电话号码：</view>
+		<input value="{{tel}}" bindblur="updateValue" data-i="tel" class="number" placeholder="请输入电话号码"/>
+	</view>
+	<view class="inputs">
+		<view>开始时间：</view>
+		<picker class="number" mode="date" value="{{startTime}}" bindchange="updateValue" data-i="startTime">
+    		<view>
+      		当前选择: {{startTime}}
+    		</view>
+  		</picker>
+	</view>
+	<view class="inputs">
+		<view>结束时间：</view>
+		<picker class="number" mode="date" value="{{endTime}}" bindchange="updateValue" data-i="endTime">
+    		<view>
+      		当前选择: {{endTime}}
+    		</view>
+  		</picker>
+	</view>
+	<button bindtap="submit" class="subimit" type="warn">发布活动</button>
+</view>
+<loading hidden="{{loadingHidden}}">
+ 加载中...
+</loading>

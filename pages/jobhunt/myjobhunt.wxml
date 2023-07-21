@@ -1,0 +1,17 @@
+<view class="container after-navbar">
+  <view>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <view class="pa_l mar_tb_10">
+    <job-hunt job-type="{{types}}" page-type="myjob" content="{{jobmyHunting}}" color="{{color}}" bind:getresume='getresume' bind:operation='operation' />
+  </view>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{jobmyHunting.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<!-- 扩散信息组件 -->
+<i-action-sheet visible="{{ infomationVisible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">{{xzname}}</i-button>
+</i-action-sheet>
+<foot-nav color='{{color}}' page-type='jobhunt' />
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

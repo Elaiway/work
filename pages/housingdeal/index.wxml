@@ -1,0 +1,37 @@
+<view class="container after-navbar">
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <view class='bor_bottom'>
+    <notice id="notice" datatype='7' color="{{color}}" content="{{notice}}" />
+  </view>
+  <view class='' wx:if="{{Headline!=null}}">
+    <headline class='bor-top' datatype='9,0' pagetype='renting' content="{{Headline}}" />
+  </view>
+  <view class="pad_20 flex-bet ba_f bor-top fon_30">
+    <view wx:for="{{housCategory}}" wx:key="{{item.id}}" class="btnat flex-col-center" bindtap='clicklist' data-identifying="{{item.identifying}}" data-index="{{index}}">
+      <image class='navlogo' mode='aspectFit' src="{{item.icon}}"></image>
+      <view class="mar_t fon_26" style="color:{{ index==current ? color : '' }}">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="mar_t" wx:if="{{hotimg.value!=''}}">
+    <wux-cell isLeft='true' isLast="true" wux-class='mar_t flex-y-center fon_34' title="热门楼盘">
+      <view slot='header' class='iconfont icon-remen fon_32 mar_r' style='color:{{color}}'></view>
+    </wux-cell>
+    <hotproperty-property content="{{hotimg}}" />
+  </view>
+  <view hidden="{{Swiper2==null}}">
+    <swiper-case id='Swiper2' color="{{color}}" content="{{Swiper2}}"></swiper-case>
+  </view>
+  <view class='' wx:if="{{Headline}}">
+    <headline content="{{Headline}}" pagetype='housNewList' />
+  </view>
+  <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  <block wx:for="{{postList}}" wx:key="{{item.id}}">
+    <hous-cell color="{{color}}" hous-type="{{types}}" content="{{item}}" />
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if="{{housCategory}}" color='{{color}}' page-type='housingdeal' />

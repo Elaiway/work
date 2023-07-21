@@ -1,0 +1,28 @@
+<view class="container after-navbar">
+  <view hidden="{{Swiper==null}}">
+    <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case>
+  </view>
+  <!-- <view class="pad_20 flex-bet ba_f bor-top fon_30">
+    <view wx:for="{{activityCategory}}" wx:key="" class="btnat flex-col-center" bindtap='typeList' data-msg="{{item}}">
+      <image class='navlogo' mode='aspectFit' src="{{item.icon}}"></image>
+      <view class="mar_t fon_26">{{item.name}}</view>
+    </view>
+  </view> -->
+  <view class='' wx:if="{{Headline}}">
+    <headline content="{{Headline}}" pagetype='activity' datatype='11,0' />
+  </view>
+    <!-- 信息一级分类 -->
+  <view wx:if="{{Typeswiper!=null}}" class="">
+    <type-swiper color="{{color}}" type-obj='{{Typeswiper}}'></type-swiper>
+  </view>
+  <view class="mar_t">
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <block  wx:for="{{postList}}" wx:key="">
+    <activity-cell color="{{color}}" content="{{item}}" />
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<foot-nav wx:if="{{activity}}" color='{{color}}' page-type='activity' />

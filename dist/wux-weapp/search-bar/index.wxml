@@ -1,0 +1,29 @@
+<view class="wux-search-bar wux-class {{className}}" style='{{styleName}}'>
+    <view class="wux-search-bar__form">
+        <view class="wux-search-bar__box">
+            <icon class="wux-search-bar__search" type="search" color="#B2B2B2" size="14" />
+            <input
+            	type="text"
+            	class="wux-search-bar__input"
+            	value="{{ inputValue }}"
+            	placeholder="{{ placeholder }}"
+            	maxlength="{{ maxlength }}"
+            	focus="{{ inputFocus }}"
+            	disabled="{{ disabled }}"
+            	bindinput="onChange"
+            	bindfocus="onFocus"
+              confirm-type="search"
+            	bindblur="onBlur"
+            	bindconfirm="onConfirm"
+            />
+            
+            <icon class="wux-search-bar__clear" type="clear" color="#B2B2B2" size="14" wx:if="{{ inputValue && inputValue.length > 0 }}" bindtap="onClear" />
+        </view>
+        <label class="wux-search-bar__label" wx:if="{{ !inputFocus && !inputValue }}" bindtap="onClick">
+            <icon class="wux-search-bar__icon" type="search" color="#B2B2B2" size="14" />
+            <text class="wux-search-bar__text">{{ placeholder }}</text>
+        </label>
+    </view>
+    <view class="wux-search-bar__cancel" wx:if="{{ inputFocus==true && inputValue.length > 0}}" bindtap="onClear" style="color:{{color}}">{{ cancelText }}</view>
+    <view class="wux-search-bar__cancel" wx:if="{{ inputFocus==false &&  inputValue.length > 0}}" bindtap="onSure" style="color:{{color}}">确定</view>
+</view>

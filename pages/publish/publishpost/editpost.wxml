@@ -1,0 +1,97 @@
+<!--pages/publish/publishpost.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <!-- <view class='postfixedtop'>
+      <wux-tabs wux-class='borbtm' auto="{{ false }}" current="{{ key }}" bindchange="onTabsChange">
+        <block wx:for="{{ tabs }}" wx:key="key">
+          <wux-tab key="{{ item.id }}" title="{{ item.name }}" color="{{color}}"></wux-tab>
+        </block>
+      </wux-tabs>
+    </view> -->
+    <view class="weui-tab__panel">
+      <text-area name='textarea' value='{{textareavalue}}' bind:textblur='textareachange' maxlength='500' placeholder='请输入您发布的内容' extra-class='borbtm'></text-area>
+      <view class="weui-tab__content" hidden="{{ postInfo.contentType!= '1' }}">
+        <!-- <text-area name='textarea' value='{{textareavalue}}' extra-class='borbtm'></text-area> -->
+        <wux-upload count="9" list-type="picture-card" file-list="{{ postInfo.media }}" bind:change="uploadonChange" bind:preview="onPreview">
+        </wux-upload>
+      </view>
+      <view class="weui-tab__content" hidden="{{ postInfo.contentType!= '3' }}">
+        <h-title bdname="视频类型"></h-title>
+        <wux-radio-group radioColor="{{color}}" radioarr="{{radioarr}}" name="spradio" value="{{ spradiovalue }}" bind:change="sprdioonChange">
+        </wux-radio-group>
+        <view class='weui-cells'>
+          <view hidden="{{spradiovalue!='1'}}">
+            <upload-video src='{{ postInfo.media[0].url }}' bind:change='videochange'></upload-video>
+          </view>
+          <view hidden="{{spradiovalue!='2'}}" class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd">
+                <input name='txsplj' value='{{ postInfo.media[0].url }}' class="weui-input" placeholder="请在此处粘贴腾讯视频链接" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{ postInfo.contentType!= '2' }}">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+              <input name='gzhlj' value='{{ postInfo.wechatUrl }}' class="weui-input" placeholder="请在此处粘贴公众号文章链接" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <ts-info tsinfo='{{postFee}}'></ts-info> -->
+      <view class="weui-cells weui-cells_after-title mar_t">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <!-- <image mode='aspectFit' src='/assets/img/pubpost/lx.png'></image> -->
+            <view class="weui-label color_6">联系人</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input placeholder-class='fon_28' value='{{ postInfo.linkMan }}' name='lxr' class="weui-input fon_28 color_6" placeholder="请输入联系人" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <!-- <image mode='aspectFit' src='/assets/img/pubpost/dh.png'></image> -->
+            <view class="weui-label color_6">联系电话</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input placeholder-class='fon_28' value='{{ postInfo.linkTel }}' name='tel' type='number' class="weui-input fon_28 color_6" placeholder="请输入联系电话" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <!-- <image mode='aspectFit' src='/assets/img/pubpost/dz.png'></image> -->
+            <view class="weui-label color_6">选择地址</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input placeholder-class='fon_28' disabled='true' name='address' value='{{ postInfo.address }}' class="weui-input fon_28 color_6" placeholder="请选择地址" />
+          </view>
+          <!-- <view style='color:{{color}};padding-left:20rpx;' bindtap='chooseLocation' class="weui-cell__ft weui-cell__ft_in-access">
+            定位
+          </view> -->
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <!-- <image mode='aspectFit' src='/assets/img/pubpost/bq.png'></image> -->
+            <view class="weui-label color_6" >添加标签</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input placeholder-class='fon_28' name='label' value='{{ postInfo.tag }}' class="weui-input fon_28 color_6" placeholder="空格分隔，最多3个，如：求购 供应 免费" />
+          </view>
+        </view>
+      </view>
+      <agree-box isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='发布相关条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    </view>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">立即发布<text wx:if='{{paymoney>0}}'>￥{{paymoney}}</text></button>
+    </view>
+  </view>
+</form>
+<!-- 置顶 -->
+<!-- <i-action-sheet visible="{{ visible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem">
+  <i-button fontsize='35' slot="header" color="{{color}}" i-class="i-as-cancel-btn" type="ghost" size="large" long="true" bind:click="handleClickCancel">选择置顶让更多人看到</i-button>
+</i-action-sheet> -->
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

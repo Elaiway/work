@@ -1,0 +1,46 @@
+<!--dist/public/auxiliary/mall/good-card.wxml-->
+<view class="ba_f {{config.nopadb?'pad_30_30_0':'basepadding'}} br-r-20 mar_b {{config.className}}">
+  <view wx:if="{{config.pageType=='mallmanagedetail'}}" class='flex-y-center' bindtap='storeInfo'>
+    <image class='imgsize80' src='{{content.portrait}}'></image>
+    <text class='color_3 mar_l'>{{content.userName}}</text>
+  </view>
+  <view wx:else class='flex-y-center' bindtap='storeInfo'>
+    <text class='iconfont icon-shangjia fon_44'></text>
+    <text class='color_3 mar_l'>{{content.storeName}}</text>
+    <text class='iconfont icon-you-copy color_9 fon_24 mar_l_10'></text>
+  </view>
+  <block wx:for="{{content.goods}}" wx:key='storeId'>
+    <layout-one is-last="{{index==content.goods.length-1}}" after-left="true" no-pad='true' body-src='{{item.url}}' body="{{layoutBodyOne}}" class-name='pa_t30'>
+      <view bindtap='goodinfo' data-id="{{item.goodsId}}" slot="body-bd-f" class="flex-x-bt">
+        <view class='hydlnr_2' style='height:82rpx;'>
+          <!-- <block-text wx:if="{{content.power&&content.power.length}}" type='2' color='{{color}}' class-name='pa_5_10 br-r-20 mar_r_10' text='content.power[0]' /> -->
+          <text>{{item.title}}</text>
+        </view>
+      </view>
+      <view bindtap='goodinfo' data-id="{{item.goodsId}}" slot="body-bd-s" class="flex-x-bt mar_t_10">
+        <view class='flex-bt'>
+          <block-text wx:if="{{item.data}}" display='block' class-name="fon_24 pa_5_15 ba_f5 color_9" text='{{item.data}}' />
+        </view>
+      </view>
+      <view slot="body-bd-t" class="flex-x-bt fon_24 mar_t_10">
+        <view class=''>
+          <text class='fon_30 mar_r' style='color:{{color}}'>￥{{item.money}}</text>
+        </view>
+        <view class='flex-y-center'>
+          <text wx:if="{{config.del}}" catchtap='deleteCart' data-id="{{item.childrenId}}" class='iconfont icon-shanchu mar_r color_r'></text>
+          <wux-input-number wx:if="{{config.input}}" bind:change="onChange" data-cid="{{item.childrenId}}" default-value="{{item.num}}" value="{{item.num}}" color="stable" min="1" max="99" disabled="{{false}}" />
+          <text wx:if="{{config.num}}" class='color_9'>X{{item.num}}</text>
+        </view>
+      </view>
+      <view wx:if="{{config.freight}}" slot='footer' class='flex-bt mar_t'>
+        <text class='color_3'>运费:</text>
+        <text class='color_9'>{{item.isPost==1 || (item.satisfy <= 0) ?'包邮':'快递：￥'+item.freight+'(满'+item.satisfy+'包邮)'}}</text>
+      </view>
+    </layout-one>
+  </block>
+  <view wx:if="{{config.total}}" class='flex-y-center flex-x-bottom color_3 mar_t_10'>
+    <text class=''>共<text style='color:{{color}};'>{{content.totalNum}}</text>件商品，总价：</text>
+    <text class='fon_30' style='color:{{color}};'>{{content.totalMoney}}</text>
+    <block-text type='2' catchtap='total' color='{{color}}' class-name='mar_l fon_30' text='结算' />
+  </view>
+</view>

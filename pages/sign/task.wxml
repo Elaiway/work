@@ -1,0 +1,38 @@
+<!--pages/sign/tesk.wxml-->
+<view class='container rel'>
+  <view class="swiper">
+    <!-- <swiper-case id='Swiper' color="{{color}}" content="{{Swiper}}"></swiper-case> -->
+    <image class="banner" src='/assets/images/task/task-banner.png'></image>
+  </view>
+  <!-- <view class="signin ab"> 
+    <image class='bg-img' src='/assets/images/task/signin-bg.png'></image>
+    <view class="txt ab color_f fon_26 t_r" bindtap='goSignin'>签到</view>
+  </view> -->
+  <view class="total sharebtntxt flex-center flex-bt fon_26 pa_lr rel">
+    <view class="today color_f sele_fixedv2">今日已得：{{totalScore}}积分</view>
+    <view class="conv color_f sele_fixedv2" catchtap='changeintegral'>兑换积分 ></view>
+    <view class="bgop ba_0 border-lr ab wid"></view>
+  </view>
+  <view class="main rel">
+  <view wx:for='{{typeArr}}' wx:key='{{item.id}}' class='module ba_f border-lr mar_b_10 '>
+    <view class="mainTit bor-btm border-lr pa fon_32">{{item.title}}</view>
+    <view wx:for='{{item.arr}}' wx:for-item="arr" wx:key='{{arr.id}}' class='flex-row pa_l30'>
+      <view class='task-l flex-center flex-grow-0 mar_r'>
+        <image class='img' src='{{arr.img}}' />
+      </view>
+      <view class='task-r flex-grow-1 flex-ra bor-btm pa_t30'>
+        <view class='flex-grow-1 mar_tb_10'>
+          <view class='fon_30'>
+            <text>{{arr.name}}</text>
+            <text class="colorOr mar_l">+{{arr.score}}积分</text>
+          </view>
+            <view class='fon_26 color_9 mar_t_10 '>{{arr.description}}</view>
+          </view>
+        <view class='flex-grow-0'>
+          <view class="btnGo color_f fon_28 t_c {{arr.complete == '1' ? 'btnStock' : ''}}" data-item='{{arr}}' bindtap='btnGo'>{{arr.complete == '1' ? '已完成' : arr.num +'/'+ arr.taskNum}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
+</view>

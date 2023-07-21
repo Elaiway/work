@@ -1,0 +1,84 @@
+<!--pages/vip/index.wxml-->
+<view class='container after-navbar'>
+  <view class='ba_f'>
+    <view class='vip-bg'></view>
+    <view class='vip-con'>
+      <view class="vip-card">
+        <view class="bg-img">
+          <image class='image_all' src="/assets/images/vip/vipbg.png"></image>
+          <view wx:if="{{userinfo}}" class="vip-text">
+            <view class="flex-x-end level">
+              <text class='level-text'>{{userinfo.vipTypeName||'普通用户'}}</text>
+            </view>
+            <view class="user flex-row">
+              <image wx:if="{{userinfo.portrait}}" class="tx" src="{{userinfo.portrait}}"></image>
+              <open-data class="tx" wx:else type="userAvatarUrl"></open-data>
+              <view class="flex-y-ad col-f color_f">
+                <view wx:if="{{userinfo.userName}}" class="fon_32">{{userinfo.userName||'神秘人'}}</view>
+                <open-data wx:else class='fon_32' type="userNickName"></open-data>
+                <view class="">{{subtitle}}</view>
+              </view>
+            </view>
+            <!-- <view class="flex-x-end open" bindtap="openMethod">
+              <text class="btn">{{userinfo.isVip?'立即续费':'立即开通'}}</text>
+            </view> -->
+            <!--<view class="flex-x-end number fon-lg" style="{marginTophideBtn&&'80px'}">NO. 0011 4422 5544 5566</view>-->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='mar_t30'>
+    <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view hidden='{{key!=0}}' class="weui-cells weui-cells_after-title">
+        <radio-group bindchange="radioChange" name="radio">
+          <label class="weui-cell weui-check__label basepadding" wx:for="{{radioarr}}" wx:key="id">
+            <radio class="weui-check" value="{{index}}" checked="{{item.checked}}" />
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_circle" type="circle" size="24" wx:if="{{!item.checked}}"></icon>
+              <icon class="weui-icon-checkbox_success" color="{{color}}" type="success" size="24" wx:if="{{item.checked}}"></icon>
+            </view>
+            <view class="weui-cell__bd">
+              <view class='flex-bt'>
+                <view>{{item.name}}
+                  <text style='background:#FF5669' class='fon_26 br-r-10 pa_5_15 color_f mar_l'>账期{{item.term}}天</text>
+                </view>
+                <view style='color:{{color}}'>{{item.money>0?item.money+'元':'免费'}}</view>
+              </view>
+              <view class='flex-bt mar_t'>
+                <view class='color_9 fon_26'>{{item.content}}</view>
+                <!-- <view>{{item.money}}</view> -->
+              </view>
+            </view>
+          </label>
+        </radio-group>
+      </view>
+      <view class="weui-cells weui-cells_after-title basepadding" hidden='{{key!=1}}'>
+        <input class='weui-input bor-e  pa_l' placeholder='请输入激活码' name="code"></input>
+      </view>
+      <agree-box tkname='viptk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='相关协议' iconColor="{{color}}" bgcolor="#fff" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+      <view class='foot-button smpadding'>
+        <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">确定{{rztimearr[rzradiovalue].money>0&&!isEdit?'支付￥'+rztimearr[rzradiovalue].money:''}}</button>
+      </view>
+    </form>
+  </view>
+  <view class='ba_f mar_t30'>
+    <view class='vip-head flex-center'>
+      <image mode='widthFix' class='timg' src="/assets/images/vip/timg.png"></image>
+      <view class='mar_l30 mar_r30 fon_30'>会员特权</view>
+      <image mode='widthFix' class='timg' style="transform:rotate(180deg);" src="/assets/images/vip/timg.png"></image>
+    </view>
+    <view class="pa_l30 flex-x-bt flex-wrap">
+      <view wx:for="{{vipImgArr}}" class="vip-img">
+        <image class='image_all' src="{{item.src}}" />
+        <view class="tq-text">
+          <text class='fon_32 mar_b30'>{{item.title}}</text>
+          <text class='fon_24'>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='vip' />
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}" closepop='closepop'></show-pay>

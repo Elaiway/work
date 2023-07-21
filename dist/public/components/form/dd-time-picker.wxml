@@ -1,0 +1,14 @@
+<!--dist/public/components/form/dd-time-picker.wxml-->
+<!-- <view class="tui-picker-content">
+  <view class="tui-picker-name">日期时间选择器（精确到秒）</view>
+  <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+    <view class="tui-picker-detail">
+      选择日期时间: {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
+    </view>
+  </picker>
+</view> -->
+<picker style='{{styleName}}' mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+  <view class="{{!arrow?'weui-select':''}} color_6 fon_28">
+    {{selectTime1}}
+  </view>
+</picker>

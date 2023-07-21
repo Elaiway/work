@@ -1,0 +1,92 @@
+<!--pages/vip/index.wxml-->
+<view class='container after-navbar'>
+  <view class='ba_f'>
+    <view class='vip-bg'></view>
+    <view class='vip-con'>
+      <view class="vip-card">
+        <view class="bg-img">
+          <image class='image_all' src="/assets/images/vip/vipbg.png"></image>
+          <view wx:if="{{userinfo}}" class="vip-text">
+            <view class="flex-x-end level">
+              <text class='level-text'>{{userinfo.vipTypeName||'普通用户'}}</text>
+            </view>
+            <view class="user flex-row">
+              <image wx:if="{{userinfo.portrait}}" class="tx" src="{{userinfo.portrait}}"></image>
+              <open-data class="tx" wx:else type="userAvatarUrl"></open-data>
+              <view class="flex-y-ad col-f color_f">
+                <view wx:if="{{userinfo.userName}}" class="fon_32">{{userinfo.userName||'神秘人'}}</view>
+                <open-data wx:else class='fon_32' type="userNickName"></open-data>
+                <view class="">{{subtitle}}</view>
+              </view>
+            </view>
+            <view class="flex-x-end open" bindtap="openMethod">
+              <text class="btn">{{userinfo.isVip?'立即续费':'立即开通'}}</text>
+            </view>
+            <!--<view class="flex-x-end number fon-lg" style="{marginTophideBtn&&'80px'}">NO. 0011 4422 5544 5566</view>-->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='pad_20'>
+    <view class='ba_f br-r-20'>
+      <view class='vip-head flex-center'>
+        <image mode='widthFix' class='timg' src="/assets/images/vip/timg.png"></image>
+        <view class='mar_l30 mar_r30 fon_30'>会员特权</view>
+        <image mode='widthFix' class='timg' style="transform:rotate(180deg);" src="/assets/images/vip/timg.png"></image>
+      </view>
+      <type-swiper style-name="border:none" color="{{color}}" type-obj='{{Typeswiper}}'></type-swiper>
+      <headline wx:if="{{Headline}}" extra-class='nopadding' class='bor-top' content="{{Headline}}" />
+    </view>
+  </view>
+  <view class='pad_20'>
+    <view class='ba_f br-r-20'>
+      <view class='vip-head flex-center'>
+        <image mode='widthFix' class='timg' src="/assets/images/vip/timg.png"></image>
+        <view class='mar_l30 mar_r30 fon_30'>开卡礼包</view>
+        <image mode='widthFix' class='timg' style="transform:rotate(180deg);" src="/assets/images/vip/timg.png"></image>
+      </view>
+      <block wx:for="{{lbList}}">
+        <layout-one bindtap='goodinfo' data-id="{{item.id}}" is-last='{{index==lbList.length-1}}' after-right='true' body-src='{{url}}{{item.logo}}' body="{{layoutBodyOne}}" class-name=''>
+          <view slot="body-bd-f" class="flex-x-bt">
+            <view class='hydlnr_2'>
+              <text>{{item.title}}</text>
+            </view>
+            <view class='flex-g-0 fon_24 color_9'>剩余{{item.num}}份</view>
+          </view>
+          <view slot="body-bd-s" class="flex-x-bt mar_t_10">
+            <view class='flex-bt'>
+              <block-text class-name="fon_24 pa_5_15 color_r gobyndsingle" style-name="background: #FFEFD2;border-color: #F5C98F;" text='{{item.vipTypeName}}' />
+            </view>
+          </view>
+          <view slot="body-bd-t" class="flex-x-bt fon_24 mar_t_10">
+            <view class=''>
+              价值
+              <text class='fon_30 mar_r' style='color:{{color}}'>￥{{item.money}}</text>
+            </view>
+            <view class='flex-g-0'>
+              <block-text type='2' color="{{color}}" class-name='pa_10_20' text='免费领取' />
+            </view>
+          </view>
+        </layout-one>
+      </block>
+    </view>
+  </view>
+  <wux-tabs tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  <view class="tq-list br-t-e br-b-e">
+    <view class="tq-con" wx:for="{{privilegeDay}}" bindtap='clickDay' data-idx="{{index}}">
+      <view class="week">{{item.weekName}}</view>
+      <view class="day-con flex-center {{index==activeDay?'today':''}}" style="background:{{index==activeDay?color:''}}">
+        <view class="day">{{item.dayName}}</view>
+        <span class="num flex-center" style="background:{{color}}" wx:if="{{index}}">{{item.count}}</span>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{postList.length}}" class=''>
+    <block wx:for="{{postList}}" wx:key="{{item.id}}">
+      <privilege-cell type='1' content="{{item}}" color="{{color}}" />
+    </block>
+  </view>
+  <load-more nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+</view>
+<foot-nav wx:if='{{vipConfig.field}}' color='{{color}}' page-type='vip' />

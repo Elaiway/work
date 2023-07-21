@@ -1,0 +1,56 @@
+<!--pages/yellow/sett.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container'>
+    <h-title bdname="请填写员工信息，三个信息任写一组即可！不必须填写完！"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">用户ID</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='userId' type='number' placeholder-class='fon_28' value="{{params.userId}}" class="weui-input" placeholder="请输入用户ID(纯数字)" />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="或"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">员工手机</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='userTel' type='number' placeholder-class='fon_28' value="{{params.userTel}}" class="weui-input" placeholder="请输入员工手机号" />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="其他信息"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">员工备注</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='remarks' placeholder-class='fon_28' value="{{params.remarks}}" class="weui-input" placeholder="请输入备注名" />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="核销权限"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <checkbox-group bindchange="checkboxChange" name='power'>
+        <view class='flex-raw'>
+          <label style='width:50%;' class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="value">
+            <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+            <view class="weui-cell__bd">{{item.name}}</view>
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+            </view>
+          </label>
+        </view>
+      </checkbox-group>
+    </view>
+    <view class='foot-buttont'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="" type="primary" formType="submit">确定</button>
+    </view>
+  </view>
+</form>

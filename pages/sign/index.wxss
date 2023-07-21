@@ -1,0 +1,141 @@
+@import "signrecord.wxss"
+.container{
+}
+.pa_l{
+  padding:0 30rpx;
+}
+.weui-cell::before{
+  border: none;
+}
+.weui-cell__ft_in-access:after{
+  width: 15rpx;height: 15rpx;top: 1rpx;margin-top: 10rpx;
+}
+.tximg{
+  border-radius: 50%;
+}
+.color_o{
+  color: #EF8734;
+}
+.color_c{
+  color:#C3C3C7;
+}
+.color_r{
+  color: #E74635
+}
+.qdhead{
+  position: relative;width: 100%;
+  height: 210rpx;
+}
+.qdcell{
+  position: absolute !important;
+  top:0;
+  width: 100%;
+  height: 210rpx;
+}
+.qdgz{
+  width: 100%;
+   position: absolute !important;
+  top:0;
+  text-align: right;
+}
+.phb{
+  padding: 5rpx 18rpx;border-radius: 10rpx;border: 1rpx solid #6D6A78;
+  margin-top: 60rpx;
+}
+/**/
+.qdbd{
+  background: #FEF7EA;
+}
+.qdbdmain{
+  padding: 0rpx 20rpx 30rpx;
+}
+.qd-box {
+  width: 25%;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+}
+.qd-view{
+  width: 93%;
+  padding: 10rpx 0;
+  height: 220rpx;
+  justify-content: space-around;
+  background: #fff;border: 1rpx solid #FEF7EA;border-radius: 10rpx;
+  position: relative;
+}
+.jfimg{
+  width: 60rpx;height: 60rpx;
+}
+.qdbq{
+  padding: 0 25rpx;
+  border-radius: 25rpx;
+  color: #fff;
+  background: linear-gradient(to right,#E63D30,#EE8458);
+}
+.qddqd{
+  padding: 0 15rpx;
+  border-radius: 25rpx;
+  background-color: #ddd;
+  color: #fff;
+}
+/* .qddqd{
+  padding: 0 25rpx;
+  color: #999999;
+  background: #fff;
+} */
+.qdnone{
+  padding: 0 25rpx;
+  color: #fff;
+  background: #fff;
+}
+.qdtoday{
+  position: absolute;
+  top: 15rpx;
+  left: -10rpx;
+  height: 40rpx;
+  background: #F8D683;
+  color: #EF8734;
+}
+.qdtodayafter{
+  position: absolute;
+  top: 55rpx;
+  left: -10rpx;
+  width:0;height:0;
+  border-width:10rpx 0rpx 0rpx 10rpx;
+  border-style:solid;
+  border-color:#EF8734 transparent transparent transparent;
+}
+.qdztimg{
+  position: absolute;
+  right: 0;
+  bottom: -10rpx;
+  width: 96rpx;height:96rpx;
+}
+.fullseven{
+  color: #fff;
+  background: linear-gradient(to bottom,#FFD5C8,#FFA68B);
+}
+.fullsevenimg{
+  width: 120rpx;height: 120rpx;
+}
+/**/
+.fl-box{
+  width: 25%;
+  padding: 20rpx 0;
+}
+.flimg{
+  width: 90rpx;height: 90rpx;
+  margin-bottom: 10rpx;
+}
+.swiper{
+  border-radius: 10rpx;
+}
+.zhezhao{
+  width: 100%;
+  height: 235rpx;
+  top:0rpx;left: 0rpx;
+  opacity: 0;
+}
+.yiqiandao{
+  color:#999;
+  background: #fff;
+}

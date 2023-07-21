@@ -1,0 +1,23 @@
+<view class="main">
+	<view class="title color3">订单信息</view>
+	<view class="list color3">
+	<view>店铺名称：{{product.storeName}}</view>
+	<view>兑换地址：{{product.address}}</view>
+	<view>联系电话：{{product.linkTel}}</view>
+	</view>
+	<view class="title color3">奖品展示</view>
+	<view class="pic-list">
+		<view wx:for="{{product.goods}}" wx:key="item" class="pic-list-detail">
+			<image style="width:100%;height:100%;border-radius:20rpx" mode="aspectFill" src="{{item.showImgs[0].url}}"></image>
+		</view>
+	</view>
+	<view wx:if="{{codeStatus}}" class="code">
+			<text class="fons1">请到门店出示核销码领取奖品</text>
+			<view>
+			<image style="width:300rpx;height:300rpx;border-radius:20rpx" mode="aspectFill" src="{{codeImage}}"></image>
+			</view>
+	</view>
+	<view wx:if="{{!codeStatus}}">
+	<button bindtap="cancel" type="warn">确定核销</button>
+	</view>
+</view>

@@ -1,0 +1,63 @@
+<!--pages/personal/testcenter/testpersonal.wxml-->
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <view class="container padding-bottom">
+    <swiper-case id='Swiper' content="{{Swiper}}"></swiper-case>
+    <view class='mar_t'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_9">基本信息</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input disabled='true' placeholder-class='fon_28' class="weui-input color_6" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='name' maxlength='4' placeholder-class='fon_28' class="weui-input color_6" placeholder="请输入姓名" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">身份证号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='code' type='idcard' maxlength='18' value='{{userinfo.userTel}}' placeholder-class='fon_28' class="weui-input color_6" placeholder="请输入身份证号" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_6">联系电话</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='tel' type='number' value='{{userinfo.userTel}}' placeholder-class='fon_28' class="weui-input color_6" placeholder="请输入联系电话" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='mar_t'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label color_9">材料证明</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input disabled='true' placeholder-class='fon_28' class="weui-input color_6" />
+          </view>
+        </view>
+        <wux-upload tipstext='请确保身份证上的文字清晰' htitle='身份证正面' tiptitle='' extra-class='bor-btm' count="1" list-type="picture-card" file-list="{{ logofile }}" bind:change="zmsfzonChange">
+        </wux-upload>
+        <wux-upload tipstext='请确保证件图片清晰' htitle='身份证反面' tiptitle='' extra-class='bor-btm' count="1" list-type="picture-card" file-list="{{ logofile }}" bind:change="fmsfzonChange">
+        </wux-upload>
+      </view>
+    </view>
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='认证协议' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">提交
+      </button>
+    </view>
+  </view>
+</form>

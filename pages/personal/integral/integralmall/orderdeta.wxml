@@ -1,0 +1,41 @@
+<!--pages/personal/integral/integralmall/orderdata.wxml-->
+<view class="container">
+  <goods-cell content="{{content2}}" goods-info="{{goodsInfo}}" color="{{color}}" />
+
+  <wux-cell isLast='true' padding='20rpx 0rpx'>
+    <view class='fon_28 color_6 flex-row' slot="bodyer">
+      <view class='flex-center flex-grow-1 bor_right1' bindtap='clickBuyer'>
+        <text class='iconfont icon-weixin1 fon_36' style='color:{{color}}'></text>
+        <text class='mar_l'>联系商家</text>
+      </view>
+      <view class='flex-center flex-grow-1' bindtap='clickBuyer'>
+        <text class='iconfont icon-dianhua fon_36' style='color:{{color}}'></text>
+        <text class='mar_l gobyndsingle address'>拨打电话</text>
+      </view>
+    </view>
+  </wux-cell>
+  <block wx:if="{{goodsInfo.delivery ==2}}">
+  <wux-cell isLeft='true' wux-class='mar_t' title="核销订单">
+    <view slot='header' class='iconfont icon-liulan mar_r fon_30' style='color:{{color}}'></view>
+    <view slot='footer' class='iconfont icon-mima1 color_y fon_36'></view>
+  </wux-cell>
+  <view class="keyb t_c ba_f">
+    <view class="basepadding fon_28">请输入核销码</view>
+      <keyboard bind:myevent="onGetCode" code="{{code}}" />
+      <view class="pad_20">核销码：{{orderInfo.code}}</view>
+  </view>
+  </block>
+  <wux-cell isLeft='true' wux-class='mar_t' title="配送信息">
+    <view slot='header' class='iconfont icon-fabu mar_r' style='color:{{color}}'></view>
+  </wux-cell>
+  <wux-cell isLast='true' title="联系人：{{orderInfo.selfAddress}}"></wux-cell>
+  <wux-cell isLast='true' title="联系电话：{{orderInfo.tel}}"></wux-cell>
+  <wux-cell isLast='true' title="配送地址：{{orderInfo.ads}}"></wux-cell>
+
+  <wux-cell isLeft='true' wux-class='mar_t' title="订单详情">
+    <view slot='header' class='iconfont icon-jilu1 mar_r' style='color:{{color}}'></view>
+  </wux-cell>
+  <wux-cell isLast='true' title="订单编号：{{orderInfo.outTradeNo}}"></wux-cell>
+  <wux-cell isLast='true' title="下单时间：{{orderInfo.createdAt}}"></wux-cell>
+  <!-- <wux-cell isLast='true' title="支付方式：{{orderInfo.payAt}}"></wux-cell> -->
+</view>

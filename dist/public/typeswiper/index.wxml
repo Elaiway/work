@@ -1,0 +1,23 @@
+<!--dist/public/typeswiper/index.wxml-->
+<view style="padding:{{typeObj.padding}}px;margin-top:{{typeObj.topMargin}}px;{{styleName}}" class='type-swiper extra-class' wx:if="{{typeObj.entryButtonList.length>0}}">
+  <swiper style='height:{{typeObj.height}}rpx;' circular='{{typeObj.circular}}' indicator-dots='{{typeObj.entryButtonList.length>1}}' indicator-color='#999' indicator-active-color='{{color}}' autoplay='{{typeObj.autoplay}}' interval='{{typeObj.interval}}'>
+    <swiper-item wx:for='{{typeObj.entryButtonList}}' wx:key="*this">
+      <view class='flex-row swiper-v'>
+      <block wx:for="{{item}}" wx:key="id">
+        <view wx:if="{{item.entry.value!='miniTarget'||!item.entry.param.appId}}" bindtap='jumps' data-entry='{{item.entry}}' data-item='{{item}}' style='width:{{typeObj.width}}%;height:175rpx;' class='flex-col flex-y-center flex-x-center'>
+          <view class='swiper-imgv'>
+            <image class='swiper-imgvimg imgshape{{typeObj.shape}}' src='{{item.url}}'></image>
+          </view>
+          <view style='color:{{typeObj.active&&activeIndex==item.id?color:typeObj.color}}' class='swiper-tv gobyndsingle color_6'>{{item.label}}</view>
+        </view>
+        <navigator wx:else target='miniProgram' app-id='{{item.entry.param.appId}}' path='{{item.entry.param.path}}' hover-class="none" style='width:{{typeObj.width}}%;height:175rpx;' class='flex-col flex-y-center flex-x-center'>
+          <view class='swiper-imgv'>
+            <image class='swiper-imgvimg imgshape{{typeObj.shape}}' src='{{item.url}}'></image>
+          </view>
+          <view style='color:{{typeObj.color}}' class='swiper-tv gobyndsingle color_6'>{{item.label}}</view>
+        </navigator>
+        </block>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

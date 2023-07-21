@@ -1,0 +1,85 @@
+<view class="container after-navbar">
+  <view class="nameBox3 color_3">
+    <view class='img-con'>
+      <image class='bg-img' src='/assets/images/yellow/bbg.png'></image>
+      <view class='main-box rel'>
+        <seal wx:if="{{detailPage.isTop == '1'}}" zhiding="{{true}}" right="150" top="0" />
+        <wux-cell background='transparent' mode='aspectFill' imgw='100' imgh='100' boradius='50%' thumb="{{detailPage.logo}}">
+          <view class='fon_26 color_6' slot="bodyer">
+            <view class='flex-ra'>
+              <view class='fon_32 color_3 mar_b_10'>{{detailPage.name}}</view>
+            </view>
+            <view class="gobyndsingle fon_24 color_9 flex-grow-1">{{detailPage.department}}·{{detailPage.position}}</view>
+            <view class="hydlnr_2 fon_26 flex-grow-1 flex-x-bottom" style="color:{{color}}">{{detailPage.company}}</view>
+          </view>
+        </wux-cell>
+        <wux-cell background='transparent' isLast='true'>
+          <view class='fon_28 color_6' slot="bodyer" style="min-height:140rpx;">
+            <view class='flex-y-center'>
+              <text class='iconfont icon-landline fon_36'></text>
+              <text class='mar_l'>{{detailPage.tel}}</text>
+            </view>
+            <view wx:if='{{detailPage.isAddress==1}}' class='flex-y-center'>
+              <text class='iconfont icon-icon- fon_36'></text>
+              <text class='mar_l hydlnr_2 address'>{{detailPage.address}}</text>
+            </view>
+          </view>
+        </wux-cell>
+        <wux-cell background='transparent' isLast='true' wux-class='mar_t_10'>
+          <view class='fon_28 flex-center minheight' slot="bodyer">
+            <view class="pa_l color_9 hydlnr_4">{{detailPage.body}}</view>
+          </view>
+        </wux-cell>
+      </view>
+    </view>
+  </view>
+  <view class="pad_20">
+    <view class='flex-bet fon_26 color_9 pad_20'>
+      <view>关注：{{detailPage.followNum}}</view>
+      <view>点赞：{{detailPage.loveNum}}</view>
+      <view>人气：{{detailPage.viewNum}}</view>
+      <view>转发：{{detailPage.shareNum}}</view>
+    </view>
+    <view class="flex-bet fon_26 color_3 pad_20">
+      <view class="bor-c1 borline flex-center" style="color:{{color}};border-color:{{color}}" wx:if="{{detailPage.love==true}}" catchtap='giveup'>
+        <text class='iconfont icon-dianzan fon_28'></text>
+        <text class="mar_l_10">点赞</text>
+      </view>
+      <view class="bor-c1 borline flex-center" wx:if="{{detailPage.love==false}}" catchtap='giveup'>
+        <text class='iconfont icon-dianzan fon_28'></text>
+        <text class="mar_l_10">点赞</text>
+      </view>
+      <view class="bor-c1 borline flex-y-center" style="color:{{color}};border-color:{{color}}" wx:if="{{detailPage.follow==true}}" catchtap='collection'>
+        <text class='iconfont icon-shoucang fon_28'></text>
+        <text class="mar_l_10">收藏</text>
+      </view>
+      <view class="bor-c1 borline flex-y-center" wx:if="{{detailPage.follow==false}}" catchtap='collection'>
+        <text class='iconfont icon-shoucang fon_28'></text>
+        <text class="mar_l_10">收藏</text>
+      </view>
+      <view catchtap="share" class="bor-c1 borline flex-y-center">
+        <text class='iconfont icon-fenxiang fon_28'></text>
+        <text class="mar_l_10">分享</text>
+      </view>
+    </view>
+  </view>
+     <view wx:if="{{ad}}" class="adContainer">
+      <ad unit-id="{{ad}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+    </view> 
+  <view class="mar_t">
+    <wux-tabs wux-class="bor-btm" tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange"></wux-tabs>
+  </view>
+  <block wx:if="{{key==0}}">
+    <Postinfo show_commend="0" show_collection="0" show_operation="0" show_zan="0" color="{{color}}" id="Postinfo" content="{{postList}}" />
+  </block>
+  <block wx:if="{{key==1}}">
+    <store-cell content="{{postList}}" color="{{color}}"></store-cell>
+  </block>
+  <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>
+<share bind:poster="poster" closepop='closepop' onshare="{{onshare}}" />
+<block wx:if="{{foot_menu!=null}}">
+  <foot-dl bind:footclick='footclick' content="{{foot_menu}}" />
+</block>

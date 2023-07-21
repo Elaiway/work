@@ -1,0 +1,123 @@
+<!--pages/yellow/sett.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <view>
+      <wux-upload wx:if="{{uploadArr[0].show}}" type='2' color="{{color}}" tipstext='{{uploadArr[0].tips}}' htitle='{{uploadArr[0].title}}' count="{{uploadArr[0].count}}" file-list="{{ uploadArr[0].fileList }}" data-idx="{{0}}" bind:change="uploadChange">
+      </wux-upload>
+    </view>
+    <h-title bdname="商品信息"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">特权标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='title' placeholder-class='fon_28' value="{{params.title}}" class="weui-input" placeholder="请输入特权标题" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">副标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='subheading' placeholder-class='fon_28' value="{{params.subheading}}" class="weui-input" placeholder="请输入特权副标题" />
+        </view>
+      </view>
+      <view class="weui-cell basepadding">
+        <view class="weui-cell__bd flex-row">
+          <block wx:for="{{pickerDataArr.date}}">
+            <view wx:if="{{item.type=='date'}}" class='flex-1 cellr flex-col-center'>
+              <view class='color_9 fon_26'>{{item.name}}</view>
+              <dd-time-picker style-name='padding: 20rpx 0;' arrow='1' name='{{item.field}}' value='{{params[item.field]}}' bind:change='timePickerChange' data-name='{{item.field}}'/>
+            </view>
+            <picker wx:else class='flex-1 cellr' name='{{item.field}}' mode="{{item.mode||'multiSelector'}}" data-name='{{item.field}}' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData[item.field]}}" range-key="{{item.key||''}}">
+              <view class='flex-col-center'>
+                <view class='color_9 fon_26'>{{item.name}}</view>
+                <view class="color_6 fon_30 mar_t_10">{{params[item.field]||'请选择'}}</view>
+              </view>
+            </picker>
+          </block>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="折扣设置"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">星期</view>
+        </view>
+        <view bindtap='showCheckboxPicker' data-name='week' class="weui-cell__bd weui-select">
+          <input disabled='true' name='week' type='number' placeholder-class='fon_28' value="{{params.week}}" class="weui-input" placeholder="在星期几显示此优惠" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">日期</view>
+        </view>
+        <view bindtap='showCheckboxPicker' data-name='month' class="weui-cell__bd weui-select">
+          <input disabled='true' name='month' type='number' placeholder-class='fon_28' value="{{params.month}}" class="weui-input" placeholder="在几号显示此优惠" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">折扣</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='discount' type='digit' placeholder-class='fon_28' value="{{params.discount}}" class="weui-input" placeholder="五折填写数字5" />
+        </view>
+        <view class="weui-cell__ft">折</view>
+      </view>
+    </view>
+    <h-title bdname="规则设置"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">每卡限领</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='max' type='number' placeholder-class='fon_28' value="{{params.max}}" class="weui-input" placeholder="每人领取上限" />
+        </view>
+        <view class="weui-cell__ft">次</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">使用条件</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='condition' type='digit' placeholder-class='fon_28' value="{{params.condition}}" class="weui-input" placeholder="满多少元可使用此优惠" />
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">库存数量</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='stock' type='number' placeholder-class='fon_28' value="{{params.stock}}" class="weui-input" placeholder="如不填则表示无库存上限" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">使用说明</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='explain' placeholder-class='fon_28' value="{{params.explain}}" class="weui-input" placeholder="请输入使用说明" />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="特权详情"></h-title>
+    <text-area name='details' value='{{params.details}}' bind:textblur='textareachange' showMax='{{false}}' maxlength='500' placeholder="请填写特权详情" extra-class='bor-tb'></text-area>
+    <wux-upload wx:if="{{uploadArr[1].show}}" tipstext='{{uploadArr[1].tips}}' htitle='{{uploadArr[1].title}}' count="{{uploadArr[1].count}}" file-list="{{ uploadArr[1].fileList }}" data-idx="{{1}}" bind:change="uploadChange">
+    </wux-upload>
+    <h-title bdname="服务范围"></h-title>
+    <dd-label bind:change='labelChange' data-name='label' labels='{{labels}}' labelsDefault="{{labelsDefaultl}}" color="{{color}}" />
+    <agree-box hidden="{{true}}" tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='用户协议条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" formType="submit">{{releaseName||'立即发布'}}</button>
+    </view>
+    <block wx:for="{{checkboxPicker}}">
+      <dd-checkbox-picker color="{{color}}" bind:change='checkboxPickerChange' data-name='{{item.field}}' title="{{item.title}}" popupshow="{{item.show}}" defaultarr="{{item.defaultarr}}" checkboxarr="{{item.checkboxarr}}"/>
+    </block>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

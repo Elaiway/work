@@ -1,0 +1,148 @@
+{
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": false,
+    "useApiHostProcess": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "useStaticServer": true,
+    "condition": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.16.0",
+  "appid": "wxeadbb15c4795ea86",
+  "projectname": "miniprogram-2",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/personal/help/index",
+          "pathName": "pages/personal/help/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/index/index",
+          "pathName": "pages/zan/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/billboard/index",
+          "pathName": "pages/zan/billboard/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/publish/index",
+          "pathName": "pages/zan/publish/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personal/index",
+          "pathName": "pages/personal/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/record/index",
+          "pathName": "pages/zan/record/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/publishDetail/index",
+          "pathName": "pages/zan/publishDetail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/bill/index",
+          "pathName": "pages/zan/bill/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/award/index",
+          "pathName": "pages/zan/award/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/publish/index",
+          "pathName": "pages/zan/publish/index",
+          "query": "scene=1",
+          "scene": null
+        },
+        {
+          "name": "pages/store/storemanage/index",
+          "pathName": "pages/store/storemanage/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/award/index",
+          "pathName": "pages/zan/award/index",
+          "query": "scene=id%3D13",
+          "scene": 1047
+        },
+        {
+          "name": "pages/zan/award/index",
+          "pathName": "pages/zan/award/index",
+          "query": "scene=id%3D3",
+          "scene": null
+        },
+        {
+          "name": "pages/zan/index/index",
+          "pathName": "pages/zan/index/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

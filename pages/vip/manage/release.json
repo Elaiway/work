@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "dd-checkbox-picker": "/dist/public/components/form/dd-checkbox-picker"
+    }
+}

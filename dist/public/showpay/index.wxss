@@ -1,0 +1,43 @@
+@import "/app.wxss";
+.weui-cells{
+  text-align: left;
+}
+.weui-cells:before {
+  border-top: none;
+}
+.weui-cells:after {
+  border-bottom: none;
+}
+.wc-hdimg{
+  width: 55rpx;
+  height: 55rpx;
+}
+.ordernum{
+  font-size: 32rpx;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.ordermoney{
+  font-size: 50rpx;
+  font-weight: bold;
+  padding: 40rpx 0;
+}
+.yezf{
+  font-size: 28rpx;
+  margin-top: 15rpx;
+  color: #999;
+}
+.cz{
+  margin-left: 10rpx;
+  padding: 5rpx 15rpx;
+  border-radius: 10rpx;
+  color: #fff;
+}
+.paybtn{
+  background: #fff;
+  padding-top: 90rpx;
+  border-top: 20rpx solid #f4f4f4;
+}
+.weui-btn{
+  border-radius: 0;
+}

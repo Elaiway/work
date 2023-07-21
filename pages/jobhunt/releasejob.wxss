@@ -1,0 +1,9 @@
+.color_nan{
+  color:#259FF5;
+}
+.color_nv{
+  color:#FE5C9E;
+}
+.borr{
+  border-right: 1rpx solid #eee;
+}

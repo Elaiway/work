@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "record-cell": "/dist/public/record-cell/index"
+  }
+}

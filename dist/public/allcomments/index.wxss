@@ -1,0 +1,23 @@
+/* dist/public/commend/index.wxss */
+.dis_t{
+  display: inline-block;
+  vertical-align: top;
+}
+.user_logo{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.commend_listv1{
+  width: 10%;
+}
+.commend_listv2{
+  width: 86%;
+  margin-left: 4%;
+}
+.reply{
+  /* background: #e5e5e5; */
+  padding: 10rpx;
+  margin-bottom: 10rpx;
+  border-radius: 5rpx;
+}

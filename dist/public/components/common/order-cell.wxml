@@ -1,0 +1,101 @@
+<!--dist/public/components/common/order-cell.wxml-->
+<!--dist/public/auxiliary/mall/good-card.wxml-->
+<view class='ba_f mar_t'>
+  <view class='flex-x-bt pad_20' bindtap="{{config.type=='mall'?'storeInfo':''}}">
+    <!-- 用户订单列表 -->
+    <view wx:if="{{config.type=='mall'}}" class='flex-y-center'>
+      <image class='imgsize imgshape1' src='{{url}}{{content.storeLogo[0].url}}'></image>
+      <text class='color_3 mar_l'>{{content.storeName}}</text>
+      <text class='iconfont icon-you-copy color_9 fon_24 mar_l_10'></text>
+    </view>
+    <!-- 商家管理订单 -->
+    <view wx:if="{{config.type=='mallmanage'||config.type=='assemble'}}" class='flex-y-center'>
+      <text class='color_3'>订单号：{{content.outTradeNo}}</text>
+    </view>
+    <view style='color:{{color}}'>{{content.tips}}</view>
+  </view>
+  <block wx:for="{{content.goods}}" wx:key='storeId'>
+    <layout-one bindtap='goDetail' data-id='{{item.orderId}}' is-last="true" after-left="true" no-pad='true' body-src='{{item.img}}' body="{{layoutBodyOne}}" class-name=''>
+      <view slot="body-bd-f" class="flex-x-bt">
+        <view class='hydlnr_2' style='height:82rpx;'>
+          <!-- <block-text wx:if="{{content.power&&content.power.length}}" type='2' color='{{color}}' class-name='pa_5_10 br-r-20 mar_r_10' text='content.power[0]' /> -->
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+      <view slot="body-bd-s" class="flex-x-bt mar_t_10">
+        <view class='flex-bt'>
+          <block-text wx:if="{{item.data}}" display='block' class-name="fon_24 pa_5_15 ba_f5 color_9" text='{{item.data}}' />
+        </view>
+      </view>
+      <view slot="body-ft" class='flex-col-end'>
+        <view class='fon_30'>￥{{item.money}}</view>
+        <view class='fon_24 color_9 mar_t_10'>X{{item.num}}</view>
+      </view>
+    </layout-one>
+  </block>
+  <view wx:if="{{config.foot}}" class='flex-x-bt base-pad2'>
+    <view class='flex-g-1'>
+      <view wx:if="{{config.type=='mallmanage'}}" class='flex-y-center'>
+        <image class='imgsize80 flex-g-0' src='{{content.portrait}}'></image>
+        <view class='mar_l'>{{content.userName}}</view>
+      </view>
+    </view>
+    <view class='flex-g-0'>
+      <text wx:if="{{content.num}}">共{{content.num}}件商品</text> 合计
+      <text style='color:{{color}}'>￥{{content.totalMoney}}</text>(含运费
+      <text style='color:{{color}}'>{{content.freight}}</text>)
+    </view>
+  </view>
+  <!-- 用户订单列表 -->
+  <view wx:if="{{config.type=='mall'&&(content.status==0||content.status==1||content.status==2||content.status>=3)}}" class='flex-x-bottom base-pad2 br-t-e'>
+    <block wx:if="{{content.status==0}}">
+      <view class='text-btn mar_l30' bindtap='clickBtn' data-field='cancel'>取消订单</view>
+      <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='goPay'>去支付</view>
+    </block>
+    <block wx:elif="{{content.status==1}}">
+      <view class='text-btn mar_l30' bindtap='clickBtn' data-field='refund'>申请退款</view>
+    </block>
+    <block wx:elif="{{content.status==2}}">
+      <view wx:if="{{content.delivery==2}}" class='text-btn mar_l30' bindtap='clickBtn' data-field='refund'>申请退款</view>
+      <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='comfrim'>确认收货</view>
+    </block>
+    <block wx:elif="{{content.status==9}}">
+      <view class='text-btn mar_l30' bindtap='clickBtn' data-field='refund'>申请退款</view>
+      <view class='text-btn mar_l30' bindtap='clickBtn' data-field='comment'>去评价</view>
+      <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='del'>删除订单</view>
+    </block>
+    <block wx:else>
+      <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='del'>删除订单</view>
+    </block>
+  </view>
+  <!-- 商家管理订单 -->
+  <view wx:if="{{config.type=='mallmanage'}}" class='flex-x-bt base-pad2 br-t-e'>
+    <view class='color_9 fon_24'>下单时间：{{content.createdAt}}</view>
+    <view class='flex-y-center'>
+      <block wx:if="{{content.status==0}}">
+        <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='cancel'>关闭订单</view>
+      </block>
+      <block wx:elif="{{content.status==1}}">
+        <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='comfrim'>立即发货</view>
+      </block>
+      <block wx:elif="{{content.status==5}}">
+        <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='refund'>同意退款</view>
+      </block>
+      <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='detail'>查看详情</view>
+    </view>
+  </view>
+   <!-- 我的拼团订单 -->
+  <view wx:if="{{config.type=='assemble'}}" class='flex-x-bt base-pad2 br-t-e'>
+    <view class='color_9 fon_24'>下单时间：{{content.createdAt}}</view>
+    <view class='flex-y-center'>
+      <block wx:if="{{content.state==5}}">
+        <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='refund'>申请退款</view>
+      </block>
+      <block wx:elif="{{content.state==3}}">
+        <view wx:if="{{content.delivery==1}}" class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='delivery'>确认收货</view>
+        <view wx:else class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='use'>点击使用</view>
+      </block>
+      <view class='text-btnf mar_l30' style='background:{{color}}' bindtap='clickBtn' data-field='detail'>订单详情</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,138 @@
+<view class="zan">
+	<view class="zan-name">
+		<view class="zan-name-left">
+			<image class="img-head" mode="aspectFill" src="{{details.storeLogo}}"></image>
+			<view>
+				<view>{{details.storeName}}</view>
+				<view class="color1">{{details.startTime}}</view>
+			</view>
+		</view>
+		<view class="flex-start-center">
+			<view wx:if="{{!details.storeLove}}" bindtap="collection_store" data-type="1" class="zan-name-right" style="margin-right:15rpx">关注</view>
+			<view wx:if="{{details.storeLove}}" bindtap="collection_store" data-type="1" class="zan-name-right curLove" style="margin-right:15rpx">已关注</view>
+			<view bindtap="toMarket" class="zan-name-right">进入门店</view>
+		</view>
+	</view>
+	<view class="zan-intro">
+		{{details.describe}}
+	</view>
+	<view class="pic-list">
+		<view wx:for="{{details.media}}" wx:key="{{item}}" class="pic-list-detail">
+			<image style="width:100%;height:100%;border-radius:20rpx" mode="aspectFill" src="{{item.url}}"></image>
+		</view>
+	</view>
+	<view class="zan-number">
+		<view class="flex-start-center" style="margin-bottom:10rpx">
+			<image style="width:30rpx;height:30rpx;" mode="aspectFill" src="../../../assets/images/zan/dingwei.png"></image>
+			<text>{{details.address}}</text>
+		</view>
+		<view class="flex-between-center" style="color:#666">
+			<view class="flex-start-center">
+				<image style="width:30rpx;height:30rpx;margin-right:10rpx" mode="aspectFill" src="../../../assets/images/zan/redxin.png"></image>
+				<text bindtap="toBillboard">集赞榜</text>
+			</view>
+			<view class="flex-start-center">
+				<view class="flex-start-center" style="margin-right:20rpx">
+					<image style="width:30rpx;height:30rpx;margin-right:10rpx" mode="aspectFill" src="../../../assets/images/zan/dianzan.png"></image>
+					<text bindtap="toBillboard">{{details.likeNum}}</text>
+				</view>
+				<view class="flex-start-center" style="margin-left:20rpx">
+					<image style="width:30rpx;height:30rpx;margin-right:10rpx" mode="aspectFill" src="../../../assets/images/zan/shera.png"></image>
+					<text bindtap="toBillboard">{{details.share}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view wx:if="{{details.isShareComplete == 1}}" bindtap="toAward" class="award">
+	{{details.receive == 0?'已完成集赞，点击去兑换奖品':'已完成兑换'}}
+	</view>
+	<!-- <view wx:if="{{details.receive != 1}}" bindtap="toAward" class="award"></view> -->
+
+	<view bindtap="toProduct" class="product">
+		<view class="product-type flex-between-center">
+			<text>活动商品</text>
+			<text>更多》</text>
+		</view>
+		<view class="product-list">
+			<view wx:for="{{details.storeGoods}}" wx:key='item'>
+				<image style="width:100%;height:240rpx;border-radius:10rpx" mode="aspectFill" src="{{item.showImgs[0].url}}"></image>
+				<view>{{item.title}}</view>
+				<view class="flex-between-center">
+					<text>{{item.currentPrice}}元</text>
+					<text>+</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view>
+		<view wx:for="{{details.adData}}" data-id="{{item.storeId}}" wx:key="{{item}}" bindtap="toNewMarket" class="zan-name-left single">
+			<image class="img-head" mode="aspectFill" src="{{item.icon[0].url}}"></image>
+			<view>
+				<view>{{item.storeName}}</view>
+				<view class="color1">{{item.title}}</view>
+			</view>
+		</view>
+		
+		<!-- <view wx:if="{{!details.adStoreLove}}" bindtap="collection_store" data-type="2" class="zan-name-right" style="margin-right:15rpx">关注</view>
+		<view wx:if="{{details.adStoreLove}}" bindtap="collection_store" data-type="2" class="zan-name-right curLove" style="margin-right:15rpx">已关注</view> -->
+	</view>
+	<!-- <view bindtap="toNewMarket" class="product-list">
+		<view wx:for="{{details.adStoreGoods}}" wx:key='item'>
+			<image style="width:100%;height:240rpx;border-radius:10rpx" mode="aspectFill" src="{{item.showImgs[0].url}}"></image>
+			<view>{{item.title}}</view>
+			<view class="flex-between-center">
+				<text>{{item.currentPrice}}元</text>
+				<text>+</text>
+			</view>
+		</view>
+
+	</view> -->
+
+	<!-- 底部 -->
+	<view class="bottom flex-around-center">
+		
+		<view style="overflow:hidden">
+			<button open-type='contact' style="background:#fff">客服 ({{details.storeId}})</button>
+		</view>
+		<view bindtap="zan" class="flex-start-center">
+			<text style="margin-right:10rpx">点赞</text>
+			<image wx:if="{{details.love}}" style="width:30rpx;height:30rpx;border-radius:10rpx" mode="aspectFill" src="../../../assets/images/zan/dianzanInRed.png"></image>
+			<image wx:if="{{!details.love}}" style="width:30rpx;height:30rpx;border-radius:10rpx" mode="aspectFill" src="../../../assets/images/zan/dianzanwhite.png"></image>
+		</view>
+		<view bindtap="powerDrawer" data-statu="open" class="flex-start-center">
+			<text style="margin-right:10rpx">转发</text>
+			<image style="width:30rpx;height:30rpx;border-radius:10rpx" mode="aspectFill" src="../../../assets/images/zan/sherawhite.png"></image>
+		</view>
+	</view>
+<!-- 悬浮按钮 -->
+<!-- <view bindtap="toPublish" class='publish'>发布</view> -->
+
+	<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+
+	<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+		<!--drawer content-->
+		<view class="drawer_content">
+			<button open-type="share">微信好友</button>
+			<button bindtap="openBill" style="margin-top:20rpx" class='fa fa-picture-o'>生成海报</button>
+		</view>
+	</view>
+	<!-- 生成海报 -->
+	<canvas class="mycanvas" canvas-id="myCanvas"></canvas>
+
+	<view wx:if="{{billStatus}}" class="bj"></view>
+	<view wx:if="{{billStatus}}" class="billImage">
+		<view class="billImage-center">
+			<image style="height:380px" mode="aspectFit" src="{{canvasToTempFilePath}}"></image>
+			<view class="finish flex-around-center">
+				<view class="close" bindtap="closeBill">关闭</view>
+				<view class="submit" bindtap="submit">生成海报</view>
+			</view>
+		</view>
+	</view>
+
+</view>
+
+<loading hidden="{{loadingHidden}}">
+ 加载中...
+</loading>

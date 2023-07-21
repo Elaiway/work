@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="pa_l mar_tb_10">
+    <job-hunt job-type="2" page-type="myjob" button="lookdl" content="{{jobrecruitResume}}" color="{{color}}" bind:seeDetail='seeDetail'/>
+  </view>
+   <view class='mar_t'>
+    <load-more bg-color="transparent" nodata="{{jobrecruitResume.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

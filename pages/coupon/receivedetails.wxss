@@ -1,0 +1,38 @@
+.mar-trbl{
+  margin: 20rpx 30rpx 0 30rpx;
+  border-radius:15rpx; 
+}
+.infolist{
+  min-height: 50rpx;
+}
+.mar-lrt{
+  margin: 30rpx 30rpx 0 30rpx;
+  border-radius:15rpx; 
+}
+.padd-tblr{
+  padding: 30rpx 60rpx;
+}
+.line {
+  height: 2rpx;
+  width: 100%;
+  background: #ddd;
+}
+.cir{
+  width: 93rpx;
+  height: 93rpx;
+}
+.sjlogo{
+  width: 44rpx;
+  height: 44rpx;
+}
+.pad-rbl{
+  padding: 0 30rpx 30rpx 30rpx;
+}
+.code{
+  width: 480rpx;
+  height: 480rpx;
+}
+.codeimg{
+  width: 100%;
+  height: 100%;
+}

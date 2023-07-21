@@ -1,0 +1,7 @@
+/* pages/index/help/index.wxss */
+.questionv1{
+  width: 90%;
+}
+.questionv2{
+  width: 10%;
+}

@@ -1,0 +1,20 @@
+<view class='container'>
+<wux-tabs wux-class='' tabs="{{ tabs }}" color='{{color}}' current="{{ key }}" bindchange="onTabsChange">
+</wux-tabs>
+  <view class='ba_f'>
+    <view wx:if="{{postList.length}}" class="color_9 fon_24 pad_20 t_c ba_f5">已入账的收入将汇入到“商家余额”，可进入“商家余额”提现</view>
+    <wux-cell-group>
+      <block wx:for="{{postList}}" wx:key="*this">
+        <wux-cell tftsize='26' lftsize='26' class='wux-class' tclass="mar_b color_3" wux-class="" title="{{item.createdAt}}" label="订单号：{{item.outTradeNo}}">
+          <view slot='footer' class='mar_r'>
+            <view class='fon_32'>
+              <view class="mar_b_10" style="color:{{color}}">+{{item.totalMoney}}</view>
+              <view class="color_9 fon_26">{{params.type==1?'已入账':'未入账'}}</view>
+            </view>
+          </view>
+        </wux-cell>
+      </block>
+    </wux-cell-group>
+    <load-more bg-color="transparent" nodata="{{postList.length==0&&isget}}" mygd='{{mygd}}' />
+  </view>
+</view>

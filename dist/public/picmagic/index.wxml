@@ -1,0 +1,30 @@
+<view class='picture-magic-ind pa_t extra-class'>
+  <view class='picture-magic-cont' wx:key="*this">
+    <block wx:if="{{!content.reverse}}">
+      <view class='at-col-6 picture_0'>
+        <view class='picture-magic-item'>
+          <image mode='aspectFill' bindtap='jumps' data-entry='{{content.pictureList[0].entry}}' class='picture-magic-img1' src="{{content.pictureList[0].url}}"></image>
+        </view>
+      </view>
+      <view class='at-col-6 picture_1'>
+        <view class='picture-magic-item'>
+          <image mode='aspectFill' bindtap='jumps' data-entry='{{content.pictureList[1].entry}}' class='picture-magic-img picture-magic-img-space' src="{{content.pictureList[1].url}}"></image>
+          <image mode='aspectFill' bindtap='jumps' data-entry='{{content.pictureList[2].entry}}' class='picture-magic-img' src="{{content.pictureList[2].url}}"></image>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='at-col-6 picture_1'>
+        <view class='picture-magic-item'>
+          <image mode='aspectFill' bindtap='jumps' data-entry='{{content.pictureList[1].entry}}' class='picture-magic-img picture-magic-img-space' src="{{content.pictureList[1].url}}"></image>
+          <image mode='aspectFill' bindtap='jumps' data-entry='{{content.pictureList[2].entry}}' class='picture-magic-img' src="{{content.pictureList[2].url}}"></image>
+        </view>
+      </view>
+      <view class='at-col-6 picture_0'>
+        <view class='picture-magic-item'>
+          <image mode='aspectFill' bindtap='jumps' data-entry='{{content.pictureList[0].entry}}' class='picture-magic-img1' src="{{content.pictureList[0].url}}"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

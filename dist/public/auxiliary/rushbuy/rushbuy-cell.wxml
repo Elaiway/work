@@ -1,0 +1,27 @@
+<!--dist/public/auxiliary/rushbuy/rushbuy-cell.wxml-->
+<view bindtap='goodinfo' class='basepadding ba_f mar_b'>
+  <view class='cell-top posi-r'>
+    <image mode='aspectFill' class='image_all br-r-30' src='{{content.showImgs}}'></image>
+    <view class="time color_f posi-a t0 l0 z-ix ba-lg-f4ee fon_26">距离结束 
+      <text class="wei fon_24">{{endTime[0]}}天{{endTime[1]}}时{{endTime[2]}}分{{endTime[3]}}秒</text>
+    </view>
+    <view class="colorbox ab"><image class='wid_hei ab' src='/assets/images/rushbuy/colorbox.png'></image></view>
+  </view>
+  <view class='wei fon_36 pa'>{{content.title}}</view>
+  <view class='flex-x-bt'>
+    <view>
+      <view>
+        <text class='wei fon_36 mar_r_10 color_r'>￥{{content.rushPrice}}</text>
+        <text class='color_9 t-d-l'>￥{{content.originalPrice}}</text>
+      </view>
+      <view class='mar_t_10 flex flex-y-center'>
+        <view class="yuan iconfont icon-huo color_f flex-center fon_26 posi-r z-ix"></view>
+        <view class="jindu posi-r flex-y-center color_f fon_24 o-h">
+          <view class="bfb posi-a l0 t0 b0" style="width:{{robbed}}%"></view>
+          <view class="posi-r mar_l">已抢{{robbed}}%</view>
+        </view>
+      </view>
+    </view>
+    <block-text type='2' color="#FF3838" class-name='pa_13_20 br-r-30' text='立即抢购' />
+  </view>
+</view>

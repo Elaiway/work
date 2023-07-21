@@ -1,0 +1,21 @@
+<!--pages/yellow/classify.wxml-->
+<view class='container after-navbar'>
+  <!-- 搜索框 -->
+  <view>
+    <search id='Search' class="postion" content="{{Search}}" searchtype='1' color="{{color}}"></search>
+  </view>
+  <view class="main">
+    <view wx:for='{{typeArr}}' wx:key='{{item.id}}' class="ba_f fon_28 color_6 module">
+      <view class="flex-y-center color_3 m-title">
+        <image class="icon-w" src='{{item.url}}'></image>
+        <view class="fon_30">{{item.name}}</view>
+      </view>
+      <view class="cro-box flex-raw wid">
+        <view wx:for="{{item.son}}" wx:key='{{typeItem.id}}' wx:for-item="typeItem"  class="crosswise">
+          <view class="border t_c gobyndsingle bor_rb" bindtap='listDetail'  data-item="{{typeItem}}" >{{typeItem.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<foot-nav color='{{color}}' page-type='yellow'/>

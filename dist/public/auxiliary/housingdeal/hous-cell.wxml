@@ -1,0 +1,132 @@
+<!--dist/public/auxiliary/housingdeal/housingdeal.wxml-->
+<view class="content">
+  <block wx:if="{{housType=='1'}}">
+    <view class="ba_f color_3 br-r-10 mar_tblr" bindtap="housInfo" data-id="{{content.id}}">
+      <view class="flex-bet bor-btm pa">
+        <view>
+          <block wx:if="{{pageType!=='collList'}}">
+            <i-tag i-class="i-tags" i-class="borderRight" font-size="24" bgColor="{{content.identifying=='6'?'#22D4D4':''||content.identifying=='5'?'#0AB9F5':''||content.identifying=='4'?'#F5431A':''||content.identifying=='3'?'#22D4D4':''}}" border-color="{{content.identifying=='6'?'#22D4D4':''||content.identifying=='5'?'#0AB9F5':''||content.identifying=='4'?'#F5431A':''||content.identifying=='3'?'#22D4D4':''}}"
+              color="#fff">{{content.name}}</i-tag>
+          </block>
+          <block wx:if="{{pageType=='collList'}}">
+            <i-tag i-class="i-tags" i-class="borderRight" font-size="24" bgColor="{{content.identifying=='6'?'#22D4D4':''||content.identifying=='5'?'#0AB9F5':''||content.identifying=='4'?'#F5431A':''||content.identifying=='3'?'#22D4D4':''}}" border-color="{{content.identifying=='6'?'#22D4D4':''||content.identifying=='5'?'#0AB9F5':''||content.identifying=='4'?'#F5431A':''||content.identifying=='3'?'#22D4D4':''}}"
+              color="#fff">{{content.typeName}}</i-tag>
+          </block>
+          <block wx:if="{{content.identifying=='5' || content.identifying=='3'}}">
+            <i-tag i-class="i-tags" i-class="borderRight" font-size="24" bgColor="{{content.rentType=='在售'?'#287AE0':''||content.rentType=='待售'?'#0AB9F5':''||content.rentType=='停售'?'#F5431A':''||content.rentType=='出租'?'#22D4D4':''||content.rentType=='单间'?'#12BC26':''||content.rentType=='整租'?'#FFB131':''||content.rentType=='次卧'?'#287AE0':''||content.rentType=='主卧'?'#0AB9F5':''}}"
+              border-color="{{content.rentType=='在售'?'#287AE0':''||content.rentType=='待售'?'#0AB9F5':''||content.rentType=='停售'?'#F5431A':''||content.rentType=='出租'?'#22D4D4':''||content.rentType=='单间'?'#12BC26':''||content.rentType=='整租'?'#FFB131':''||content.rentType=='次卧'?'#287AE0':''||content.rentType=='主卧'?'#0AB9F5':''}}"
+              color="#fff">{{content.rentType}}</i-tag>
+          </block>
+        </view>
+        <view class="color_9">{{content.createdAt}} 发布</view>
+      </view>
+      <view class="rel">
+        <view class="flex pa">
+          <view class="flex-grow-0 flex-y-center">
+            <image class="housimg mar_r" src="{{content.imgs}}"></image>
+          </view>
+          <view class="flex-grow-1">
+            <view class="fon_30 gobyndsingle">{{content.title}}</view>
+            <view wx:if="{{pageType!=='releaList' && pageType!=='collList'}}" class="fon_26 gobyndsingle color_9 mar_t_5">
+              <text wx:if="{{content.apartment}}">{{content.apartment}}卫 | </text>
+              <text wx:if="{{content.measure}}">{{content.measure}}㎡ |</text>
+              <text wx:if="{{content.identifying!=='3'}}">{{content.communityName}}</text>
+              <text wx:if="{{content.identifying=='3'}}">{{content.deposit}}</text>
+            </view>
+            <view class="flex-bet mar_t_5">
+              <view wx:if="{{pageType!=='releaList' && pageType!=='collList'}}" class="fon_26 flex color_9">
+                <text class="iconfont icon-location fon_28 mar_r_10"></text>
+                <view class="gobyndsingle">{{content.area}}</view>
+              </view>
+              <view class="fon_32 gobyndsingle">
+                <text style="color:{{color}}">{{content.rent}}</text>
+                <text wx:if="{{content.rent.indexOf('60')>=0}}">元/平</text>
+              </view>
+              <view wx:if="{{button=='czbj' && content.status!=0}}">
+                <view class="btn fon_26 br-r-30" style="border-color:{{color}};color:{{color}}" catchtap='operation' data-info="{{content}}">操作/编辑</view>
+              </view>
+              <view wx:if="{{button=='qxsc'}}">
+                <view class="btn fon_26 br-r-30" style="border-color:{{color}};color:{{color}}" catchtap='oncancelcoll' data-cid="{{content.id}}">取消收藏</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{pageType!=='releaList' && pageType!=='collList'}}" class="pa paj">
+          <block wx:for="{{content.label}}">
+            <i-tag i-class="borderRight" font-size="24" border-color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}" color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}">{{item}}</i-tag>
+          </block>
+          <!-- <block wx:for="{{content.data}}">
+            <i-tag i-class="borderRight" font-size="24" border-color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}" color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}">{{item}}</i-tag>
+          </block> -->
+        </view>
+        <!-- 房屋出租、新房二手房显示印章图标 -->
+        <seal wx:if="{{content.isTop=='1' && content.display!=='2' && content.status!='2'}}" zhiding="{{true}}" right="170" top="30" />
+        <seal wx:if="{{content.status=='2'}}" jujue="{{true}}" right="170" top="30" />
+        <seal wx:if="{{content.display=='2' && content.status!=='2'}}" xiajia="{{true}}" right="170" top="30" />
+        <seal wx:if="{{content.status=='0' && content.status!=='2'}}" daishenhe="{{true}}" right="170" top="30" />
+      </view>
+    </view>
+  </block>
+<!-- 房屋求租housType=='2'渲染 -->
+  <block wx:if="{{housType=='2'}}">
+    <view class="ba_f color_3 br-r-10 mar_tblr" bindtap="housInfo" data-id="{{content.id}}">
+      <view class="flex-bet bor-btm pa">
+        <view>
+          <block wx:if="{{pageType!=='collList'}}">
+            <i-tag i-class="i-tags" i-class="borderRight" font-size="24" bgColor="{{content.identifying=='6'?'#22D4D4':''||content.identifying=='5'?'#0AB9F5':''||content.identifying=='4'?'#F5431A':''||content.identifying=='3'?'#22D4D4':''}}" border-color="{{content.identifying=='6'?'#22D4D4':''||content.identifying=='5'?'#0AB9F5':''||content.identifying=='4'?'#F5431A':''||content.identifying=='3'?'#22D4D4':''}}"
+              color="#fff">{{content.name}}</i-tag>
+          </block>
+          <block wx:if="{{pageType=='collList'}}">
+            <i-tag i-class="i-tags" i-class="borderRight" font-size="24" bgColor="{{content.identifying=='6'?'#22D4D4':''||content.identifying=='5'?'#0AB9F5':''||content.identifying=='4'?'#F5431A':''||content.identifying=='3'?'#22D4D4':''}}" border-color="{{content.identifying=='6'?'#22D4D4':''||content.identifying=='5'?'#0AB9F5':''||content.identifying=='4'?'#F5431A':''||content.identifying=='3'?'#22D4D4':''}}"
+              color="#fff">{{content.typeName}}</i-tag>
+          </block>
+          <block wx:if="{{content.rentType!==null}}">
+            <i-tag i-class="i-tags" i-class="borderRight" font-size="24" bgColor="{{content.rentType=='在售'?'#287AE0':''||content.rentType=='待售'?'#0AB9F5':''||content.rentType=='停售'?'#F5431A':''||content.rentType=='出租'?'#22D4D4':''||content.rentType=='单间'?'#12BC26':''||content.rentType=='整租'?'#FFB131':''||content.rentType=='次卧'?'#287AE0':''||content.rentType=='主卧'?'#0AB9F5':''}}"
+              border-color="{{content.rentType=='在售'?'#287AE0':''||content.rentType=='待售'?'#0AB9F5':''||content.rentType=='停售'?'#F5431A':''||content.rentType=='出租'?'#22D4D4':''||content.rentType=='单间'?'#12BC26':''||content.rentType=='整租'?'#FFB131':''||content.rentType=='次卧'?'#287AE0':''||content.rentType=='主卧'?'#0AB9F5':''}}"
+              color="#fff">{{content.rentType}}</i-tag>
+          </block>
+        </view>
+        <view class="color_9">{{content.createdAt}} 发布</view>
+      </view>
+      <view class='pa rel'>
+        <view>{{content.title}}</view>
+        <view wx:if="{{pageType!=='collList' && pageType!=='releaList'}}" class="flex-bet mar_t">
+          <view class='flex'>
+            <image class="userimg mar_r br-r-c" src="{{content.portrait}}"></image>
+            <view>{{content.userName}}</view>
+          </view>
+          <view class="fon_26 flex color_9" >
+            <text class="iconfont icon-location fon_28 mar_r_10"></text>
+            <view>{{content.area}}</view>
+          </view>
+        </view>
+        <view wx:if="{{pageType=='collList' || pageType=='releaList'}}" class="flex-bet mar_t">
+          <view class='flex'>
+            <image class="userimg mar_r br-r-c" src="{{content.portrait}}"></image>
+            <view>{{content.userName}}</view>
+          </view>
+          <view wx:if="{{button=='qxsc'}}">
+            <view class="btn fon_26 br-r-30" style="border-color:{{color}};color:{{color}}" catchtap='oncancelcoll' data-cid="{{content.id}}">取消收藏</view>
+          </view>
+          <!-- status!=0为待审核状态不显示操作按钮 -->
+          <view wx:if="{{button=='czbj' && content.status!=0}}">
+            <view class="btn fon_26 br-r-30" style="border-color:{{color}};color:{{color}}" catchtap='operation' data-info="{{content}}">操作/编辑</view>
+          </view>
+        </view>
+        <view wx:if="{{pageType!=='collList' && pageType!=='releaList'}}" class="mar_t">
+          <!-- <block wx:for="{{content.data}}">
+            <i-tag i-class="borderRight" font-size="24" border-color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}" color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}">{{item}}</i-tag>
+          </block> -->
+          <block wx:for="{{content.label}}">
+            <i-tag i-class="borderRight" font-size="24" border-color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}" color="{{index=='0'?'#FF6F20':''||index=='1'?'#7594B6':''||index=='2'?'#FF3838':''||index=='3'?'#12BC26':''||index>'3'?'#17D2BB':''}}">{{item}}</i-tag>
+          </block>
+        </view>
+          <!-- 房屋求租显示印章图标 -->
+          <seal wx:if="{{content.isTop=='1' && content.display!=='2' && content.status!='2'}}" zhiding="{{true}}" right="170" top="0" />
+          <seal wx:if="{{content.status=='2'}}" jujue="{{true}}" right="170" top="0" />
+          <seal wx:if="{{content.display=='2' && content.status!=='2'}}" xiajia="{{true}}" right="170" top="0" />
+          <seal wx:if="{{content.status=='0' && content.status!=='2'}}" daishenhe="{{true}}" right="170" top="0" />
+      </view>
+    </view>
+  </block>
+</view>

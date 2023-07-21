@@ -1,0 +1,19 @@
+<wux-popup class='extra-class' mask='{{mask}}' position="bottom" class-names="slideInUp" visible="{{ onshare }}" bind:close="{{closepop}}">
+    <view class='onShareAppMessage'>
+        <view class='sharetitle fon_30 color_6 t_c'>分享给好友</view>
+        <view class='sharemessage pa_t'>
+            <view class='dis_in wid_50 rel'>
+                <image class='sharemessageimg' mode='aspectFill' src='/assets/images/img/wechat.png'></image>
+                <view class='fon_30 color_6 t_c pa_t'>微信</view>
+                <button class='sharemessagebtn ab' open-type='share' bindtap='share'></button>
+            </view>
+            <view wx:if="{{ishb=='1'}}" class='dis_in wid_50' catchtap='poster'>
+                <image class='sharemessageimg' mode='aspectFill' src='/assets/images/img/share_poster.png'></image>
+                <view class='fon_30 color_6 t_c pa_t'>海报</view>
+            </view>
+        </view>
+        <view class='cancel t_c ba_e color_6' bindtap='closepop'>
+            取消
+        </view>
+    </view>
+</wux-popup>

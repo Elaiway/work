@@ -1,0 +1,13 @@
+<view class='pa_t bor_bottom rel flex-row flex-y-center' bindtap='submenu_route' data-src="{{content.src}}">
+    <view class='flex-grow-1 fon_30 color_0'>
+        <image wx:if="{{content.img!=''}}" class='dis_in submenu_icon' mode='aspectFill' src='{{content.img}}'></image>
+        <text class="dis_in color_6 {{content.is_wei==true?'fon_wei':''}}">{{content.name}}</text>
+    </view>
+    <view class='flex-grow-0 t_r'>
+        <text class='color_9 fon_26'>{{content.right_value}}</text>
+        <text class='iconfont color_9 icon-you fon_24' wx:if="{{content.right_value!=''}}"></text>
+    </view>
+    <block wx:if="{{content.wechat_kefu}}">
+        <button open-type='contact' class='ab udlr btn_wechat'></button>
+    </block>
+</view>

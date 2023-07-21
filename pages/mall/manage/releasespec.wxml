@@ -1,0 +1,80 @@
+<!--pages/yellow/sett.wxml-->
+<form bindsubmit="confirm" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <view class="spec-main">
+      <view class="spec-name-con">
+        <view wx:for="{{spec}}" wx:for-index="pIndex" wx:for-item="pItem">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label fon_30">规格名称</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input bindinput='specNameInput' data-pindex='{{pIndex}}' placeholder-class='fon_28' value="{{pItem.spec_name}}" class="weui-input" placeholder="请输入规格标题" />
+            </view>
+            <view class="weui-cell__ft flex-y-center">
+              <view class="spec-add-spec flex-center" bindtap="addSpecVal" data-pindex="{{pIndex}}" style='background:{{color}}'>+添加规格</view>
+              <view class="delete-icon flex-center" bindtap="delSpecMethod" data-pindex='{{pIndex}}'>
+                <text class="iconfont icon-closev-active"></text>
+              </view>
+            </view>
+          </view>
+          <view class="spec-name-label">
+            <view wx:for="{{pItem.spec_val}}" wx:for-item="specitem" class="spec-name-label-main">
+              <view class="label flex-center">
+                <input bindinput='specValNameInput' data-pindex="{{pIndex}}" data-index="{{index}}" value="{{specitem.spec_val_name}}" placeholder="参数名称" />
+              </view>
+              <view class='close-icon flex-center' bindtap="delSpecVal" data-pindex="{{pIndex}}" data-index="{{index}}">
+                <text class="iconfont icon-closev-active fon_40 color_9" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view bindtap='addSpecMethod' class="add-spec-btn flex-center">
+          <text class='iconfont icon-jia fon_40 color_9'></text>
+        </view>
+        <view class="add-tips">注意：最多只能添加3组规格</view>
+      </view>
+    </view>
+    <view class="spec-group mar_t">
+      <view class="pad_20 flex-x-bt">
+        <view class='spec-group-con-title'>价格/库存{{system.openVip?'/会员价':''}}</view>
+        <view bindtap="refreshGroup" class="refresh" style='background:{{color}}'>刷新规格组合表</view>
+      </view>
+      <view class="spec-group-con">
+        <!--<view class="spec-group-con-title">“属性一”+“属性三”</view>-->
+        <view class="spec-group-con-body flex-x-bt" style="margin-top: 0;">
+          <view class="body-con mar_r">
+            <input class='input' type="digit" data-key='syncMoney' bindinput='syncInput' value="{{syncMoney}}" placeholder="输入价格" />
+            <view class="body-r flex-center" style='color:{{color}}' data-key='syncMoney' bindtap="syncKey">同步</view>
+          </view>
+          <view class="body-con mar_r">
+            <input class='input' type="number" data-key='syncNum' bindinput='syncInput' value="{{syncNum}}" placeholder="输入库存" />
+            <view class="body-r flex-center" style='color:{{color}}' data-key='syncNum' bindtap="syncKey">同步</view>
+          </view>
+          <view class="body-con" wx:if="{{system.openVip}}">
+            <input class='input' type="digit" data-key='syncVipMoney' bindinput='syncInput' value="{{syncVipMoney}}" placeholder="会员价格" />
+            <view class="body-r flex-center" style='color:{{color}}' data-key='syncVipMoney' bindtap="syncKey">同步</view>
+          </view>
+        </view>
+      </view>
+      <view class="spec-group-con" wx:for="{{group}}" wx:key="index">
+        <view class="spec-group-con-title">{{item.data}}</view>
+        <view class="spec-group-con-body flex-x-bt">
+          <view class="body-con">
+            <input class='input' data-index='{{index}}' data-key='money' bindinput='specInput' type="digit" value="{{item.money}}" placeholder="输入价格" />
+          </view>
+          <view class="body-con mar-l mar_r">
+            <input class='input' data-index='{{index}}' data-key='num' bindinput='specInput' type="number" value="{{item.num}}" placeholder="输入库存" />
+          </view>
+          <view class="body-con" wx:if="{{system.openVip}}">
+            <input class='input' data-index='{{index}}' data-key='vipMoney' bindinput='specInput' type="digit" value="{{item.vipMoney}}" placeholder="会员价" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" formType="submit">{{releaseName||'立即发布'}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>

@@ -1,0 +1,27 @@
+/* pages/personal/wallet/recharge/index.wxss */
+
+.walletBalance {
+    padding: 40rpx 0;
+}
+
+.rechargeMoney {
+    width: 30%;
+    margin-right: 3.33%;
+    border-radius: 8rpx;
+    /* background: #FFF1F0; */
+    margin-bottom: 20rpx;
+    box-sizing: border-box;
+}
+
+.recharge {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.seleBorder{
+    border:2rpx solid #A19080;
+}
+.noBorder{
+    border:2rpx solid #F8EFF0;
+}

@@ -1,0 +1,81 @@
+<!--pages/personal/address/bjdz.wxml-->
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <view class="weui-cells weui-cells_after-title1">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <!-- <image mode='aspectFit' src='/assets/img/pubpost/lx.png'></image> -->
+        <view class="weui-label">联系人</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='fon_28' maxlength='6' value='{{dzinfo.linkName}}' name='lxr' class="weui-input" placeholder="请输入联系人" />
+      </view>
+    </view>
+    <!-- <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <image mode='aspectFit' src='/assets/img/pubpost/bq.png'></image>
+        <view class="weui-label color_6"></view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class='weui-input flex-row flex-y-center' style='line-height:normal;'>
+          <view bindtap='labeltab1' data-index='{{index}}' style="color:{{acindex1==index?color:''}};border-color:{{acindex1==index?color:''}}" wx:for="{{label1}}" class="label">{{item.name}}</view>
+        </view>
+      </view>
+    </view> -->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <!-- <image mode='aspectFit' src='/assets/img/pubpost/dh.png'></image> -->
+        <view class="weui-label">电话</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='fon_28' value='{{dzinfo.linkTel}}' name='tel' type='number' class="weui-input" placeholder="请输入联系电话" />
+      </view>
+      <!-- <view style='color:{{color}};padding-left:20rpx;' bindtap='chooseLocation' class="weui-cell__ft fon_28">
+        +通讯录
+      </view> -->
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <!-- <image mode='aspectFit' src='/assets/img/pubpost/dz.png'></image> -->
+        <view class="weui-label">所在地区</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="region" name='address' bindchange="bindRegionChange" value="{{region}}">
+          <view class="weui-select weui-select_in-select-after color_6 fon_28">{{region[0]}}{{region[1]}}{{region[2]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <!-- <image mode='aspectFit' src='/assets/img/pubpost/lx.png'></image> -->
+        <view class="weui-label">详细地址</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='fon_28' value='{{dzinfo.detailedAddress}}' name='detailedAddress' class="weui-input" placeholder="如门牌号，小区，楼栋号，单元室等" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <!-- <image mode='aspectFit' src='/assets/img/pubpost/bq.png'></image> -->
+        <view class="weui-label">标签</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class='weui-input flex-row flex-y-center' style='line-height:normal;'>
+          <view bindtap='labeltab' data-index='{{index}}' style="color:{{acindex==index?color:''}};border-color:{{acindex==index?color:''}}" wx:for="{{label}}" class="label">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <view class="weui-label">设为默认地址</view>
+      </view>
+      <view class="weui-cell__ft">
+        <view class='weui-input'>
+          <switch name='isDefault' checked="{{dzinfo.isDefault=='1'?true:false}}" color='{{color}}' />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='foot-button'>
+    <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="weui-btn" type="primary" formType="submit">保存</button>
+  </view>
+</form>

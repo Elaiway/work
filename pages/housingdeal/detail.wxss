@@ -1,0 +1,14 @@
+.bor_r{
+  border-right: 1rpx solid #eee;
+}
+.borderRight{
+  margin-right: 15rpx;
+  /* border-color:#17D2BB;
+  color:#17D2BB; */
+}
+.wids{
+  width: 33.33%;
+}
+.widt{
+  width: 50%;
+}

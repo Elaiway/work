@@ -1,0 +1,167 @@
+<!--pages/yellow/sett.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='container padding-bottom'>
+    <view hidden="{{type != '3'}}">
+      <wux-upload wx:if="{{uploadArr[0].show}}" type='2' color="{{color}}" tipstext='{{uploadArr[0].tips}}' htitle='{{uploadArr[0].title}}' count="{{uploadArr[0].count}}" file-list="{{ uploadArr[0].fileList }}" data-idx="{{0}}" bind:change="uploadChange">
+      </wux-upload>
+    </view>
+    <h-title bdname="基本信息"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">发布标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='title' placeholder-class='fon_28' value="{{params.title}}" class="weui-input" placeholder="请输入发布标题" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">房屋租金</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='rent' type='number' placeholder-class='fon_28' value="{{params.rent}}" class="weui-input" placeholder="请输入房屋租金" />
+        </view>
+        <view class="weui-cell__ft flex-y-center">
+          <view class='color_6'>元/月</view>
+          <view bindtap='changerent' class='mar_l flex-y-center'>
+            <text class="iconfont {{params.ismy?'icon-multiple_choice':'icon-choose_none_line'}} fon_40" style="color:{{params.ismy?color:''}}"></text>
+            <text class='mar_l_10' style="color:{{params.ismy?color:''}}">面议</text>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell basepadding">
+        <view class="weui-cell__bd flex-row">
+          <block wx:for="{{type=='3'?pickerDataArr.lease:pickerDataArr.rentSeeking}}">
+            <view wx:if="{{item.formtype == 'picker'}}" class='flex-1 cellr'>
+              <picker class='flex-1 cellr' name='{{item.field}}' mode="{{item.mode||'multiSelector'}}" data-name='{{item.field}}' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData[item.field]}}" range-key="{{item.key||''}}">
+                <view class='flex-col-center'>
+                  <view class='color_9 fon_26'>{{item.name}}</view>
+                  <view class="color_6 fon_30 mar_t_10">{{params[item.field]||'请选择'}}</view>
+                </view>
+              </picker>
+            </view>
+            <view wx:else if="{{item.formtype == 'input'}}" class="flex-1 t_c cellr">
+              <view class="color_9 fon_26">{{item.name}}</view>
+              <view>
+                <input name='{{item.field}}' placeholder-class='fon_30' value="{{params[item.field]}}" class="weui-input" placeholder="{{item.placename}}" />
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view hidden="{{type != '3'}}" class="weui-cells">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">小区名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='communityName' placeholder-class='fon_28' value="{{params.communityName}}" class="weui-input" placeholder="请输入小区名称" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">所在区域</view>
+        </view>
+        <view bindtap='chooseLocation' class="weui-cell__bd weui-select">
+          <input name='area' value='{{params.area}}' placeholder-class='fon_28' class="weui-input" disabled='true' placeholder="请选择（市、区）" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input name='address' value='{{params.address}}' placeholder-class='fon_28' class="weui-input" disabled='true' placeholder="请输入详细地址：区域，街道，楼宇，门牌号等" />
+        </view>
+      </view>
+    </view>
+    <view hidden="{{type != '3'}}">
+      <h-title bdname="房源信息"></h-title>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">房源装修</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name='renovation' mode="multiSelector" data-name='renovation' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData['renovation']}}">
+              <view class="weui-select">{{params.renovation||'请选择'}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">房源面积</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name='measure' placeholder-class='fon_28' value="{{params.measure}}" class="weui-input" placeholder="请输入房源面积" />
+          </view>
+          <view class="weui-cell__ft color_6">㎡</view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">房源楼层</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name='floor' mode="multiSelector" data-name='floor' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData['floor']}}">
+              <view class="weui-select">{{params.floor||'请选择'}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">房源朝向</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name='orientation' mode="multiSelector" data-name='orientation' bindcolumnchange="columnchange" bindchange='pickerchange' range="{{columnsData['orientation']}}">
+              <view class="weui-select">{{params.orientation||'请选择'}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+    </view>
+    <h-title bdname="联系人信息"></h-title>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系人姓名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='linkMan' placeholder-class='fon_28' value="{{params.linkMan}}" class="weui-input" placeholder="请输入联系人姓名" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系人电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name='linkTel' placeholder-class='fon_28' value="{{params.linkTel}}" class="weui-input" placeholder="请输入联系人电话" />
+        </view>
+      </view>
+    </view>
+    <h-title bdname="房屋配置"></h-title>
+    <dd-label bind:change='labelChange' data-name='data' labels='{{categoryInfo.attribute}}' labelsDefault="{{labelsDefaultd}}" color="{{color}}" />
+    <h-title bdname="特色标签"></h-title>
+    <dd-label bind:change='labelChange' data-name='label' labels='{{categoryInfo.label}}' labelsDefault="{{labelsDefaultl}}" color="{{color}}" />
+    <block>
+      <h-title bdname="{{type == '3'?'房源描述':'信息补充'}}"></h-title>
+      <text-area name='body' value='{{params.body}}' bind:textblur='textareachange' maxlength='500' placeholder="{{type == '3'?'描述出租房屋的房屋特征，以及对租客的要求等信息':'例如：小区/楼层/位置/总价/租金/装修/朝向等 方面的要求'}}" extra-class='bor-tb'></text-area>
+    </block>
+    <block>
+      <view class="weui-cells">
+        <view wx:if="{{housConfig.openCountry=='open'}}" class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">发布城市</view>
+          </view>
+          <view class="weui-cell__bd">
+            <wux-radio-group typesetting='2' radioColor="{{color}}" radioarr="{{lcradioarr}}" name="lcradio" value="{{ lcradiovalue }}" bind:change="lcrdioonChange">
+            </wux-radio-group>
+          </view>
+        </view>
+      </view>
+    </block>
+    <agree-box tkname='rztk' isAgree='{{checkboxvalue}}' bind:click='clickcheckbox' title='用户协议条款' iconColor="{{color}}" bgcolor="" name='checkbox' value='{{checkboxvalue}}'></agree-box>
+    <view class='bottomfixed'>
+      <button disabled='{{loading}}' loading='{{loading}}' style='background:{{color}}' class="br-r-0" type="primary" formType="submit">{{releaseName||'立即发布'}}</button>
+    </view>
+  </view>
+</form>
+<show-pay bind:complete='payreturn' payobj='{{payobj}}' visible='{{isshowpay}}' mrcolor="{{color}}"></show-pay>
